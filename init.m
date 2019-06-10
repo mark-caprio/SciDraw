@@ -31,10 +31,10 @@ Get["SciDraw`FigPanel`"];
 Get["SciDraw`FigShape`"];
 Get["SciDraw`FigArrow`"];
 Get["SciDraw`FigScheme`"]; (* needs SciDraw`FigArrow` for inheritance*)
-Get["SciDraw`FigGraphics`"]
+Get["SciDraw`FigGraphics`"];
 
 (* optimization testbeds *)
-Get["SciDraw`FigProfile`"]
+Get["SciDraw`FigProfile`"];
 
 (* finally output splash panel *)
 Get["SciDraw`FigSplash`"];

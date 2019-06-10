@@ -499,10 +499,11 @@ LevelLabel[J_,Opts:OptionsPattern[]]:=LevelLabel[{J},Opts];
 
 Options[EnergyLabel]={Symbol->textit["E"]};
 
-
 EnergyLabel[Level1_,Opts:OptionsPattern[]]:=Module[
-{},
-Row[{OptionValue[Symbol],"(",Switch[Level1,_List,LevelLabel[Level1],_,Level1],")"}]
+{EnergyText,LevelText},
+EnergyText=OptionValue[Symbol];
+LevelText=Switch[Level1,_List,LevelLabel[Level1],_,Level1];
+Row[{EnergyText,"(",LevelText,")"}]
 ];
 
 

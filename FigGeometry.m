@@ -43,7 +43,7 @@ Begin["`Private`"];
 
 
 ScalarParameterPattern=None|(_?NumericQ);
-NonNegativeScalarParameterPattern=None|NonNegativePattern;
+NonNegativeScalarParameterPattern=(None|NonNegativePattern);
 
 
 UpgradeScalar[None]:=0;

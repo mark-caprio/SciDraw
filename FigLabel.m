@@ -72,6 +72,7 @@ Displacement->None,
 
 (* callout *)
 IntermediatePoints->None,
+
 (* curve/arrowhead *)
 FigArrowheadOptions[False,True],
 FigCurveOptions

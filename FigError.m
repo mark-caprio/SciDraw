@@ -156,6 +156,12 @@ General::figbadopt="Option `1` has invalid value `2`.";
 
 FigCheckOption[Caller:((_Object)|(_Symbol)),OptionName_Symbol,TestPattern_,OptionList_List]:=Module[
 {},
+(*
+If[
+OptionName\[Equal]Width,
+Print["value ",(OptionName/.OptionList)," pattern ",FullForm[TestPattern]," match ",MatchQ[(OptionName/.OptionList),TestPattern]];
+];
+*)
 If[
 !MatchQ[(OptionName/.OptionList),TestPattern],
 FigError[Caller,"figbadopt",OptionName,(OptionName/.OptionList)]

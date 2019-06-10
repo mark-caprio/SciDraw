@@ -516,9 +516,11 @@ DataAxisScaleFunction[Name]:=Function;
 
 
 DefineAxisScale[None,Identity];
+DefineAxisScale["Linear",Identity];
 
 
-DefineAxisScale[{Scaled,ScaleUnits_?NumericQ},Function[x,x/ScaleUnits]];
+DefineAxisScale[{Scaled,ScaleUnits_?NumericQ},Function[x,x/ScaleUnits]];  (* DEPRECATED in favor of string identifier *)
+DefineAxisScale[{"Scaled",ScaleUnits_?NumericQ},Function[x,x/ScaleUnits]];
 
 
 DefineAxisScale[{"Linear",a_?NumericQ,b_?NumericQ},Function[x,a*x+b]];
@@ -528,10 +530,12 @@ LimitedLog[b_:E,x_?Positive]=Log[b,x];
 LimitedLog[b_:E,_?NonPositive]=-Infinity;
 
 
-DefineAxisScale[Log,LimitedLog[10,#]&];
+DefineAxisScale[Log,LimitedLog[10,#]&];  (* DEPRECATED in favor of string identifier *)
+DefineAxisScale["Log",LimitedLog[10,#]&];
 
 
-DefineAxisScale[{Log,Base_},LimitedLog[Base,#]&];
+DefineAxisScale[{Log,Base_},LimitedLog[Base,#]&];  (* DEPRECATED in favor of string identifier *)
+DefineAxisScale[{"Log",Base_},LimitedLog[Base,#]&];
 
 
 DeclareFigClass[

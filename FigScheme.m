@@ -36,7 +36,8 @@ BeginPackage["SciDraw`",SciDraw`Private`$ExternalContexts];
 Unprotect[Evaluate[$Context<>"*"]];
 
 
-Lev::usage="FIGURE OBJECT: Lev[c1,c2,E] generates an energy level.";
+Lev::usage="FIGURE OBJECT: Lev[E,{c1,c2}] or Lev[c1,c2,E] generates an energy level.";
+Resonance::usage="FIGURE OBJECT: Resonance[E,{c1,c2}] generates an energy level.  Child of Lev.";
 ExtensionLine::usage="FIGURE OBJECT: ExtensionLine[level,side,extension] generates an extension line attached to an energy level.";
 Connector::usage="FIGURE OBJECT: Connector[level1,level2] generates a connectingline between levels.";BandLabel::usage="FIGURE OBJECT: BandLabel[level,text] attaches a label to a level at the Bottom position.";
 Trans::usage="FIGURE OBJECT: Trans[level1,level2] generates a transition arrow.";
@@ -106,7 +107,7 @@ MakeWing->True
 Lev::xorder="Level has zero or negative length, originally given coordinates `1`, and ultimately having endpoints `2` after applying margins.";
 
 
-Constructor[Class:Lev,Self_Object][x1_?NumericQ,x2_?NumericQ,EnergyStr:(_?NumericQ|_String),Opts___?OptionQ]:=FigObjectWrapper[Class,Self,{Opts},
+Constructor[Class:Lev,Self_Object][EnergyStr:(_?NumericQ|_String),{x1_?NumericQ,x2_?NumericQ},Opts___?OptionQ]:=FigObjectWrapper[Class,Self,{Opts},
 Module[
 {
 CanvasPoints,NominalCanvasPoints,BaseCanvasPoints,Energy,UsedVerticalShift,NudgeShift,x1m,x2m,p1m,p2m,
@@ -251,6 +252,188 @@ LastLevel[]:=$LastLevel;
 DeclareFigFallThroughError[LastLevel];
 
 
+Resonance::xorder=Lev::xorder;
+
+
+DeclareFigClass[
+Resonance,
+Lev,
+{
+"CanvasRegion"  (* canvas bounding box region *)
+},
+{},
+{Center,Left,Right,Bottom,Top}
+];
+DefineFigClassOptions[
+Resonance,
+{
+Width->0,
+PlotPoints->1,
+"DensityRange"->{0.5,1}
+}
+];
+
+
+Constructor[Class:Resonance,Self_Object][EnergyStr:(_?NumericQ|_String),{x1_?NumericQ,x2_?NumericQ},Opts___?OptionQ]:=FigObjectWrapper[Class,Self,{Opts},
+Module[
+{
+CanvasPoints,NominalCanvasPoints,BaseCanvasPoints,Energy,UsedVerticalShift,NudgeShift,x1m,x2m,p1m,p2m,f,df,i,LeafDensityFraction,LeafCanvasPoints,CanvasRegion,LeafCanvasRegion,
+UsedMargin,UsedWingHeight,UsedWingSlopeWidth,UsedWingTipWidth,UsedMakeWing,UsedWidth,UsedPlotPoints,UsedDensityRange,TheColor,
+DerivedEnergyLabelFunction,DerivedEnergyLabel,LabelName,Side
+},
+
+(* validate extra options -- inherited from Lev *)
+FigCheckOption[Self,Margin,IntervalParametersPattern,FigOptions];
+FigCheckOption[Self,VerticalShift,ScalarParameterPattern,FigOptions];
+FigCheckOption[Self,EnergyLabelFunction,_,FigOptions];
+FigCheckOption[Self,DecimalDigits,Automatic|((_Integer)?NonNegative)|{((_Integer)?NonNegative),((_Integer)?NonNegative)},FigOptions];
+FigCheckOption[Self,WingHeight,IntervalParametersPattern,FigOptions];
+FigCheckOption[Self,WingSlopeWidth,IntervalParametersPattern,FigOptions];
+FigCheckOption[Self,WingTipWidth,IntervalParametersPattern,FigOptions];
+FigCheckOption[Self,MakeWing,LogicalPattern|{LogicalPattern,LogicalPattern},FigOptions];
+If[x2<x1,FigMessage[]];
+
+(* validate extra options -- new *)
+(*FigCheckOption[Self,Width,NonNegativeScalarParameterPattern,FigOptions];*)
+(*FigCheckOption[Self,Width,((_NumericQ)?Positive),FigOptions];*)
+FigCheckOption[Self,Width,NonNegativeScalarParameterPattern,FigOptions];
+FigCheckOption[Self,PlotPoints,((_Integer)?Positive),FigOptions];
+FigCheckOption[Self,"DensityRange",{NonNegativePattern,NonNegativePattern},FigOptions];
+
+(* option expansion -- inherited *)
+UsedMargin=UpgradePairEqual[(Margin/.FigOptions)];
+UsedVerticalShift=UpgradeScalar[(VerticalShift/.FigOptions)];
+(*
+UsedWingHeight=UpgradePairEqual[(WingHeight/.FigOptions)];
+UsedWingSlopeWidth=UpgradePairEqual[(WingSlopeWidth/.FigOptions)];
+UsedWingTipWidth=UpgradePairEqual[(WingTipWidth/.FigOptions)];
+UsedMakeWing=UpgradePair[(MakeWing/.FigOptions)];  (* not numeric, so use UpgradePair *)
+*)
+
+(* option expansion -- new *)
+UsedWidth=UpgradeScalar[(Width/.FigOptions)];
+UsedPlotPoints=(PlotPoints/.FigOptions);
+UsedDensityRange=("DensityRange"/.FigOptions);
+
+(* prerequisite calculations *)
+Energy=Switch[EnergyStr,
+_?NumericQ,EnergyStr,
+_String,ToExpression[EnergyStr]
+];
+
+(* nominal canvas points -- those for marginless level *)
+NudgeShift={{0,UsedVerticalShift},{0,UsedVerticalShift}};
+NominalCanvasPoints=FigResolvePoint/@{{x1,Energy},{x2,Energy}}+NudgeShift;
+Self@SetNominalPoints[NominalCanvasPoints];
+Self@SetUserXWidth[x2-x1];
+
+(* base canvas points -- those for wingless level *)
+{x1m,x2m}=ExtendInterval[{x1,x2},-UsedMargin,Absolute];
+If[
+x1m>=x2m,
+FigError[Self,"xorder",{x1,x2},{x1m,x2m}]
+];
+BaseCanvasPoints={p1m,p2m}=FigResolvePoint/@{{x1m,Energy},{x2m,Energy}}+NudgeShift;
+Self@SetBasePoints[BaseCanvasPoints];
+Self@SetUserMargins[UsedMargin];
+
+(* true canvas points -- at wing roots if there are wings -- N/A for resonance*)
+CanvasPoints=BaseCanvasPoints;
+Self@SetPoints[CanvasPoints];
+
+(* region canvas points *)
+CanvasRegion=FigResolveRegion[{{x1m,x2m},{Energy-UsedWidth/2,Energy+UsedWidth/2}}+NudgeShift];
+Self@SetCanvasRegion[CanvasRegion];
+
+(* make graphics elements *)
+TheColor=ResolveOption[FillColor,{Default:>(Color/.FigOptions)},FigOptions];
+FigPolygonElement[
+Table[
+f=i/UsedPlotPoints;  (* i=1\[Rule]f=1/n, i=n\[Rule]f=1 *)
+df=(1-f)/2; (* i=1\[Rule]df=1/2*(n-1)/n, i=n\[Rule]df=0 *)
+LeafDensityFraction= (1-f)*UsedDensityRange[[2]]+f*UsedDensityRange[[1]]; (*f=0\[Rule]max,f=1\[Rule]min*)
+LeafCanvasRegion=ExtendRegion[CanvasRegion,{{0,0},{-df,-df}},Scaled];
+LeafCanvasPoints={{LeafCanvasRegion[[1,1]],LeafCanvasRegion[[2,1]]},{LeafCanvasRegion[[1,2]],LeafCanvasRegion[[2,2]]}};
+{Lighter[TheColor,1-LeafDensityFraction],Rectangle@@LeafCanvasPoints},
+{i,UsedPlotPoints,1,-1}
+],
+Flatten[{ShowLine->False,FigOptions}]
+];
+
+(* define energy label text *)
+(* energy label priority: (1) string, (2) specified function, (3) specified decimal digits, (4) simple pass through of number*)
+DerivedEnergyLabelFunction=If[
+(EnergyLabelFunction/.FigOptions)===Automatic,
+If[
+(DecimalDigits/.FigOptions)===Automatic,
+Identity,
+(FixedPointForm[#,(DecimalDigits/.FigOptions)]&)
+],
+(EnergyLabelFunction/.FigOptions)
+];
+DerivedEnergyLabel=Switch[
+EnergyStr,
+_String,EnergyStr,
+_?NumericQ,(DerivedEnergyLabelFunction/.FigOptions)@EnergyStr
+];
+Self@SetEnergyLabel[DerivedEnergyLabel];
+
+(* push energy label text in place of Automatic label values *) 
+FigOptions=Join[
+Table[
+LabelName=SidifyOptionName[Side][Label];
+LabelName->ResolveOption[LabelName,{Automatic->DerivedEnergyLabel},FigOptions],
+{Side,$FigClassAttachedLabels[ObjectClass[Self]]}
+],
+FigOptions
+];
+
+(* record self as last level *)
+$LastLevel=Self;
+]
+];
+
+
+(* Anchors are based on the central "line", as if this were a Lev, while bounding box respects full rectangular region of resonance. *)
+
+
+MakeAnchor[Class:Resonance,Self_Object][Name:Left,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
+FigAnchor[Canvas[First[Self@GetPoints[]]],Right]
+];
+MakeAnchor[Class:Resonance,Self_Object][Name:Right,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
+FigAnchor[Canvas[Last[Self@GetPoints[]]],Left]
+];
+MakeAnchor[Class:Resonance,Self_Object][Name:Bottom,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
+FigAnchor[CentroidPoint[Canvas/@(Self@GetBasePoints[])],Top]
+];
+MakeAnchor[Class:Resonance,Self_Object][Name:Top,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
+FigAnchor[CentroidPoint[Canvas/@(Self@GetBasePoints[])],Bottom]
+];
+MakeAnchor[Class:Resonance,Self_Object][Name:Center,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
+FigAnchor[CentroidPoint[Canvas/@(Self@GetBasePoints[])]]
+];
+
+
+MakeAnchor[Class:Resonance,Self_Object][Name:Level,Arg:(x_?NumericQ)]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
+Module[
+{u=x/(Self@GetUserXWidth[])},
+FigAnchor[Canvas[InterpolateSegment[Self@GetNominalPoints[],Tail,u]]]
+]
+];
+MakeAnchor[Class:Resonance,Self_Object][Name:Level,Arg:{Side:(Left|Right),(x_?NumericQ)}]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
+Module[
+{u=x/(Self@GetUserXWidth[])},
+FigAnchor[Canvas[{
+First[InterpolateSegment[Self@GetNominalPoints[],Tail,u]],
+Last[(Self@GetPoints[])[[Switch[Side,Left,1,Right,-1]]]]
+}]]
+]
+];
+
+
+MakeBoundingBox[Class:Resonance,Self_Object][]:=(Self@GetCanvasRegion[]);
+
+
 DeclareFigClass[
 ExtensionLine,
 {"Points"},
@@ -325,6 +508,9 @@ Connector,
 DefineFigClassOptions[
 Connector,
 {
+(* curve specification *)
+IntermediatePoints->None,
+FigCurveOptions
 }
 ];
 
@@ -334,9 +520,17 @@ Object[LevelName1:ObjectNamePattern[Lev]]|(LevelName1:ObjectNamePattern[Lev]),
 Object[LevelName2:ObjectNamePattern[Lev]]|(LevelName2:ObjectNamePattern[Lev]),
 Opts___?OptionQ]:=FigObjectWrapper[Class,Self,{Opts},
 Module[
-{CanvasPoints},
+{UsedIntermediatePoints,Curve,CanvasPoints},
 
-CanvasPoints=FigResolvePoint/@{FigAnchor[LevelName1,Right],FigAnchor[LevelName2,Left]};
+(* validate options *)
+FigCheckOption[Self,IntermediatePoints,None|{FigCurvePointPattern...},FigOptions];
+FigCheckCurveOptions[Self];
+
+(* construct callout curve specification *)
+UsedIntermediatePoints=ResolveOption[IntermediatePoints,{None->{}},FigOptions];
+Curve=Join[{FigAnchor[LevelName1,Right]},UsedIntermediatePoints,{FigAnchor[LevelName2,Left]}];
+CanvasPoints=FigResolveCurve[Self,Curve,FigOptions];
+(*CanvasPoints=FigResolvePoint/@{FigAnchor[LevelName1,Right],FigAnchor[LevelName2,Left]};*)
 Self@SetPoints[CanvasPoints];
 
 (* make graphics elements *)
