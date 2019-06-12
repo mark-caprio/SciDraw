@@ -107,6 +107,9 @@ MakeWing->True
 Lev::xorder="Level has zero or negative length, originally given coordinates `1`, and ultimately having endpoints `2` after applying margins.";
 
 
+Constructor[Class:Lev,Self_Object][x1_?NumericQ,x2_?NumericQ,EnergyStr:(_?NumericQ|_String),Opts___?OptionQ]:=Constructor[Class,Self][EnergyStr,{x1,x2},Opts];
+
+
 Constructor[Class:Lev,Self_Object][EnergyStr:(_?NumericQ|_String),{x1_?NumericQ,x2_?NumericQ},Opts___?OptionQ]:=FigObjectWrapper[Class,Self,{Opts},
 Module[
 {
