@@ -482,7 +482,7 @@ MomentLabel::usage="UNDOCUMENTED";
 
 TextFractionBox::usage="TextFractionBox[x,y] typesets x/y as a vertical fraction, but with smaller size and tighter spacing than provided by Mathematica (as in a LaTeX \\tfrac).";
 SolidusFractionBox::usage="SolidusFractionBox[x,y] typesets x/y as a solidus fraction.";
-DiagonalFractionBox::usage="DiagonalFractionBox[x,y] typesets x/y as a diagonal fraction.  The option ColumnSpacings->(spacing) controls the horizontal separation between the elements of the fraction.  The option Baseline->{numeratorheight,slashheight,denominatorheight} controls the vertical positioning of the different elements of the fraction.  KernForSuperscript->(adjustment) introduces a horizontal adjustment to the position of any superscript attached to the fraction.  The default option values produce visually reasonable results for the Times New Roman font.";
+DiagonalFractionBox::usage="DiagonalFractionBox[x,y] typesets x/y as a diagonal fraction.  The option Spacings->(spacing) controls the horizontal separation between the elements of the fraction.  The option Baseline->{numeratorheight,slashheight,denominatorheight} controls the vertical positioning of the different elements of the fraction.  KernForSuperscript->(adjustment) introduces a horizontal adjustment to the position of any superscript attached to the fraction.  The default option values produce visually reasonable results for the Times New Roman font.";
 KernForSuperscript::usage="KernForSuperscript is an option for DiagonalFractionBox.";
 
 Fractionize::usage="Fractionize[expr] converts any expression with nonzero denominator into a FractionBox.";
@@ -494,6 +494,7 @@ FractionString::usage="Provides a compact solidus-delimited fraction representat
 PiFractionString::usage="Provides a compact solidus-delimited fraction representation of a rational multiple of Pi, in string form. (UNDOCUMENTED)";
 
 SignString::usage="SignString[x] returns \"+\", \"\", or \"-\", depending upon the value of Sign[x].";
+GradeSignString::usage="SignString[g] returns \"+\" or \"-\", depending upon the value of (-)^g.";
 
 Sqrtize::usage="Sqrtize[x] formats a fraction which is the square root of a rational number entirely under the radical (e.g., the usual format for Clebsch-Gordan coefficients).";
 Radicalize::usage="Radicalize[x,n] formats a fraction involving nth roots entirely under the radical.";

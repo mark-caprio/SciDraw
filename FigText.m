@@ -19,6 +19,7 @@
 
 
 
+(* ::Input::Initialization:: *)
 (* :Title: FigText *)
 (* :Context: SciDraw` *)
 (* :Author: Mark A. Caprio, Department of Physics, University of Notre Dame *)
@@ -34,15 +35,19 @@ May 2011.  Renamed from MCText to FigText.  Context changed to SciDraw`.
 *)
 
 
+(* ::Input::Initialization:: *)
 BeginPackage["SciDraw`",SciDraw`Private`$ExternalContexts];
 
 
+(* ::Input::Initialization:: *)
 Unprotect[Evaluate[$Context<>"*"]];
 
 
+(* ::Input::Initialization:: *)
 Begin["`Private`"];
 
 
+(* ::Input::Initialization:: *)
 textup[x_]:=StyleForm[x,FontSlant->"Plain"];
 textsl[x_]:=StyleForm[x,FontSlant->"Oblique"];
 textit[x_]:=StyleForm[x,FontSlant->"Italic"];
@@ -53,9 +58,11 @@ texttt[x_]:=StyleForm[x,FontFamily->"Courier"];
 textsf[x_]:=StyleForm[x,FontFamily->"Helvetica"];
 
 
+(* ::Input::Initialization:: *)
 hspace[Lems_]:=AdjustmentBox["",BoxMargins->{{0,Lems},{0,0}}];
 
 
+(* ::Input::Initialization:: *)
 textsize[s_,x_]:=StyleForm[x,FontSize->s];
 textcolor[c_,x_]:=StyleForm[x,FontColor->c];
 texttracking[t_,x_]:=StyleForm[x,FontTracking->t];
@@ -63,11 +70,13 @@ textfamily[f_,x_]:=StyleForm[x,FontFamily->f];
 texthidden[x_]:=StyleForm[x,ShowContents->False];
 
 
+(* ::Input::Initialization:: *)
 textsubscript[x_]:=SubscriptBox["",x];
 textsuperscript[y_]:=SuperscriptBox["",y];
 textsubsuperscript[x_,y_]:=SubsuperscriptBox["",x,y];
 
 
+(* ::Input::Initialization:: *)
 Options[textit]={hspace->0};
 textit[x_,Opts___]:=Module[
 {FullOpts=Flatten[{Opts,Options[textit]}]},
@@ -78,14 +87,17 @@ BoxMargins->{{0,hspace/.FullOpts},{0,0}}
 ];
 
 
+(* ::Input::Initialization:: *)
 StackText[Alignment_,Spacing_,Lines_List,Opts___?OptionQ]:=GridBox[{#}&/@Lines,ColumnAlignments->Alignment,RowSpacings->Spacing,Opts];
 
 
+(* ::Input::Initialization:: *)
 SuperPrimeBox[x_,n:(_Integer?NonNegative):1]:=SuperscriptBox[x,StringJoin[Table["\[Prime]",{n}]]];
 (*SuperPrime[x_]:=Superscript[x,"\[Prime]"];*)
 SuperPrime[x_,n:(_Integer?NonNegative):1]:=Superscript[x,StringJoin[Table["\[Prime]",{n}]]];
 
 
+(* ::Input::Initialization:: *)
 Options[MultipletLabel]={EntrySeparator->",",Delimiter->{"(",")"}};
 MultipletLabel[Values_List,Opts:OptionsPattern[]]:=Module[
 {DeducedEntrySeparator,DeducedDelimiter},
@@ -105,14 +117,21 @@ Row[Join[{DeducedDelimiter[[1]]},Riffle[Values,DeducedEntrySeparator],{DeducedDe
 ];
 
 
+(* ::Input::Initialization:: *)
 SignString[x_?NumericQ]:=Switch[
 Sign[x],
 +1,"+",
 0,"",
 -1,"-"
 ];
+GradeSignString[g_?NumericQ]:=Switch[
+g,
+0,"+",
+1,"-"
+];
 
 
+(* ::Input::Initialization:: *)
 SetAttributes[Sqrtize,Listable];
 Sqrtize[x_?NumericQ]:=Which[
 (*RationalQ[x],x,*)
@@ -127,9 +146,11 @@ True,x
 ];
 
 
+(* ::Input::Initialization:: *)
 RationalQ[x_]:=(IntegerQ[x]||(Head[x]===Rational));
 
 
+(* ::Input::Initialization:: *)
 Options[AlignmentBox]={
 AlignmentMarker->"&",
 Align->True,
@@ -137,6 +158,7 @@ ColumnAlignments->{Right,Left},ColumnSpacings->0
 };
 
 
+(* ::Input::Initialization:: *)
 BreakString[Separator_,Str_]:=Module[
 {PosnList},
 PosnList=Join[{{Null,0}},StringPosition[Str,Separator],{{StringLength[Str]+1,Null}}];
@@ -167,6 +189,7 @@ Sequence@@FilterRules[FullOpts,Options@StyleBox]
 ];
 
 
+(* ::Input::Initialization:: *)
 LaTeXTableEntryValue[Value_?NumericQ]:=Value;
 LaTeXTableEntryValue[Str_String]:=Module[
 {
@@ -194,6 +217,7 @@ Value
 ];
 
 
+(* ::Input::Initialization:: *)
 Options[SubarrayEllipsis]={Padding->"\[CenterEllipsis]"};
 SubarrayEllipsis[m_?MatrixQ,{Rows:(_Integer|Infinity),Columns:(_Integer|Infinity)},OptionsPattern[]]:=Module[
 {
@@ -225,9 +249,11 @@ OptionValue[Padding]
 ];
 
 
+(* ::Input::Initialization:: *)
 PageBreak[]:=CellPrint[Cell["",PageBreakBelow->True]];
 
 
+(* ::Input::Initialization:: *)
 UnitsLabel[FactorSequence___]:=Module[
 {EntryList},
 
@@ -245,6 +271,7 @@ Row[EntryList]
 ];
 
 
+(* ::Input::Initialization:: *)
 SpectroscopicLetter[0]="s";
 SpectroscopicLetter[1]="p";
 SpectroscopicLetter[2]="d";
@@ -256,11 +283,13 @@ SpectroscopicLetter[7]="j";
 SpectroscopicLetter[8]="k";
 
 
+(* ::Input::Initialization:: *)
 Options[ShellLabel]={Style->Italic};
 ShellLabel[{n_,l_,j_},OptionsPattern[]]:=Row[{n,Subscript[Style[SpectroscopicLetter[l],OptionValue[Style]],SolidusFractionize[j]]}];
 ShellLabel[{l_,j_},OptionsPattern[]]:=Row[{Subscript[Style[SpectroscopicLetter[l],OptionValue[Style]],SolidusFractionize[j]]}];
 
 
+(* ::Input::Initialization:: *)
 Options[NucleusBox]={NuclearA->"",NuclearZ->"",NuclearN->""};
 NucleusBox[Element_,Opts___?OptionQ]:=Module[
 {FullOpts=Flatten[{Opts,Options[NucleusBox]}]},
@@ -270,9 +299,11 @@ SubsuperscriptBox["",NuclearZ/.FullOpts,NuclearA/.FullOpts],SubsuperscriptBox[El
 ];
 
 
+(* ::Input::Initialization:: *)
 (* LIMITATION: A and Z are left aligned *)
 
 
+(* ::Input::Initialization:: *)
 Isotope[A_:None,Z_:None,N_:None,Sup_:None,Element_String]:=Which[
 (Z===None)&&(N===None),
 (* use subsuperscript on both sides if use on either, to match alignment *)
@@ -286,12 +317,15 @@ Subsuperscript["",Replace[Z,None->""],Replace[A,None->""]],Subsuperscript[Elemen
 ];
 
 
+(* ::Input::Initialization:: *)
 Isotope[PriorArgs___,(Z_Integer)?NonNegative]:=Isotope[PriorArgs,ElementAbbreviation[Z]];
 
 
+(* ::Input::Initialization:: *)
 Isotope[Sup_:None,{Z_Integer,N_Integer}]:=Isotope[Z+N,None,None,Sup,ElementAbbreviation[Z]];
 
 
+(* ::Input::Initialization:: *)
 ElementAbbreviations=
 	{"H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P",
 	 "S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu",
@@ -305,11 +339,13 @@ ElementAbbreviations=
 ElementAbbreviationsLength=Length[ElementAbbreviations];
 
 
+(* ::Input::Initialization:: *)
 (* from ChemicalElements package 1.4 Elements list, converted to strings *)
 ElementNames={"Hydrogen","Helium","Lithium","Beryllium","Boron","Carbon","Nitrogen","Oxygen","Fluorine","Neon","Sodium","Magnesium","Aluminium","Silicon","Phosphorus","Sulfur","Chlorine","Argon","Potassium","Calcium","Scandium","Titanium","Vanadium","Chromium","Manganese","Iron","Cobalt","Nickel","Copper","Zinc","Gallium","Germanium","Arsenic","Selenium","Bromine","Krypton","Rubidium","Strontium","Yttrium","Zirconium","Niobium","Molybdenum","Technetium","Ruthenium","Rhodium","Palladium","Silver","Cadmium","Indium","Tin","Antimony","Tellurium","Iodine","Xenon","Caesium","Barium","Lanthanum","Cerium","Praseodymium","Neodymium","Promethium","Samarium","Europium","Gadolinium","Terbium","Dysprosium","Holmium","Erbium","Thulium","Ytterbium","Lutetium","Hafnium","Tantalum","Tungsten","Rhenium","Osmium","Iridium","Platinum","Gold","Mercury","Thallium","Lead","Bismuth","Polonium","Astatine","Radon","Francium","Radium","Actinium","Thorium","Protactinium","Uranium","Neptunium","Plutonium","Americium","Curium","Berkelium","Californium","Einsteinium","Fermium","Mendelevium","Nobelium","Lawrencium","Rutherfordium","Dubnium","Seaborgium","Bohrium","Hassium","Meitnerium","Ununnilium","Unununium","Ununbium"};
 ElementNamesLength=Length[ElementNames];
 
 
+(* ::Input::Initialization:: *)
 StableIsotopes["Hydrogen"]={1,2};
 StableIsotopes["Helium"]={3,4};
 StableIsotopes["Lithium"]={6,7};
@@ -425,34 +461,41 @@ StableIsotopes["Ununbium"]={};
 
 
 
+(* ::Input::Initialization:: *)
 ElementAbbreviation[Z:0]="n";
 ElementAbbreviation[(Z_Integer)?Positive]/;(Z<=ElementAbbreviationsLength):=ElementAbbreviations[[Z]];
 ElementAbbreviation[(Z_Integer)?Positive]/;(Z>ElementAbbreviationsLength):=ToString[Z];
 
 
+(* ::Input::Initialization:: *)
 ElementName[Z:0]="Neutron";
 ElementName[(Z_Integer)?Positive]/;(Z<=ElementNamesLength):=ElementNames[[Z]];
 ElementName[(Z_Integer)?Positive]/;(Z>ElementNamesLength):=ToString[Z];
 
 
+(* ::Input::Initialization:: *)
 (*IsotopeIsStable[{Z:0,(A_Integer)?Positive}]:=False;
 IsotopeIsStable[{(Z_Integer)?Positive,(A_Integer)?Positive}]/;(Z\[LessEqual]ElementNamesLength):=MemberQ[StableIsotopes[ElementName[Z]],A];
 IsotopeIsStable[{(Z_Integer)?Positive,(A_Integer)?Positive}]/;(Z>ElementNamesLength):=False;*)
 
 
+(* ::Input::Initialization:: *)
 StableIsotopes[Z:0]:={};
 StableIsotopes[(Z_Integer)?Positive]/;(Z<=ElementNamesLength):=StableIsotopes[ElementName[Z]];
 StableIsotopes[(Z_Integer)?Positive]/;(Z>ElementNamesLength):={};
 
 
+(* ::Input::Initialization:: *)
 IsotopeIsStable[{Z:0,(N_Integer)?Positive}]:=False;
 IsotopeIsStable[{(Z_Integer)?Positive,(N_Integer)?NonNegative}]/;(Z<=ElementNamesLength):=MemberQ[StableIsotopes[ElementName[Z]],Z+N];
 IsotopeIsStable[{(Z_Integer)?Positive,(N_Integer)?NonNegative}]/;(Z>ElementNamesLength):=False;
 
 
+(* ::Input::Initialization:: *)
 Isotope[Args___,(Z_Integer)?NonNegative]:=Isotope[Args,ElementAbbreviation[Z]];
 
 
+(* ::Input::Initialization:: *)
 Options[LabelJiP]={Rational->SolidusFractionize};
 LabelJiP[J_,i_,P:(+1|-1|None):+1,OptionsPattern[]]:=SubsuperscriptBox[
 J/.{x_Rational:>OptionValue[Rational][x]},
@@ -466,6 +509,7 @@ Switch[P,+1,"+",-1,"-",None,""]
 ];
 
 
+(* ::Input::Initialization:: *)
 Options[LevelLabel]={Rational->SolidusFractionize,Parity->None};
 LevelLabel[{J_,i_,P_},Opts:OptionsPattern[]]:=Module[
 {JText,iValue,PValue,PText},
@@ -492,24 +536,28 @@ LevelLabel[{J_,i_},Opts:OptionsPattern[]]:=LevelLabel[{J,i,Automatic},Opts];
 LevelLabel[{J_},Opts:OptionsPattern[]]:=LevelLabel[{J,Automatic,Automatic},Opts];
 
 
+(* ::Input::Initialization:: *)
 LevelLabel[J_,i:Except[_?OptionQ],P:Except[_?OptionQ],Opts:OptionsPattern[]]:=LevelLabel[{J,i,P},Opts];
 LevelLabel[J_,i:Except[_?OptionQ],Opts:OptionsPattern[]]:=LevelLabel[{J,i},Opts];
 LevelLabel[J_,Opts:OptionsPattern[]]:=LevelLabel[{J},Opts];
 
 
+(* ::Input::Initialization:: *)
 Options[EnergyLabel]={Symbol->textit["E"]};
 
+
+(* ::Input::Initialization:: *)
 EnergyLabel[Level1_,Opts:OptionsPattern[]]:=Module[
-{EnergyText,LevelText},
-EnergyText=OptionValue[Symbol];
-LevelText=Switch[Level1,_List,LevelLabel[Level1],_,Level1];
-Row[{EnergyText,"(",LevelText,")"}]
+{},
+Row[{OptionValue[Symbol],"(",Switch[Level1,_List,LevelLabel[Level1],_,Level1],")"}]
 ];
 
 
-Options[RTPLabel]={MultipolaritySymbols->{"E","M"},MultipolarityStyle->Italic,Reverse->False};
+(* ::Input::Initialization:: *)
+Options[RTPLabel]={MultipolaritySymbols->{"E","M"},MultipolarityStyle->Italic,Reverse->False,ImageMargins->0};
 
 
+(* ::Input::Initialization:: *)
 RTPLabel[Multipolarity:{sigma:(+1|-1),lambda_Integer},Level1_,Level2_,Opts:OptionsPattern[]]:=Module[
 {Mode,StyleDirective},
 Mode=Switch[
@@ -523,6 +571,7 @@ RTPLabel[Row[{Style[Mode,StyleDirective],lambda}],Level1,Level2,Opts]
 RTPLabel[lambda_Integer,Level1_,Level2_,Opts:OptionsPattern[]]:=RTPLabel[{+1,lambda},Level1,Level2,Opts];
 
 
+(* ::Input::Initialization:: *)
 RTPLabel[Multipolarity:{sigma:(+1|-1),lambda_Integer},Opts:OptionsPattern[]]:=Module[
 {Mode,StyleDirective},
 Mode=Switch[
@@ -536,6 +585,7 @@ RTPLabel[Row[{Style[Mode,StyleDirective],lambda}],Opts]
 RTPLabel[lambda_Integer,Opts:OptionsPattern[]]:=RTPLabel[{+1,lambda},Opts];
 
 
+(* ::Input::Initialization:: *)
 RTPLabel[Multipolarity:Except[(_Integer)|(_List)],Level1_,Level2_,OptionsPattern[]]:=Module[
 {Label1,Label2},
 {Label1,Label2}={Switch[Level1,_List,LevelLabel[Level1],_,Level1],Switch[Level2,_List,LevelLabel[Level2],_,Level2]};
@@ -543,17 +593,19 @@ If[
 OptionValue[Reverse],
 {Label1,Label2}=Reverse[{Label1,Label2}]
 ];
-Row[{textit["B"],"(",Multipolarity,";",Label1,"\[Rule]",Label2,")"}]
+Row[{textit["B"],"(",Multipolarity,";",Label1,"\[Rule]",Label2,")"},ImageMargins->OptionValue[ImageMargins]]
 ];
 RTPLabel[Multipolarity:Except[(_Integer)|(_List)],OptionsPattern[]]:=Row[{
 textit["B"],"(",Multipolarity,
 ")"
-}];
+},ImageMargins->OptionValue[ImageMargins]];
 
 
-Options[RMELabel]={MultipolaritySymbols->{"Q","M"},MultipolarityStyle->Bold,Dividers->"||"};
+(* ::Input::Initialization:: *)
+Options[RMELabel]={MultipolaritySymbols->{"Q","M"},MultipolarityStyle->Bold,Dividers->"||",ImageMargins->1};
 
 
+(* ::Input::Initialization:: *)
 RMELabel[Multipolarity:{sigma:(+1|-1),lambda_Integer},Level2_,Level1_,Opts:OptionsPattern[]]:=Module[
 {Mode,StyleDirective},
 Mode=Switch[
@@ -567,6 +619,7 @@ RMELabel[Subscript[Style[Mode,StyleDirective],lambda],Level2,Level1,Opts]
 RMELabel[lambda_Integer,Level2_,Level1_,Opts:OptionsPattern[]]:=RMELabel[{+1,lambda},Level2,Level1,Opts];
 
 
+(* ::Input::Initialization:: *)
 RMELabel[Multipolarity:{sigma:(+1|-1),lambda_Integer},Opts:OptionsPattern[]]:=Module[
 {Mode},
 Mode=Switch[
@@ -579,23 +632,31 @@ RMELabel[Subscript[Mode,lambda],Opts]
 RMELabel[lambda_Integer,Opts:OptionsPattern[]]:=RMELabel[{+1,lambda},Opts];
 
 
+(* ::Input::Initialization:: *)
 RMELabel[Multipolarity:Except[(_Integer)|(_List)],Level2_,Level1_,OptionsPattern[]]:=Row[{
 "\[LeftAngleBracket]",Switch[Level2,_List,LevelLabel[Level2],_,Level2],OptionValue[Dividers],Multipolarity,OptionValue[Dividers],Switch[Level1,_List,LevelLabel[Level1],_,Level1],"\[RightAngleBracket]"
 }]
 RMELabel[Multipolarity:Except[(_Integer)|(_List)],OptionsPattern[]]:=Row[{
 "\[LeftAngleBracket]",OptionValue[Dividers],Multipolarity,OptionValue[Dividers],"\[RightAngleBracket]"
-}]
+},ImageMargins->OptionValue[ImageMargins]]
 
 
-MomentLabel[lambda:1,Level1_,Opts:OptionsPattern[]]:=Row[{"\[Mu]","(",Switch[Level1,_List,LevelLabel[Level1],_,Level1],")"}];
-MomentLabel[lambda:2,Level1_,Opts:OptionsPattern[]]:=Row[{textit["Q"],"(",Switch[Level1,_List,LevelLabel[Level1],_,Level1],")"}];
+(* ::Input::Initialization:: *)
+Options[MomentLabel]={ImageMargins->1};
 
 
+(* ::Input::Initialization:: *)
+MomentLabel[lambda:1,Level1_,Opts:OptionsPattern[]]:=Row[{"\[Mu]","(",Switch[Level1,_List,LevelLabel[Level1],_,Level1],")"},ImageMargins->OptionValue[ImageMargins]];
+MomentLabel[lambda:2,Level1_,Opts:OptionsPattern[]]:=Row[{textit["Q"],"(",Switch[Level1,_List,LevelLabel[Level1],_,Level1],")"},ImageMargins->OptionValue[ImageMargins]];
+
+
+(* ::Input::Initialization:: *)
 Fractionize[x_?NumericQ,Opts___?OptionQ]/;(Denominator[x]==1):=DisplayForm[x];
 Fractionize[x_?NumericQ,Opts___?OptionQ]/;(Denominator[x]!=1):=FractionBox[Numerator[x],Denominator[x],Opts];
 f:Fractionize[x_List,Opts___?OptionQ]:=Thread[Unevaluated[f],List,1];
 
 
+(* ::Input::Initialization:: *)
 TextFractionBox[a_,b_,Opts:OptionsPattern[]]:=Style[
 GridBox[
 {{a},{b}},
@@ -606,16 +667,19 @@ Dashing[{}],AbsoluteThickness[0.5],Smaller
 ];
 
 
+(* ::Input::Initialization:: *)
 Style[TextFractionBox[Row[{"3","\!\(\*
 StyleBox[\"n\",\nFontSlant->\"Italic\"]\)"}],"2"],FontFamily->Times]//DisplayForm
 
 
+(* ::Input::Initialization:: *)
 TextFractionize[x_?NumericQ,Opts___?OptionQ]/;(Denominator[x]==1):=DisplayForm[x];
 TextFractionize[x_?NumericQ,Opts___?OptionQ]/;(Denominator[x]!=1):=
 TextFractionBox[Numerator[x],Denominator[x],Opts];
 f:TextFractionize[x_List,Opts___?OptionQ]:=Thread[Unevaluated[f],List,1];
 
 
+(* ::Input::Initialization:: *)
 Options[SolidusFractionBox]={Spacings->{0,0}};
 SolidusFractionBox[x_,y_,Opts___?OptionQ]:=Module[
 {FullOpts=Flatten[{Opts,Options[SolidusFractionBox]}]},
@@ -627,11 +691,13 @@ BaselinePosition->{{1,3},Baseline} (* use baseline of denominator *)
 ];
 
 
+(* ::Input::Initialization:: *)
 SolidusFractionize[x_?NumericQ,Opts___?OptionQ]/;(Denominator[x]==1):=DisplayForm[x];
 SolidusFractionize[x_?NumericQ,Opts___?OptionQ]/;(Denominator[x]!=1):=SolidusFractionBox[Numerator[x],Denominator[x],Opts];
 f:SolidusFractionize[x_List,Opts___?OptionQ]:=Thread[Unevaluated[f],List,1];
 
 
+(* ::Input::Initialization:: *)
 Options[DiagonalFractionBox]={Spacings->{-0.1,-0.3},Baseline->{0.5,0.0,0.0},KernForSuperscript->-0.15};
 DiagonalFractionBox[x_,y_,Opts___?OptionQ]:=Module[
 {FullOpts=Flatten[{Opts,Options[DiagonalFractionBox]}]},
@@ -654,17 +720,20 @@ DiagonalFractionBox[(KernForSuperscript/.FullOpts)]
 ];
 
 
+(* ::Input::Initialization:: *)
 Unprotect[TagBox];
 TagBox/:SuperscriptBox[x:TagBox[_,DiagonalFractionBox[Adjustment_]],n_]:=SuperscriptBox[AdjustmentBox[x,BoxMargins->{{0,Adjustment},{0,0}}],n];
 TagBox/:Superscript[x:TagBox[_,DiagonalFractionBox[Adjustment_]],n_]:=Superscript[AdjustmentBox[x,BoxMargins->{{0,Adjustment},{0,0}}],n];
 Protect[TagBox];
 
 
+(* ::Input::Initialization:: *)
 DiagonalFractionize[x_?NumericQ,Opts___?OptionQ]/;(Denominator[x]==1):=DisplayForm[x];
 DiagonalFractionize[x_?NumericQ,Opts___?OptionQ]/;(Denominator[x]!=1):=DiagonalFractionBox[Numerator[x],Denominator[x],Opts];
 f:DiagonalFractionize[x_List,Opts___?OptionQ]:=Thread[Unevaluated[f],List,1];
 
 
+(* ::Input::Initialization:: *)
 FractionString[x_?NumericQ]:=Module[
 {f,NumeratorString,DenominatorString},
 f=Rationalize[x];
@@ -678,6 +747,7 @@ Denominator[f]!=1,StringJoin[NumeratorString,"/",DenominatorString]
 ];
 
 
+(* ::Input::Initialization:: *)
 PiFractionString[x_?NumericQ]:=Module[
 {f,NumeratorString,DenominatorString},
 f=Rationalize[x/Pi];
@@ -695,9 +765,11 @@ Denominator[f]!=1,StringJoin[NumeratorString,"\[Pi]","/",DenominatorString]
 ];
 
 
+(* ::Input::Initialization:: *)
 End[];
 
 
+(* ::Input::Initialization:: *)
 Protect[Evaluate[$Context<>"*"]];
 Unprotect[Evaluate[$Context<>"$*"]];
 EndPackage[];
