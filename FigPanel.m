@@ -19,6 +19,7 @@
 
 
 
+(* ::Input::Initialization:: *)
 (* :Title: FigPanel *)
 (* :Context: SciDraw` *)
 (* :Summary: Panel object *)
@@ -30,12 +31,15 @@
 (* :History: See package information file. *)
 
 
+(* ::Input::Initialization:: *)
 BeginPackage["SciDraw`",SciDraw`Private`$ExternalContexts];
 
 
+(* ::Input::Initialization:: *)
 Unprotect[Evaluate[$Context<>"*"]];
 
 
+(* ::Input::Initialization:: *)
 FigAxis::usage="FIGURE OBJECT: FigAxis[side,coordinate,range] generates an standalone axis.";
 FigurePanel::usage="FIGURE OBJECT: FigurePanel[body] generates a figure panel.  A region option may be specified as (1) PanelRegion->All for the full current window (default), (2) PanelRegion->{{x1,x2},{y1,y2}} for a coordinate region, (3) PanelRegion->Scaled[{{xs1,xs2},{ys1,ys2}}] for scaled coordinates relative to the current window, or (4) PanelRegion->Canvas[{{xc1,xc2},{yc1,yc2}}] for canvas coordinates.  Within a Multipanel array, FigurePanel[body,{row,col}] generates a panel with the given with row and column indices.  The argument {row,col} may be a pattern or All, for iteration over multipanel array.";
 Multipanel::usage="FIGURE OBJECT: Multpanel[body] generates a multipanel array.";
@@ -44,6 +48,7 @@ LockPanelScale::usage="Option name for use with FigurePanel and Multipanel.";
 (*PanelPattern::usage="Option name for use with FigurePanel and Multipanel.";*)
 
 
+(* ::Input::Initialization:: *)
 CurrentMultipanel::usage="CurrentMultipanel[] returns the current multipanel object (or None if none).";
 SetByPanelRow::usage="SetByPanelRow[var,{value1,...}] sets variable values according to the current multipanel row.";
 SetByPanelColumn::usage="SetByPanelColumn[var,{value1,...}] sets variable values according to the current multipanel column.";
@@ -56,6 +61,7 @@ ByPanelIndices::usage="ByPanelIndices[{value1,...}] or ByPanelIndices[{patt1->va
 ByPanelSequence::usage="ByPanelSequence[{value1,...}] returns values according to the current multipanel sequence number.";
 
 
+(* ::Input::Initialization:: *)
 TailExtension::usage="Option name for use with figure objects.  Specifies the distance a figure object curve's tail should be extended from the given endpoint.";
 HeadExtension::usage="Option name for use with figure objects.  Specifies the distance a figure object curve's head should be extended from the given endpoint.";
 ShowTicks::usage="Option name for use with figure objects.";
@@ -65,6 +71,7 @@ TickLengthReference::usage="Option name for use with figure objects.";
 TickLabelAllowance::usage="Option name for use with figure objects.";
 
 
+(* ::Input::Initialization:: *)
 BackgroundOpacity::usage="Option name for use with figure objects.";
 BackgroundDirectives::usage="Option name for use with figure objects.";
 XPlotRange::usage="Option name for use with figure objects.";
@@ -121,6 +128,7 @@ YPanelGapsExterior::usage="Option name for use with figure objects.";
 TickListSpecificationPattern::usage="Pattern which matches possible tick list specifications -- a list which is recognizably a list of ticks or any nonlist expression (which could conceivably be None, Automatic, the name of a tick generation function, or a lambda function).";
 
 
+(* ::Input::Initialization:: *)
 PanelColumnIndex::usage="Parameter defined within FigPanel.";
 PanelRowIndex::usage="Parameter defined within FigPanel.";
 PanelIndices::usage="Parameter defined within FigPanel.";
@@ -129,18 +137,23 @@ PanelColumns::usage="Parameter defined within Multipanel.";
 PanelRows::usage="Parameter defined within Multipanel.";
 
 
+(* ::Input::Initialization:: *)
 Begin["`Private`"];
 
 
+(* ::Input::Initialization:: *)
 
 
 
+(* ::Input::Initialization:: *)
 TickListSpecificationPattern=NonListPattern|(_?TickListQ);
 
 
+(* ::Input::Initialization:: *)
 ExtractOptionsEntry[CompositeOptions_,{r_Integer,s_Integer}]:=Replace[CompositeOptions,Rule[Option_,Value_]:>Rule[Option,Value[[r,s]]],{1}];
 
 
+(* ::Input::Initialization:: *)
 FigurePanelOptionSet={
 
 (***** whole-panel options *****)
@@ -240,6 +253,7 @@ BaseTextOptionList,
 };
 
 
+(* ::Input::Initialization:: *)
 FigurePanelOptionRules=Flatten[
 Replace[
 FigurePanelOptionSet,
@@ -265,6 +279,7 @@ Option->Default
 ];
 
 
+(* ::Input::Initialization:: *)
 FigurePanelOptionTests=Flatten[Replace[
 FigurePanelOptionSet,
 {
@@ -292,6 +307,7 @@ FigurePanelOptionSet,
 ];
 
 
+(* ::Input::Initialization:: *)
 FigurePanelOptionResolution=Replace[
 Cases[FigurePanelOptionSet,{_,_,2|4,___}],
 {
@@ -303,6 +319,7 @@ Cases[FigurePanelOptionSet,{_,_,2|4,___}],
 ];
 
 
+(* ::Input::Initialization:: *)
 FigurePanelOptionUpgrading=Flatten[
 Replace[
 FigurePanelOptionSet,
@@ -328,10 +345,12 @@ FigurePanelOptionSet,
 ];
 
 
+(* ::Input::Initialization:: *)
 (*FigurePanelOptionSinglets=Join[First/@FigurePanelOptionSet,First/@Options[FigObject]];*)
 FigurePanelOptionSinglets=Replace[Options[FigObject],((Option_->_)|(Option_:>_)):>{Option,All,_},{1}];
 
 
+(* ::Input::Initialization:: *)
 DeclareFigClass[
 FigurePanel,
 {"Window","Background","PanelLayer","Ticks"},
@@ -340,6 +359,7 @@ FigurePanel,
 ];
 
 
+(* ::Input::Initialization:: *)
 DefineFigClassOptions[
 FigurePanel,
 Join[
@@ -354,6 +374,7 @@ FigurePanelOptionRules,
 ];
 
 
+(* ::Input::Initialization:: *)
 DeclareFigClass[
 Multipanel,
 FigurePanel,
@@ -363,6 +384,7 @@ FigurePanel,
 ];
 
 
+(* ::Input::Initialization:: *)
 DefineFigClassOptions[
 Multipanel,
 {
@@ -377,6 +399,7 @@ Dimensions->{1,1}
 ];
 
 
+(* ::Input::Initialization:: *)
 DeclareFigClass[
 FigAxis,
 {"Points","Side","TickLabelAllowance"},
@@ -407,6 +430,7 @@ FigDerivedLabelOptions["Tick",False,Automatic]
 ];
 
 
+(* ::Input::Initialization:: *)
 Constructor[Class:FigAxis,Self_Object][
 Side:(Left|Right|Bottom|Top),
 Coordinate:FigCoordinatePattern,
@@ -630,6 +654,7 @@ FigLineElement[TickLineArt,Flatten[{Dashing->None,FigOptions}]];
 ];
 
 
+(* ::Input::Initialization:: *)
 MakeAnchor[Class:FigAxis,Self_Object][Name:"Axis",Arg_]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
 DisplacePoint[
 FigCurveAnchorFromPoints[
@@ -642,17 +667,21 @@ Canvas[NamedPointOffset[Self@GetSide[]]*(Self@GetTickLabelAllowance[])]
 ]; 
 
 
+(* ::Input::Initialization:: *)
 MakeAnchor[Class:FigAxis,Self_Object][Name:Except["Axis"],Arg_]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
 FigCurveAnchorFromPoints[Self@GetPoints[],Name,Arg]
 ];
 
 
+(* ::Input::Initialization:: *)
 MakeBoundingBox[Class:FigAxis,Self_Object][]:=FigCurveBoundingBox[Self@GetPoints[]];
 
 
+(* ::Input::Initialization:: *)
 SetAttributes[FigurePanel,{HoldFirst}];
 
 
+(* ::Input::Initialization:: *)
 FigurePanel[
 Body_List,
 Opts___?OptionQ
@@ -673,10 +702,12 @@ $PrivateConstructorMarker
 ];
 
 
+(* ::Input::Initialization:: *)
 FigurePanel::nomulti="The second argument for FigurePanel was specified as `1`, which has the form of a pair of indices (or All), but no multipanel array is currently defined.";
 FigurePanel::badindices="The given {row,column} index pair `1` is out of range, or, if it is meant as a pattern, it does not match any panel indices in the current multipanel array's range.  The current multipanel array has dimensions `2`.";
 
 
+(* ::Input::Initialization:: *)
 FigurePanel[
 Body_List,
 GivenPanelIndexPattern:Except[_?OptionQ],
@@ -712,7 +743,7 @@ Block[
 {
 PanelRowIndex=r,PanelColumnIndex=s,
 PanelIndices={r,s},
-PanelSequenceNumber =({r,s}-{1,1}).{PanelColumns,1}+1
+PanelSequenceNumber =({r,s}-{1,1}) . {PanelColumns,1}+1
 },
 
 (* extract object name option -- here for possible access to panel variables*)
@@ -740,6 +771,7 @@ FigError[FigurePanel,"badindices",GivenPanelIndexPattern,(CurrentMultipanel[]@Ge
 ];
 
 
+(* ::Input::Initialization:: *)
 ResolvePanelOption[
 Self_Object,
 {Option_,Value_,2,Patt_,XYMode:PanelOptionXYUnique,XYOption:{XOption_,YOption_}},
@@ -749,6 +781,7 @@ Option->ResolveOption[Option,{Default:>(XYOption/.FullOptions)},FullOptions]
 );
 
 
+(* ::Input::Initialization:: *)
 ResolvePanelOption[
 Self_Object,
 {Option_,Value_,2,Patt_,XYMode:PanelOptionXYRange,XYOption:{XOption_,YOption_}},
@@ -771,6 +804,7 @@ FullOptions
 );
 
 
+(* ::Input::Initialization:: *)
 ResolvePanelOption[
 Self_Object,
 {Option_,Value_,4,Patt_,XYMode_,MirrorOption_,XXYYOption:{{YOption_,YYOption_},{XOption_,XXOption_}}},
@@ -811,9 +845,11 @@ Default->{{UsedYOption,UsedYYOption},{UsedXOption,UsedXXOption}},
 );
 
 
+(* ::Input::Initialization:: *)
 FigurePanel::prange="The panel plot range `1` has zero width or height.  (This plot range was obtained after applying the options PlotRange, XPlotRange, YPlotRange, ExtendRange, XExtendRange, and YExtendRange.)";
 
 
+(* ::Input::Initialization:: *)
 Constructor[Class:FigurePanel,Self_Object][HeldBody_,PanelIndices:(None|{r_Integer,s_Integer}),Opts___?OptionQ,$PrivateConstructorMarker]:=FigObjectWrapper[Class,Self,{Opts},
 Module[
 {
@@ -851,7 +887,7 @@ PanelIndices===None,
 UsedCanvasRegion=FigResolveRegion@AdjustRegion[GivenPanelRegion,FilterRules[FigOptions,{RegionExtension,RegionDisplacement}]];
 If[
 (Debug/.FigOptions),
-Print["Region diagnostics:"," indices ",PanelIndices," given region ",GivenPanelRegion," panel extension ",(RegionExtension/.FigOptions)," panel displacement ",(RegionDisplacement/.FigOptions)," adjusted region ",UsedCanvasRegion]
+Print["Region diagnostics:"," indices ",PanelIndices," given region ",GivenPanelRegion," panel extension ",(RegionExtension/.FigOptions)," panel displacement ",(RegionDisplacement/.FigOptions)," adjusted region ",FullForm[UsedCanvasRegion]]
 ];
 
 (* derive plot range *)
@@ -1051,7 +1087,7 @@ UsedPanelLetterDimensions=ResolveOption[PanelLetterDimensions,{Automatic:>({Rows
 DerivedPanelLetter=If[
 PanelIndices===None,
 None,
-DerivedPanelLetterCode=StartLetterCode+(PanelLetterCorrection/.FigOptions)+({r,s}-(PanelLetterOrigin/.FigOptions)).Switch[
+DerivedPanelLetterCode=StartLetterCode+(PanelLetterCorrection/.FigOptions)+({r,s}-(PanelLetterOrigin/.FigOptions)) . Switch[
 (PanelLetterDirection/.FigOptions),
 Horizontal,{UsedPanelLetterDimensions[[2]],1},
 Vertical,{1,UsedPanelLetterDimensions[[1]]}
@@ -1111,9 +1147,11 @@ Clip->False
 ];
 
 
+(* ::Input::Initialization:: *)
 DeclareFigFallThroughError[FigurePanel];
 
 
+(* ::Input::Initialization:: *)
 MakeAnchor[Class:FigurePanel,Self_Object][Name:"PanelLetter",Arg:{Corner:FigOffsetPattern:TopLeft,Indent:NonNegativeIntervalParametersPattern:15}]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
 Module[
 {CanvasCorner,CanvasInset,CanvasPoint,UsedOffset},
@@ -1126,6 +1164,7 @@ FigAnchor[Canvas[CanvasPoint]]
 ];
 
 
+(* ::Input::Initialization:: *)
 MakeAnchor[Class:FigurePanel,Self_Object][Name_,Arg_]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
 Module[
 {Region},
@@ -1138,15 +1177,19 @@ Name,Arg
 ];
 
 
+(* ::Input::Initialization:: *)
 MakeBoundingBox[Class:FigurePanel,Self_Object][]:=(Self@GetWindow[])@CanvasRegion[];
 
 
+(* ::Input::Initialization:: *)
 $CurrentMultipanel=None;
 
 
+(* ::Input::Initialization:: *)
 CurrentMultipanel[]:=$CurrentMultipanel;
 
 
+(* ::Input::Initialization:: *)
 SetAttributes[Multipanel,{HoldFirst}];
 Multipanel[
 Body_,
@@ -1167,6 +1210,7 @@ $PrivateConstructorMarker
 ];
 
 
+(* ::Input::Initialization:: *)
 VectorOfQ[x_,p_]:=VectorQ[x,MatchQ[#,p]&];
 MatrixOfQ[x_,p_]:=MatrixQ[x,MatchQ[#,p]&];
 VectorPattern[p_]:=(_?(VectorOfQ[#,p]&));
@@ -1176,6 +1220,7 @@ RuleListPattern[p_]={RulePattern[p]..};    (* rule list cannot be null *)
 MultipanelArrayPattern[p_]:=(RuleListPattern[p]|p|VectorPattern[p]|MatrixPattern[p]);
 
 
+(* ::Input::Initialization:: *)
 MakePanelOptionArray[
 Self_Object,
 {Option_,Sense:(1|2|All),Patt_},
@@ -1184,9 +1229,11 @@ Data_
 ]/;MatchQ[Data,Patt]:=Option->Table[Data,{Rows},{Columns}];
 
 
+(* ::Input::Initialization:: *)
 Multipanel::optvector="Expecting a list of `3` values for option `1`, but given `2`.";
 
 
+(* ::Input::Initialization:: *)
 MakePanelOptionArray[
 Self_Object,
 {Option_,Sense:(1|2),Patt_},
@@ -1202,9 +1249,11 @@ Option->Switch[Sense,1,Identity,2,Transpose]@Table[Data,{ArrayDimensions[[Sense]
 ];
 
 
+(* ::Input::Initialization:: *)
 Multipanel::optarray="Expecting an array of dimensions `3` for option `1`, but given an array of dimensions `2`.";
 
 
+(* ::Input::Initialization:: *)
 MakePanelOptionArray[
 Self_Object,
 {Option_,Sense:(1|2|All),Patt_},
@@ -1220,6 +1269,7 @@ Option->Data
 ];
 
 
+(* ::Input::Initialization:: *)
 Multipanel::optbadrule="Rule list \"`2`\" for option `1` yields an array `3` containing one or more invalid or undefined values.";
 MakePanelOptionArray[
 Self_Object,
@@ -1251,10 +1301,12 @@ Option->ValueArray
 ];
 
 
+(* ::Input::Initialization:: *)
 Multipanel::optbad="Given unrecognized value or set of values \"`2`\" for option `1`.";  (* Could dump `3`... *)
 Multipanel::optundef="The given set of option rules \"`2`\" for option `1` does not provide option values for one or more panels.  The unaccounted for panels have indices `3`.  This is okay if those panels are not actually ever drawn as part of the multipanel array, but attempting to draw any of these panels will result in an error (indicating the option has value \"Undefined\").";
 
 
+(* ::Input::Initialization:: *)
 MakePanelOptionArray[
 Self_Object,
 {Option_,Sense:(1|2),Patt_},
@@ -1263,6 +1315,7 @@ Data_
 ]/;MatchQ[Data,Except[Patt|VectorPattern[Patt]|MatrixPattern[Patt]|RuleListPattern[Patt]]]:=FigError[Self,"optbad",Option,Data];
 
 
+(* ::Input::Initialization:: *)
 MakePanelOptionArray[
 Self_Object,
 {Option_,Sense:All,Patt_},
@@ -1271,15 +1324,18 @@ Data_
 ]/;MatchQ[Data,Except[Patt|MatrixPattern[Patt]|RuleListPattern[Patt]]]:=FigError[Self,"optbad",Option,Data];
 
 
+(* ::Input::Initialization:: *)
 UpgradeVector[u_?NumericQ,n_Integer]:=Table[u,{n}];
 UpgradeVector[v:{_?NumericQ..},n_Integer]:=v;
 UpgradeVector[u:LogicalPattern,n_Integer]:=Table[u,{n}];  (* for XYPanelGapsExterior *)
 UpgradeVector[v:{LogicalPattern..},n_Integer]:=v;
 
 
+(* ::Input::Initialization:: *)
 Multipanel::numsizes="Expecting `3` `1`, but given `2`.";
 
 
+(* ::Input::Initialization:: *)
 Constructor[Class:Multipanel,Self_Object][HeldBody_,Opts___?OptionQ,$PrivateConstructorMarker]:=FigObjectWrapper[Class,Self,{Opts},
 Module[
 {
@@ -1400,9 +1456,11 @@ ReleaseHold[HeldBody]
 ];
 
 
+(* ::Input::Initialization:: *)
 DeclareFigFallThroughError[Multipanel];
 
 
+(* ::Input::Initialization:: *)
 MakeAnchor[Class:Multipanel,Self_Object][Name_,Arg_]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
 Module[
 {Region},
@@ -1415,9 +1473,11 @@ Name,Arg
 ];
 
 
+(* ::Input::Initialization:: *)
 MakeBoundingBox[Class:Multipanel,Self_Object][]:=(Self@GetCanvasRegion[]);
 
 
+(* ::Input::Initialization:: *)
 SetAttributes[SetByPanelRow,HoldFirst];
 SetByPanelRow::values="Value list for `1` was given as `2`, which is not long enough to provide a value for row `3`.";
 SetByPanelRow[Variable:_Symbol,Values_List]:=Module[
@@ -1430,6 +1490,7 @@ FigError[SetByPanelRow,"values",ToString[HoldForm[Variable]],Values,PanelRowInde
 ];
 
 
+(* ::Input::Initialization:: *)
 SetAttributes[SetByPanelColumn,HoldFirst];
 SetByPanelColumn::values="Value list for `1` was given as `2`, which is not long enough to provide a value for column `3`.";
 SetByPanelColumn[Variable:_Symbol,Values_List]:=Module[
@@ -1442,9 +1503,11 @@ FigError[SetByPanelColumn,"values",ToString[HoldForm[Variable]],Values,PanelColu
 ];
 
 
+(* ::Input::Initialization:: *)
 PairLessEqual[{x_,y_},{a_,b_}]:=TrueQ[Min[{a,b}-{x,y}]>=0];
 
 
+(* ::Input::Initialization:: *)
 SetAttributes[SetByPanelIndices,HoldFirst];
 SetByPanelIndices::values="Value list for `1` was given as `2`, which has dimensions `4` and is not long or deep enough to provide a value for (row,column) indices `3`.";
 SetByPanelIndices[Variable:_Symbol,Values_/;MatrixQ[Values,True&]]:=Module[
@@ -1468,6 +1531,7 @@ Variable=Value
 ];
 
 
+(* ::Input::Initialization:: *)
 SetAttributes[SetByPanelSequence,HoldFirst];
 SetByPanelSequence::values="Value list for `1` was given as `2`, which is not long enough to provide a value for column `3`.";
 SetByPanelSequence[Variable:_Symbol,Values_List]:=Module[
@@ -1480,6 +1544,7 @@ FigError[SetByPanelSequence,"values",ToString[HoldForm[Variable]],Values,PanelSe
 ];
 
 
+(* ::Input::Initialization:: *)
 ByPanelRow::values="Value list was given as `1`, which is not long enough to provide a value for row `2`.";
 ByPanelRow[Values_List]:=Module[
 {},
@@ -1491,6 +1556,7 @@ FigError[ByPanelRow,"values",Values,PanelRowIndex]
 ];
 
 
+(* ::Input::Initialization:: *)
 ByPanelColumn::values="Value list was given as `1`, which is not long enough to provide a value for column `2`.";
 ByPanelColumn[Values_List]:=Module[
 {},
@@ -1502,6 +1568,7 @@ FigError[ByPanelColumn,"values",Values,PanelColumnIndex]
 ];
 
 
+(* ::Input::Initialization:: *)
 ByPanelIndices::values="Value list was given as `1`, which has dimensions `4` and is not long or deep enough to provide a value for (row,column) indices `2`.";
 ByPanelIndices[Values_/;MatrixQ[Values,True&]]:=Module[
 {},
@@ -1524,6 +1591,7 @@ Value
 ];
 
 
+(* ::Input::Initialization:: *)
 ByPanelSequence::values="Value list was given as `1`, which is not long enough to provide a value for column `2`.";
 ByPanelSequence[Values_List]:=Module[
 {},
@@ -1535,9 +1603,11 @@ FigError[ByPanelSequence,"values",Values,PanelSequenceNumber]
 ];
 
 
+(* ::Input::Initialization:: *)
 End[];
 
 
+(* ::Input::Initialization:: *)
 Protect[Evaluate[$Context<>"*"]];
 Unprotect[Evaluate[$Context<>"$*"]];
 EndPackage[];

@@ -19,6 +19,7 @@
 
 
 
+(* ::Input::Initialization:: *)
 (* :Title: FigGeometry *)
 (* :Context: SciDraw` *)
 (* :Summary: Geometry utilities needed by figure objects *)
@@ -30,49 +31,63 @@
 (* :History: See main package file. *)
 
 
+(* ::Input::Initialization:: *)
 BeginPackage["SciDraw`",SciDraw`Private`$ExternalContexts];
 
 
+(* ::Input::Initialization:: *)
 Unprotect[Evaluate[$Context<>"*"]];
 
 
+(* ::Input::Initialization:: *)
 Begin["`Private`"];
 
 
+(* ::Input::Initialization:: *)
 
 
 
+(* ::Input::Initialization:: *)
 ScalarParameterPattern=None|(_?NumericQ);
 NonNegativeScalarParameterPattern=(None|NonNegativePattern);
 
 
+(* ::Input::Initialization:: *)
 UpgradeScalar[None]:=0;
 UpgradeScalar[x_?NumericQ]:=x;
 
 
+(* ::Input::Initialization:: *)
 RescaleInterval[{u1_?NumericQ,u2_?NumericQ},{v1_?NumericQ,v2_?NumericQ}][u_?NumericQ]:=Rescale[u,{u1,u2},{v1,v2}];
 
 
+(* ::Input::Initialization:: *)
 InRange[{x1_,x2_},x_]:=(x1<=x)&&(x<=x2);
 
 
+(* ::Input::Initialization:: *)
 InRange[{{x1_,x2_},{y1_,y2_}},{x_,y_}]:=InRange[{x1,x2},x]&&InRange[{y1,y2},y];
 
 
-ExtendInterval[PRange:{_?NumericQ,_?NumericQ},PDiff:{_?NumericQ,_?NumericQ},Mode:Absolute]:=PRange+PDiff*{-1,+1};
+(* ::Input::Initialization:: *)
+ExtendInterval[PRange:{_?NumericQ,_?NumericQ},PDiff:{_?NumericQ,_?NumericQ},Mode:(Abs|Absolute)]:=PRange+PDiff*{-1,+1};
 ExtendInterval[PRange:{_?NumericQ,_?NumericQ},PFrac:{_?NumericQ,_?NumericQ},Mode:Scaled]:=PRange+PFrac*{-1,+1}*-Subtract@@PRange;
 
 
+(* ::Input::Initialization:: *)
 VectorLength[{x_?NumericQ,y_?NumericQ}]:=Sqrt[x^2+y^2];VectorArcTan[{x_?NumericQ,y_?NumericQ}]:=If[{x,y}=={0,0},0.,ArcTan[x,y]];
 
 
+(* ::Input::Initialization:: *)
 SegmentLength[{p1:{_?NumericQ,_?NumericQ},p2:{_?NumericQ,_?NumericQ}}]:=VectorLength[p2-p1];
 SegmentTangent[{p1:{_?NumericQ,_?NumericQ},p2:{_?NumericQ,_?NumericQ}}]:=(p2-p1)/VectorLength[p2-p1];SegmentArcTan[{p1:{_?NumericQ,_?NumericQ},p2:{_?NumericQ,_?NumericQ}}]:=VectorArcTan[p2-p1];
 
 
+(* ::Input::Initialization:: *)
 FromPolar[{rho_,phi_}]:=rho*{Cos[phi],Sin[phi]};
 
 
+(* ::Input::Initialization:: *)
 InterpolateSegment[
 s:{p1:{_?NumericQ,_?NumericQ},p2:{_?NumericQ,_?NumericQ}},
 Reference:(Tail|Center|Head),Mode:(Absolute|Scaled):Scaled,
@@ -80,6 +95,7 @@ x_?NumericQ
 ]/;(Chop[SegmentLength[s]]==0):=p1;
 
 
+(* ::Input::Initialization:: *)
 InterpolateSegment[
 s:{p1:{_?NumericQ,_?NumericQ},p2:{_?NumericQ,_?NumericQ}},
 Reference:Tail,
@@ -100,41 +116,50 @@ x_?NumericQ
 ]/;(Chop[SegmentLength[s]]!=0):=p2+x*(p2-p1)/Switch[Mode,Absolute,SegmentLength[s],Scaled,1];
 
 
+(* ::Input::Initialization:: *)
 NumericalPairPattern={_?NumericQ,_?NumericQ};
 
 
+(* ::Input::Initialization:: *)
 UpgradePair[a:NonListPattern]:={a,a};
 UpgradePair[{x:NonListPattern,y:NonListPattern}]:={x,y};
 
 
+(* ::Input::Initialization:: *)
 IntervalParametersPattern=(None|(_?NumericQ)|{(_?NumericQ),(_?NumericQ)});
 NonNegativeIntervalParametersPattern=(None|NonNegativePattern|{NonNegativePattern,NonNegativePattern});
 
 
+(* ::Input::Initialization:: *)
 UpgradePairEqual[None]:={0,0};
 UpgradePairEqual[x_?NumericQ]:={x,x};
 UpgradePairEqual[{x_?NumericQ,y_?NumericQ}]:={x,y};
 
 
+(* ::Input::Initialization:: *)
 UpgradePairHorizontal[None]:={0,0};
 UpgradePairHorizontal[x_?NumericQ]:={x,0};
 UpgradePairHorizontal[{x_?NumericQ,y_?NumericQ}]:={x,y};
 
 
+(* ::Input::Initialization:: *)
 UpgradePairVertical[None]:={0,0};
 UpgradePairVertical[y_?NumericQ]:={0,y};
 UpgradePairVertical[{x_?NumericQ,y_?NumericQ}]:={x,y};
 
 
+(* ::Input::Initialization:: *)
 FigCoordinatePointPattern={
 ((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)]),
 ((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)])
 }|(Scaled|Canvas)[{_?NumericQ,_?NumericQ}];
 
 
+(* ::Input::Initialization:: *)
 FigPointPattern=(FigCoordinatePointPattern|ObjectPattern[FigAnchor]|ObjectNamePattern[FigAnchor]);
 
 
+(* ::Input::Initialization:: *)
 FigResolvePoint[p:{_?NumericQ,_?NumericQ}]:=(CurrentWindow[]@TFunction[])@p;
 FigResolvePoint[Canvas[p:{_?NumericQ,_?NumericQ}]]:=p;
 FigResolvePoint[Scaled[p:{_?NumericQ,_?NumericQ}]]:=(CurrentWindow[]@ScaledTFunction[])@p;
@@ -142,6 +167,7 @@ FigResolvePoint[a:ObjectPattern[FigAnchor]]:=a@GetPoint[];
 FigResolvePoint[n:ObjectNamePattern[FigAnchor]]:=Object[n]@GetPoint[];
 
 
+(* ::Input::Initialization:: *)
 FigResolvePoint[
 p:Except[
 {_?NumericQ,_?NumericQ},
@@ -153,9 +179,11 @@ y:((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)])
 ]:={FigResolveCoordinate[x,1],FigResolveCoordinate[y,2]};
 
 
+(* ::Input::Initialization:: *)
 FigPointBoundingBox[p:{x_?NumericQ,y_?NumericQ}]:={{x,x},{y,y}};
 
 
+(* ::Input::Initialization:: *)
 FigDisplacementPattern=None|({_?NumericQ,_?NumericQ}|Scaled[{_?NumericQ,_?NumericQ}]|Canvas[{_?NumericQ,_?NumericQ}])|{
 ((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)]),
 ((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)])
@@ -164,12 +192,14 @@ FigDisplacementSequencePattern[n_Integer]:=Repeated[_?(MatchQ[#,FigDisplacementP
 FigDisplacementSetPattern[n_Integer]:={Repeated[_?(MatchQ[#,FigDisplacementPattern]&),{n,Infinity}]};
 
 
+(* ::Input::Initialization:: *)
 FigResolveDisplacement[None]:={0,0};
 FigResolveDisplacement[d:{_?NumericQ,_?NumericQ}]:=(CurrentWindow[]@DeltaTFunction[])@d;
 FigResolveDisplacement[Canvas[d:{_?NumericQ,_?NumericQ}]]:=d;
 FigResolveDisplacement[Scaled[d:{_?NumericQ,_?NumericQ}]]:=(CurrentWindow[]@ScaledDeltaTFunction[])@d;
 
 
+(* ::Input::Initialization:: *)
 FigResolveDisplacement[
 p:Except[
 {_?NumericQ,_?NumericQ},
@@ -181,9 +211,11 @@ y:((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)])
 ]:={FigResolveCoordinateDisplacement[x,1],FigResolveCoordinateDisplacement[y,2]};
 
 
+(* ::Input::Initialization:: *)
 NamedPointPattern=Center|Left|Right|Bottom|Top|TopLeft|TopRight|BottomLeft|BottomRight;
 
 
+(* ::Input::Initialization:: *)
 NamedPointOffset[Center]={0,0};
 NamedPointOffset[Left]={-1,0};
 NamedPointOffset[Right]={+1,0};
@@ -191,43 +223,52 @@ NamedPointOffset[Bottom]={0,-1};
 NamedPointOffset[Top]={0,+1};
 
 
+(* ::Input::Initialization:: *)
 NamedPointOffset[TopLeft]={-1,+1};
 NamedPointOffset[TopRight]={+1,+1};
 NamedPointOffset[BottomLeft]={-1,-1};
 NamedPointOffset[BottomRight]={+1,-1};
 
 
+(* ::Input::Initialization:: *)
 FigOffsetPattern=NamedPointPattern|NumericalPairPattern;
 
 
+(* ::Input::Initialization:: *)
 FigResolveOffset[Offset:NamedPointPattern]:=NamedPointOffset[Offset];
 FigResolveOffset[Offset:NumericalPairPattern]:=Offset;
 
 
+(* ::Input::Initialization:: *)
 RangeParametersPattern=(None|(_?NumericQ)|{(_?NumericQ),(_?NumericQ)}|{{(_?NumericQ),(_?NumericQ)},{(_?NumericQ),(_?NumericQ)}});
 NonNegativeRangeParametersPattern=(None|NonNegativePattern|{NonNegativePattern,NonNegativePattern}|{{NonNegativePattern,NonNegativePattern},{NonNegativePattern,NonNegativePattern}});
 NumericalRegionPattern={{(_?NumericQ),(_?NumericQ)},{(_?NumericQ),(_?NumericQ)}};
 
 
+(* ::Input::Initialization:: *)
 UpgradeRangeParameters[xy_?NumericQ]:=UpgradeRangeParameters[{xy,xy}];
 UpgradeRangeParameters[{x_?NumericQ,y_?NumericQ}]:=UpgradeRangeParameters[{{x,x},{y,y}}];
 UpgradeRangeParameters[{{x1_?NumericQ,x2_?NumericQ},{y1_?NumericQ,y2_?NumericQ}}]:={{x1,x2},{y1,y2}};
 UpgradeRangeParameters[None]={{0,0},{0,0}};
 
 
-ExtendRegion[PRange:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},PDiff:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},Mode:Absolute]:=PRange+PDiff*{{-1,+1},{-1,+1}};
+(* ::Input::Initialization:: *)
+ExtendRegion[PRange:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},PDiff:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},Mode:(Abs|Absolute)]:=PRange+PDiff*{{-1,+1},{-1,+1}};
 ExtendRegion[PRange:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},PFrac:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},Mode:Scaled]:=PRange+PFrac*{{-1,+1},{-1,+1}}*-Subtract@@@PRange;
 
 
+(* ::Input::Initialization:: *)
 FigRegionPattern=(All|{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}|(Scaled|Canvas)[{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}]);
 
 
+(* ::Input::Initialization:: *)
 FigResolveRegion[r:All]:=(CurrentWindow[]@CanvasRegion[]);
 FigResolveRegion[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}]:=TransformRegion[CurrentWindow[]@TFunction[],r];
 FigResolveRegion[Canvas[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}]]:=r;
 FigResolveRegion[Scaled[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}]]:=TransformRegion[CurrentWindow[]@ScaledTFunction[],r];
 
 
+(* ::Input::Initialization:: *)
 FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},d:None]:={r,UpgradeRangeParameters[0],Absolute};
 FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},d:Automatic]:={r,UpgradeRangeParameters[0.02],Scaled};
 FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},d:RangeParametersPattern]:={r,TransformRegion[CurrentWindow[]@DeltaTFunction[],UpgradeRangeParameters[d]],Absolute};
@@ -235,9 +276,11 @@ FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},Ca
 FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},Scaled[d:RangeParametersPattern]]:={r,UpgradeRangeParameters[d],Scaled};
 
 
+(* ::Input::Initialization:: *)
 FigDeltaRegionPattern=Automatic|None|RangeParametersPattern|(Scaled|Canvas)[RangeParametersPattern];
 
 
+(* ::Input::Initialization:: *)
 Options[AdjustRegion]={RegionExtension->None,RegionDisplacement->None};
 AdjustRegion[r:FigRegionPattern,Opts___?OptionQ]:=Module[
 {
@@ -264,6 +307,7 @@ Canvas[CanvasRegion]
 DeclareFigFallThroughError[AdjustRegion];
 
 
+(* ::Input::Initialization:: *)
 RegionPoint[r:FigRegionPattern,Offset:FigOffsetPattern]:=Module[
 {UsedOffset,CanvasRegion,CanvasCenter,CanvasRadius},
 
@@ -278,10 +322,12 @@ Canvas[CanvasCenter+UsedOffset*CanvasRadius]
 ];
 
 
+(* ::Input::Initialization:: *)
 ExtractBoundingBox[Object[n:ObjectNamePattern[FigAnchor]]|(n:ObjectNamePattern[FigAnchor])]:=FigPointBoundingBox[Object[n]@GetPoint[]];
 ExtractBoundingBox[Object[n:ObjectNamePattern[FigObject]]|(n:ObjectNamePattern[FigObject])]:=(Object[n]@MakeBoundingBox[]);
 
 
+(* ::Input::Initialization:: *)
 ObjectCanvasBox[ObjectList:{(ObjectPattern[FigAnchor]|ObjectNamePattern[FigAnchor]|ObjectPattern[FigObject]|ObjectNamePattern[FigObject])..}]:=Module[
 {RegionList,ExtremumLists},
 RegionList=(ExtractBoundingBox/@ObjectList);
@@ -290,6 +336,7 @@ MapAt[Max,MapAt[Min,ExtremumLists,{{1,1},{2,1}}],{{1,2},{2,2}}]
 ];
 
 
+(* ::Input::Initialization:: *)
 BoundingBox[
 ObjectList:{(ObjectPattern[FigAnchor]|ObjectNamePattern[FigAnchor]|ObjectPattern[FigObject]|ObjectNamePattern[FigObject])..}
 ]:=Module[
@@ -303,6 +350,7 @@ obj:((ObjectPattern[FigAnchor]|ObjectNamePattern[FigAnchor]|ObjectPattern[FigObj
 DeclareFigFallThroughError[BoundingBox];
 
 
+(* ::Input::Initialization:: *)
 EdgeMaskingFunction[DataEntry_,MaskEntry_,ExteriorEdgeMaskEntry_,Filler_]:=If[
 (MaskEntry===True)||((MaskEntry===Exterior)&&ExteriorEdgeMaskEntry),
 DataEntry,
@@ -310,6 +358,7 @@ Filler
 ];
 
 
+(* ::Input::Initialization:: *)
 MaskEdgeOption[
 Data:{{_,_},{_,_}},
 Mask:{{Exterior|LogicalPattern,Exterior|LogicalPattern},{Exterior|LogicalPattern,Exterior|LogicalPattern}},ExteriorEdgeMask:{{LogicalPattern,LogicalPattern},{LogicalPattern,LogicalPattern}},
@@ -321,6 +370,7 @@ EdgeMaskingFunction[##,Filler]&,
 ];
 
 
+(* ::Input::Initialization:: *)
 ResolveAutomaticEdgeOption[
 Data:{{_,_},{_,_}},
 Defaults:{{_,_},{_,_}}
@@ -331,52 +381,64 @@ Replace[#1,{Automatic->#2}]&,
 ];
 
 
+(* ::Input::Initialization:: *)
 FigCoordinatePattern=((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)]|FigPointPattern);
 
 
+(* ::Input::Initialization:: *)
 AntiCoordinateIndex[1]=2;
 AntiCoordinateIndex[2]=1;
 
 
+(* ::Input::Initialization:: *)
 FigResolveCoordinateIndex[Horizontal]=1;
 FigResolveCoordinateIndex[Vertical]=2;
 
 
+(* ::Input::Initialization:: *)
 FigResolveCoordinate[x_?NumericQ,CoordinateIndex:(1|2)]:=FigResolvePoint[x*UnitVector[CoordinateIndex]][[CoordinateIndex]];
 FigResolveCoordinate[Scaled[x_?NumericQ],CoordinateIndex:(1|2)]:=FigResolvePoint[Scaled[x*UnitVector[CoordinateIndex]]][[CoordinateIndex]];
 FigResolveCoordinate[Canvas[x_?NumericQ],CoordinateIndex:(1|2)]:=x;
 FigResolveCoordinate[p:FigPointPattern,CoordinateIndex:(1|2)]:=FigResolvePoint[p][[CoordinateIndex]];
 
 
+(* ::Input::Initialization:: *)
 FigResolveCoordinate[x_,Horizontal]:=FigResolveCoordinate[x,1];
 FigResolveCoordinate[x_,Vertical]:=FigResolveCoordinate[x,2];
 
 
+(* ::Input::Initialization:: *)
 FigResolveCoordinateDisplacement[x_?NumericQ,CoordinateIndex:(1|2)]:=FigResolveDisplacement[x*UnitVector[CoordinateIndex]][[CoordinateIndex]];
 FigResolveCoordinateDisplacement[Scaled[x_?NumericQ],CoordinateIndex:(1|2)]:=FigResolveDisplacement[Scaled[x*UnitVector[CoordinateIndex]]][[CoordinateIndex]];
 FigResolveCoordinateDisplacement[Canvas[x_?NumericQ],CoordinateIndex:(1|2)]:=x;
 FigResolveCoordinateDisplacement[p:FigPointPattern,CoordinateIndex:(1|2)]:=FigResolveDisplacement[p][[CoordinateIndex]];
 
 
+(* ::Input::Initialization:: *)
 FigResolveCoordinateDisplacement[x_,Horizontal]:=FigResolveCoordinateDisplacement[x,1];
 FigResolveCoordinateDisplacement[x_,Vertical]:=FigResolveCoordinateDisplacement[x,2];
 
 
+(* ::Input::Initialization:: *)
 FigPointSetPattern[n_Integer]:={Repeated[FigPointPattern,{n,Infinity}]};
 
 
+(* ::Input::Initialization:: *)
 CentroidPoint[PointSet:FigPointSetPattern[1]]:=Canvas[Mean[FigResolvePoint/@PointSet]];
 
 
+(* ::Input::Initialization:: *)
 FigPointSetBoundingBox[PointSet:FigPointSetPattern[1]]:={{Min[First/@PointSet],Max[First/@PointSet]},{Min[Last/@PointSet],Max[Last/@PointSet]}};
 
 
+(* ::Input::Initialization:: *)
 FigRadiusPattern=NonNegativeIntervalParametersPattern|((Horizontal|Vertical|Canvas|Scaled)[NonNegativeIntervalParametersPattern])|{
 ((_?NonNegative)|(Scaled|Canvas)[(_?NonNegative)]),
 ((_?NonNegative)|(Scaled|Canvas)[(_?NonNegative)])
 };
 
 
+(* ::Input::Initialization:: *)
 MakeRectangleGeometry[p:FigPointPattern,FullOptions_List]:=Module[
 {Anchor,UsedAnchorOffset,UsedPivotOffset,
 CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle},
@@ -397,6 +459,7 @@ CanvasPivot=CanvasCenter+UsedPivotOffset*CanvasRadius;
 ];
 
 
+(* ::Input::Initialization:: *)
 MakeRectangleGeometry[p1:FigPointPattern,p2:FigPointPattern,FullOptions_List]:=Module[
 {CanvasCorner1,CanvasCorner2,CanvasCenter,CanvasPivot,CanvasRadius,RotationAngle,UsedRoundingRadius},
 
@@ -415,6 +478,7 @@ Join[{AnchorOffset->Center,Radius->Canvas[CanvasRadius]},FullOptions]
 ];
 
 
+(* ::Input::Initialization:: *)
 MakeRectangleGeometry[r:FigRegionPattern,FullOptions_List]:=Module[
 {CanvasRegion,CanvasCorner1,CanvasCorner2,CanvasCenter,CanvasPivot,CanvasRadius,RotationAngle,UsedRoundingRadius},
 
@@ -432,14 +496,17 @@ Join[{AnchorOffset->Center,Radius->Canvas[CanvasRadius]},FullOptions]
 ];
 
 
+(* ::Input::Initialization:: *)
 (*RectangleRegion[Args___]:=Canvas[FigRectangleBoundingBox@@MakeRectangleGeometry[Args]];*)
 
 
+(* ::Input::Initialization:: *)
 FigRectangleOptions={
 (* geometry *)
 Radius->1,AnchorOffset->Center,PivotOffset->Automatic,Rotate->None};
 
 
+(* ::Input::Initialization:: *)
 FigCheckRectangleOptions[Self_Object]:=Module[
 {},
 FigCheckOption[Self,Radius,FigRadiusPattern,FigOptions];
@@ -449,9 +516,11 @@ FigCheckOption[Self,Rotate,Automatic|ScalarParameterPattern,FigOptions];
 ];
 
 
+(* ::Input::Initialization:: *)
 FigResolveRadius[r:NonNegativeIntervalParametersPattern]:=(CurrentWindow[]@DeltaTFunction[])@UpgradePairEqual[r];
 
 
+(* ::Input::Initialization:: *)
 FigResolveRadius[Horizontal[r:NonNegativeIntervalParametersPattern]]:=Module[
 {LengthUnit},
 LengthUnit=First[(CurrentWindow[]@DeltaTFunction[])@{1,0}];
@@ -459,6 +528,7 @@ LengthUnit*UpgradePairEqual[r]
 ];
 
 
+(* ::Input::Initialization:: *)
 FigResolveRadius[Vertical[r:NonNegativeIntervalParametersPattern]]:=Module[
 {LengthUnit},
 LengthUnit=Last[(CurrentWindow[]@DeltaTFunction[])@{0,1}];
@@ -466,12 +536,15 @@ LengthUnit*UpgradePairEqual[r]
 ];
 
 
+(* ::Input::Initialization:: *)
 FigResolveRadius[Canvas[r:NonNegativeIntervalParametersPattern]]:=UpgradePairEqual[r];
 
 
+(* ::Input::Initialization:: *)
 FigResolveRadius[Scaled[r:NonNegativeIntervalParametersPattern]]:=(CurrentWindow[]@ScaledDeltaTFunction[])@UpgradePairEqual[r];
 
 
+(* ::Input::Initialization:: *)
 FigResolveRadius[
 p:Except[
 {_?NumericQ,_?NumericQ},
@@ -483,9 +556,11 @@ y:((_?NonNegative)|(Scaled|Canvas)[(_?NonNegative)])
 ]:=FigResolveDisplacement[p];
 
 
+(* ::Input::Initialization:: *)
 RectangleOffsetPoint[CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,Offset:{_?NumericQ,_?NumericQ}]:=RotationTransform[RotationAngle,CanvasPivot]@(CanvasCenter+CanvasRadius*Offset);
 
 
+(* ::Input::Initialization:: *)
 RectangleSideSegment[CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,Side:Left]:={
 RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,{-1,-1}],
 RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,{-1,+1}]
@@ -504,6 +579,7 @@ RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,{+1,+1}
 };
 
 
+(* ::Input::Initialization:: *)
 FigRectangleAnchor[
 CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
 Name:NamedPointPattern,
@@ -511,6 +587,7 @@ Arg:None
 ]:=FigAnchor[Canvas[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,NamedPointOffset[Name]]],-NamedPointOffset[Name],RotationAngle];
 
 
+(* ::Input::Initialization:: *)
 FigRectangleAnchor[
 CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
 Name:Offset,
@@ -518,6 +595,7 @@ OffsetValue:FigOffsetPattern
 ]:=FigAnchor[Canvas[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,FigResolveOffset[OffsetValue]]],{0,0},RotationAngle];
 
 
+(* ::Input::Initialization:: *)
 FigRectangleAnchor[
 CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
 Name:(Left|Right|Bottom|Top),
@@ -534,6 +612,7 @@ RotationAngle
 ];
 
 
+(* ::Input::Initialization:: *)
 FigRectangleBoundingBox[
 CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ
 ]:=FigPointSetBoundingBox[Table[
@@ -543,6 +622,7 @@ RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,Offset]
 ];
 
 
+(* ::Input::Initialization:: *)
 FigCircleAnchor[
 CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},AngleRange:{theta1_?NumericQ,theta2_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
 Name:(Center|Left|Right|Bottom|Top),
@@ -550,6 +630,7 @@ Arg:None
 ]:=FigAnchor[Canvas[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,NamedPointOffset[Name]]],-NamedPointOffset[Name],RotationAngle];
 
 
+(* ::Input::Initialization:: *)
 FigCircleAnchor[
 CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},AngleRange:{theta1_?NumericQ,theta2_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
 Name:Offset,
@@ -557,6 +638,7 @@ OffsetValue:FigOffsetPattern
 ]:=FigAnchor[Canvas[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,FigResolveOffset[OffsetValue]]],{0,0},RotationAngle];
 
 
+(* ::Input::Initialization:: *)
 FigCircleAnchor[
 CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},AngleRange:{theta1_?NumericQ,theta2_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
 OrthoMode:(Normal|Tangent),
@@ -589,6 +671,7 @@ OrthoMode,0.5
 ];
 
 
+(* ::Input::Initialization:: *)
 FigCircleAnchor[
 CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},AngleRange:{theta1_?NumericQ,theta2_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
 Name:Tail,
@@ -601,6 +684,7 @@ Arg:None
 ]:=FigCircleAnchor[CanvasCenter,CanvasRadius,AngleRange,CanvasPivot,RotationAngle,Tangent,1];
 
 
+(* ::Input::Initialization:: *)
 FigCircleAnchor[
 CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},AngleRange:{theta1_?NumericQ,theta2_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
 Name:(HeadRadius|TailRadius),
@@ -619,6 +703,7 @@ Name,0.5
 ];
 
 
+(* ::Input::Initialization:: *)
 FigCircleBoundingBox[
 CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},AngleRange:{theta1_?NumericQ,theta2_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ
 ]:=FigPointSetBoundingBox[Table[
@@ -628,6 +713,7 @@ RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,Offset]
 ];
 
 
+(* ::Input::Initialization:: *)
 DisplacePoint[p:FigPointPattern,Args:FigDisplacementSequencePattern[0]]:=Module[
 {a,CanvasPoint},
 FigCheckInFigure[DisplacePoint];
@@ -638,6 +724,7 @@ FigAnchor[Canvas[CanvasPoint],a@GetOffset[],a@GetAngle[]]
 DeclareFigFallThroughError[DisplacePoint];
 
 
+(* ::Input::Initialization:: *)
 ProjectPoint[p:FigPointPattern,CoordinateIndexName:(Horizontal|Vertical),x:FigCoordinatePattern]:=Module[
 {CoordinateIndex,xc,a,CanvasPoint},
 
@@ -655,6 +742,7 @@ FigAnchor[Canvas[CanvasPoint],a@GetOffset[],a@GetAngle[]]
 DeclareFigFallThroughError[ProjectPoint];
 
 
+(* ::Input::Initialization:: *)
 DisplaceAlongAnchor[p:FigPointPattern,d_?NumericQ]/;(SciDraw`Private`$InFigure):=Module[
 {a,theta,CanvasPoint},
 FigCheckInFigure[DisplacePoint];
@@ -666,6 +754,7 @@ FigAnchor[Canvas[CanvasPoint],a@GetOffset[],a@GetAngle[]]
 DeclareFigFallThroughError[DisplaceAlongAnchor];
 
 
+(* ::Input::Initialization:: *)
 RotateAnchor[p:FigPointPattern,theta:ScalarParameterPattern]/;(SciDraw`Private`$InFigure):=Module[
 {Anchor,CanvasPoint},
 FigCheckInFigure[RotateAnchor];
@@ -674,6 +763,7 @@ FigAnchor[Canvas[Anchor@GetPoint[]],Anchor@GetOffset[],Anchor@GetAngle[]+Upgrade
 ];
 
 
+(* ::Input::Initialization:: *)
 AnchorAngle[p:FigPointPattern]:=Module[
 {Anchor},
 FigCheckInFigure[AnchorAngle];
@@ -682,6 +772,7 @@ Anchor@GetAngle[]
 ];
 
 
+(* ::Input::Initialization:: *)
 AnchorOffset[p:FigPointPattern]:=Module[
 {Anchor},
 FigCheckInFigure[AnchorAngle];
@@ -690,6 +781,7 @@ Anchor@GetOffset[]
 ];
 
 
+(* ::Input::Initialization:: *)
 AnchorCoordinates[p:FigPointPattern]:=Module[
 {Anchor,CanvasCoordinates},
 FigCheckInFigure[AnchorCoordinates];
@@ -699,6 +791,7 @@ CanvasCoordinates=Anchor@GetPoint[];
 ];
 
 
+(* ::Input::Initialization:: *)
 CanvasRayAngle[{p1:FigPointPattern,p2:FigPointPattern}]:=Module[
 {CanvasCoordinates1,CanvasCoordinates2},
 FigCheckInFigure[CanvasAngle];
@@ -706,11 +799,13 @@ VectorArcTan[FigResolvePoint[p2]-FigResolvePoint[p1]]
 ];
 
 
+(* ::Input::Initialization:: *)
 FigCurvePointPattern=FigPointPattern|(DisplaceTail|DisplaceHead)[FigDisplacementSequencePattern[0]]|(DisplaceAlongTail|DisplaceAlongHead)[(_?NumericQ)]|(ProjectTail|ProjectHead)[(Horizontal|Vertical),FigCoordinatePattern];
 FigCurvePointSetPattern={Repeated[FigCurvePointPattern,{2,Infinity}]};
 FigCurvePattern=FigCurvePointSetPattern|(_Graphics)|(_ContourGraphics);
 
 
+(* ::Input::Initialization:: *)
 FigCurveOptions={
 (* curve geometry *)
 TailRecess->None,HeadRecess->None,
@@ -721,6 +816,7 @@ Line->1
 };
 
 
+(* ::Input::Initialization:: *)
 FigCheckCurveOptions[Self_Object]:=Module[
 {},
 FigCheckOption[Self,TailRecess,ScalarParameterPattern,FigOptions];
@@ -730,9 +826,11 @@ FigCheckOption[Self,Line,Join|All|((_Integer)?Positive),FigOptions];
 ];
 
 
+(* ::Input::Initialization:: *)
 General::figcurveref="Circular reference in curve specification, with tail point `1` and head point `2`.";
 
 
+(* ::Input::Initialization:: *)
 FigResolveCurve[Self_Object,Points:FigCurvePointSetPattern,FullOptions_List]:=Module[
 {p1,p2,DereferencedPoints,CanvasPoints,CanvasHead,CanvasTail},
 
@@ -772,6 +870,7 @@ ReplacePart[CanvasPoints,{1->CanvasTail,-1->CanvasHead}]
 ];
 
 
+(* ::Input::Initialization:: *)
 FigResolveCurve[Self_Object,G:((_Graphics)|(_ContourGraphics)),FullOptions_List]:=Module[
 {GrabbedPoints,CanvasPoints,CanvasTail,CanvasHead},
 
@@ -801,6 +900,7 @@ ReplacePart[CanvasPoints,{1->CanvasTail,-1->CanvasHead}]
 ];
 
 
+(* ::Input::Initialization:: *)
 LinearInterpolationFunctionsRxRy[CanvasPoints_List]:=Module[
 {
 Segments,SegmentLengths,TotalLength,CurveParameterValues,
@@ -823,6 +923,7 @@ YFunction=Interpolation[Transpose[{CurveParameterValues,Last/@CanvasPoints}],Int
 ];
 
 
+(* ::Input::Initialization:: *)
 LinearInterpolationFunctionPair[CanvasPoints_List]:=Module[
 {
 XFunction,YFunction,DXFunction,DYFunction
@@ -840,10 +941,12 @@ With[
 ];
 
 
+(* ::Input::Initialization:: *)
 CurveSegment::badsegment="A curve with `1` points does not have a segment numbered `2`.";
 CurveSegment::badsegmentzero="Zero is not a valid segment number.";
 
 
+(* ::Input::Initialization:: *)
 CurveSegment[Points_List,s_Integer]:=Module[
 {n=Length[Points]},
 Which[
@@ -856,10 +959,12 @@ s<0,Points[[s-1;;s]]
 ];
 
 
+(* ::Input::Initialization:: *)
 CurvePoint::badpoint="A curve with `1` points does not have a point numbered `2`.";
 CurvePoint::badpointzero="Zero is not a valid segment number.";
 
 
+(* ::Input::Initialization:: *)
 CurvePoint[Points_List,k_Integer]:=Module[
 {n=Length[Points]},
 Which[
@@ -872,13 +977,16 @@ k<0,Points[[k]]
 ];
 
 
+(* ::Input::Initialization:: *)
 (* generate interpolating functions and pass these through to FigCurveAnchor functions (or pass dummies None if interpolating functions not needed) *)
 
 
+(* ::Input::Initialization:: *)
 FigCurveAnchorFromPoints[Points_List,Name:Left|Center|Right|Head|Tail,Arg_]:=FigCurveAnchor[Points,LinearInterpolationFunctionPair[Points],Name,Arg];
 FigCurveAnchorFromPoints[Points_List,Name:Point,Arg_]:=FigCurveAnchor[Points,{None,None},Name,Arg];
 
 
+(* ::Input::Initialization:: *)
 FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Name_,{s_Integer,Arg_}]:=FigCurveAnchorFromPoints[
 CurveSegment[Points,s],
 Name,
@@ -886,9 +994,11 @@ Arg
 ];
 
 
+(* ::Input::Initialization:: *)
 FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Name:(Left|Center|Right),None]:=FigCurveAnchor[Points,InterpolationFunctionPair,Name,0.5];
 
 
+(* ::Input::Initialization:: *)
 FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Name:(Left|Center|Right),u:(_?NumericQ)]:=Quiet[
 FigAnchor[
 Canvas[InterpolationFunction[u]],
@@ -899,6 +1009,7 @@ VectorArcTan[TangentFunction[u]]
 ];
 
 
+(* ::Input::Initialization:: *)
 FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Name:(Left|Center|Right),{DisplaceAlongTail,d_?NumericQ}]:=DisplaceAlongAnchor[
 FigCurveAnchor[Points,InterpolationFunctionPair,Center,0],
 d
@@ -909,6 +1020,7 @@ d
 ];
 
 
+(* ::Input::Initialization:: *)
 (*
 FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Name:(Left|Center|Right),{CoordinateIndexName:(Horizontal|Vertical),x:FigCoordinatePattern}
 ]:=Module[
@@ -934,12 +1046,14 @@ VectorArcTan[TangentFunction[u]]
 *)
 
 
+(* ::Input::Initialization:: *)
 (*
 FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Name:(Left|Center|Right),{CoordinateIndexName:(Horizontal|Vertical),x:FigCoordinatePattern}
 ]:=FigCurveAnchor[Points,InterpolationFunctionPair,Name,{CoordinateIndexName,x,{0,1},-1}];
 *)
 
 
+(* ::Input::Initialization:: *)
 FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Name:(Left|Center|Right),{CoordinateIndexName:(Horizontal|Vertical),x:FigCoordinatePattern,RootFindingParameters:{_?NumericQ,_?NumericQ}:{0,1},iRoot:(_Integer):-1}
 ]:=Module[
 {fRc,xc,uRule,u,u0,u1,CoordinateIndex,CanvasPoint},
@@ -965,13 +1079,16 @@ VectorArcTan[TangentFunction[u]]
 ];
 
 
+(* ::Input::Initialization:: *)
 FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Tail,None]:=FigAnchor[FigCurveAnchor[Points,InterpolationFunctionPair,Center,0],Right];
 FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Head,None]:=FigAnchor[FigCurveAnchor[Points,InterpolationFunctionPair,Center,1],Left];
 
 
+(* ::Input::Initialization:: *)
 FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Point,k_Integer]:=FigAnchor[Canvas[CurvePoint[Points,k]]];
 
 
+(* ::Input::Initialization:: *)
 FigCurveBoundingBox[CanvasCurve:{{_?NumericQ,_?NumericQ}...}]/;(Length[CanvasCurve]<1):=None;
 FigCurveBoundingBox[CanvasCurve:{{_?NumericQ,_?NumericQ}...}]/;(Length[CanvasCurve]>=1):={
 {Min[First/@CanvasCurve],Max[First/@CanvasCurve]},
@@ -979,6 +1096,7 @@ FigCurveBoundingBox[CanvasCurve:{{_?NumericQ,_?NumericQ}...}]/;(Length[CanvasCur
 };
 
 
+(* ::Input::Initialization:: *)
 FigArrowheadOptions[st:LogicalPattern,sh:LogicalPattern,len_:6,lip_:3]:={
 TailLength->len,TailLip->lip,ShowTail->st,
 HeadLength->len,HeadLip->lip,ShowHead->sh
@@ -990,6 +1108,7 @@ EndLength->len,EndLip->lip,ShowEnd->show
 };
 
 
+(* ::Input::Initialization:: *)
 FigCheckArrowheadOptions[Self_Object]:=Module[
 {},
 
@@ -1004,6 +1123,7 @@ FigCheckOption[Self,ShowHead,LogicalPattern,FigOptions];
 ];
 
 
+(* ::Input::Initialization:: *)
 FigCheckArrowheadOptions[Self_Object,End]:=Module[
 {},
 
@@ -1022,9 +1142,11 @@ FigCheckOption[Self,ShowHead,Automatic|LogicalPattern,FigOptions];
 ];
 
 
+(* ::Input::Initialization:: *)
 (*BasicArrowheadPoints::usage="BasicArrowheadPoints[anchor,headlength,{headlipl,headlipr},sense] generates the points for an arrowhead with location and orientation given by anchor.";*)
 
 
+(* ::Input::Initialization:: *)
 BasicArrowheadPoints[a:ObjectPattern[FigAnchor],HeadLength_?NumericQ,{HeadLipL_?NumericQ,HeadLipR_?NumericQ},Sense:(-1|1)]:=Module[
 {P,theta},
 
@@ -1038,6 +1160,7 @@ P+RotationTransform[N@theta][{HeadLength,HeadLipR}*{-Sense,-1}*If[HeadLipR>0,1,0
 ];
 
 
+(* ::Input::Initialization:: *)
 FigCurveArrowheadPoints[TailAnchor:ObjectPattern[FigAnchor],HeadAnchor:ObjectPattern[FigAnchor],FullOptions_List]:=Module[
 {},
 
@@ -1062,6 +1185,7 @@ BasicArrowheadPoints[HeadAnchor,(HeadLength/.FullOptions),UpgradePair[(HeadLip/.
 ];
 
 
+(* ::Input::Initialization:: *)
 FigCurveArrowheadPoints[TailAnchor:ObjectPattern[FigAnchor],HeadAnchor:ObjectPattern[FigAnchor],ReversedSide:LogicalPattern,FullOptions_List,End]:=Module[
 {UsedTailLength,UsedHeadLength,UsedTailLip,UsedHeadLip,UsedShowTail,UsedShowHead},
 
@@ -1092,11 +1216,13 @@ BasicArrowheadPoints[HeadAnchor,UsedHeadLength,UsedHeadLip,+1],
 ];
 
 
+(* ::Input::Initialization:: *)
 GrabPoints::nocurve="No curves found.";
 GrabPoints::fewcurve="Requested Line->`1` is greater than the number `2` of curves found.";
 GrabPoints::shortcurve="Curve obtained `1` has fewer than two points and therefore may be unsuitable for use as an argument to functions or objects.";
 
 
+(* ::Input::Initialization:: *)
 Point2D3DPattern={_?NumericQ,_?NumericQ}|{_?NumericQ,_?NumericQ,_?NumericQ};
 Options[GrabPoints]={Line->1};
 GrabPoints[G:(_Graphics|_Graphics3D),Opts___?OptionQ]:=Module[
@@ -1143,6 +1269,7 @@ CurveSet
 GrabPoints[CG:(_ContourGraphics),Opts___?OptionQ]:=GrabPoints[Graphics[CG],Opts];
 
 
+(* ::Input::Initialization:: *)
 SplitByDelimiter[l_List,d_Symbol]:=Module[
 {SplitList},
 SplitList=Split[l,!MemberQ[{#1,#2},d]&];
@@ -1154,12 +1281,15 @@ Cases[l,Except[d]]
 ];
 
 
+(* ::Input::Initialization:: *)
 AppendFirst[l_List]:=Append[l,First[l]];
 
 
+(* ::Input::Initialization:: *)
 End[];
 
 
+(* ::Input::Initialization:: *)
 Protect[Evaluate[$Context<>"*"]];
 Unprotect[Evaluate[$Context<>"$*"]];
 EndPackage[];
