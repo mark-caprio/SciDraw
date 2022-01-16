@@ -1,0 +1,1131 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     38222,       1122]
+NotebookOptionsPosition[     33601,        961]
+NotebookOutlinePosition[     34017,        979]
+CellTagsIndexPosition[     33974,        976]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Header comments", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Title", ":", " ", "FigArgument"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Context", ":", " ", "SciDraw`"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Summary", ":", " ", 
+     RowBox[{
+     "Miscellaneous", " ", "argument", " ", "processing", " ", 
+      "definitions"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", 
+     RowBox[{"Author", ":", " ", 
+      RowBox[{"Mark", " ", 
+       RowBox[{"A", ".", " ", "Caprio"}]}]}]}], ",", " ", 
+    RowBox[{"Department", " ", "of", " ", "Physics"}], ",", " ", 
+    RowBox[{"University", " ", "of", " ", "Notre", " ", "Dame"}]}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", 
+     RowBox[{"Copyright", ":", " ", 
+      RowBox[{"Copyright", " ", "FIGYEAR"}]}]}], ",", " ", 
+    RowBox[{"Mark", " ", 
+     RowBox[{"A", ".", " ", "Caprio"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Package", " ", 
+     RowBox[{"Version", ":", " ", "FIGVERSION"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Mathematica", " ", 
+     RowBox[{"Version", ":", " ", "MATHVERSION"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Discussion", ":", " ", "FIGDISCUSSION"}]}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"History", ":", " ", 
+     RowBox[{"See", " ", "main", " ", "package", " ", 
+      RowBox[{"file", "."}]}]}]}], " ", "*)"}]}]], "Input",
+ InitializationCell->True,
+ AutoIndent->False,
+ CellChangeTimes->{{3.395093723328125*^9, 3.39509375184375*^9}, {
+   3.398545735296875*^9, 3.39854574365625*^9}, 3.398799700609375*^9, {
+   3.43024739209375*^9, 3.43024739990625*^9}, 3.430247813015625*^9, {
+   3.436819738734375*^9, 3.436819746828125*^9}, 3.436820195484375*^9, {
+   3.4439959535*^9, 3.4439959773125*^9}, {3.471089562875*^9, 
+   3.471089568359375*^9}, {3.471089636203125*^9, 3.471089639046875*^9}, {
+   3.48681044459375*^9, 3.4868104458125*^9}, {3.489687811140625*^9, 
+   3.489687812484375*^9}, {3.497222348765625*^9, 3.497222354953125*^9}, 
+   3.497224390546875*^9, {3.497299514859375*^9, 3.497299515046875*^9}, {
+   3.49903536659375*^9, 3.49903536784375*^9}, {3.503265433671875*^9, 
+   3.5032654415*^9}, {3.50612390383225*^9, 3.5061239087385*^9}, 
+   3.507509920109375*^9, {3.51481857221875*^9, 3.514818754140625*^9}, 
+   3.514822657671875*^9, {3.514823216234375*^9, 3.51482323709375*^9}, {
+   3.51482326921875*^9, 3.514823311671875*^9}, {3.514823375546875*^9, 
+   3.514823396890625*^9}, {3.5150157685*^9, 3.51501576865625*^9}, {
+   3.51518611875*^9, 3.515186136203125*^9}, 3.515276951703125*^9, {
+   3.516037497817625*^9, 3.516037510567625*^9}},
+ LanguageCategory->"NaturalLanguage"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Begin package", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Package context definition", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeginPackage", "[", 
+   RowBox[{"\"\<SciDraw`\>\"", ",", "SciDraw`Private`$ExternalContexts"}], 
+   "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.395087747453125*^9, 3.39508775096875*^9}, {
+   3.39509064290625*^9, 3.395090643234375*^9}, 3.395090710546875*^9, {
+   3.395091175015625*^9, 3.395091179703125*^9}, {3.395093472375*^9, 
+   3.39509347784375*^9}, {3.395093608140625*^9, 3.3950936085*^9}, {
+   3.395519039875*^9, 3.395519061546875*^9}, {3.495041989453125*^9, 
+   3.495042010953125*^9}, {3.495042158078125*^9, 3.495042163671875*^9}, {
+   3.497222416421875*^9, 3.497222462578125*^9}, {3.497222963890625*^9, 
+   3.497222994640625*^9}, 3.497223030953125*^9, {3.514818766734375*^9, 
+   3.514818800625*^9}, {3.5148197104375*^9, 3.514819710671875*^9}, {
+   3.514819841546875*^9, 3.51481994284375*^9}, {3.514819979578125*^9, 
+   3.514820025046875*^9}, {3.5148201316875*^9, 3.514820154671875*^9}, {
+   3.51482025234375*^9, 3.514820275171875*^9}, {3.514820309703125*^9, 
+   3.514820406921875*^9}, {3.51482051775*^9, 3.514820571328125*^9}, {
+   3.514820843296875*^9, 3.51482087146875*^9}, 3.51482140903125*^9, {
+   3.514821446859375*^9, 3.514821449890625*^9}, 3.514821641390625*^9, {
+   3.514821674609375*^9, 3.514821798390625*^9}, {3.514823407859375*^9, 
+   3.514823433140625*^9}, 3.51501104184375*^9, 3.515275343*^9, {
+   3.515276331390625*^9, 3.51527633303125*^9}, {3.51542275479725*^9, 
+   3.515422755141*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Unprotect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<*\>\""}], "]"}], "]"}], ";"}]], "Input",
+ InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Begin private context", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.514823442859375*^9, 3.5148234431875*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Dependencies", "Subsection",
+ CellChangeTimes->{{3.514821147359375*^9, 3.51482114978125*^9}}],
+
+Cell[BoxData[""], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51482113128125*^9, 3.514821158515625*^9}, {
+  3.514823452421875*^9, 3.51482349575*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Automatic value utility", "Section",
+ CellChangeTimes->{{3.515531009390625*^9, 3.515531010078125*^9}}],
+
+Cell["\<\
+single pass replacement, but allowing for chained replacement (unlike Replace)\
+\>", "Text",
+ CellChangeTimes->{{3.537387384234375*^9, 3.5373874015*^9}}],
+
+Cell["\<\
+analogous to InheritOptions`GetAutoOption
+
+Szabolcz Horvat suggests (March 13, 2015) replacing original implementation \
+using Scan (and variable assignment) with:
+
+\tReplaceSequential[x_, Rules : {((_Rule) | (_RuleDelayed)) ...}] \
+:=Fold[Replace, x, Rules]\
+\>", "Text",
+ CellChangeTimes->{{3.515531016828125*^9, 3.515531028875*^9}, {
+  3.6365807585004797`*^9, 3.636580774630908*^9}, {3.636580835221414*^9, 
+  3.6365808773726883`*^9}, {3.636581318635063*^9, 3.636581361971939*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ReplaceSequential", "[", 
+     RowBox[{"x_", ",", " ", 
+      RowBox[{"Rules", " ", ":", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", "_Rule", ")"}], " ", "|", " ", 
+           RowBox[{"(", "_RuleDelayed", ")"}]}], ")"}], " ", "..."}], 
+        "}"}]}]}], "]"}], " ", ":=", " ", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "Value", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Value", " ", "=", " ", "x"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Scan", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"Value", " ", "=", " ", 
+            RowBox[{"Replace", "[", 
+             RowBox[{"Value", ",", " ", "#"}], "]"}]}], ")"}], " ", "&"}], 
+         ",", "\[IndentingNewLine]", "Rules"}], "\[IndentingNewLine]", "]"}], 
+       ";", "\[IndentingNewLine]", "Value"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]", "*)"}]], "Input",
+ CellChangeTimes->{{3.5159493565625*^9, 3.515949376484375*^9}, {
+   3.5159494086875*^9, 3.515949446734375*^9}, {3.515949508046875*^9, 
+   3.515949582859375*^9}, {3.5159497031875*^9, 3.5159497041875*^9}, 
+   3.636580956511627*^9, {3.63658107766144*^9, 3.6365811072234917`*^9}, 
+   3.6365811705284033`*^9, {3.63658130535944*^9, 3.636581309462247*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ReplaceSequential", "[", 
+    RowBox[{"x_", ",", 
+     RowBox[{"Rules", ":", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", "_Rule", ")"}], "|", 
+          RowBox[{"(", "_RuleDelayed", ")"}]}], ")"}], "..."}], "}"}]}]}], 
+    "]"}], ":=", 
+   RowBox[{"Fold", "[", 
+    RowBox[{"Replace", ",", "x", ",", "Rules"}], "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.636580887029105*^9, 3.636580887029105*^9}, 
+   3.636581367385149*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ReplaceSequential", "[", 
+  RowBox[{"a", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"a", "\[Rule]", "b"}], ",", 
+     RowBox[{"b", "\[Rule]", "c"}], ",", 
+     RowBox[{"a", "\[Rule]", "z"}]}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ReplaceSequential", "[", 
+  RowBox[{"a", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"a", "\[Rule]", "b"}], ",", 
+     RowBox[{"x_", "\[RuleDelayed]", 
+      RowBox[{"x", "^", "2"}]}], ",", 
+     RowBox[{"x_", "\[RuleDelayed]", 
+      RowBox[{"x", "^", "2"}]}], ",", 
+     RowBox[{"a", "\[Rule]", "z"}]}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.515949656046875*^9, 3.515949672609375*^9}, {
+  3.515949712421875*^9, 3.51594975046875*^9}}],
+
+Cell[BoxData["c"], "Output",
+ CellChangeTimes->{{3.515949708765625*^9, 3.5159497523125*^9}}],
+
+Cell[BoxData[
+ SuperscriptBox["b", "4"]], "Output",
+ CellChangeTimes->{{3.515949708765625*^9, 3.51594975234375*^9}}]
+}, Open  ]],
+
+Cell["Timing test of ReplaceSequential", "Text",
+ CellChangeTimes->{{3.6365809987409015`*^9, 3.636581004278911*^9}}],
+
+Cell["Original Scan", "Text",
+ CellChangeTimes->{{3.6365808814130955`*^9, 3.6365808826454973`*^9}, {
+  3.6365809654816427`*^9, 3.6365809670572457`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"     \"\>", "\[InvisibleSpace]", "\<\"\"\>", 
+   "\[InvisibleSpace]", 
+   TagBox[
+    TemplateBox[{
+     "0.31200200000000000155608859131461940706`5.514757291228131",
+      "\" (CPU), \"",
+      "0.31200060000000001680930949987669009715`5.51475534247896",
+      "\" (wall) \""},
+     "RowDefault"],
+    DisplayForm]}],
+  SequenceForm["     ", "", 
+   DisplayForm[
+    Row[{0.31200200000000000155608859131461940706`5.514757291228131, 
+      " (CPU), ", 0.31200060000000001680930949987669009715`5.51475534247896, 
+      " (wall) "}]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.636580796361746*^9, 3.636580800339753*^9}}],
+
+Cell["With Fold", "Text",
+ CellChangeTimes->{{3.6365809859020786`*^9, 3.636580987025281*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"     \"\>", "\[InvisibleSpace]", "\<\"\"\>", 
+   "\[InvisibleSpace]", 
+   TagBox[
+    TemplateBox[{
+     "0.14040089999999999514912474296579603106`5.167969805003475",
+      "\" (CPU), \"",
+      "0.14040030000000000565130164886795682833`5.167967949052081",
+      "\" (wall) \""},
+     "RowDefault"],
+    DisplayForm]}],
+  SequenceForm["     ", "", 
+   DisplayForm[
+    Row[{0.14040089999999999514912474296579603106`5.167969805003475, 
+      " (CPU), ", 0.14040030000000000565130164886795682833`5.167967949052081, 
+      " (wall) "}]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.636580969834051*^9, 3.6365809773064637`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PrintTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"ReplaceSequential", "[", 
+    RowBox[{"a", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"a", "\[Rule]", "b"}], ",", 
+       RowBox[{"x_", "\[RuleDelayed]", 
+        RowBox[{"x", "^", "2"}]}], ",", 
+       RowBox[{"x_", "\[RuleDelayed]", 
+        RowBox[{"x", "^", "2"}]}], ",", 
+       RowBox[{"a", "\[Rule]", "z"}]}], "}"}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Do", "\[Rule]", "10000"}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.636580783912924*^9, 3.6365807995753517`*^9}, {
+  3.6365811257719245`*^9, 3.636581126723526*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"     \"\>", "\[InvisibleSpace]", "\<\"\"\>", 
+   "\[InvisibleSpace]", 
+   TagBox[
+    TemplateBox[{
+     "0.15600100000000000077804429565730970353`5.21372729556415",
+      "\" (CPU), \"",
+      "0.15600030000000000840465474993834504858`5.213725346814979",
+      "\" (wall) \""},
+     "RowDefault"],
+    DisplayForm]}],
+  SequenceForm["     ", "", 
+   DisplayForm[
+    Row[{0.15600100000000000077804429565730970353`5.21372729556415, 
+      " (CPU), ", 0.15600030000000000840465474993834504858`5.213725346814979, 
+      " (wall) "}]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6365811177691107`*^9, 3.6365811275035276`*^9}, 
+   3.636581174912011*^9, 3.6365812327101126`*^9}],
+
+Cell[BoxData[
+ SuperscriptBox["b", "4"]], "Output",
+ CellChangeTimes->{{3.6365811177691107`*^9, 3.6365811275035276`*^9}, 
+   3.636581174912011*^9, 3.6365812327101126`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ResolveOption", "[", 
+    RowBox[{"Option_Symbol", ",", 
+     RowBox[{"DefaultRules", ":", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", "_Rule", ")"}], "|", 
+          RowBox[{"(", "_RuleDelayed", ")"}]}], ")"}], "..."}], "}"}]}], ",", 
+     "FullOptions_List"}], "]"}], ":=", 
+   RowBox[{"ReplaceSequential", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Option", "/.", "FullOptions"}], ")"}], ",", "DefaultRules"}], 
+    "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515948694765625*^9, 3.515948697078125*^9}, {
+   3.515948791203125*^9, 3.51594881221875*^9}, {3.5159488598125*^9, 
+   3.515948945734375*^9}, {3.515949171890625*^9, 3.51594925153125*^9}, 
+   3.515949324234375*^9, {3.51594977890625*^9, 3.515949864765625*^9}, 
+   3.515951320265625*^9, {3.515960773234375*^9, 3.515960790078125*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["General patterns", "Section",
+ CellChangeTimes->{{3.515254150984375*^9, 3.51525415328125*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Numeric patterns", "Subsection",
+ CellChangeTimes->{{3.51525415909375*^9, 3.515254161359375*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"NonNegativePattern", "=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"_", "?", "NumericQ"}], ")"}], "?", "NonNegative"}], ")"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PositivePattern", "=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"_", "?", "NumericQ"}], ")"}], "?", "Positive"}], ")"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"UnitIntervalPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"_", "?", "NumericQ"}], ")"}], "?", "NonNegative"}], ")"}], 
+     "?", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"#", "\[LessEqual]", "1"}], ")"}], "&"}], ")"}]}], ")"}]}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5151843888125*^9, 3.515184407453125*^9}, {
+   3.51518445725*^9, 3.5151845165625*^9}, {3.515184551765625*^9, 
+   3.51518459634375*^9}, {3.51518463796875*^9, 3.515184643953125*^9}, {
+   3.515184711359375*^9, 3.515184723421875*^9}, 3.5151861751875*^9, 
+   3.5152541445*^9, {3.515259257671875*^9, 3.515259281875*^9}, {
+   3.515339209609375*^9, 3.515339220125*^9}, {3.5850808968688107`*^9, 
+   3.5850809351688643`*^9}, 3.5850809682389107`*^9, 3.5850810029889593`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"MatchQ", "[", 
+  RowBox[{"1", ",", "UnitIntervalPattern"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"MatchQ", "[", 
+  RowBox[{"3", ",", "UnitIntervalPattern"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.585080940388872*^9, 3.585080955618893*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.585080950418886*^9, 3.5850809559488935`*^9}, 
+   3.5850810058489637`*^9}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{{3.585080950418886*^9, 3.5850809559488935`*^9}, 
+   3.5850810058489637`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Integer patterns", "Subsection",
+ CellChangeTimes->{{3.51525415909375*^9, 3.515254161359375*^9}, {
+  3.6650627265312986`*^9, 3.6650627273113003`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"NonNegativeIntegerPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"(", "_Integer", ")"}], "?", "NonNegative"}], ")"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PositiveIntegerPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"(", "_Integer", ")"}], "?", "Positive"}], ")"}]}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5151843888125*^9, 3.515184407453125*^9}, {
+   3.51518445725*^9, 3.5151845165625*^9}, {3.515184551765625*^9, 
+   3.51518459634375*^9}, {3.51518463796875*^9, 3.515184643953125*^9}, {
+   3.515184711359375*^9, 3.515184723421875*^9}, 3.5151861751875*^9, 
+   3.5152541445*^9, {3.515259257671875*^9, 3.515259281875*^9}, {
+   3.515339209609375*^9, 3.515339220125*^9}, {3.5850808968688107`*^9, 
+   3.5850809351688643`*^9}, 3.5850809682389107`*^9, 3.5850810029889593`*^9, {
+   3.665062729713704*^9, 3.6650627482465367`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Logical patterns", "Subsection",
+ CellChangeTimes->{{3.515354976046875*^9, 3.515354978625*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LogicalPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{"True", "|", "False"}], ")"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515354980765625*^9, 3.515355006875*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["List patterns", "Subsection",
+ CellChangeTimes->{{3.51534206284375*^9, 3.515342066328125*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"NonListPattern", "=", 
+   RowBox[{"Except", "[", "_List", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FlatListPattern", "=", 
+   RowBox[{"{", 
+    RowBox[{"NonListPattern", "..."}], "}"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.428182108078125*^9, 3.42818213259375*^9}, {
+  3.466946473984375*^9, 3.46694650646875*^9}, {3.46694656646875*^9, 
+  3.466946566796875*^9}, {3.515342072609375*^9, 3.51534208946875*^9}, {
+  3.515351976875*^9, 3.51535197715625*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Style directive options", "Section",
+ CellChangeTimes->{{3.515185832953125*^9, 3.5151858370625*^9}, {
+  3.515254134078125*^9, 3.51525414240625*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Atomic directives", "Subsection",
+ CellChangeTimes->{{3.51518619353125*^9, 3.515186205421875*^9}, {
+  3.515254166578125*^9, 3.515254167921875*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SizePattern", "=", 
+   RowBox[{"(", 
+    RowBox[{"Tiny", "|", "Small", "|", "Medium", "|", "Large"}], ")"}]}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5151843888125*^9, 3.515184407453125*^9}, {
+   3.51518445725*^9, 3.5151845165625*^9}, {3.515184551765625*^9, 
+   3.51518459634375*^9}, {3.51518463796875*^9, 3.515184643953125*^9}, {
+   3.515184711359375*^9, 3.515184723421875*^9}, 3.5151861751875*^9, 
+   3.5152541445*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Color", "Subsection",
+ CellChangeTimes->{{3.515259860328125*^9, 3.515259861046875*^9}}],
+
+Cell[TextData[{
+ "Note that Opacity, as in Opacity[a,color], is not allowed here as a color \
+directive, since it is preferred that the Opacity, LineOpacity, ",
+ StyleBox["etc.",
+  FontSlant->"Italic"],
+ " options be used instead.\nHowever, the present loose check does still \
+allow colors specified with an opacity argument, as in RGBColor[r,g,b,a]."
+}], "Text",
+ CellChangeTimes->{{3.3966349168125*^9, 3.3966349643125*^9}, {
+  3.5152602769375*^9, 3.515260347515625*^9}, {3.5152625085625*^9, 
+  3.5152625095625*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ColorDirectivePattern", "=", 
+    RowBox[{"(", 
+     RowBox[{"_GrayLevel", "|", "_RGBColor", "|", "_CMYKColor", "|", "_Hue"}],
+      ")"}]}], ";"}], " "}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.395520471*^9, 3.395520493953125*^9}, {
+  3.395520539328125*^9, 3.395520569640625*^9}, {3.39663491028125*^9, 
+  3.396634914140625*^9}, {3.51525995559375*^9, 3.51525995684375*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Line thickness", "Subsection",
+ CellChangeTimes->{{3.51518686415625*^9, 3.515186866359375*^9}}],
+
+Cell[TextData[{
+ "default AbsoluteThickness[0.5] (",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " 8)"
+}], "Text",
+ CellChangeTimes->{{3.515254087734375*^9, 3.515254099671875*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ThicknessArgumentPattern", "::", "usage"}], "=", 
+    "\"\<Pattern matching a valid argument to Thickness[] or \
+AbsoluteThickness[].\>\""}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ThicknessDirectivePattern", "::", "usage"}], "=", 
+    "\"\<Pattern matching a valid dashing directive.  This may be either a \
+Thin or Thick directive or else a Thickness[] or AbsoluteThickness[] \
+directive with valid argument.\>\""}], ";"}], "\[IndentingNewLine]", 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.515187285734375*^9, 3.51518728821875*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ThicknessArgumentPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{"SizePattern", "|", "NonNegativePattern"}], ")"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ThicknessDirectivePattern", "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"Thin", "|", "Thick"}], ")"}], "|", 
+    RowBox[{"Thickness", "[", "ThicknessArgumentPattern", "]"}], "|", 
+    RowBox[{"AbsoluteThickness", "[", "ThicknessArgumentPattern", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FigThicknessPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{"ThicknessArgumentPattern", "|", "ThicknessDirectivePattern"}], 
+    ")"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5151868730625*^9, 3.515186888828125*^9}, {
+  3.515186920859375*^9, 3.515186944796875*^9}, {3.51518717303125*^9, 
+  3.515187181703125*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveThickness", "[", 
+    RowBox[{"t", ":", "FigThicknessPattern"}], "]"}], ":=", 
+   RowBox[{"Switch", "[", "\[IndentingNewLine]", 
+    RowBox[{
+    "t", ",", "\[IndentingNewLine]", "ThicknessArgumentPattern", ",", 
+     RowBox[{"AbsoluteThickness", "[", "t", "]"}], ",", "\[IndentingNewLine]",
+      "ThicknessDirectivePattern", ",", "t"}], "\[IndentingNewLine]", "]"}]}],
+   ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515186445609375*^9, 3.515186453078125*^9}, {
+   3.515186523703125*^9, 3.51518660846875*^9}, {3.515187111625*^9, 
+   3.515187141328125*^9}, 3.51518718765625*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Line dashing", "Subsection",
+ CellChangeTimes->{{3.51518621246875*^9, 3.515186215609375*^9}}],
+
+Cell["\<\
+default solid line
+
+Recall: AbsoluteDashing[d] is equivalent to AbsoluteDashing[{d,d}].\
+\>", "Text",
+ CellChangeTimes->{{3.51525410453125*^9, 3.515254106859375*^9}, {
+  3.6001889505646315`*^9, 3.600188965429652*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"DashingArgumentPattern", "::", "usage"}], "=", 
+    "\"\<Pattern matching a valid argument to Dashing[] or AbsoluteDashing[].\
+\>\""}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"DashingDirectivePattern", "::", "usage"}], "=", 
+    "\"\<Pattern matching a valid dashing directive.  This may be either a \
+size directive or else a Dashing[] or AbsoluteDashing[] directive with valid \
+arguments.\>\""}], ";"}], "\[IndentingNewLine]", "*)"}]], "Input",
+ CellChangeTimes->{{3.515187299421875*^9, 3.515187301578125*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"DashingArgumentPattern", "=", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"SizePattern", "|", "NonNegativePattern"}], ")"}], "|", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"L", ":", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"SizePattern", "|", "NonNegativePattern"}], ")"}], 
+            "..."}], "}"}]}], ")"}], "/;", 
+        RowBox[{"EvenQ", "[", "L", "]"}]}], ")"}]}], ")"}]}], ";", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"MatchQ", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"3", ",", "4"}], "}"}], ",", "FigDashingPattern"}], "]"}], " ",
+     "\[IndentingNewLine]", "yields", " ", "False"}]}], "\[IndentingNewLine]",
+   "*)"}]], "Input",
+ CellChangeTimes->{{3.52588193278125*^9, 3.5258819515625*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"DashingArgumentPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"SizePattern", "|", "NonNegativePattern"}], ")"}], "|", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"SizePattern", "|", "NonNegativePattern"}], ")"}], ".."}], 
+        "}"}], "?", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"EvenQ", "[", 
+          RowBox[{"Length", "[", "#", "]"}], "]"}], "&"}], ")"}]}], ")"}]}], 
+    ")"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"DashingDirectivePattern", "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"Dotted", "|", "DotDashed", "|", "Dashed"}], ")"}], "|", 
+    RowBox[{"Dashing", "[", "DashingArgumentPattern", "]"}], "|", 
+    RowBox[{"AbsoluteDashing", "[", "DashingArgumentPattern", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FigDashingPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{
+    "None", "|", "DashingArgumentPattern", "|", "DashingDirectivePattern"}], 
+    ")"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5151843888125*^9, 3.515184407453125*^9}, {
+   3.51518445725*^9, 3.5151845165625*^9}, {3.515184551765625*^9, 
+   3.51518459634375*^9}, {3.51518463796875*^9, 3.515184643953125*^9}, {
+   3.515184711359375*^9, 3.515184723421875*^9}, {3.51518576553125*^9, 
+   3.515185782625*^9}, 3.515185905203125*^9, 3.5151861751875*^9, {
+   3.515186235140625*^9, 3.515186243265625*^9}, {3.51518719353125*^9, 
+   3.51518719784375*^9}, {3.52588195684375*^9, 3.52588202784375*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveDashing", "[", 
+    RowBox[{"d", ":", "FigDashingPattern"}], "]"}], ":=", 
+   RowBox[{"Switch", "[", "\[IndentingNewLine]", 
+    RowBox[{"d", ",", "\[IndentingNewLine]", "None", ",", 
+     RowBox[{"AbsoluteDashing", "[", 
+      RowBox[{"{", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+     "DashingArgumentPattern", ",", 
+     RowBox[{"AbsoluteDashing", "[", "d", "]"}], ",", "\[IndentingNewLine]", 
+     "DashingDirectivePattern", ",", "d"}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515186445609375*^9, 3.515186453078125*^9}, {
+  3.515186523703125*^9, 3.51518660846875*^9}, {3.515187203828125*^9, 
+  3.51518720784375*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Point size", "Subsection",
+ CellChangeTimes->{{3.515253895265625*^9, 3.51525389690625*^9}}],
+
+Cell[TextData[{
+ "default AbsolutePointSize[3] (",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " 8)"
+}], "Text",
+ CellChangeTimes->{{3.5152540364375*^9, 3.515254050828125*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"PointSizeArgumentPattern", "::", "usage"}], "=", 
+    "\"\<Pattern matching a valid argument to PointSize[] or \
+AbsolutePointSize[].\>\""}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PointSizeDirectivePattern", "::", "usage"}], "=", 
+    "\"\<Pattern matching a valid dashing directive.  This may be either a \
+Thin or Thick directive or else a PointSize[] or AbsolutePointSize[] \
+directive with valid argument.\>\""}], ";"}], "\[IndentingNewLine]", 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.515187285734375*^9, 3.51518728821875*^9}, {
+  3.515253948*^9, 3.515253953796875*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"PointSizeArgumentPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{"SizePattern", "|", "NonNegativePattern"}], ")"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PointSizeDirectivePattern", "=", 
+   RowBox[{
+    RowBox[{"PointSize", "[", "PointSizeArgumentPattern", "]"}], "|", 
+    RowBox[{"AbsolutePointSize", "[", "PointSizeArgumentPattern", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FigPointSizePattern", "=", 
+   RowBox[{"(", 
+    RowBox[{"PointSizeArgumentPattern", "|", "PointSizeDirectivePattern"}], 
+    ")"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5151868730625*^9, 3.515186888828125*^9}, {
+   3.515186920859375*^9, 3.515186944796875*^9}, {3.51518717303125*^9, 
+   3.515187181703125*^9}, {3.515253955578125*^9, 3.515253964609375*^9}, 
+   3.5152539975625*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolvePointSize", "[", 
+    RowBox[{"t", ":", "FigPointSizePattern"}], "]"}], ":=", 
+   RowBox[{"Switch", "[", "\[IndentingNewLine]", 
+    RowBox[{
+    "t", ",", "\[IndentingNewLine]", "PointSizeArgumentPattern", ",", 
+     RowBox[{"AbsolutePointSize", "[", "t", "]"}], ",", "\[IndentingNewLine]",
+      "PointSizeDirectivePattern", ",", "t"}], "\[IndentingNewLine]", "]"}]}],
+   ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515186445609375*^9, 3.515186453078125*^9}, {
+   3.515186523703125*^9, 3.51518660846875*^9}, {3.515187111625*^9, 
+   3.515187141328125*^9}, 3.51518718765625*^9, {3.515253966625*^9, 
+   3.515253975171875*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Font properties", "Subsection",
+ CellChangeTimes->{{3.515263140015625*^9, 3.515263147109375*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FontFamilyPattern", "=", 
+    RowBox[{"(", 
+     RowBox[{"Times", "|", 
+      RowBox[{"(", "_String", ")"}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+  
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"FontSizePattern", "=", 
+     RowBox[{"(", 
+      RowBox[{"NonNegativePattern", "|", 
+       RowBox[{"Scaled", "[", "NonNegativePattern", "]"}]}], ")"}]}], ";"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FontSizePattern", "=", "NonNegativePattern"}], ";"}], "  ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "only", " ", "accept", " ", "absolute", " ", "font", " ", "sizes"}], ",", 
+    " ", 
+    RowBox[{"not", " ", 
+     RowBox[{"Scaled", "[", "]"}], " ", "font", " ", "sizes"}]}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FontWeightPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{"Plain", "|", "Bold", "|", 
+     RowBox[{"(", "_String", ")"}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FontSlantPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{"Plain", "|", "Italic", "|", 
+     RowBox[{"(", "_String", ")"}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FontTrackingPattern", "=", 
+   RowBox[{"(", 
+    RowBox[{"Plain", "|", 
+     RowBox[{"(", "_String", ")"}]}], ")"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51526314915625*^9, 3.515263161296875*^9}, {
+  3.515263446390625*^9, 3.51526354153125*^9}, {3.515263591640625*^9, 
+  3.5152636060625*^9}, {3.51526367634375*^9, 3.515263677046875*^9}, {
+  3.51526378190625*^9, 3.515263803234375*^9}, {3.515263878125*^9, 
+  3.515263903828125*^9}, {3.51629800571875*^9, 3.51629803978125*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Text parameter interpretation", "Section",
+ CellChangeTimes->{{3.5155098075625*^9, 3.5155098165625*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Text positioning", "Subsection",
+ CellChangeTimes->{{3.515509820484375*^9, 3.515509823921875*^9}, {
+  3.515513344625*^9, 3.515513346671875*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"FigTextOffsetPattern", "=", 
+   RowBox[{"Automatic", "|", "FigOffsetPattern"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FigTextOrientationPattern", "=", 
+   RowBox[{
+   "Automatic", "|", "Inverse", "|", "Horizontal", "|", "Vertical", "|", 
+    RowBox[{"(", 
+     RowBox[{"_", "?", "NumericQ"}], ")"}]}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515509838453125*^9, 3.515509868046875*^9}, {
+   3.51550997509375*^9, 3.515510022828125*^9}, {3.5155108933125*^9, 
+   3.515510904546875*^9}, {3.51551343409375*^9, 3.51551343678125*^9}, {
+   3.515615416234375*^9, 3.515615417734375*^9}, {3.515871035140625*^9, 
+   3.515871040234375*^9}, 3.516458710359375*^9, {3.51949271071875*^9, 
+   3.519492726203125*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["End package", "Section",
+ CellChangeTimes->{{3.514823047703125*^9, 3.51482305353125*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Exit private context", "Subsection",
+ CellChangeTimes->{{3.514823086015625*^9, 3.5148231094375*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]], "Input",
+ InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Exit package context", "Subsection",
+ CellChangeTimes->{{3.514823092890625*^9, 3.51482312965625*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Protect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<*\>\""}], "]"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Unprotect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<$*\>\""}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"EndPackage", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+},
+WindowToolbars->"EditBar",
+WindowSize->{1672, 928},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowFrame->"Normal",
+ShowSelection->True,
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 34, 0, 71, "Section"],
+Cell[616, 24, 2984, 70, 192, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3637, 99, 32, 0, 71, "Section"],
+Cell[CellGroupData[{
+Cell[3694, 103, 48, 0, 36, "Subsection"],
+Cell[3745, 105, 1472, 24, 31, "Input",
+ InitializationCell->True],
+Cell[5220, 131, 184, 5, 31, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5441, 141, 43, 0, 36, "Subsection"],
+Cell[5487, 143, 183, 4, 31, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5707, 152, 99, 1, 36, "Subsection"],
+Cell[5809, 155, 163, 3, 31, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6021, 164, 108, 1, 71, "Section"],
+Cell[6132, 167, 163, 3, 29, "Text"],
+Cell[6298, 172, 493, 11, 101, "Text"],
+Cell[6794, 185, 1483, 33, 232, "Input"],
+Cell[8280, 220, 558, 17, 31, "Input",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[8863, 241, 725, 19, 52, "Input"],
+Cell[9591, 262, 92, 1, 30, "Output"],
+Cell[9686, 265, 116, 2, 30, "Output"]
+}, Open  ]],
+Cell[9817, 270, 116, 1, 29, "Text"],
+Cell[9936, 273, 152, 2, 29, "Text"],
+Cell[10091, 277, 678, 18, 23, "Print"],
+Cell[10772, 297, 93, 1, 29, "Text"],
+Cell[10868, 300, 682, 18, 23, "Print"],
+Cell[CellGroupData[{
+Cell[11575, 322, 670, 17, 92, "Input"],
+Cell[12248, 341, 732, 19, 23, "Print"],
+Cell[12983, 362, 171, 3, 30, "Output"]
+}, Open  ]],
+Cell[13169, 368, 935, 23, 31, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14141, 396, 100, 1, 71, "Section"],
+Cell[CellGroupData[{
+Cell[14266, 401, 103, 1, 36, "Subsection"],
+Cell[14372, 404, 1308, 36, 72, "Input",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[15705, 444, 269, 5, 52, "Input"],
+Cell[15977, 451, 127, 2, 30, "Output"],
+Cell[16107, 455, 128, 2, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16284, 463, 156, 2, 36, "Subsection"],
+Cell[16443, 467, 933, 21, 52, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17413, 493, 101, 1, 36, "Subsection"],
+Cell[17517, 496, 226, 6, 31, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17780, 507, 100, 1, 36, "Subsection"],
+Cell[17883, 510, 539, 12, 52, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18471, 528, 154, 2, 71, "Section"],
+Cell[CellGroupData[{
+Cell[18650, 534, 153, 2, 36, "Subsection"],
+Cell[18806, 538, 485, 11, 31, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19328, 554, 93, 1, 36, "Subsection"],
+Cell[19424, 557, 518, 10, 47, "Text"],
+Cell[19945, 569, 440, 10, 31, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20422, 584, 101, 1, 36, "Subsection"],
+Cell[20526, 587, 186, 6, 29, "Text"],
+Cell[20715, 595, 638, 13, 92, "Input"],
+Cell[21356, 610, 863, 22, 72, "Input",
+ InitializationCell->True],
+Cell[22222, 634, 657, 14, 112, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22916, 653, 99, 1, 36, "Subsection"],
+Cell[23018, 656, 227, 6, 65, "Text"],
+Cell[23248, 664, 616, 12, 92, "Input"],
+Cell[23867, 678, 914, 26, 112, "Input"],
+Cell[24784, 706, 1578, 40, 72, "Input",
+ InitializationCell->True],
+Cell[26365, 748, 740, 16, 132, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27142, 769, 97, 1, 36, "Subsection"],
+Cell[27242, 772, 182, 6, 29, "Text"],
+Cell[27427, 780, 681, 14, 92, "Input"],
+Cell[28111, 796, 867, 21, 72, "Input",
+ InitializationCell->True],
+Cell[28981, 819, 704, 15, 112, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29722, 839, 103, 1, 36, "Subsection"],
+Cell[29828, 842, 1700, 46, 132, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31577, 894, 110, 1, 71, "Section"],
+Cell[CellGroupData[{
+Cell[31712, 899, 150, 2, 36, "Subsection"],
+Cell[31865, 903, 781, 17, 52, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32695, 926, 95, 1, 71, "Section"],
+Cell[CellGroupData[{
+Cell[32815, 931, 106, 1, 36, "Subsection"],
+Cell[32924, 934, 96, 3, 31, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33057, 942, 107, 1, 36, "Subsection"],
+Cell[33167, 945, 406, 12, 72, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

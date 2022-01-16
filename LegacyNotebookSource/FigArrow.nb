@@ -1,0 +1,2509 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 5.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[    104482,       2500]
+NotebookOptionsPosition[     99332,       2330]
+NotebookOutlinePosition[    100746,       2375]
+CellTagsIndexPosition[    100703,       2372]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Header comments", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Title", ":", " ", "FigArrow"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Context", ":", " ", "SciDraw`"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Summary", ":", " ", 
+     RowBox[{"Arrow", " ", "shape"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", 
+     RowBox[{"Author", ":", " ", 
+      RowBox[{"Mark", " ", 
+       RowBox[{"A", ".", " ", "Caprio"}]}]}]}], ",", " ", 
+    RowBox[{"Department", " ", "of", " ", "Physics"}], ",", " ", 
+    RowBox[{"University", " ", "of", " ", "Notre", " ", "Dame"}]}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", 
+     RowBox[{"Copyright", ":", " ", 
+      RowBox[{"Copyright", " ", "FIGYEAR"}]}]}], ",", " ", 
+    RowBox[{"Mark", " ", 
+     RowBox[{"A", ".", " ", "Caprio"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Package", " ", 
+     RowBox[{"Version", ":", " ", "FIGVERSION"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Mathematica", " ", 
+     RowBox[{"Version", ":", " ", "MATHVERSION"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Discussion", ":", " ", "FIGDISCUSSION"}]}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"History", ":", " ", 
+     RowBox[{"See", " ", "package", " ", "information", " ", 
+      RowBox[{"file", "."}]}]}]}], " ", "*)"}]}]], "Input",
+ InitializationCell->True,
+ AutoIndent->False,
+ CellChangeTimes->{{3.395093723328125*^9, 3.39509375184375*^9}, {
+   3.398545735296875*^9, 3.39854574365625*^9}, 3.398799700609375*^9, {
+   3.43024739209375*^9, 3.43024739990625*^9}, 3.430247813015625*^9, {
+   3.436819738734375*^9, 3.436819746828125*^9}, 3.436820195484375*^9, {
+   3.4439959535*^9, 3.4439959773125*^9}, {3.471089562875*^9, 
+   3.471089568359375*^9}, {3.471089636203125*^9, 3.471089639046875*^9}, {
+   3.48681044459375*^9, 3.4868104458125*^9}, {3.489687811140625*^9, 
+   3.489687812484375*^9}, {3.497222348765625*^9, 3.497222354953125*^9}, 
+   3.497224390546875*^9, {3.497299514859375*^9, 3.497299515046875*^9}, {
+   3.49903536659375*^9, 3.49903536784375*^9}, {3.503265433671875*^9, 
+   3.5032654415*^9}, {3.50612390383225*^9, 3.5061239087385*^9}, 
+   3.507509920109375*^9, {3.51481857221875*^9, 3.514818754140625*^9}, 
+   3.514822657671875*^9, {3.514823216234375*^9, 3.51482323709375*^9}, {
+   3.51482326921875*^9, 3.514823311671875*^9}, {3.514823375546875*^9, 
+   3.514823396890625*^9}, {3.5150157685*^9, 3.51501576865625*^9}, 
+   3.515275347609375*^9, {3.51542285160975*^9, 3.515422853937875*^9}, {
+   3.5154272029535*^9, 3.515427210594125*^9}, 3.51542966535975*^9, {
+   3.51972159159375*^9, 3.519721606265625*^9}},
+ LanguageCategory->"NaturalLanguage"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Begin package", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Package context definition", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeginPackage", "[", 
+   RowBox[{"\"\<SciDraw`\>\"", ",", "SciDraw`Private`$ExternalContexts"}], 
+   "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.395087747453125*^9, 3.39508775096875*^9}, {
+   3.39509064290625*^9, 3.395090643234375*^9}, 3.395090710546875*^9, {
+   3.395091175015625*^9, 3.395091179703125*^9}, {3.395093472375*^9, 
+   3.39509347784375*^9}, {3.395093608140625*^9, 3.3950936085*^9}, {
+   3.395519039875*^9, 3.395519061546875*^9}, {3.495041989453125*^9, 
+   3.495042010953125*^9}, {3.495042158078125*^9, 3.495042163671875*^9}, {
+   3.497222416421875*^9, 3.497222462578125*^9}, {3.497222963890625*^9, 
+   3.497222994640625*^9}, 3.497223030953125*^9, {3.514818766734375*^9, 
+   3.514818800625*^9}, {3.5148197104375*^9, 3.514819710671875*^9}, {
+   3.514819841546875*^9, 3.51481994284375*^9}, {3.514819979578125*^9, 
+   3.514820025046875*^9}, {3.5148201316875*^9, 3.514820154671875*^9}, {
+   3.51482025234375*^9, 3.514820275171875*^9}, {3.514820309703125*^9, 
+   3.514820406921875*^9}, {3.51482051775*^9, 3.514820571328125*^9}, {
+   3.514820843296875*^9, 3.51482087146875*^9}, 3.51482140903125*^9, {
+   3.514821446859375*^9, 3.514821449890625*^9}, 3.514821641390625*^9, {
+   3.514821674609375*^9, 3.514821798390625*^9}, {3.514823407859375*^9, 
+   3.514823433140625*^9}, 3.51501104184375*^9, 3.515275343*^9, {
+   3.515276331390625*^9, 3.51527633303125*^9}, {3.51542275479725*^9, 
+   3.515422755141*^9}, {3.51542391860975*^9, 3.51542393423475*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Unprotect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<*\>\""}], "]"}], "]"}], ";"}]], "Input",
+ InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Object usage", "Subsection",
+ CellChangeTimes->{{3.515429595156625*^9, 3.515429597500375*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigArrow", "::", "usage"}], "=", 
+   "\"\<FIGURE OBJECT: FigArrow[curve] generates an arrow.\>\""}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515429606016*^9, 3.5154296174535*^9}, {
+  3.515429686281625*^9, 3.515429784531625*^9}, {3.515449185687875*^9, 
+  3.5154492152035*^9}, {3.51544974992225*^9, 3.51544978429725*^9}, {
+  3.51544992735975*^9, 3.515449931437875*^9}, {3.51554078359375*^9, 
+  3.51554081778125*^9}, {3.515623144328125*^9, 3.5156231616875*^9}, {
+  3.51568084975*^9, 3.515680885765625*^9}, {3.515680922421875*^9, 
+  3.5156809575*^9}, {3.516045076567625*^9, 3.516045102942625*^9}, {
+  3.516288353390625*^9, 3.51628836525*^9}, {3.51629894865625*^9, 
+  3.516298954859375*^9}, {3.516638920472553*^9, 3.516638926628803*^9}, {
+  3.518019025203125*^9, 3.51801903190625*^9}, {3.519721658546875*^9, 
+  3.519721678015625*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Other usage", "Subsection",
+ CellChangeTimes->{{3.51656348159375*^9, 3.516563483421875*^9}}],
+
+Cell["Registration functions", "Text",
+ CellChangeTimes->{{3.51656348628125*^9, 3.516563495203125*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"$ArrowTypeRegistry", "::", "usage"}], "=", 
+   "\"\<Global registry of curve shapes for use with DataPlot.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DefineArrowType", "::", "usage"}], "=", 
+   "\"\<DefineArrowType[name,function] defines a new value to be accepted for \
+the ArrowType option.  The function should take a list of two or more {x,y} \
+points (as canvas coordinates) and return a new list of points.\>\""}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5165589935625*^9, 3.516559010375*^9}, {
+  3.516559075390625*^9, 3.516559129828125*^9}, {3.516560106625*^9, 
+  3.5165601464375*^9}, {3.516560390203125*^9, 3.5165605001875*^9}, {
+  3.51792613684375*^9, 3.51792613884375*^9}, {3.51843435353125*^9, 
+  3.518434356734375*^9}, {3.51853608621875*^9, 3.518536092796875*^9}, {
+  3.5197221405625*^9, 3.51972217328125*^9}}],
+
+Cell["Utilities", "Text",
+ CellChangeTimes->{{3.519725824328125*^9, 3.519725827375*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplaceCurve", "::", "usage"}], "=", 
+   "\"\<DisplaceCurve[points,d,joinform] displaces the curve by a distance d \
+(positive normal is to right).  The joinform may be \\\"Bevel\\\" or \
+\\\"Miter\\\".  Note: If the curve is beveled, obtuse angle joints are \
+truncated, so acute joints get a single point but obtuse joints get two \
+points. This changes the number of segments in the curve, which can be \
+important if anchors are later generated from the curve by segment \
+number.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckArrowOptions", "::", "usage"}], "=", 
+   "\"\<FigCheckArrowOptions[obj] validates the corresponding set of options.\
+\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51972583103125*^9, 3.519725923265625*^9}, {
+  3.519726072390625*^9, 3.519726162578125*^9}, {3.519730750734375*^9, 
+  3.51973084265625*^9}, {3.5197715466875*^9, 3.519771554296875*^9}}],
+
+Cell["Options", "Text",
+ CellChangeTimes->{{3.516563497953125*^9, 3.5165634986875*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ArrowType", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ArrowJoinForm", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"HeadFlush", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TailFlush", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51612625375*^9, 3.51612625571875*^9}, {
+  3.519721703703125*^9, 3.519721747390625*^9}, {3.51972647709375*^9, 
+  3.5197264830625*^9}, {3.519730880859375*^9, 3.519730888625*^9}, {
+  3.519731810796875*^9, 3.519731827390625*^9}}],
+
+Cell["Special arrow type options", "Text",
+ CellChangeTimes->{{3.51973182940625*^9, 3.519731834421875*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"SquiggleBuffer", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SquiggleWavelength", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SquiggleSide", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51612625375*^9, 3.51612625571875*^9}, {
+   3.519721703703125*^9, 3.519721747390625*^9}, {3.51972647709375*^9, 
+   3.5197264830625*^9}, {3.519730880859375*^9, 3.519730888625*^9}, {
+   3.519731810796875*^9, 3.519731827390625*^9}, 3.5665123226684666`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Begin private context", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.514823442859375*^9, 3.5148234431875*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Dependencies", "Subsection",
+ CellChangeTimes->{{3.514821147359375*^9, 3.51482114978125*^9}}],
+
+Cell[BoxData[""], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51482113128125*^9, 3.514821158515625*^9}, {
+  3.514823452421875*^9, 3.51482349575*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Utilities", "Section",
+ CellChangeTimes->{{3.519730900796875*^9, 3.51973090396875*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Curve displacement", "Subsection",
+ CellChangeTimes->{{3.519722930375*^9, 3.51972293840625*^9}}],
+
+Cell["\<\
+Zero displacement handled specially to avoid unnecessary doubling of joint \
+points.\
+\>", "Text",
+ CellChangeTimes->{{3.5197290539375*^9, 3.51972907115625*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplaceCurve", "[", 
+    RowBox[{"Points_List", ",", 
+     RowBox[{"d", ":", "0"}], ",", 
+     RowBox[{"JoinForm", ":", 
+      RowBox[{"(", 
+       RowBox[{"\"\<Bevel\>\"", "|", "\"\<Miter\>\""}], ")"}]}]}], "]"}], ":=",
+    "Points"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplaceCurve", "[", 
+    RowBox[{"Points_List", ",", 
+     RowBox[{"Except", "[", 
+      RowBox[{"0", ",", 
+       RowBox[{"d_", "?", "NumericQ"}]}], "]"}], ",", 
+     RowBox[{"JoinForm", ":", 
+      RowBox[{"(", 
+       RowBox[{"\"\<Bevel\>\"", "|", "\"\<Miter\>\""}], ")"}]}]}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "NumSegments", ",", "JointList", ",", "s1", ",", "s2", ",", "u1", ",", 
+       "u2", ",", "n1", ",", "n2", ",", "alpha", ",", "beta", ",", "p", ",", 
+       "p1", ",", "p2", ",", "pp"}], "}"}], ",", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"NumSegments", "=", 
+       RowBox[{
+        RowBox[{"Length", "[", "Points", "]"}], "-", "1"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"JointList", "=", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", "segments", " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"s1", "=", 
+           RowBox[{"CurveSegment", "[", 
+            RowBox[{"Points", ",", "Joint"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"s2", "=", 
+           RowBox[{"CurveSegment", "[", 
+            RowBox[{"Points", ",", 
+             RowBox[{"Joint", "+", "1"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", "tangents", " ", "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"u1", "=", 
+           RowBox[{"SegmentTangent", "[", "s1", "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"u2", "=", 
+           RowBox[{"SegmentTangent", "[", "s2", "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", "normals", " ", "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"n1", "=", 
+           RowBox[{"-", 
+            RowBox[{"Cross", "[", "u1", "]"}]}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"n2", "=", 
+           RowBox[{"-", 
+            RowBox[{"Cross", "[", "u2", "]"}]}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{"displaced", " ", "points"}], " ", "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"p", "=", 
+           RowBox[{"Points", "[", 
+            RowBox[{"[", 
+             RowBox[{"Joint", "+", "1"}], "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"p1", "=", 
+           RowBox[{"p", "+", 
+            RowBox[{"d", "*", "n1"}]}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"p2", "=", 
+           RowBox[{"p", "+", 
+            RowBox[{"d", "*", "n2"}]}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", "intersection", " ", "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"alpha", ",", "beta"}], "}"}], "=", 
+           RowBox[{"LinearSolve", "[", 
+            RowBox[{
+             RowBox[{"Transpose", "[", 
+              RowBox[{"{", 
+               RowBox[{"u1", ",", 
+                RowBox[{"-", "u2"}]}], "}"}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"-", "d"}], "*", 
+              RowBox[{"(", 
+               RowBox[{"n1", "-", "n2"}], ")"}]}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"pp", "=", 
+           RowBox[{"p", "+", 
+            RowBox[{"d", "*", "n1"}], "+", 
+            RowBox[{"alpha", "*", "u1"}]}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{"choice", " ", "of", " ", "beveling"}], " ", "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"alpha", "<", "0"}], ")"}], "||", 
+             RowBox[{"(", 
+              RowBox[{"JoinForm", "\[Equal]", "\"\<Miter\>\""}], ")"}]}], ",",
+             "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", "acute", " ", "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"{", "pp", "}"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", "obtuse", " ", "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"p1", ",", "p2"}], "}"}]}], "\[IndentingNewLine]", 
+           "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"Joint", ",", "1", ",", 
+           RowBox[{"NumSegments", "-", "1"}]}], "}"}]}], 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"start", " ", "and", " ", "end", " ", "points"}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "segments", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"s1", "=", 
+       RowBox[{"CurveSegment", "[", 
+        RowBox[{"Points", ",", "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"s2", "=", 
+       RowBox[{"CurveSegment", "[", 
+        RowBox[{"Points", ",", 
+         RowBox[{"-", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "tangents", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"u1", "=", 
+       RowBox[{"SegmentTangent", "[", "s1", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"u2", "=", 
+       RowBox[{"SegmentTangent", "[", "s2", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "normals", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"n1", "=", 
+       RowBox[{"-", 
+        RowBox[{"Cross", "[", "u1", "]"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"n2", "=", 
+       RowBox[{"-", 
+        RowBox[{"Cross", "[", "u2", "]"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"displaced", " ", "points"}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"p1", "=", 
+       RowBox[{
+        RowBox[{"Points", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "+", 
+        RowBox[{"d", "*", "n1"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"p2", "=", 
+       RowBox[{
+        RowBox[{"Points", "[", 
+         RowBox[{"[", 
+          RowBox[{"-", "1"}], "]"}], "]"}], "+", 
+        RowBox[{"d", "*", "n2"}]}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"assemble", " ", "list", " ", "of", " ", "points"}], " ", 
+       "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{"{", "p1", "}"}], ",", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"JointList", ",", "1"}], "]"}], ",", 
+        RowBox[{"{", "p2", "}"}]}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}],
+   ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51972296346875*^9, 3.519723010078125*^9}, {
+  3.519723932171875*^9, 3.51972401934375*^9}, {3.51972509084375*^9, 
+  3.5197252261875*^9}, {3.519725308671875*^9, 3.51972538534375*^9}, {
+  3.5197254745625*^9, 3.519725734375*^9}, {3.51972672478125*^9, 
+  3.51972682915625*^9}, {3.5197271145625*^9, 3.51972711990625*^9}, {
+  3.519729010375*^9, 3.5197290463125*^9}, {3.51973068028125*^9, 
+  3.519730736265625*^9}, {3.519830977640625*^9, 3.519831037796875*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FigArrow", "Section",
+ CellChangeTimes->{{3.51542982092225*^9, 3.515429824641*^9}, {
+  3.519722038578125*^9, 3.519722039484375*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Object declaration", "Subsection",
+ CellChangeTimes->{{3.515429830437875*^9, 3.515429833266*^9}}],
+
+Cell["\<\
+This code must *precede* any calls to the accessor/mutator methods, e.g., in \
+the bodies of the function definitions within DefineArrowType.\
+\>", "Text",
+ CellChangeTimes->{{3.519764899421875*^9, 3.519764952703125*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"DeclareFigClass", "[", "\[IndentingNewLine]", 
+   RowBox[{"FigArrow", ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Points\>\"", ",", "\"\<LeftPoints\>\"", ",", 
+      "\"\<RightPoints\>\""}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"Center", ",", "Left", ",", "Right", ",", "Tail", ",", "Head"}], 
+     "}"}]}], "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DefineFigClassOptions", "[", "\[IndentingNewLine]", 
+   RowBox[{"FigArrow", ",", "\[IndentingNewLine]", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{"curve", "/", "arrowhead"}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"FigArrowheadOptions", "[", 
+       RowBox[{"False", ",", "True"}], "]"}], ",", "\[IndentingNewLine]", 
+      "FigCurveOptions", " ", ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "shape", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"ArrowType", "\[Rule]", "\"\<Line\>\""}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Width", "\[Rule]", "5"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ArrowJoinForm", "\[Rule]", "\"\<Miter\>\""}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"TailFlush", "\[Rule]", "False"}], ",", 
+      RowBox[{"HeadFlush", "\[Rule]", "False"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{"squiggle", " ", "--"}], " ", "applicable", " ", "to", " ", 
+        "general", " ", "repeating", " ", "curves"}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"SquiggleBuffer", "\[Rule]", "2"}], ",", "\[IndentingNewLine]", 
+      
+      RowBox[{"SquiggleWavelength", "\[Rule]", "10"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"SquiggleSide", "\[Rule]", "Right"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotPoints", "\[Rule]", "32"}]}], "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515100688734375*^9, 3.515100745765625*^9}, {
+   3.515101427609375*^9, 3.5151014280625*^9}, {3.51510147303125*^9, 
+   3.515101489109375*^9}, {3.515160263390625*^9, 3.51516026428125*^9}, {
+   3.51516080484375*^9, 3.51516081109375*^9}, {3.515429856500375*^9, 
+   3.515429878125375*^9}, {3.5154307895785*^9, 3.515430808375375*^9}, {
+   3.51543131279725*^9, 3.51543134560975*^9}, {3.515611505515625*^9, 
+   3.5156115174375*^9}, 3.51577560334375*^9, {3.5159617146875*^9, 
+   3.515961775921875*^9}, {3.515962042546875*^9, 3.515962049828125*^9}, {
+   3.51628840765625*^9, 3.51628841396875*^9}, {3.51628943834375*^9, 
+   3.516289439171875*^9}, 3.516291009*^9, {3.519721786046875*^9, 
+   3.519721843421875*^9}, {3.519722728078125*^9, 3.519722733671875*^9}, {
+   3.5197227876875*^9, 3.519722810546875*^9}, {3.519722881828125*^9, 
+   3.5197228865625*^9}, {3.519726490515625*^9, 3.51972649490625*^9}, {
+   3.519727987265625*^9, 3.519727987703125*^9}, {3.519730859625*^9, 
+   3.519730869125*^9}, {3.5198329288125*^9, 3.5198329334375*^9}, {
+   3.5665126892379103`*^9, 3.566512727567178*^9}, {3.56651648937741*^9, 
+   3.5665164959825115`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Constructor", "Subsection",
+ CellChangeTimes->{{3.51543192685975*^9, 3.5154319283285*^9}}],
+
+Cell["\<\
+REMINDER: Any edits to the methods of FigArrow should probably be propagated \
+to the definition of Trans.\
+\>", "Text",
+ CellChangeTimes->{{3.51977137040625*^9, 3.5197714105625*^9}, 
+   3.51977159071875*^9}],
+
+Cell["\<\
+shared code common to all forms of the constructor -- including daughter \
+Trans types\
+\>", "Text",
+ CellChangeTimes->{{3.515958897953125*^9, 3.51595890978125*^9}, {
+  3.519778783546875*^9, 3.519778789484375*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"BasicArrow", "[", "Self_Object", "]"}], "[", 
+    RowBox[{"Curve", ":", "FigCurvePattern"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "CanvasPoints", ",", "LeftCanvasPoints", ",", "RightCanvasPoints", ",", 
+       "UsedWidth", ",", "a1", ",", "a2"}], "}"}], ",", "\[IndentingNewLine]",
+      "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{"validate", " ", "extra", " ", "options"}], " ", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"FigCheckArrowheadOptions", "[", "Self", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"FigCheckCurveOptions", "[", "Self", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"FigCheckOption", "[", 
+       RowBox[{"Self", ",", "Width", ",", 
+        RowBox[{"_", "?", "NonNegative"}], ",", "FigOptions"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"FigCheckOption", "[", 
+       RowBox[{
+       "Self", ",", "HeadFlush", ",", "LogicalPattern", ",", "FigOptions"}], 
+       "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"FigCheckOption", "[", 
+       RowBox[{
+       "Self", ",", "TailFlush", ",", "LogicalPattern", ",", "FigOptions"}], 
+       "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"FigCheckOption", "[", 
+       RowBox[{"Self", ",", "ArrowType", ",", 
+        RowBox[{"Alternatives", "@@", "$ArrowTypeRegistry"}], ",", 
+        "FigOptions"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"FigCheckOption", "[", 
+       RowBox[{"Self", ",", "ArrowJoinForm", ",", 
+        RowBox[{"\"\<Bevel\>\"", "|", "\"\<Miter\>\""}], ",", "FigOptions"}], 
+       "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"prerequisite", " ", "calculations"}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{"Note", ":", " ", 
+         RowBox[{
+          RowBox[{"for", " ", "line"}], "-", 
+          RowBox[{"like", " ", "arrows"}]}]}], ",", " ", 
+        RowBox[{
+        "arrow", " ", "type", " ", "definition", " ", "should", " ", 
+         "override", " ", "these", " ", "left", " ", "and", " ", "right", " ",
+          "curves"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"UsedWidth", "=", 
+       RowBox[{"(", 
+        RowBox[{"Width", "/.", "FigOptions"}], ")"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"CanvasPoints", "=", 
+       RowBox[{"FigResolveCurve", "[", 
+        RowBox[{"Self", ",", "Curve", ",", "FigOptions"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"Debug", "/.", "FigOptions"}], ")"}], ",", 
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<Canvas points: \>\"", ",", "CanvasPoints"}], "]"}]}], 
+       "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"LeftCanvasPoints", "=", 
+       RowBox[{"DisplaceCurve", "[", 
+        RowBox[{"CanvasPoints", ",", 
+         RowBox[{
+          RowBox[{"-", "UsedWidth"}], "/", "2"}], ",", 
+         RowBox[{"(", 
+          RowBox[{"ArrowJoinForm", "/.", "FigOptions"}], ")"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"RightCanvasPoints", "=", 
+       RowBox[{"DisplaceCurve", "[", 
+        RowBox[{"CanvasPoints", ",", 
+         RowBox[{
+          RowBox[{"+", "UsedWidth"}], "/", "2"}], ",", 
+         RowBox[{"(", 
+          RowBox[{"ArrowJoinForm", "/.", "FigOptions"}], ")"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "recover", " ", "full", " ", "anchors", " ", "for", " ", "endpoints"}],
+        " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+         "but", " ", "can", " ", "only", " ", "do", " ", "if", " ", "curve", 
+          " ", "was", " ", "specified", " ", "as", " ", "list", " ", "of", 
+          " ", "points", " ", 
+          RowBox[{"(", 
+           RowBox[{"not", " ", "graphics"}], ")"}], " ", "and", " ", "if", 
+          " ", "relevant", " ", "endpoint", " ", "is", " ", "a", " ", 
+          "self"}], "-", 
+         RowBox[{"sufficient", " ", "point"}]}], ",", " ", 
+        RowBox[{
+        "not", " ", "a", " ", "specification", " ", "relative", " ", "to", 
+         " ", "the", " ", "head", " ", "or", " ", "tail"}]}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"a1", "=", 
+       RowBox[{"If", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"MatchQ", "[", 
+           RowBox[{"Curve", ",", "FigCurvePointSetPattern"}], "]"}], "&&", 
+          RowBox[{"MatchQ", "[", 
+           RowBox[{
+            RowBox[{"First", "[", "Curve", "]"}], ",", "FigPointPattern"}], 
+           "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"FigAnchor", "[", 
+          RowBox[{"First", "[", "Curve", "]"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"FigAnchor", "[", 
+          RowBox[{"Canvas", "[", 
+           RowBox[{"First", "[", "CanvasPoints", "]"}], "]"}], "]"}]}], 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"a2", "=", 
+       RowBox[{"If", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"MatchQ", "[", 
+           RowBox[{"Curve", ",", "FigCurvePointSetPattern"}], "]"}], "&&", 
+          RowBox[{"MatchQ", "[", 
+           RowBox[{
+            RowBox[{"Last", "[", "Curve", "]"}], ",", "FigPointPattern"}], 
+           "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"FigAnchor", "[", 
+          RowBox[{"Last", "[", "Curve", "]"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"FigAnchor", "[", 
+          RowBox[{"Canvas", "[", 
+           RowBox[{"Last", "[", "CanvasPoints", "]"}], "]"}], "]"}]}], 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "save", " ", "data", " ", "needed", " ", "for", " ", "anchor", " ", 
+        "generation"}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"Self", "@", 
+       RowBox[{"SetPoints", "[", "CanvasPoints", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Self", "@", 
+       RowBox[{"SetLeftPoints", "[", "LeftCanvasPoints", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Self", "@", 
+       RowBox[{"SetRightPoints", "[", "RightCanvasPoints", "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"make", " ", "graphics", " ", "elements"}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ArrowTypeFunction", "[", 
+        RowBox[{"(", 
+         RowBox[{"ArrowType", "/.", "FigOptions"}], ")"}], "]"}], "[", 
+       RowBox[{
+       "Self", ",", "a1", ",", "a2", ",", "CanvasPoints", ",", "UsedWidth", 
+        ",", "FigOptions"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515865331796875*^9, 3.51586538265625*^9}, {
+   3.515865434453125*^9, 3.51586546859375*^9}, {3.515865668078125*^9, 
+   3.515865683796875*^9}, {3.51629157815625*^9, 3.51629158809375*^9}, 
+   3.518019041921875*^9, {3.519778815359375*^9, 3.519778854859375*^9}, {
+   3.519778907859375*^9, 3.51977891821875*^9}, {3.519829966765625*^9, 
+   3.5198299870625*^9}, {3.519830281546875*^9, 3.519830286125*^9}, {
+   3.5198344199375*^9, 3.5198346815625*^9}, {3.51983484209375*^9, 
+   3.5198348451875*^9}, {3.6254539772413416`*^9, 3.625453983200552*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Constructor", "[", 
+     RowBox[{
+      RowBox[{"Class", ":", "FigArrow"}], ",", "Self_Object"}], "]"}], "[", 
+    RowBox[{
+     RowBox[{"Curve", ":", "FigCurvePattern"}], ",", 
+     RowBox[{"Opts___", "?", "OptionQ"}]}], "]"}], ":=", 
+   RowBox[{"FigObjectWrapper", "[", 
+    RowBox[{"Class", ",", "Self", ",", 
+     RowBox[{"{", "Opts", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"BasicArrow", "[", "Self", "]"}], "[", "Curve", "]"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51510150784375*^9, 3.51510165284375*^9}, {
+   3.5151018264375*^9, 3.515101837625*^9}, {3.515160729234375*^9, 
+   3.5151607388125*^9}, {3.515160815109375*^9, 3.515160905421875*^9}, {
+   3.515429900281625*^9, 3.5154299283285*^9}, {3.515432005344125*^9, 
+   3.51543202310975*^9}, {3.515432080625375*^9, 3.515432260875375*^9}, {
+   3.515432559875375*^9, 3.515432618141*^9}, {3.515432654812875*^9, 
+   3.515432706531625*^9}, {3.515433020406625*^9, 3.515433023781625*^9}, {
+   3.515442053016*^9, 3.5154420783285*^9}, {3.51544252460975*^9, 
+   3.515442586281625*^9}, {3.5154469192035*^9, 3.515446929391*^9}, {
+   3.5154471764535*^9, 3.515447183094125*^9}, {3.515447219250375*^9, 
+   3.515447220250375*^9}, {3.515447301531625*^9, 3.5154473044535*^9}, 
+   3.515448155969125*^9, 3.515450489000375*^9, {3.515609990484375*^9, 
+   3.51561000875*^9}, {3.515617766265625*^9, 3.5156177708125*^9}, {
+   3.5156826745625*^9, 3.51568274115625*^9}, {3.515683305421875*^9, 
+   3.5156833216875*^9}, {3.515883868671875*^9, 3.51588387675*^9}, 
+   3.515885261171875*^9, {3.51603966277075*^9, 3.516039663630125*^9}, {
+   3.516289394203125*^9, 3.516289467015625*^9}, {3.5162896060625*^9, 
+   3.51628970440625*^9}, {3.516289953640625*^9, 3.516289954671875*^9}, {
+   3.51629102003125*^9, 3.516291020703125*^9}, {3.51801903359375*^9, 
+   3.518019034421875*^9}, 3.5196468333125*^9, {3.51964785771875*^9, 
+   3.519647860828125*^9}, {3.519722820046875*^9, 3.519722820640625*^9}, {
+   3.519722854671875*^9, 3.5197228590625*^9}, {3.519722910953125*^9, 
+   3.519722922546875*^9}, {3.519727212671875*^9, 3.519727270046875*^9}, {
+   3.519727314765625*^9, 3.51972741834375*^9}, {3.519727527984375*^9, 
+   3.519727528609375*^9}, {3.5197277251875*^9, 3.519727768703125*^9}, {
+   3.519730651921875*^9, 3.51973066246875*^9}, {3.5197309253125*^9, 
+   3.51973092715625*^9}, {3.519730958875*^9, 3.519730981046875*^9}, {
+   3.519731058390625*^9, 3.519731148203125*^9}, {3.519731405203125*^9, 
+   3.51973141521875*^9}, {3.519771286484375*^9, 3.519771301828125*^9}, 
+   3.51977134403125*^9, {3.5197714793125*^9, 3.519771482671875*^9}, {
+   3.51977888959375*^9, 3.5197788954375*^9}, {3.5197789534375*^9, 
+   3.5197789561875*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Methods", "Subsection",
+ CellChangeTimes->{{3.5151660264375*^9, 3.515166028765625*^9}, {
+  3.515449067344125*^9, 3.51544909085975*^9}}],
+
+Cell["\<\
+REMINDER: Any edits to the methods of FigArrow should probably be propagated \
+to the definition of Trans.\
+\>", "Text",
+ CellChangeTimes->{{3.51977137040625*^9, 3.5197714105625*^9}, 
+   3.51977158903125*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"MakeAnchor", "[", 
+     RowBox[{
+      RowBox[{"Class", ":", "FigArrow"}], ",", "Self_Object"}], "]"}], "[", 
+    RowBox[{
+     RowBox[{"Name", ":", 
+      RowBox[{"(", 
+       RowBox[{"Head", "|", "Tail", "|", "Center"}], ")"}]}], ",", "Arg_"}], 
+    "]"}], ":=", 
+   RowBox[{"FigMakeAnchorWrapper", "[", 
+    RowBox[{
+    "Class", ",", "Self", ",", "Name", ",", "Arg", ",", "\[IndentingNewLine]", 
+     RowBox[{"FigCurveAnchorFromPoints", "[", 
+      RowBox[{
+       RowBox[{"Self", "@", 
+        RowBox[{"GetPoints", "[", "]"}]}], ",", "Name", ",", "Arg"}], "]"}]}],
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"MakeAnchor", "[", 
+     RowBox[{
+      RowBox[{"Class", ":", "FigArrow"}], ",", "Self_Object"}], "]"}], "[", 
+    RowBox[{
+     RowBox[{"Name", ":", "Left"}], ",", "Arg_"}], "]"}], ":=", 
+   RowBox[{"FigMakeAnchorWrapper", "[", 
+    RowBox[{
+    "Class", ",", "Self", ",", "Name", ",", "Arg", ",", "\[IndentingNewLine]", 
+     RowBox[{"FigCurveAnchorFromPoints", "[", 
+      RowBox[{
+       RowBox[{"Self", "@", 
+        RowBox[{"GetLeftPoints", "[", "]"}]}], ",", "Name", ",", "Arg"}], 
+      "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"MakeAnchor", "[", 
+     RowBox[{
+      RowBox[{"Class", ":", "FigArrow"}], ",", "Self_Object"}], "]"}], "[", 
+    RowBox[{
+     RowBox[{"Name", ":", "Right"}], ",", "Arg_"}], "]"}], ":=", 
+   RowBox[{"FigMakeAnchorWrapper", "[", 
+    RowBox[{
+    "Class", ",", "Self", ",", "Name", ",", "Arg", ",", "\[IndentingNewLine]", 
+     RowBox[{"FigCurveAnchorFromPoints", "[", 
+      RowBox[{
+       RowBox[{"Self", "@", 
+        RowBox[{"GetRightPoints", "[", "]"}]}], ",", "Name", ",", "Arg"}], 
+      "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51517464803125*^9, 3.515174666234375*^9}, {
+  3.5151749220625*^9, 3.515174944015625*^9}, {3.51525866915625*^9, 
+  3.515258669703125*^9}, {3.51544000385975*^9, 3.5154400110785*^9}, {
+  3.515448814344125*^9, 3.515448817391*^9}, {3.516289741796875*^9, 
+  3.51628977209375*^9}, {3.51628986878125*^9, 3.516289871453125*^9}, {
+  3.51629102875*^9, 3.516291040484375*^9}, {3.5162911275625*^9, 
+  3.516291135671875*^9}, {3.51629151184375*^9, 3.51629151703125*^9}, {
+  3.519646790953125*^9, 3.519646798546875*^9}, {3.519727462109375*^9, 
+  3.51972746934375*^9}, {3.519727538671875*^9, 3.519727585484375*^9}, {
+  3.51973134821875*^9, 3.51973137290625*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"MakeBoundingBox", "[", 
+     RowBox[{
+      RowBox[{"Class", ":", "FigArrow"}], ",", "Self_Object"}], "]"}], "[", 
+    "]"}], ":=", 
+   RowBox[{"FigCurveBoundingBox", "[", 
+    RowBox[{"Self", "@", 
+     RowBox[{"GetPoints", "[", "]"}]}], "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51517464803125*^9, 3.515174666234375*^9}, {
+  3.5151749220625*^9, 3.515174944015625*^9}, {3.51525866915625*^9, 
+  3.515258669703125*^9}, {3.51544000385975*^9, 3.5154400110785*^9}, {
+  3.515448814344125*^9, 3.515448817391*^9}, {3.516289741796875*^9, 
+  3.51628977209375*^9}, {3.51628986878125*^9, 3.516289871453125*^9}, {
+  3.51629102875*^9, 3.516291040484375*^9}, {3.5162911275625*^9, 
+  3.516291135671875*^9}, {3.51629151184375*^9, 3.51629151703125*^9}, {
+  3.519646790953125*^9, 3.519646798546875*^9}, {3.519727462109375*^9, 
+  3.51972746934375*^9}, {3.519727538671875*^9, 3.51972755859375*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Arrow types", "Section",
+ CellChangeTimes->{{3.51972207175*^9, 3.519722084328125*^9}, 
+   3.5197223496875*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Arrow type registration", "Subsection",
+ CellChangeTimes->{{3.516558980796875*^9, 3.51655898225*^9}, {3.5165599925*^9,
+   3.5165600103125*^9}, {3.519722352859375*^9, 3.519722354078125*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$ArrowTypeRegistry", "=", 
+   RowBox[{"{", "}"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5165589234375*^9, 3.516558937640625*^9}, {
+   3.51655999684375*^9, 3.516560008*^9}, 3.51843342615625*^9, 
+   3.518433536890625*^9, {3.519722359484375*^9, 3.519722361125*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"DefineArrowType", ",", 
+    RowBox[{"{", "HoldRest", "}"}]}], "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.518534759703125*^9, 3.518534767765625*^9}, 
+   3.519722365765625*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DefineArrowType", "[", 
+    RowBox[{"Name_", ",", "Function_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"$ArrowTypeRegistry", ",", "Name"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ArrowTypeFunction", "[", "Name", "]"}], ":=", "Function"}], 
+      ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.516558901109375*^9, 3.516558972765625*^9}, {
+   3.516560001609375*^9, 3.516560030328125*^9}, {3.518432546015625*^9, 
+   3.5184325503125*^9}, {3.518432697015625*^9, 3.518432699125*^9}, 
+   3.518433427890625*^9, 3.518433537640625*^9, {3.5184345505625*^9, 
+   3.518434577984375*^9}, 3.518533365734375*^9, {3.518534357921875*^9, 
+   3.51853438428125*^9}, {3.519722369671875*^9, 3.519722377359375*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Common error generation parameter", "Subsection",
+ CellChangeTimes->{{3.519833959265625*^9, 3.519833964703125*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FlushLimit", "=", 
+   RowBox[{"5", "*", "Degree"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.519833947875*^9, 3.51983395296875*^9}, 
+   3.519834236140625*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Predefined arrow types", "Subsection",
+ CellChangeTimes->{{3.516560685375*^9, 3.516560688890625*^9}, {
+  3.519722563921875*^9, 3.519722566390625*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DefineArrowType", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Line", "|", "\"\<Line\>\""}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Function", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "Self", ",", "a1", ",", "a2", ",", "CanvasPoints", ",", "UsedWidth"}], 
+       "}"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "override", " ", "stored", " ", "curves", " ", "to", " ", "force", " ",
+         "zero", " ", "effective", " ", "width", " ", "for", " ", "Line", " ",
+         "arrow"}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Self", "@", 
+        RowBox[{"SetLeftPoints", "[", "CanvasPoints", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Self", "@", 
+        RowBox[{"SetRightPoints", "[", "CanvasPoints", "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", "curve", " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"FigLineElement", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Line", "[", "CanvasPoints", "]"}], "}"}], ",", 
+         "\[IndentingNewLine]", "FigOptions"}], "\[IndentingNewLine]", "]"}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", "arrowheads", " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"FigLineElement", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Line", "[", 
+           RowBox[{"FigCurveArrowheadPoints", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Self", "@", 
+              RowBox[{"MakeAnchor", "[", 
+               RowBox[{"Tail", ",", "None"}], "]"}]}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Self", "@", 
+              RowBox[{"MakeAnchor", "[", 
+               RowBox[{"Head", ",", "None"}], "]"}]}], ",", 
+             "\[IndentingNewLine]", "FigOptions"}], "\[IndentingNewLine]", 
+            "]"}], "]"}], "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Flatten", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"LineDashing", "\[Rule]", "None"}], ",", "FigOptions"}], 
+           "}"}], "]"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}], 
+   "\[IndentingNewLine]", "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5165602460625*^9, 3.516560289*^9}, {3.5165603365625*^9, 
+   3.51656034128125*^9}, 3.516560577203125*^9, 3.51853336703125*^9, 
+   3.51853439278125*^9, {3.519722394765625*^9, 3.5197224256875*^9}, {
+   3.519722487359375*^9, 3.51972253425*^9}, {3.519727276734375*^9, 
+   3.51972729953125*^9}, {3.519727480953125*^9, 3.51972751490625*^9}, 
+   3.519727804875*^9, {3.51972784228125*^9, 3.519727842921875*^9}, {
+   3.519731008375*^9, 3.519731047828125*^9}, {3.519731470765625*^9, 
+   3.5197314723125*^9}, {3.51973289246875*^9, 3.51973289396875*^9}, 
+   3.51983468828125*^9, {3.519836273640625*^9, 3.519836274375*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"General", "::", "arrownearflush"}], "=", 
+   "\"\<The direction of the arrow is close to the direction with which you \
+are trying to make its tail (or head) flush.  Consider setting \
+TailFlush->False (or HeadFlush->False).\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"General", "::", "arrowflush"}], "=", 
+   "\"\<The direction of the arrow is exactly along the direction with which \
+you are trying to make its tail (or head) flush.  Please set TailFlush->False \
+(or HeadFlush->False).\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.519833527125*^9, 3.51983361865625*^9}, {
+  3.519833798765625*^9, 3.519833836703125*^9}, {3.519834037453125*^9, 
+  3.51983403803125*^9}}],
+
+Cell[TextData[{
+ "Shape arrow geometry and kink geometry\n\nBase curve s",
+ StyleBox["egments, unit vectors, and endpoints",
+  FontFamily->"Courier"],
+ "\n",
+ StyleBox["     *-----*-----*---*----*> ",
+  FontFamily->"Courier"],
+ "                \n",
+ StyleBox["     p1 s1             s2 p2 \n        u1 >           u2 >\n       \
+ n1 v           n1 v\n\nThen n1f and n2f are flushed against endpoint anchor \
+line (but not necessarily in the same sense as endpoint anchor).",
+  FontFamily->"Courier"],
+ "\n                \n\[OpenCurlyDoubleQuote]Shape\[CloseCurlyDoubleQuote] \
+arrow points\n(shown for case of no arrowhead on tail but arrowhead on head)\n\
+                                                  *",
+ StyleBox["\n                      |\\                       \n     *------ \
+... -----* \\                      \n     |                   \\          \n  \
+   |                    *\n     |                   /          \n     *------ \
+... -----* /                      \n                      |/                  \
+     \n",
+  FontFamily->"Courier"],
+ "                                                  *",
+ StyleBox["\n   Points1        Points2\n\n",
+  FontFamily->"Courier"],
+ "\[OpenCurlyDoubleQuote]DoubleLine\[CloseCurlyDoubleQuote] arrow points\n\
+(shown for case of no arrowhead on tail but arrowhead on head)\n              \
+                                    *",
+ StyleBox["\n                       \\                       \n     *------ \
+... -------*                      \n                         \\          \n   \
+  X                    *\n                         /          \n     *------ \
+... -------*                      \n                       /                  \
+     \n",
+  FontFamily->"Courier"],
+ "                                                  *",
+ StyleBox["\n   Points1        Points2\n",
+  FontFamily->"Courier"],
+ StyleBox["   \nCalculation is more easily conceptualized on tail, where \
+sense of u1 is \[OpenCurlyDoubleQuote]into\[CloseCurlyDoubleQuote] arrow \
+shaft:\n\tArrow lip point: p1+h*u1-(d+l)*n1\n\t\[OpenCurlyDoubleQuote]Shape\
+\[CloseCurlyDoubleQuote] arrow upper waist point: p1+h*u1-d*n1\n\t\
+\[OpenCurlyDoubleQuote]DoubleLine\[CloseCurlyDoubleQuote] arrow lower waist \
+point: p1+d/(d+l)*( h*u1-(d+l)*n1 )\nOne \[OpenCurlyDoubleQuote]DoubleLine\
+\[CloseCurlyDoubleQuote], curve must be split for outline but not for fill.\n\
+\t\nHead is then obtained by 1\[Rule]2 and r",
+  FontFamily->"Times New Roman"],
+ "eversing sign on tangent vector (+h \[Rule] -h)."
+}], "Text",
+ CellChangeTimes->{{3.5665062836773925`*^9, 3.566506388213176*^9}, {
+   3.5665064497552843`*^9, 3.566506572137499*^9}, {3.5665066063951592`*^9, 
+   3.56650668741696*^9}, {3.566506836444022*^9, 3.566506903134139*^9}, {
+   3.566507050445198*^9, 3.566507099429284*^9}, {3.566507247473544*^9, 
+   3.5665073726325636`*^9}, {3.5665074371074767`*^9, 
+   3.5665075498176746`*^9}, {3.566507596009356*^9, 3.5665075984897604`*^9}, {
+   3.5665090345658827`*^9, 3.5665090807419634`*^9}, {3.566509117402028*^9, 
+   3.5665091552164946`*^9}, 3.622403907070938*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DefineArrowType", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\"\<Block\>\"", "|", "Block"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Function", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "Self", ",", "a1", ",", "a2", ",", "CanvasPoints", ",", "UsedWidth"}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Module", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "s1", ",", "s2", ",", "p1", ",", "p2", ",", "u1", ",", "u2", ",", 
+          "n1", ",", "n2", ",", "n1f", ",", "n2f", ",", "d", ",", "h", ",", 
+          "l", ",", "FlushFactor", ",", "FlushLimit", ",", "Points1", ",", 
+          "Points2", ",", "Points"}], "}"}], ",", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "extract", " ", "geometry", " ", "from", " ", "end", " ", 
+          "segments"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", "segments", " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"s1", "=", 
+          RowBox[{"CurveSegment", "[", 
+           RowBox[{"CanvasPoints", ",", "1"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"s2", "=", 
+          RowBox[{"CurveSegment", "[", 
+           RowBox[{"CanvasPoints", ",", 
+            RowBox[{"-", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", "endpoints", " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"p1", "=", 
+          RowBox[{"s1", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"p2", "=", 
+          RowBox[{"s2", "[", 
+           RowBox[{"[", 
+            RowBox[{"-", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", "tangents", " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"u1", "=", 
+          RowBox[{"SegmentTangent", "[", "s1", "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"u2", "=", 
+          RowBox[{"SegmentTangent", "[", "s2", "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", "normals", " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"n1", "=", 
+          RowBox[{"-", 
+           RowBox[{"Cross", "[", "u1", "]"}]}]}], ";", "\[IndentingNewLine]", 
+         
+         RowBox[{"n2", "=", 
+          RowBox[{"-", 
+           RowBox[{"Cross", "[", "u2", "]"}]}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"flush", " ", 
+           RowBox[{"normals", " ", "--"}], " ", "to", " ", "same", " ", 
+           "side", " ", "as"}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"n1f", "=", 
+          RowBox[{"FromPolar", "[", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", 
+             RowBox[{"AnchorAngle", "[", "a1", "]"}]}], "}"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"n1f", "*=", 
+          RowBox[{"Sign", "[", 
+           RowBox[{"n1f", ".", "n1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"n2f", "=", 
+          RowBox[{"FromPolar", "[", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", 
+             RowBox[{"AnchorAngle", "[", "a2", "]"}]}], "}"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"n2f", "*=", 
+          RowBox[{"Sign", "[", 
+           RowBox[{"n2f", ".", "n2"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "calculate", " ", "displaced", " ", "points", " ", "for", " ", 
+           "arrowheads"}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"note", ":", " ", 
+           RowBox[{
+            RowBox[{"points", " ", "arranged", " ", "curve"}], "-", 
+            RowBox[{"left", " ", "to", " ", "curve"}], "-", 
+            RowBox[{
+             RowBox[{"right", " ", "--"}], " ", "will", " ", "use", " ", 
+             "Reverse", " ", "later", " ", "to", " ", "ensure", " ", 
+             "counterclockwise", " ", "sense"}]}]}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"d", "=", 
+          RowBox[{"UsedWidth", "/", "2"}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"Points1", ":", " ", "tail"}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"h", "=", 
+          RowBox[{"(", 
+           RowBox[{"TailLength", "/.", "FigOptions"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"l", "=", 
+          RowBox[{"(", 
+           RowBox[{"TailLip", "/.", "FigOptions"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Points1", "=", 
+          RowBox[{"Which", "[", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{"case", ":", " ", "bare"}], ",", " ", 
+             RowBox[{"no", " ", "flush"}]}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"!", 
+              RowBox[{"(", 
+               RowBox[{"ShowTail", "/.", "FigOptions"}], ")"}]}], "&&", 
+             RowBox[{"!", 
+              RowBox[{"(", 
+               RowBox[{"TailFlush", "/.", "FigOptions"}], ")"}]}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"p1", "-", 
+               RowBox[{"d", "*", "n1"}]}], ",", 
+              RowBox[{"p1", "+", 
+               RowBox[{"d", "*", "n1"}]}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+              RowBox[{"case", ":", " ", "bare"}], ",", " ", "flush"}], " ", 
+             "*)"}], "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"!", 
+              RowBox[{"(", 
+               RowBox[{"ShowTail", "/.", "FigOptions"}], ")"}]}], "&&", 
+             RowBox[{"(", 
+              RowBox[{"TailFlush", "/.", "FigOptions"}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"FlushFactor", "=", 
+              RowBox[{"(", 
+               RowBox[{"n1f", ".", "n1"}], ")"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Chop", "[", "FlushFactor", "]"}], "\[Equal]", "0"}], 
+               ",", 
+               RowBox[{"FigError", "[", 
+                RowBox[{"Self", ",", "\"\<arrowflush\>\""}], "]"}]}], "]"}], 
+             ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"ArcSin", "[", "FlushFactor", "]"}], "<", 
+                "FlushLimit"}], ",", 
+               RowBox[{"FigMessage", "[", 
+                RowBox[{"Self", ",", "\"\<arrownearflush\>\""}], "]"}]}], 
+              "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"p1", "-", 
+                RowBox[{"d", "*", 
+                 RowBox[{"n1f", "/", "FlushFactor"}]}]}], ",", 
+               RowBox[{"p1", "+", 
+                RowBox[{"d", "*", 
+                 RowBox[{"n1f", "/", "FlushFactor"}]}]}]}], "}"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{"case", ":", " ", "arrowhead"}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"(", 
+             RowBox[{"ShowTail", "/.", "FigOptions"}], ")"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"p1", "+", 
+               RowBox[{"h", "*", "u1"}], "-", 
+               RowBox[{"d", "*", "n1"}]}], ",", 
+              RowBox[{"p1", "+", 
+               RowBox[{"h", "*", "u1"}], "-", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"d", "+", "l"}], ")"}], "*", "n1"}]}], ",", "p1", 
+              ",", 
+              RowBox[{"p1", "+", 
+               RowBox[{"h", "*", "u1"}], "+", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"d", "+", "l"}], ")"}], "*", "n1"}]}], ",", 
+              RowBox[{"p1", "+", 
+               RowBox[{"h", "*", "u1"}], "+", 
+               RowBox[{
+                RowBox[{"(", "d", ")"}], "*", "n1"}]}]}], "}"}]}], 
+           "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"Points2", ":", " ", "head"}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+           RowBox[{"related", " ", "by", " ", "1"}], "\[Rule]", 
+           RowBox[{
+           "2", " ", "and", " ", "reversed", " ", "sign", " ", "on", " ", 
+            "tangent", " ", "vector", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"+", "h"}], " ", "\[Rule]", " ", 
+              RowBox[{"-", "h"}]}], ")"}]}]}], "*)"}], "\[IndentingNewLine]", 
+         
+         RowBox[{"h", "=", 
+          RowBox[{"(", 
+           RowBox[{"HeadLength", "/.", "FigOptions"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"l", "=", 
+          RowBox[{"(", 
+           RowBox[{"HeadLip", "/.", "FigOptions"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Points2", "=", 
+          RowBox[{"Which", "[", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{"case", ":", " ", "bare"}], ",", " ", 
+             RowBox[{"no", " ", "flush"}]}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"ShowHead", "/.", "FigOptions"}], ")"}], "\[Equal]", 
+               "False"}], ")"}], "&&", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"HeadFlush", "/.", "FigOptions"}], ")"}], "\[Equal]", 
+               "False"}], ")"}]}], ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"p2", "-", 
+               RowBox[{"d", "*", "n2"}]}], ",", 
+              RowBox[{"p2", "+", 
+               RowBox[{"d", "*", "n2"}]}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+              RowBox[{"case", ":", " ", "bare"}], ",", " ", "flush"}], " ", 
+             "*)"}], "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"ShowHead", "/.", "FigOptions"}], ")"}], "\[Equal]", 
+               "False"}], ")"}], "&&", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"HeadFlush", "/.", "FigOptions"}], ")"}], "\[Equal]", 
+               "True"}], ")"}]}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"FlushFactor", "=", 
+              RowBox[{"(", 
+               RowBox[{"n2f", ".", "n2"}], ")"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Chop", "[", "FlushFactor", "]"}], "\[Equal]", "0"}], 
+               ",", 
+               RowBox[{"FigError", "[", 
+                RowBox[{"Self", ",", "\"\<arrowflush\>\""}], "]"}]}], "]"}], 
+             ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"ArcSin", "[", "FlushFactor", "]"}], "<", 
+                "FlushLimit"}], ",", 
+               RowBox[{"FigMessage", "[", 
+                RowBox[{"Self", ",", "\"\<arrownearflush\>\""}], "]"}]}], 
+              "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"p2", "-", 
+                RowBox[{"d", "*", 
+                 RowBox[{"n2f", "/", "FlushFactor"}]}]}], ",", 
+               RowBox[{"p2", "+", 
+                RowBox[{"d", "*", 
+                 RowBox[{"n2f", "/", "FlushFactor"}]}]}]}], "}"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"ShowHead", "/.", "FigOptions"}], ")"}], "\[Equal]", 
+              "True"}], ")"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{"case", ":", " ", "arrowhead"}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"p2", "-", 
+               RowBox[{"h", "*", "u2"}], "-", 
+               RowBox[{"d", "*", "n2"}]}], ",", 
+              RowBox[{"p2", "-", 
+               RowBox[{"h", "*", "u2"}], "-", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"d", "+", "l"}], ")"}], "*", "n2"}]}], ",", "p2", 
+              ",", 
+              RowBox[{"p2", "-", 
+               RowBox[{"h", "*", "u2"}], "+", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"d", "+", "l"}], ")"}], "*", "n2"}]}], ",", 
+              RowBox[{"p2", "-", 
+               RowBox[{"h", "*", "u2"}], "+", 
+               RowBox[{
+                RowBox[{"(", "d", ")"}], "*", "n2"}]}]}], "}"}]}], 
+           "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"amalgamated", " ", "points"}], "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"Points", "=", 
+          RowBox[{"Join", "[", "\[IndentingNewLine]", 
+           RowBox[{"Points1", ",", "\[IndentingNewLine]", 
+            RowBox[{"Take", "[", 
+             RowBox[{
+              RowBox[{"Self", "@", 
+               RowBox[{"GetRightPoints", "[", "]"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{"2", ",", 
+                RowBox[{"-", "2"}]}], "}"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Reverse", "@", "Points2"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"Reverse", "@", 
+             RowBox[{"Take", "[", 
+              RowBox[{
+               RowBox[{"Self", "@", 
+                RowBox[{"GetLeftPoints", "[", "]"}]}], ",", 
+               RowBox[{"{", 
+                RowBox[{"2", ",", 
+                 RowBox[{"-", "2"}]}], "}"}]}], "]"}]}]}], 
+           "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"emit", " ", "graphics"}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"FigPolygonElement", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"Polygon", "[", "Points", "]"}], "}"}], ",", 
+           "\[IndentingNewLine]", "FigOptions"}], "\[IndentingNewLine]", 
+          "]"}], ";"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       "]"}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5165602460625*^9, 3.516560289*^9}, {3.5165603365625*^9, 
+   3.51656034128125*^9}, 3.516560577203125*^9, 3.51853336703125*^9, 
+   3.51853439278125*^9, {3.519722394765625*^9, 3.5197224256875*^9}, {
+   3.519722487359375*^9, 3.51972253425*^9}, {3.519722611609375*^9, 
+   3.519722683421875*^9}, {3.519727304796875*^9, 3.519727305296875*^9}, {
+   3.519731533671875*^9, 3.5197317485625*^9}, 3.519731969921875*^9, {
+   3.519779577390625*^9, 3.519779772765625*^9}, {3.519779810484375*^9, 
+   3.519779815796875*^9}, {3.51983081965625*^9, 3.519830906796875*^9}, {
+   3.519830945828125*^9, 3.51983095771875*^9}, {3.51983105496875*^9, 
+   3.51983134890625*^9}, {3.519831400609375*^9, 3.519831828109375*^9}, {
+   3.519831858421875*^9, 3.519831976171875*^9}, {3.519832105296875*^9, 
+   3.519832156953125*^9}, {3.519832233796875*^9, 3.5198322874375*^9}, {
+   3.519832319359375*^9, 3.519832352796875*^9}, {3.51983320025*^9, 
+   3.51983331596875*^9}, {3.5198336434375*^9, 3.519833783796875*^9}, {
+   3.519833845234375*^9, 3.519833934140625*^9}, {3.519834066984375*^9, 
+   3.519834087625*^9}, {3.5198341550625*^9, 3.519834174625*^9}, {
+   3.519834692953125*^9, 3.51983471159375*^9}, {3.519834775640625*^9, 
+   3.519834803265625*^9}, 3.519834880875*^9, {3.5665067006457834`*^9, 
+   3.5665067426254573`*^9}, {3.566506800579559*^9, 3.566506827817207*^9}, {
+   3.566506921323771*^9, 3.566506950480222*^9}, {3.566506987202687*^9, 
+   3.566507022817549*^9}, {3.566509228302623*^9, 3.5665092355878353`*^9}, {
+   3.566509365099263*^9, 3.5665093767368836`*^9}, {3.5670339499186196`*^9, 
+   3.5670339538686805`*^9}, {3.622403973581031*^9, 3.622403998741066*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DefineArrowType", "[", "\[IndentingNewLine]", 
+   RowBox[{"\"\<DoubleLine\>\"", ",", "\[IndentingNewLine]", 
+    RowBox[{"Function", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "Self", ",", "a1", ",", "a2", ",", "CanvasPoints", ",", "UsedWidth"}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Module", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "s1", ",", "s2", ",", "p1", ",", "p2", ",", "u1", ",", "u2", ",", 
+          "n1", ",", "n2", ",", "n1f", ",", "n2f", ",", "d", ",", "h", ",", 
+          "l", ",", "FlushFactor", ",", "FlushLimit", ",", "Points1", ",", 
+          "Points2", ",", "Points", ",", "CurvePoints", ",", "FillPoints"}], 
+         "}"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "extract", " ", "geometry", " ", "from", " ", "end", " ", 
+          "segments"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", "segments", " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"s1", "=", 
+          RowBox[{"CurveSegment", "[", 
+           RowBox[{"CanvasPoints", ",", "1"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"s2", "=", 
+          RowBox[{"CurveSegment", "[", 
+           RowBox[{"CanvasPoints", ",", 
+            RowBox[{"-", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", "endpoints", " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"p1", "=", 
+          RowBox[{"s1", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"p2", "=", 
+          RowBox[{"s2", "[", 
+           RowBox[{"[", 
+            RowBox[{"-", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", "tangents", " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"u1", "=", 
+          RowBox[{"SegmentTangent", "[", "s1", "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"u2", "=", 
+          RowBox[{"SegmentTangent", "[", "s2", "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", "normals", " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"n1", "=", 
+          RowBox[{"-", 
+           RowBox[{"Cross", "[", "u1", "]"}]}]}], ";", "\[IndentingNewLine]", 
+         
+         RowBox[{"n2", "=", 
+          RowBox[{"-", 
+           RowBox[{"Cross", "[", "u2", "]"}]}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"flush", " ", 
+           RowBox[{"normals", " ", "--"}], " ", "to", " ", "same", " ", 
+           "side", " ", "as"}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"n1f", "=", 
+          RowBox[{"FromPolar", "[", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", 
+             RowBox[{"AnchorAngle", "[", "a1", "]"}]}], "}"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"n1f", "*=", 
+          RowBox[{"Sign", "[", 
+           RowBox[{"n1f", ".", "n1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"n2f", "=", 
+          RowBox[{"FromPolar", "[", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", 
+             RowBox[{"AnchorAngle", "[", "a2", "]"}]}], "}"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"n2f", "*=", 
+          RowBox[{"Sign", "[", 
+           RowBox[{"n2f", ".", "n2"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "calculate", " ", "displaced", " ", "points", " ", "for", " ", 
+           "arrowheads"}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"note", ":", " ", 
+           RowBox[{
+            RowBox[{"points", " ", "arranged", " ", "curve"}], "-", 
+            RowBox[{"left", " ", "to", " ", "curve"}], "-", 
+            RowBox[{
+             RowBox[{"right", " ", "--"}], " ", "will", " ", "use", " ", 
+             "Reverse", " ", "later", " ", "to", " ", "ensure", " ", 
+             "counterclockwise", " ", "sense"}]}]}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"d", "=", 
+          RowBox[{"UsedWidth", "/", "2"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"h", "=", 
+          RowBox[{"(", 
+           RowBox[{"HeadLength", "/.", "FigOptions"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"l", "=", 
+          RowBox[{"(", 
+           RowBox[{"HeadLip", "/.", "FigOptions"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"Points1", ":", " ", "tail"}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"h", "=", 
+          RowBox[{"(", 
+           RowBox[{"TailLength", "/.", "FigOptions"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"l", "=", 
+          RowBox[{"(", 
+           RowBox[{"TailLip", "/.", "FigOptions"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Points1", "=", 
+          RowBox[{"Which", "[", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{"case", ":", " ", "bare"}], ",", " ", 
+             RowBox[{"no", " ", "flush"}]}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"!", 
+              RowBox[{"(", 
+               RowBox[{"ShowTail", "/.", "FigOptions"}], ")"}]}], "&&", 
+             RowBox[{"!", 
+              RowBox[{"(", 
+               RowBox[{"TailFlush", "/.", "FigOptions"}], ")"}]}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"p1", "-", 
+               RowBox[{"d", "*", "n1"}]}], ",", "Split", ",", 
+              RowBox[{"p1", "+", 
+               RowBox[{"d", "*", "n1"}]}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+              RowBox[{"case", ":", " ", "bare"}], ",", " ", "flush"}], " ", 
+             "*)"}], "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"!", 
+              RowBox[{"(", 
+               RowBox[{"ShowTail", "/.", "FigOptions"}], ")"}]}], "&&", 
+             RowBox[{"(", 
+              RowBox[{"TailFlush", "/.", "FigOptions"}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"FlushFactor", "=", 
+              RowBox[{"(", 
+               RowBox[{"n1f", ".", "n1"}], ")"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Chop", "[", "FlushFactor", "]"}], "\[Equal]", "0"}], 
+               ",", 
+               RowBox[{"FigError", "[", 
+                RowBox[{"Self", ",", "\"\<arrowflush\>\""}], "]"}]}], "]"}], 
+             ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"ArcSin", "[", "FlushFactor", "]"}], "<", 
+                "FlushLimit"}], ",", 
+               RowBox[{"FigMessage", "[", 
+                RowBox[{"Self", ",", "\"\<arrownearflush\>\""}], "]"}]}], 
+              "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"p1", "-", 
+                RowBox[{"d", "*", 
+                 RowBox[{"n1f", "/", "FlushFactor"}]}]}], ",", "Split", ",", 
+               RowBox[{"p1", "+", 
+                RowBox[{"d", "*", 
+                 RowBox[{"n1f", "/", "FlushFactor"}]}]}]}], "}"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{"case", ":", " ", "arrowhead"}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"(", 
+             RowBox[{"ShowTail", "/.", "FigOptions"}], ")"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              StyleBox[
+               RowBox[{"p1", "+", 
+                RowBox[{
+                 RowBox[{"d", "/", 
+                  RowBox[{"(", 
+                   RowBox[{"d", "+", "l"}], ")"}]}], "*", 
+                 RowBox[{"(", " ", 
+                  RowBox[{
+                   RowBox[{"h", "*", "u1"}], "-", 
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"d", "+", "l"}], ")"}], "*", "n1"}]}], " ", 
+                  ")"}]}]}],
+               FontFamily->"Courier"], ",", 
+              RowBox[{"p1", "+", 
+               RowBox[{"h", "*", "u1"}], "-", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"d", "+", "l"}], ")"}], "*", "n1"}]}], ",", "p1", 
+              ",", 
+              RowBox[{"p1", "+", 
+               RowBox[{"h", "*", "u1"}], "+", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"d", "+", "l"}], ")"}], "*", "n1"}]}], ",", 
+              StyleBox[
+               RowBox[{"p1", "+", 
+                RowBox[{
+                 RowBox[{"d", "/", 
+                  RowBox[{"(", 
+                   RowBox[{"d", "+", "l"}], ")"}]}], "*", 
+                 RowBox[{"(", " ", 
+                  RowBox[{
+                   RowBox[{"h", "*", "u1"}], "+", 
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"d", "+", "l"}], ")"}], "*", "n1"}]}], " ", 
+                  ")"}]}]}],
+               FontFamily->"Courier"]}], "}"}]}], "\[IndentingNewLine]", 
+           "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"Points2", ":", " ", "head"}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+           RowBox[{"related", " ", "by", " ", "1"}], "\[Rule]", 
+           RowBox[{
+           "2", " ", "and", " ", "reversed", " ", "sign", " ", "on", " ", 
+            "tangent", " ", "vector", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"+", "h"}], " ", "\[Rule]", " ", 
+              RowBox[{"-", "h"}]}], ")"}]}]}], "*)"}], "\[IndentingNewLine]", 
+         
+         RowBox[{"h", "=", 
+          RowBox[{"(", 
+           RowBox[{"HeadLength", "/.", "FigOptions"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"l", "=", 
+          RowBox[{"(", 
+           RowBox[{"HeadLip", "/.", "FigOptions"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Points2", "=", 
+          RowBox[{"Which", "[", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{"case", ":", " ", "bare"}], ",", " ", 
+             RowBox[{"no", " ", "flush"}]}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"ShowHead", "/.", "FigOptions"}], ")"}], "\[Equal]", 
+               "False"}], ")"}], "&&", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"HeadFlush", "/.", "FigOptions"}], ")"}], "\[Equal]", 
+               "False"}], ")"}]}], ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"p2", "-", 
+               RowBox[{"d", "*", "n2"}]}], ",", "Split", ",", 
+              RowBox[{"p2", "+", 
+               RowBox[{"d", "*", "n2"}]}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+              RowBox[{"case", ":", " ", "bare"}], ",", " ", "flush"}], " ", 
+             "*)"}], "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"ShowHead", "/.", "FigOptions"}], ")"}], "\[Equal]", 
+               "False"}], ")"}], "&&", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"HeadFlush", "/.", "FigOptions"}], ")"}], "\[Equal]", 
+               "True"}], ")"}]}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"FlushFactor", "=", 
+              RowBox[{"(", 
+               RowBox[{"n2f", ".", "n2"}], ")"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Chop", "[", "FlushFactor", "]"}], "\[Equal]", "0"}], 
+               ",", 
+               RowBox[{"FigError", "[", 
+                RowBox[{"Self", ",", "\"\<arrowflush\>\""}], "]"}]}], "]"}], 
+             ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"ArcSin", "[", "FlushFactor", "]"}], "<", 
+                "FlushLimit"}], ",", 
+               RowBox[{"FigMessage", "[", 
+                RowBox[{"Self", ",", "\"\<arrownearflush\>\""}], "]"}]}], 
+              "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"p2", "-", 
+                RowBox[{"d", "*", 
+                 RowBox[{"n2f", "/", "FlushFactor"}]}]}], ",", "Split", ",", 
+               RowBox[{"p2", "+", 
+                RowBox[{"d", "*", 
+                 RowBox[{"n2f", "/", "FlushFactor"}]}]}]}], "}"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"ShowHead", "/.", "FigOptions"}], ")"}], "\[Equal]", 
+              "True"}], ")"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{"case", ":", " ", "arrowhead"}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              StyleBox[
+               RowBox[{"p2", "+", 
+                RowBox[{
+                 RowBox[{"d", "/", 
+                  RowBox[{"(", 
+                   RowBox[{"d", "+", "l"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"-", " ", "h"}], "*", "u2"}], "-", 
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"d", "+", "l"}], ")"}], "*", "n2"}]}], " ", 
+                  ")"}]}]}],
+               FontFamily->"Courier"], ",", 
+              RowBox[{"p2", "-", 
+               RowBox[{"h", "*", "u2"}], "-", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"d", "+", "l"}], ")"}], "*", "n2"}]}], ",", "p2", 
+              ",", 
+              RowBox[{"p2", "-", 
+               RowBox[{"h", "*", "u2"}], "+", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"d", "+", "l"}], ")"}], "*", "n2"}]}], ",", 
+              StyleBox[
+               RowBox[{"p2", "+", 
+                RowBox[{
+                 RowBox[{"d", "/", 
+                  RowBox[{"(", 
+                   RowBox[{"d", "+", "l"}], ")"}]}], "*", 
+                 RowBox[{"(", " ", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"-", "h"}], "*", "u2"}], "+", 
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"d", "+", "l"}], ")"}], "*", "n2"}]}], " ", 
+                  ")"}]}]}],
+               FontFamily->"Courier"]}], "}"}]}], "\[IndentingNewLine]", 
+           "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"amalgamated", " ", 
+           RowBox[{"points", " ", "--"}], " ", "to", " ", "be", " ", 
+           "split"}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"Points", "=", 
+          RowBox[{"Join", "[", "\[IndentingNewLine]", 
+           RowBox[{"Points1", ",", "\[IndentingNewLine]", 
+            RowBox[{"Take", "[", 
+             RowBox[{
+              RowBox[{"Self", "@", 
+               RowBox[{"GetRightPoints", "[", "]"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{"2", ",", 
+                RowBox[{"-", "2"}]}], "}"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Reverse", "@", "Points2"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"Reverse", "@", 
+             RowBox[{"Take", "[", 
+              RowBox[{
+               RowBox[{"Self", "@", 
+                RowBox[{"GetLeftPoints", "[", "]"}]}], ",", 
+               RowBox[{"{", 
+                RowBox[{"2", ",", 
+                 RowBox[{"-", "2"}]}], "}"}]}], "]"}]}]}], 
+           "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"FillPoints", "=", 
+          RowBox[{"PurgeOfDelimiter", "[", 
+           RowBox[{"Points", ",", "Split"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+           RowBox[{"must", " ", "close", " ", "curve", " ", "for", " ", 
+            RowBox[{"line", " ", "--"}], " ", "but", " ", "then", " ", 
+            "eliminate", " ", "any", " ", "one"}], "-", 
+           RowBox[{
+           "point", " ", "subcurves", " ", "which", " ", "are", " ", "left", 
+            " ", "since", " ", "they", " ", "will", " ", "appear", " ", "as", 
+            " ", "a", " ", "dark", " ", "dot"}]}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"CurvePoints", "=", 
+          RowBox[{"Select", "[", 
+           RowBox[{
+            RowBox[{"SplitByDelimiter", "[", 
+             RowBox[{
+              RowBox[{"AppendFirst", "[", "Points", "]"}], ",", "Split"}], 
+             "]"}], ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"Length", "[", "#", "]"}], "\[GreaterEqual]", "2"}], 
+              ")"}], "&"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Debug", "/.", "FigOptions"}], ")"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Print", "[", 
+             RowBox[{"\"\<Points: \>\"", ",", "Points"}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", 
+             RowBox[{"\"\<FillPoints: \>\"", ",", "FillPoints"}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", 
+             RowBox[{"\"\<CurvePoints: \>\"", ",", "CurvePoints"}], "]"}], 
+            ";"}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]",
+          "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"emit", " ", "graphics"}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"FigPolygonElement", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"Polygon", "[", "FillPoints", "]"}], "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Flatten", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"ShowLine", "\[Rule]", "False"}], ",", "FigOptions"}], 
+             "}"}], "]"}]}], "\[IndentingNewLine]", "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"FigLineElement", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"Line", "[", "CurvePoints", "]"}], "}"}], ",", 
+           "\[IndentingNewLine]", "FigOptions"}], "\[IndentingNewLine]", 
+          "]"}], ";"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+   "\[IndentingNewLine]", "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5165602460625*^9, 3.516560289*^9}, {3.5165603365625*^9, 
+   3.51656034128125*^9}, 3.516560577203125*^9, 3.51853336703125*^9, 
+   3.51853439278125*^9, {3.519722394765625*^9, 3.5197224256875*^9}, {
+   3.519722487359375*^9, 3.51972253425*^9}, {3.519722611609375*^9, 
+   3.519722683421875*^9}, {3.519727304796875*^9, 3.519727305296875*^9}, {
+   3.519731533671875*^9, 3.51973164284375*^9}, {3.519731701640625*^9, 
+   3.51973172790625*^9}, {3.51973186303125*^9, 3.519731899484375*^9}, {
+   3.51973198190625*^9, 3.519731982109375*^9}, 3.519834690703125*^9, {
+   3.566505989585676*^9, 3.5665060091793103`*^9}, {3.5665060681006136`*^9, 
+   3.566506084558643*^9}, 3.566507039119578*^9, 3.5665075609248943`*^9, {
+   3.566507613184986*^9, 3.5665076631362743`*^9}, {3.566509197866969*^9, 
+   3.566509213373397*^9}, {3.5665093265515957`*^9, 3.566509470134248*^9}, {
+   3.566509516263529*^9, 3.566509521458338*^9}, {3.5665096881134305`*^9, 
+   3.5665097394531207`*^9}, {3.5665100496128654`*^9, 3.566510064448491*^9}, {
+   3.5665107925049787`*^9, 3.5665108964947615`*^9}, {3.5665109505956564`*^9, 
+   3.566510951547258*^9}, {3.5666002700154476`*^9, 3.5666003379813347`*^9}, 
+   3.566600498188498*^9, {3.5670339614287963`*^9, 3.5670339655238595`*^9}, {
+   3.6224040076610785`*^9, 3.6224040229210997`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SquigglePoints", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Pia_List", ",", "Pfa_List"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"MinBuffer1_", ",", "MinBuffer2_"}], "}"}], ",", "HalfWidth_", 
+     ",", "SquiggleWavelength_", ",", "SquiggleSide_", ",", "PlotPoints_"}], 
+    "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "theta", ",", "d", ",", "dp", ",", "Delta", ",", "x", ",", "PointList", 
+       ",", "s"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"s", "=", 
+       RowBox[{"Switch", "[", 
+        RowBox[{"SquiggleSide", ",", "Right", ",", 
+         RowBox[{"+", "1"}], ",", "Left", ",", 
+         RowBox[{"-", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"theta", "=", 
+       RowBox[{"VectorArcTan", "[", 
+        RowBox[{"Pfa", "-", "Pia"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"d", "=", 
+       RowBox[{"VectorLength", "[", 
+        RowBox[{"Pfa", "-", "Pia"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"dp", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"SquiggleWavelength", "/", "2"}], ")"}], "*", 
+        RowBox[{"Floor", "[", 
+         RowBox[{
+          RowBox[{"Max", "[", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"d", "-", "MinBuffer1", "-", "MinBuffer2"}], ")"}], ",", 
+            "0"}], "]"}], "/", 
+          RowBox[{"(", 
+           RowBox[{"SquiggleWavelength", "/", "2"}], ")"}]}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Delta", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"d", "-", "MinBuffer1", "-", "MinBuffer2", "-", "dp"}], 
+         ")"}], "/", "2"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"PointList", "=", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Pia", "+", 
+          RowBox[{
+           RowBox[{"RotationTransform", "[", 
+            RowBox[{"theta", ",", 
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0"}], "}"}]}], "]"}], "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"x", "+", "MinBuffer1", "+", "Delta"}], ",", 
+             RowBox[{"s", "*", "HalfWidth", "*", 
+              RowBox[{"Sin", "[", 
+               RowBox[{"2", "*", 
+                RowBox[{"Pi", "/", "SquiggleWavelength"}], "*", "x"}], 
+               "]"}]}]}], "}"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "0", ",", "dp", ",", 
+           RowBox[{"SquiggleWavelength", "/", "PlotPoints"}]}], "}"}]}], 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{"{", "Pia", "}"}], ",", "PointList", ",", 
+        RowBox[{"{", "Pfa", "}"}]}], "]"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5665116703465204`*^9, 3.5665116848389463`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"General", "::", "squiggletwopoint"}], "=", 
+   "\"\<A squiggle arrow can only be drawn for a single line segment, but the \
+given curve has `1` points.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DefineArrowType", "[", "\[IndentingNewLine]", 
+   RowBox[{"\"\<Squiggle\>\"", ",", "\[IndentingNewLine]", 
+    RowBox[{"Function", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "Self", ",", "a1", ",", "a2", ",", "CanvasPoints", ",", "UsedWidth"}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Module", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+        "{", "\[IndentingNewLine]", "CurvePoints", "\[IndentingNewLine]", 
+         "}"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"validate", " ", "special", " ", "options"}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"FigCheckOption", "[", 
+          RowBox[{"Self", ",", "SquiggleBuffer", ",", 
+           RowBox[{"_", "?", "NonNegative"}], ",", "FigOptions"}], "]"}], ";",
+          "\[IndentingNewLine]", 
+         RowBox[{"FigCheckOption", "[", 
+          RowBox[{"Self", ",", "SquiggleWavelength", ",", 
+           RowBox[{"_", "?", "Positive"}], ",", "FigOptions"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"FigCheckOption", "[", 
+          RowBox[{"Self", ",", "SquiggleSide", ",", 
+           RowBox[{"Left", "|", "Right"}], ",", "FigOptions"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"FigCheckOption", "[", 
+          RowBox[{"Self", ",", "PlotPoints", ",", 
+           RowBox[{
+            RowBox[{"(", "_Integer", ")"}], "?", "Positive"}], ",", 
+           "FigOptions"}], "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Length", "[", "CanvasPoints", "]"}], "\[NotEqual]", 
+            "2"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"FigError", "[", 
+            RowBox[{"Self", ",", "\"\<squiggletwopoint\>\"", ",", 
+             RowBox[{"Length", "[", "CanvasPoints", "]"}]}], "]"}]}], 
+          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", "curve", " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"CurvePoints", "=", 
+          RowBox[{"SquigglePoints", "[", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", "endpoints", " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"CanvasPoints", ",", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+             "required", " ", "insets", " ", "before", " ", "squiggling"}], 
+             " ", "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"ShowTail", "/.", "FigOptions"}], ")"}], ",", 
+                 RowBox[{"(", 
+                  RowBox[{"TailLength", "/.", "FigOptions"}], ")"}], ",", 
+                 "0"}], "]"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"SquiggleBuffer", "/.", "FigOptions"}], ")"}]}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"ShowHead", "/.", "FigOptions"}], ")"}], ",", 
+                 RowBox[{"(", 
+                  RowBox[{"HeadLength", "/.", "FigOptions"}], ")"}], ",", 
+                 "0"}], "]"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"SquiggleBuffer", "/.", "FigOptions"}], ")"}]}]}], 
+             "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+              RowBox[{"half", "-", "width"}], ",", " ", 
+              RowBox[{"as", " ", "squiggle", " ", "amplitude"}]}], " ", 
+             "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"UsedWidth", "/", "2"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{"squiggle", " ", "wavelength"}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"(", 
+             RowBox[{"SquiggleWavelength", "/.", "FigOptions"}], ")"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{"squiggle", " ", "side"}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"(", 
+             RowBox[{"SquiggleSide", "/.", "FigOptions"}], ")"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+             "points", " ", "per", " ", "squiggle", " ", "wavelength"}], " ", 
+             "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"(", 
+             RowBox[{"PlotPoints", "/.", "FigOptions"}], ")"}]}], 
+           "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"FigLineElement", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"Line", "[", "CurvePoints", "]"}], "}"}], ",", 
+           "\[IndentingNewLine]", "FigOptions"}], "\[IndentingNewLine]", 
+          "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", "arrowheads", " ", "*)"}], "\[IndentingNewLine]", 
+         
+         RowBox[{"FigLineElement", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"Line", "[", 
+             RowBox[{"FigCurveArrowheadPoints", "[", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Self", "@", 
+                RowBox[{"MakeAnchor", "[", 
+                 RowBox[{"Tail", ",", "None"}], "]"}]}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"Self", "@", 
+                RowBox[{"MakeAnchor", "[", 
+                 RowBox[{"Head", ",", "None"}], "]"}]}], ",", 
+               "\[IndentingNewLine]", "FigOptions"}], "\[IndentingNewLine]", 
+              "]"}], "]"}], "}"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Flatten", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"LineDashing", "\[Rule]", "None"}], ",", "FigOptions"}],
+              "}"}], "]"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+   "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5665077659404545`*^9, 3.566507790276497*^9}, {
+   3.5665080188480988`*^9, 3.566508025961711*^9}, 3.5665109894865246`*^9, {
+   3.566511213908519*^9, 3.566511341750743*^9}, {3.5665117390958414`*^9, 
+   3.5665119377621903`*^9}, {3.5665119709122486`*^9, 
+   3.5665119982902966`*^9}, {3.5665120501603875`*^9, 3.566512240527522*^9}, {
+   3.5665122716807766`*^9, 3.5665122913836117`*^9}, {3.5665126238893957`*^9, 
+   3.5665126566494527`*^9}, {3.5665127875180826`*^9, 3.566512790934489*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DefineArrowType", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<Conversion\>\"", ",", 
+      RowBox[{"TypeOptions___", "?", "OptionQ"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Function", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "Self", ",", "a1", ",", "a2", ",", "CanvasPoints", ",", "UsedWidth"}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Module", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"SpecialOptions", "=", 
+          RowBox[{"Flatten", "[", 
+           RowBox[{"{", 
+            RowBox[{"TypeOptions", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"ConversionSide", "\[Rule]", "Left"}], ",", 
+               RowBox[{"ConversionCoefficient", "\[Rule]", "None"}], ",", 
+               RowBox[{"ConversionFillColor", "\[Rule]", "Default"}]}], 
+              "}"}]}], "}"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"validate", " ", "special", " ", "options"}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"FigCheckOption", "[", 
+           RowBox[{"Self", ",", "\"\<SquiggleBuffer\>\"", ",", 
+            RowBox[{"_", "?", "NonNegative"}], ",", "SpecialOptions"}], "]"}],
+           ";"}], "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"ConversionCoeff", "/.", "FullOpts"}], ")"}], "=!=", 
+               "None"}], ")"}], "&&", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"HeadLip", "/.", "FullOpts"}], ")"}], "=!=", "0"}], 
+              ")"}]}], ",", 
+            RowBox[{"Message", "[", 
+             RowBox[{"Caller", "::", "conversionlip"}], "]"}]}], "]"}], ";"}],
+          "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", "TODO", " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Abort", "[", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5165602460625*^9, 3.516560289*^9}, {3.5165603365625*^9, 
+   3.51656034128125*^9}, 3.516560577203125*^9, 3.51853336703125*^9, 
+   3.51853439278125*^9, {3.519722394765625*^9, 3.5197224256875*^9}, {
+   3.519722487359375*^9, 3.51972253425*^9}, {3.519722611609375*^9, 
+   3.519722683421875*^9}, {3.519727304796875*^9, 3.519727305296875*^9}, {
+   3.519731533671875*^9, 3.51973164284375*^9}, {3.519731701640625*^9, 
+   3.51973172790625*^9}, {3.519731782515625*^9, 3.519731793484375*^9}, {
+   3.519731907703125*^9, 3.51973199009375*^9}, 3.519834697109375*^9, {
+   3.5665060460421753`*^9, 3.5665060479921784`*^9}, {3.566507694055528*^9, 
+   3.5665076954127307`*^9}, {3.566507889695472*^9, 3.56650797382642*^9}, {
+   3.5665125299616303`*^9, 3.5665125327384353`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["End package", "Section",
+ CellChangeTimes->{{3.514823047703125*^9, 3.51482305353125*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Exit private context", "Subsection",
+ CellChangeTimes->{{3.514823086015625*^9, 3.5148231094375*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]], "Input",
+ InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Exit package context", "Subsection",
+ CellChangeTimes->{{3.514823092890625*^9, 3.51482312965625*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Protect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<*\>\""}], "]"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Unprotect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<$*\>\""}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"EndPackage", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+WindowToolbars->"RulerBar",
+WindowSize->{1672, 928},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+DockedCells->(FrontEndExecute[{
+   FrontEnd`NotebookApply[
+    FrontEnd`InputNotebook[], #, Placeholder]}]& ),
+PrintingCopies->1,
+PrintingPageRange->{1, 2},
+PageHeaders->{{
+   Cell[
+    TextData[{
+      Cell[
+       TextData[{
+         CounterBox["Page"]}], "PageNumber"], " ", 
+      Cell[
+      " ", "Header", CellFrame -> {{0.5, 0}, {0, 0}}, CellFrameMargins -> 4], 
+      
+      Cell[
+       TextData[{
+         ValueBox["FileName"]}], "Header"]}], 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, None}, {
+   Cell[
+    TextData[{"LevelScheme 3.45 source code"}], "Header"], None, 
+   "\"\"Cell[TextData[{Cell[TextData[{ValueBox[\"FileName\"]}], \"Header\"], \
+Cell[\" \", \"Header\", CellFrame -> {{0, 0.5}, {0, 0}}, CellFrameMargins -> \
+4], \" \", Cell[TextData[{CounterBox[\"Page\"]}], \"PageNumber\"]}], \
+CellMargins -> {{Inherited, 0}, {Inh"}},
+PrintingOptions->{"FirstPageFooter"->False,
+"PrintingMargins"->{{36, 36}, {19.125, 36}}},
+ShowSelection->True,
+Magnification->1.25,
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 34, 0, 88, "Section"],
+Cell[604, 24, 2999, 70, 212, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3640, 99, 32, 0, 88, "Section"],
+Cell[CellGroupData[{
+Cell[3697, 103, 48, 0, 46, "Subsection"],
+Cell[3748, 105, 1516, 24, 35, "Input",
+ InitializationCell->True],
+Cell[5267, 131, 184, 5, 35, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5488, 141, 100, 1, 46, "Subsection"],
+Cell[5591, 144, 905, 17, 35, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6533, 166, 98, 1, 46, "Subsection"],
+Cell[6634, 169, 103, 1, 34, "Text"],
+Cell[6740, 172, 932, 19, 102, "Input",
+ InitializationCell->True],
+Cell[7675, 193, 88, 1, 34, "Text"],
+Cell[7766, 196, 990, 19, 124, "Input",
+ InitializationCell->True],
+Cell[8759, 217, 87, 1, 34, "Text"],
+Cell[8849, 220, 913, 24, 102, "Input",
+ InitializationCell->True],
+Cell[9765, 246, 107, 1, 42, "Text"],
+Cell[9875, 249, 794, 19, 100, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10706, 273, 43, 0, 57, "Subsection"],
+Cell[10752, 275, 183, 4, 43, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10972, 284, 99, 1, 57, "Subsection"],
+Cell[11074, 287, 163, 3, 43, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11286, 296, 93, 1, 110, "Section"],
+Cell[CellGroupData[{
+Cell[11404, 301, 102, 1, 57, "Subsection"],
+Cell[11509, 304, 171, 4, 42, "Text"],
+Cell[11683, 310, 7417, 174, 1114, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19149, 490, 138, 2, 88, "Section"],
+Cell[CellGroupData[{
+Cell[19312, 496, 103, 1, 46, "Subsection"],
+Cell[19418, 499, 231, 4, 34, "Text"],
+Cell[19652, 505, 3320, 63, 608, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23009, 573, 96, 1, 46, "Subsection"],
+Cell[23108, 576, 218, 5, 34, "Text"],
+Cell[23329, 583, 224, 5, 34, "Text"],
+Cell[23556, 590, 7633, 172, 938, "Input",
+ InitializationCell->True],
+Cell[31192, 764, 2801, 48, 80, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34030, 817, 141, 2, 46, "Subsection"],
+Cell[34174, 821, 218, 5, 34, "Text"],
+Cell[34395, 828, 2606, 62, 212, "Input",
+ InitializationCell->True],
+Cell[37004, 892, 971, 20, 35, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38024, 918, 116, 2, 88, "Section"],
+Cell[CellGroupData[{
+Cell[38165, 924, 195, 2, 46, "Subsection"],
+Cell[38363, 928, 327, 7, 35, "Input",
+ InitializationCell->True],
+Cell[38693, 937, 273, 7, 35, "Input",
+ InitializationCell->True],
+Cell[38969, 946, 986, 21, 124, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39992, 972, 121, 1, 46, "Subsection"],
+Cell[40116, 975, 220, 6, 35, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40373, 986, 156, 2, 46, "Subsection"],
+Cell[40532, 990, 3074, 62, 586, "Input",
+ InitializationCell->True],
+Cell[43609, 1054, 779, 17, 182, "Input",
+ InitializationCell->True],
+Cell[44391, 1073, 3089, 54, 1132, "Text"],
+Cell[47483, 1129, 16767, 382, 2327, "Input",
+ InitializationCell->True],
+Cell[64253, 1513, 20822, 479, 2740, "Input",
+ InitializationCell->True],
+Cell[85078, 1994, 3012, 75, 375, "Input",
+ InitializationCell->True],
+Cell[88093, 2071, 7081, 146, 1530, "Input",
+ InitializationCell->True],
+Cell[95177, 2219, 3200, 70, 457, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[98426, 2295, 95, 1, 110, "Section"],
+Cell[CellGroupData[{
+Cell[98546, 2300, 106, 1, 57, "Subsection"],
+Cell[98655, 2303, 96, 3, 43, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[98788, 2311, 107, 1, 57, "Subsection"],
+Cell[98898, 2314, 406, 12, 100, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

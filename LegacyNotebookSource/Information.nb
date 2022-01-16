@@ -1,0 +1,466 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 5.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     18133,        457]
+NotebookOptionsPosition[     15320,        361]
+NotebookOutlinePosition[     16734,        406]
+CellTagsIndexPosition[     16691,        403]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Header comments", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Title", ":", " ", "Information"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Context", ":", " ", "SciDraw`"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Summary", ":", " ", 
+     RowBox[{
+     "Package", " ", "version", " ", "information", " ", "and", " ", 
+      "history", " ", "comments"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", 
+     RowBox[{"Author", ":", " ", 
+      RowBox[{"Mark", " ", 
+       RowBox[{"A", ".", " ", "Caprio"}]}]}]}], ",", " ", 
+    RowBox[{"Department", " ", "of", " ", "Physics"}], ",", " ", 
+    RowBox[{"University", " ", "of", " ", "Notre", " ", "Dame"}]}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", "Copyright", ":", " ", 
+     RowBox[{"Copyright", " ", "2015"}]}], ",", " ", 
+    RowBox[{"Mark", " ", 
+     RowBox[{"A", ".", " ", "Caprio"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Package", " ", "Version"}], ":", " ", 
+    RowBox[{"See", " ", "$FigVersionString", " ", 
+     RowBox[{"below", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Mathematica", " ", "Version"}], ":", " ", "10.0"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", "Discussion", ":", "  ", "\n", "\n", 
+     RowBox[{
+     "Use", " ", "of", " ", "the", " ", "software", " ", "is", " ", "subject",
+       " ", "to", " ", "the", " ", "CPCPL", " ", "Non"}]}], "\[Dash]", 
+    RowBox[{"Profit", " ", "Use", " ", "Licence", " ", "Agreement", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"http", ":"}], "//", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"cpc", ".", "cs", ".", "qub", ".", "ac", ".", "uk"}], "/", 
+          "licence"}], "/", 
+         RowBox[{"licence", ".", "html"}]}]}], ")"}], ".", "\n", "\n", 
+      "Updates"}], " ", "and", " ", "further", " ", "information", " ", "may",
+      " ", "be", " ", "obtained", " ", "through", " ", "the", " ", "SciDraw", 
+     " ", "home", " ", "page", " ", "at", " ", 
+     RowBox[{"scidraw", ".", "nd", ".", "edu", ".", "  ", "\n", "\n", "If"}], 
+     " ", "you", " ", "modify", " ", "the", " ", "software"}], ",", " ", 
+    RowBox[{"please", " ", "change", " ", "$FigVersionString", " ", "below"}],
+     ",", " ", 
+    RowBox[{
+    "and", " ", "thus", " ", "the", " ", "message", " ", "displayed", " ", 
+     "when", " ", "the", " ", "package", " ", "is", " ", "loaded"}], ",", " ", 
+    RowBox[{
+    "to", " ", "clearly", " ", "indicate", " ", "that", " ", "the", " ", 
+     "package", " ", "is", " ", "a", " ", "modified", " ", 
+     RowBox[{"version", "."}]}]}], " ", "\n", "\n", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", "History", ":", "  ", 
+     RowBox[{"Successor", " ", "to", " ", "LevelScheme", " ", "package"}]}], 
+    ",", " ", 
+    RowBox[{
+    "for", " ", "which", " ", "early", " ", "ancestor", " ", "code", " ", 
+     "was", " ", "begun", " ", "July", " ", "1999.", "  ", "Development", " ",
+      "of", " ", "SciDraw", " ", "begun", " ", "May", " ", "2011."}]}], "\n", 
+   "*)"}]}]], "Input",
+ InitializationCell->True,
+ AutoIndent->False,
+ CellChangeTimes->{{3.395093723328125*^9, 3.39509375184375*^9}, {
+   3.398545735296875*^9, 3.39854574365625*^9}, 3.398799700609375*^9, {
+   3.43024739209375*^9, 3.43024739990625*^9}, 3.430247813015625*^9, {
+   3.436819738734375*^9, 3.436819746828125*^9}, 3.436820195484375*^9, {
+   3.4439959535*^9, 3.4439959773125*^9}, {3.471089562875*^9, 
+   3.471089568359375*^9}, {3.471089636203125*^9, 3.471089639046875*^9}, {
+   3.48681044459375*^9, 3.4868104458125*^9}, {3.489687811140625*^9, 
+   3.489687812484375*^9}, {3.497222348765625*^9, 3.497222354953125*^9}, 
+   3.497224390546875*^9, {3.497299514859375*^9, 3.497299515046875*^9}, {
+   3.49903536659375*^9, 3.49903536784375*^9}, {3.503265433671875*^9, 
+   3.5032654415*^9}, {3.50612390383225*^9, 3.5061239087385*^9}, 
+   3.507509920109375*^9, {3.51481857221875*^9, 3.514818754140625*^9}, 
+   3.514822657671875*^9, {3.514823216234375*^9, 3.51482323709375*^9}, {
+   3.51482326921875*^9, 3.514823311671875*^9}, {3.514823375546875*^9, 
+   3.514823396890625*^9}, {3.5150157685*^9, 3.51501576865625*^9}, 
+   3.515275347609375*^9, {3.51542285160975*^9, 3.515422941891*^9}, {
+   3.515778155609375*^9, 3.515778156125*^9}, {3.582815999605637*^9, 
+   3.5828160055648475`*^9}, {3.5828160971058083`*^9, 
+   3.5828160977766094`*^9}, {3.5828161663231297`*^9, 3.5828162287700396`*^9}, 
+   3.58281626890891*^9, {3.5828163279394135`*^9, 3.582816521458154*^9}, {
+   3.5828165942938824`*^9, 3.582816628723143*^9}, 3.5828168436135206`*^9, {
+   3.5828169704711437`*^9, 3.5828169747923517`*^9}, {3.5981939703041253`*^9, 
+   3.598193971146527*^9}, {3.621642633251055*^9, 3.6216426467606783`*^9}, 
+   3.6365833439086204`*^9},
+ LanguageCategory->"NaturalLanguage"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Begin package", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Package context definition", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeginPackage", "[", "\"\<SciDraw`\>\"", "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.395087747453125*^9, 3.39508775096875*^9}, {
+   3.39509064290625*^9, 3.395090643234375*^9}, 3.395090710546875*^9, {
+   3.395091175015625*^9, 3.395091179703125*^9}, {3.395093472375*^9, 
+   3.39509347784375*^9}, {3.395093608140625*^9, 3.3950936085*^9}, {
+   3.395519039875*^9, 3.395519061546875*^9}, {3.495041989453125*^9, 
+   3.495042010953125*^9}, {3.495042158078125*^9, 3.495042163671875*^9}, {
+   3.497222416421875*^9, 3.497222462578125*^9}, {3.497222963890625*^9, 
+   3.497222994640625*^9}, 3.497223030953125*^9, {3.514818766734375*^9, 
+   3.514818800625*^9}, {3.5148197104375*^9, 3.514819710671875*^9}, {
+   3.514819841546875*^9, 3.51481994284375*^9}, {3.514819979578125*^9, 
+   3.514820025046875*^9}, {3.5148201316875*^9, 3.514820154671875*^9}, {
+   3.51482025234375*^9, 3.514820275171875*^9}, {3.514820309703125*^9, 
+   3.514820406921875*^9}, {3.51482051775*^9, 3.514820571328125*^9}, {
+   3.514820843296875*^9, 3.51482087146875*^9}, 3.51482140903125*^9, {
+   3.514821446859375*^9, 3.514821449890625*^9}, 3.514821641390625*^9, {
+   3.514821674609375*^9, 3.514821798390625*^9}, {3.514823407859375*^9, 
+   3.514823433140625*^9}, 3.51501104184375*^9, 3.515275343*^9, {
+   3.515276331390625*^9, 3.51527633303125*^9}, {3.51542275479725*^9, 
+   3.515422755141*^9}, 3.515423676219125*^9, 3.515423771687875*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Unprotect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<*\>\""}], "]"}], "]"}], ";"}]], "Input",
+ InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Begin private context", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.514823442859375*^9, 3.5148234431875*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Dependencies", "Subsection",
+ CellChangeTimes->{{3.514821147359375*^9, 3.51482114978125*^9}}],
+
+Cell[BoxData[""], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51482113128125*^9, 3.514821158515625*^9}, {
+  3.514823452421875*^9, 3.51482349575*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Information", "Section",
+ CellChangeTimes->{{3.515423241625375*^9, 3.515423257844125*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["External context list", "Subsection",
+ CellChangeTimes->{{3.515423684687875*^9, 3.515423689437875*^9}, 
+   3.515423953187875*^9}],
+
+Cell["\<\
+These will be loaded in the BeginPackage statement of all SciDraw package \
+files.\
+\>", "Text",
+ CellChangeTimes->{{3.515423694781625*^9, 3.515423746516*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$ExternalContexts", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Units`\>\"", ",", "\"\<MathObject`\>\"", ",", 
+     "\"\<MathObject`Methods`\>\"", ",", "\"\<MathObject`InstanceData`\>\"", 
+     ",", "\"\<InheritOptions`\>\"", ",", "\"\<NamedColors`\>\"", ",", 
+     "\"\<CustomTicks`\>\"", ",", "\"\<BlockOptions`\>\"", ",", 
+     "\"\<Profile`\>\"", ",", "\"\<StyleOptions`\>\""}], "}"}]}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.515423683562875*^9, {3.515537827625*^9, 3.515537830875*^9}, {
+   3.523444006328125*^9, 3.5234440089375*^9}, {3.566256520515878*^9, 
+   3.5662565264126883`*^9}, 3.5791107706416945`*^9, {3.5791121762467527`*^9, 
+   3.5791121804517584`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Version information", "Subsection",
+ CellChangeTimes->{{3.398810358859375*^9, 3.3988103635625*^9}, {
+  3.51577820328125*^9, 3.515778204609375*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$FigVersionNumber", "=", "0.0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$FigReleaseNumber", "=", "6"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$FigVersionString", "=", "\"\<0.0.7 (March 28, 2015)\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "$FigVersionURL", "=", 
+   "\"\<http://scidraw.nd.edu/landing/scidraw-0.0.7.html\>\""}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.395093759515625*^9, 3.39509380640625*^9}, {
+   3.3955242503125*^9, 3.3955242775*^9}, {3.395524400171875*^9, 
+   3.3955244023125*^9}, {3.396268347734375*^9, 3.396268400109375*^9}, {
+   3.396543732125*^9, 3.3965437368125*^9}, {3.39687832734375*^9, 
+   3.39687832746875*^9}, {3.398545138328125*^9, 3.398545160234375*^9}, 
+   3.39854552634375*^9, {3.398801181671875*^9, 3.398801186328125*^9}, 
+   3.39881022871875*^9, 3.39881026321875*^9, {3.39881036725*^9, 
+   3.3988103698125*^9}, {3.399734881765625*^9, 3.399734881921875*^9}, {
+   3.41055887696875*^9, 3.41055888021875*^9}, {3.41124724875*^9, 
+   3.411247274984375*^9}, {3.4112473493125*^9, 3.41124735415625*^9}, {
+   3.417537949140625*^9, 3.417537959390625*^9}, 3.417538129125*^9, {
+   3.4206605533125*^9, 3.420660554875*^9}, {3.421623418359375*^9, 
+   3.42162341925*^9}, {3.42445916384375*^9, 3.424459166046875*^9}, {
+   3.426015357734375*^9, 3.426015357890625*^9}, {3.428252598609375*^9, 
+   3.4282525996875*^9}, {3.430247413375*^9, 3.430247421078125*^9}, {
+   3.43126081609375*^9, 3.43126081928125*^9}, {3.43448491978125*^9, 
+   3.43448492225*^9}, {3.436819946296875*^9, 3.436819956078125*^9}, {
+   3.438373670139573*^9, 3.438373677030198*^9}, {3.441572541802*^9, 
+   3.441572543036375*^9}, {3.443996005875*^9, 3.443996013796875*^9}, {
+   3.450567436052453*^9, 3.4505674452866507`*^9}, {3.456346719859375*^9, 
+   3.45634672090625*^9}, {3.45998300846875*^9, 3.459983043234375*^9}, 
+   3.46012539846875*^9, {3.46083061403125*^9, 3.460830623890625*^9}, 
+   3.461088025125*^9, {3.46108849065625*^9, 3.4610884910625*^9}, {
+   3.464467969984375*^9, 3.46446797225*^9}, {3.467757918078125*^9, 
+   3.467757920484375*^9}, {3.46995764359375*^9, 3.469957647328125*^9}, {
+   3.47108957571875*^9, 3.47108958221875*^9}, {3.4799293410625*^9, 
+   3.47992934909375*^9}, {3.48252656396875*^9, 3.482526564265625*^9}, {
+   3.48468697009375*^9, 3.484686971515625*^9}, {3.486810453390625*^9, 
+   3.486810453578125*^9}, {3.48883837915625*^9, 3.488838380359375*^9}, {
+   3.489689744921875*^9, 3.489689746640625*^9}, {3.492012690578125*^9, 
+   3.49201269071875*^9}, {3.49566046240625*^9, 3.495660495828125*^9}, {
+   3.496875374421875*^9, 3.49687537915625*^9}, 3.497222361828125*^9, 
+   3.4972995071875*^9, 3.49738323434375*^9, {3.497534234*^9, 
+   3.49753423409375*^9}, {3.499035376390625*^9, 3.499035383484375*^9}, {
+   3.502552490671875*^9, 3.5025524978125*^9}, {3.50326541846875*^9, 
+   3.503265421390625*^9}, {3.505410662140625*^9, 3.505410662375*^9}, {
+   3.506123912972875*^9, 3.5061239187385*^9}, {3.50750974884375*^9, 
+   3.5075097489375*^9}, {3.510069596171875*^9, 3.510069604734375*^9}, {
+   3.5119690405*^9, 3.511969041578125*^9}, {3.5148207019375*^9, 
+   3.514820718703125*^9}, {3.514820908140625*^9, 3.51482100084375*^9}, {
+   3.514821891859375*^9, 3.514821897484375*^9}, {3.515423379562875*^9, 
+   3.51542339854725*^9}, {3.515423468125375*^9, 3.51542347517225*^9}, {
+   3.515778159703125*^9, 3.5157781858125*^9}, {3.52094247365625*^9, 
+   3.52094247478125*^9}, {3.52474795775*^9, 3.52474795965625*^9}, {
+   3.530318784171875*^9, 3.53031878703125*^9}, {3.549728038140625*^9, 
+   3.549728040984375*^9}, {3.566256534097952*^9, 3.566256538060359*^9}, {
+   3.5791121849417644`*^9, 3.5791121856117654`*^9}, {3.5828160624893475`*^9, 
+   3.5828160784481754`*^9}, 3.58281625773929*^9, {3.59430388324*^9, 
+   3.594303897607625*^9}, {3.5943039667001467`*^9, 3.5943039671837473`*^9}, {
+   3.5962867796383247`*^9, 3.596286787875139*^9}, {3.5965843689777813`*^9, 
+   3.5965843720477858`*^9}, {3.5981939761385355`*^9, 3.598193985248952*^9}, {
+   3.6019415181863728`*^9, 3.6019415294263883`*^9}, 3.61420183112115*^9, {
+   3.6142018624791317`*^9, 3.6142018665191936`*^9}, {3.6216426688971176`*^9, 
+   3.6216426825003414`*^9}, {3.621642769876095*^9, 3.62164277869011*^9}, {
+   3.621976501684748*^9, 3.62197650814316*^9}, 3.622041913691263*^9, {
+   3.628173556840773*^9, 3.628173571520399*^9}, {3.635204034171897*^9, 
+   3.6352040411763096`*^9}, {3.63658334949343*^9, 3.6365833567630434`*^9}}],
+
+Cell["For generic splash for use in preparing documentation...", "Text",
+ CellChangeTimes->{{3.579619205834857*^9, 3.579619218152546*^9}, {
+  3.5828160333796964`*^9, 3.582816036671302*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$FigVersionString", "=", "\"\<x.x.x (January 1, 20xx)\>\""}], 
+  ";"}]], "Input",
+ CellChangeTimes->{3.5796191993072567`*^9, 3.582816262575299*^9, 
+  3.5943039967769995`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["End package", "Section",
+ CellChangeTimes->{{3.514823047703125*^9, 3.51482305353125*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Exit private context", "Subsection",
+ CellChangeTimes->{{3.514823086015625*^9, 3.5148231094375*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]], "Input",
+ InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Exit package context", "Subsection",
+ CellChangeTimes->{{3.514823092890625*^9, 3.51482312965625*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Protect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<*\>\""}], "]"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Unprotect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<$*\>\""}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"EndPackage", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+WindowToolbars->"RulerBar",
+WindowSize->{1272, 931},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+DockedCells->(FrontEndExecute[{
+   FrontEnd`NotebookApply[
+    FrontEnd`InputNotebook[], #, Placeholder]}]& ),
+PrintingCopies->1,
+PrintingPageRange->{1, 2},
+PageHeaders->{{
+   Cell[
+    TextData[{
+      Cell[
+       TextData[{
+         CounterBox["Page"]}], "PageNumber"], " ", 
+      Cell[
+      " ", "Header", CellFrame -> {{0.5, 0}, {0, 0}}, CellFrameMargins -> 4], 
+      
+      Cell[
+       TextData[{
+         ValueBox["FileName"]}], "Header"]}], 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, None}, {
+   Cell[
+    TextData[{"LevelScheme 3.45 source code"}], "Header"], None, 
+   "\"\"Cell[TextData[{Cell[TextData[{ValueBox[\"FileName\"]}], \"Header\"], \
+Cell[\" \", \"Header\", CellFrame -> {{0, 0.5}, {0, 0}}, CellFrameMargins -> \
+4], \" \", Cell[TextData[{CounterBox[\"Page\"]}], \"PageNumber\"]}], \
+CellMargins -> {{Inherited, 0}, {Inh"}},
+PrintingOptions->{"FirstPageFooter"->False,
+"PrintingMargins"->{{36, 36}, {19.125, 36}}},
+ShowSelection->True,
+Magnification->1.25,
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 34, 0, 88, "Section"],
+Cell[604, 24, 5093, 107, 454, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5734, 136, 32, 0, 88, "Section"],
+Cell[CellGroupData[{
+Cell[5791, 140, 48, 0, 46, "Subsection"],
+Cell[5842, 142, 1456, 22, 35, "Input",
+ InitializationCell->True],
+Cell[7301, 166, 184, 5, 35, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7522, 176, 43, 0, 46, "Subsection"],
+Cell[7568, 178, 183, 4, 35, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7788, 187, 99, 1, 46, "Subsection"],
+Cell[7890, 190, 163, 3, 35, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8102, 199, 96, 1, 88, "Section"],
+Cell[CellGroupData[{
+Cell[8223, 204, 135, 2, 46, "Subsection"],
+Cell[8361, 208, 169, 4, 34, "Text"],
+Cell[8533, 214, 737, 16, 58, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9307, 235, 153, 2, 46, "Subsection"],
+Cell[9463, 239, 4498, 70, 102, "Input",
+ InitializationCell->True],
+Cell[13964, 311, 189, 2, 34, "Text"],
+Cell[14156, 315, 209, 5, 35, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14414, 326, 95, 1, 88, "Section"],
+Cell[CellGroupData[{
+Cell[14534, 331, 106, 1, 46, "Subsection"],
+Cell[14643, 334, 96, 3, 35, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14776, 342, 107, 1, 46, "Subsection"],
+Cell[14886, 345, 406, 12, 80, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

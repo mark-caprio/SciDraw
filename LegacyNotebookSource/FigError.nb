@@ -1,0 +1,1038 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     38200,       1030]
+NotebookOptionsPosition[     34583,        902]
+NotebookOutlinePosition[     35041,        921]
+CellTagsIndexPosition[     34998,        918]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Header comments", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Title", ":", " ", "FigError"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Context", ":", " ", "SciDraw`"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Summary", ":", " ", 
+     RowBox[{
+     "Error", " ", "passing", " ", "and", " ", "messaging", " ", 
+      "utilities"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", 
+     RowBox[{"Author", ":", " ", 
+      RowBox[{"Mark", " ", 
+       RowBox[{"A", ".", " ", "Caprio"}]}]}]}], ",", " ", 
+    RowBox[{"Department", " ", "of", " ", "Physics"}], ",", " ", 
+    RowBox[{"University", " ", "of", " ", "Notre", " ", "Dame"}]}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", 
+     RowBox[{"Copyright", ":", " ", 
+      RowBox[{"Copyright", " ", "FIGYEAR"}]}]}], ",", " ", 
+    RowBox[{"Mark", " ", 
+     RowBox[{"A", ".", " ", "Caprio"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Package", " ", 
+     RowBox[{"Version", ":", " ", "FIGVERSION"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Mathematica", " ", 
+     RowBox[{"Version", ":", " ", "MATHVERSION"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Discussion", ":", " ", "FIGDISCUSSION"}]}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"History", ":", " ", 
+     RowBox[{"See", " ", "main", " ", "package", " ", 
+      RowBox[{"file", "."}]}]}]}], " ", "*)"}]}]], "Input",
+ InitializationCell->True,
+ AutoIndent->False,
+ CellChangeTimes->{{3.395093723328125*^9, 3.39509375184375*^9}, {
+   3.398545735296875*^9, 3.39854574365625*^9}, 3.398799700609375*^9, {
+   3.43024739209375*^9, 3.43024739990625*^9}, 3.430247813015625*^9, {
+   3.436819738734375*^9, 3.436819746828125*^9}, 3.436820195484375*^9, {
+   3.4439959535*^9, 3.4439959773125*^9}, {3.471089562875*^9, 
+   3.471089568359375*^9}, {3.471089636203125*^9, 3.471089639046875*^9}, {
+   3.48681044459375*^9, 3.4868104458125*^9}, {3.489687811140625*^9, 
+   3.489687812484375*^9}, {3.497222348765625*^9, 3.497222354953125*^9}, 
+   3.497224390546875*^9, {3.497299514859375*^9, 3.497299515046875*^9}, {
+   3.49903536659375*^9, 3.49903536784375*^9}, {3.503265433671875*^9, 
+   3.5032654415*^9}, {3.50612390383225*^9, 3.5061239087385*^9}, 
+   3.507509920109375*^9, {3.51481857221875*^9, 3.514818754140625*^9}, 
+   3.514822657671875*^9, {3.514823216234375*^9, 3.51482323709375*^9}, {
+   3.51482326921875*^9, 3.514823311671875*^9}, {3.514823375546875*^9, 
+   3.514823396890625*^9}, {3.5150157615*^9, 3.515015802921875*^9}, 
+   3.515278625625*^9, {3.515610919046875*^9, 3.515610933640625*^9}},
+ LanguageCategory->"NaturalLanguage"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Begin package", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Package context definition", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeginPackage", "[", 
+   RowBox[{"\"\<SciDraw`\>\"", ",", "SciDraw`Private`$ExternalContexts"}], 
+   "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.395087747453125*^9, 3.39508775096875*^9}, {
+   3.39509064290625*^9, 3.395090643234375*^9}, 3.395090710546875*^9, {
+   3.395091175015625*^9, 3.395091179703125*^9}, {3.395093472375*^9, 
+   3.39509347784375*^9}, {3.395093608140625*^9, 3.3950936085*^9}, {
+   3.395519039875*^9, 3.395519061546875*^9}, {3.495041989453125*^9, 
+   3.495042010953125*^9}, {3.495042158078125*^9, 3.495042163671875*^9}, {
+   3.497222416421875*^9, 3.497222462578125*^9}, {3.497222963890625*^9, 
+   3.497222994640625*^9}, 3.497223030953125*^9, {3.514818766734375*^9, 
+   3.514818800625*^9}, {3.5148197104375*^9, 3.514819710671875*^9}, {
+   3.514819841546875*^9, 3.51481994284375*^9}, {3.514819979578125*^9, 
+   3.514820025046875*^9}, {3.5148201316875*^9, 3.514820154671875*^9}, {
+   3.51482025234375*^9, 3.514820275171875*^9}, {3.514820309703125*^9, 
+   3.514820406921875*^9}, {3.51482051775*^9, 3.514820571328125*^9}, {
+   3.514820843296875*^9, 3.51482087146875*^9}, 3.51482140903125*^9, {
+   3.514821446859375*^9, 3.514821449890625*^9}, 3.514821641390625*^9, {
+   3.514821674609375*^9, 3.514821798390625*^9}, {3.514823407859375*^9, 
+   3.514823433140625*^9}, 3.51501104184375*^9, 3.515275343*^9, {
+   3.515276331390625*^9, 3.51527633303125*^9}, {3.51542275479725*^9, 
+   3.515422755141*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Unprotect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<*\>\""}], "]"}], "]"}], ";"}]], "Input",
+ InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Begin private context", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.514823442859375*^9, 3.5148234431875*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Dependencies", "Subsection",
+ CellChangeTimes->{{3.514821147359375*^9, 3.51482114978125*^9}}],
+
+Cell[BoxData[""], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51482113128125*^9, 3.514821158515625*^9}, {
+  3.514823452421875*^9, 3.51482349575*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Error handling", "Section",
+ CellChangeTimes->{{3.515015814765625*^9, 3.51501582503125*^9}, 
+   3.51517590603125*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Message emitter", "Subsection",
+ CellChangeTimes->{{3.515015845375*^9, 3.515015847234375*^9}, {
+  3.515443981719125*^9, 3.515443986500375*^9}}],
+
+Cell["\<\
+Note: Separate message function saves evaluation problems.  For instance, in \
+an ordinary Message call,
+\tMessage[Evaluate[Evaluate[ObjectClass[Self]]::figobjname],...]
+would be required since both MessageName and Message are HoldFirst.  However, \
+by passing the expressions through FigMessage, this reduces to
+\tFigMessage[Self,figobjname,...].
+\t
+Note: Use of MessageName[f,m] is since f::m or f::Evaluate[m] does not \
+accomplish proper replacement of parameter m.  This is presumably since the \
+symbol::tag notation converts tag to the string \[OpenCurlyDoubleQuote]tag\
+\[CloseCurlyDoubleQuote] before parameter replacement can take place.  On the \
+other hand, with an argument of type m_Symbol, this form leads to full \
+qualification of symbol (such as \
+\[NoBreak]FigLine::SciDraw`Private`figobjname), which is also undesirable.  \
+Therefore, require strings for message names.\
+\>", "Text",
+ CellChangeTimes->{{3.515443874266*^9, 3.515443968969125*^9}, {
+  3.5154446077035*^9, 3.51544472298475*^9}, {3.515444799781625*^9, 
+  3.515444874562875*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigMessage", "[", 
+    RowBox[{"f_Symbol", ",", "m_String", ",", "Args___"}], "]"}], ":=", 
+   RowBox[{"Message", "[", 
+    RowBox[{
+     RowBox[{"MessageName", "[", 
+      RowBox[{"f", ",", "m"}], "]"}], ",", "Args"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigMessage", "[", 
+    RowBox[{"s_Object", ",", "m_String", ",", "Args___"}], "]"}], ":=", 
+   RowBox[{"FigMessage", "[", 
+    RowBox[{
+     RowBox[{"ObjectClass", "[", "s", "]"}], ",", "m", ",", "Args"}], "]"}]}],
+   ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51544374210975*^9, 3.515443842594125*^9}, {
+  3.515444530516*^9, 3.515444535500375*^9}, {3.5154446153285*^9, 
+  3.51544462298475*^9}, {3.51544487748475*^9, 3.515444881750375*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Object identifier message", "Subsection",
+ CellChangeTimes->{{3.5152564024375*^9, 3.515256414046875*^9}}],
+
+Cell["\<\
+Grammatical note: Use of article \[OpenCurlyDoubleQuote]a\
+\[CloseCurlyDoubleQuote] rather than \[OpenCurlyDoubleQuote]an\
+\[CloseCurlyDoubleQuote] presumes all object names will begin with consonants.\
+\>", "Text",
+ CellChangeTimes->{{3.5839438689018354`*^9, 3.5839438970442843`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"General", "::", "figobj"}], "=", 
+   "\"\<While `1` a `2` object named \\\"`3`\\\"...\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"General", "::", "figobjanon"}], "=", 
+   "\"\<While `1` a `2` object (no name specified)...\>\""}], ";"}]}], "Input",\
+
+ InitializationCell->True,
+ CellChangeTimes->{{3.515256469484375*^9, 3.51525651859375*^9}, {
+   3.515256710859375*^9, 3.5152567309375*^9}, {3.515257187109375*^9, 
+   3.51525718759375*^9}, {3.515448320391*^9, 3.5154483434535*^9}, {
+   3.515533137046875*^9, 3.515533140328125*^9}, {3.515533197578125*^9, 
+   3.515533202421875*^9}, 3.515541731984375*^9, {3.5159367226875*^9, 
+   3.5159367415*^9}, {3.5196500121875*^9, 3.519650016015625*^9}, {
+   3.51965028975*^9, 3.51965029534375*^9}, {3.51965055640625*^9, 
+   3.519650559640625*^9}, 3.519650694515625*^9, {3.51976524375*^9, 
+   3.5197652656875*^9}, {3.51976532925*^9, 3.519765341203125*^9}, {
+   3.5197653765625*^9, 3.519765380921875*^9}, 3.519765454859375*^9, {
+   3.5839438274525623`*^9, 3.5839438619598227`*^9}}],
+
+Cell["\<\
+Note on evaluation:
+\tContext[Evaluate[ObjectName[Self]]] is since Context is HoldFirst.
+\tMessage[Evaluate[Evaluate[ObjectClass[Self]]::figobjname] is since both \
+MessageName and Message are HoldFirst.\
+\>", "Text",
+ CellChangeTimes->{{3.51544341535975*^9, 3.515443421437875*^9}, {
+  3.5154435349535*^9, 3.5154435529535*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigWarnObject", "[", 
+    RowBox[{"Self_Object", ",", "Action_String"}], "]"}], ":=", 
+   RowBox[{"If", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"MatchQ", "[", 
+       RowBox[{
+        RowBox[{"ObjectName", "[", "Self", "]"}], ",", "_Symbol"}], "]"}], "&&", 
+      RowBox[{
+       RowBox[{"Context", "[", 
+        RowBox[{"Evaluate", "[", 
+         RowBox[{"ObjectName", "[", "Self", "]"}], "]"}], "]"}], "==", 
+       "$ObjectInstanceContext"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"FigMessage", "[", 
+      RowBox[{"SciDraw", ",", "\"\<figobjanon\>\"", ",", "Action", ",", 
+       RowBox[{"ObjectClass", "[", "Self", "]"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"FigMessage", "[", 
+      RowBox[{"SciDraw", ",", "\"\<figobj\>\"", ",", "Action", ",", 
+       RowBox[{"ObjectClass", "[", "Self", "]"}], ",", 
+       RowBox[{"ObjectName", "[", "Self", "]"}]}], "]"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5152564169375*^9, 3.515256460984375*^9}, {
+  3.515256534640625*^9, 3.515256552296875*^9}, {3.515256743484375*^9, 
+  3.51525681046875*^9}, {3.515443291125375*^9, 3.51544330592225*^9}, {
+  3.515443466781625*^9, 3.5154435224535*^9}, {3.515444167141*^9, 
+  3.51544419267225*^9}, {3.515444893266*^9, 3.515444898016*^9}, {
+  3.515533068203125*^9, 3.51553307953125*^9}, {3.515533143953125*^9, 
+  3.515533146203125*^9}, {3.515866578046875*^9, 3.51586659790625*^9}, {
+  3.519650062265625*^9, 3.51965007234375*^9}, {3.519650305375*^9, 
+  3.5196503143125*^9}, {3.51965048503125*^9, 3.519650495453125*^9}, {
+  3.519650529484375*^9, 3.51965057003125*^9}, {3.51976535896875*^9, 
+  3.51976537121875*^9}, {3.519765419140625*^9, 3.519765420484375*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Error thrower", "Subsection",
+ CellChangeTimes->{{3.515015845375*^9, 3.515015847234375*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigError", "[", 
+    RowBox[{"f_Symbol", ",", "m_String", ",", "Args___"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"FigMessage", "[", 
+       RowBox[{"f", ",", "m", ",", "Args"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Abort", "[", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigError", "[", 
+    RowBox[{"s_Object", ",", "m_String", ",", "Args___"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"FigWarnObject", "[", 
+       RowBox[{"s", ",", "\"\<constructing\>\""}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"FigMessage", "[", 
+       RowBox[{"s", ",", "m", ",", "Args"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Abort", "[", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigError", "[", 
+    RowBox[{"MakeAnchor", ",", "s_Object", ",", "m_String", ",", "Args___"}], 
+    "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"FigWarnObject", "[", 
+       RowBox[{"s", ",", "\"\<constructing an anchor for\>\""}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"FigMessage", "[", 
+       RowBox[{"s", ",", "m", ",", "Args"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Abort", "[", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigError", "[", 
+    RowBox[{
+    "MakeBoundingBox", ",", "s_Object", ",", "m_String", ",", "Args___"}], 
+    "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"FigWarnObject", "[", 
+       RowBox[{"s", ",", "\"\<constructing the bounding region for\>\""}], 
+       "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"FigMessage", "[", 
+       RowBox[{"s", ",", "m", ",", "Args"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Abort", "[", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51544374210975*^9, 3.515443842594125*^9}, {
+   3.51544432104725*^9, 3.515444411406625*^9}, {3.515444887016*^9, 
+   3.51544488917225*^9}, {3.51965003465625*^9, 3.519650040671875*^9}, 
+   3.5196503220625*^9, {3.519650573125*^9, 3.519650575765625*^9}, {
+   3.5197653848125*^9, 3.519765386734375*^9}, {3.519765424234375*^9, 
+   3.51976542659375*^9}, {3.583944223131657*^9, 3.58394425294331*^9}, {
+   3.583948699470439*^9, 3.5839487100340433`*^9}, {3.583949098881553*^9, 
+   3.583949099895555*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Object name validation", "Subsection",
+ CellChangeTimes->{{3.51525775259375*^9, 3.515257755453125*^9}}],
+
+Cell[TextData[{
+ "Formerly: Object names are recommended to be of the form\n\tstring          \
+    EX: \[OpenCurlyDoubleQuote]shape\[CloseCurlyDoubleQuote]\n\tsymbol        \
+    EX: A, MyObject\n\tsymbol[args]   EX: Shape[35], Person[\
+\[OpenCurlyDoubleQuote]John\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]Doe\[CloseCurlyDoubleQuote]]\nwhere symbol is not in \
+the System` context.  This final condition eliminates such insidious cases as\
+\n\t1/2 = Rational[1,2]\n\t{1,2} = List[1,2].\n\nReconsideration: Actually, \
+what was wrong with these forms?  Names such as 1/2 are awkward since ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " has multiple internal representations.  Head List is problematic if \
+Flatten is applied to a list of object names.  These forms were problematic \
+in SciDraw early development, when object names were used directly as \
+coordinates, and thus an object name which could be mistaken for a coordinate \
+was ambiguous.  However, object names are now only used in contexts in which \
+only an object name would be accepted.\n\nPresently: FigCheckObjectName is a \
+no-op."
+}], "Text",
+ CellChangeTimes->{{3.515253541796875*^9, 3.51525365690625*^9}, {
+  3.5152537016875*^9, 3.515253711265625*^9}, {3.515260151609375*^9, 
+  3.515260220484375*^9}, {3.52407138621875*^9, 3.52407144646875*^9}, {
+  3.524071547421875*^9, 3.524071694078125*^9}, {3.52407177034375*^9, 
+  3.524071771984375*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"NewSymbolPattern", "=", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", "x_Symbol", ")"}], "/;", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Context", "[", "x", "]"}], "=!=", "\"\<System`\>\""}], 
+       ")"}]}], ")"}]}], ";", "\n", 
+   RowBox[{"SaneObjectNamePattern", "=", 
+    RowBox[{"NewSymbolPattern", "|", 
+     RowBox[{"NewSymbolPattern", "[", "___", "]"}], "|", 
+     RowBox[{"(", "_String", ")"}]}]}], ";", "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{"General", "::", "figobjbadname"}], "=", 
+    "\"\<The object name `1`  is not of the recommended form and might \
+therefore lead to syntax ambiguities.  For object names, it is recommended \
+that you use a string (e.g., \\\"name\\\"), a new symbol (e.g., Name) not \
+already defined as a Mathematica reserved symbol, or an expression headed by \
+such a symbol (e.g., Name[1,2]).\>\""}], ";", "\n", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FigCheckObjectName", "[", 
+     RowBox[{
+      RowBox[{"Self", ":", 
+       RowBox[{"Object", "[", "A_", "]"}]}], "/;", 
+      RowBox[{"!", 
+       RowBox[{"MatchQ", "[", 
+        RowBox[{"A", ",", "SaneObjectNamePattern"}], "]"}]}]}], "]"}], ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"FigMessage", "[", 
+     RowBox[{"Self", ",", "\"\<figobjbadname\>\"", ",", 
+      RowBox[{"ObjectName", "[", "Self", "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "*)"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515532826375*^9, 3.51553282703125*^9}, {
+  3.52407165175*^9, 3.52407165921875*^9}, {3.524071706421875*^9, 
+  3.524071724203125*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckObjectName", "[", 
+    RowBox[{"Self", ":", 
+     RowBox[{"Object", "[", "A_", "]"}]}], "]"}], ":=", "Null"}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.524071728953125*^9, 3.524071734328125*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Error for function use outside figure", "Subsection",
+ CellChangeTimes->{{3.5162853490625*^9, 3.516285368734375*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"General", "::", "notinfigobj"}], "=", 
+   "\"\<Attempted to create figure object outside of a figure.\>\""}], ";", 
+  RowBox[{
+   RowBox[{"General", "::", "notinfigfcn"}], "=", 
+   "\"\<This function may only be used inside a Figure environment.\>\""}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51628537796875*^9, 3.51628541478125*^9}, {
+  3.516285496359375*^9, 3.516285500890625*^9}, {3.51628566884375*^9, 
+  3.5162857103125*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FigCheckInFigure", "[", "Self_Object", "]"}], "/;", 
+    RowBox[{"(", 
+     RowBox[{"!", "SciDraw`Private`$InFigure"}], ")"}]}], ":=", 
+   RowBox[{"FigError", "[", 
+    RowBox[{"Self", ",", "\"\<notinfigobj\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FigCheckInFigure", "[", "Self_Symbol", "]"}], "/;", 
+    RowBox[{"(", 
+     RowBox[{"!", "SciDraw`Private`$InFigure"}], ")"}]}], ":=", 
+   RowBox[{"FigError", "[", 
+    RowBox[{"Self", ",", "\"\<notinfigfcn\>\""}], "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.516285422375*^9, 3.51628547328125*^9}, {
+  3.516285683390625*^9, 3.51628570196875*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Error for function with unmatched argument sequence", "Subsection",
+ CellChangeTimes->{{3.5162853490625*^9, 3.516285368734375*^9}, {
+  3.516474016765625*^9, 3.516474023765625*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"General", "::", "figargs"}], "=", 
+   "\"\<Missing or unexpected arguments in `1`.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"General", "::", "figargsnull"}], "=", 
+   "\"\<One of the arguments in `1` is Null.  Check for extra commas among \
+the arguments.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51647418196875*^9, 3.516474221296875*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"FigFallThroughError", ",", "HoldRest"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigFallThroughError", "[", 
+    RowBox[{"Self_Symbol", ",", "Expr_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Count", "[", 
+         RowBox[{
+          RowBox[{"Hold", "[", "Expr", "]"}], ",", "Null", ",", 
+          RowBox[{"{", "2", "}"}]}], "]"}], ">", "0"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"FigError", "[", 
+        RowBox[{"Self", ",", "\"\<figargsnull\>\"", ",", 
+         RowBox[{"HoldForm", "[", "Expr", "]"}]}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"FigError", "[", 
+        RowBox[{"Self", ",", "\"\<figargs\>\"", ",", 
+         RowBox[{"HoldForm", "[", "Expr", "]"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.516474026390625*^9, 3.51647415721875*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DeclareFigFallThroughError", "[", "f_Symbol", "]"}], ":=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"Expr", ":", 
+      RowBox[{"HoldPattern", "[", 
+       RowBox[{"f", "[", "___", "]"}], "]"}]}], ":=", 
+     RowBox[{"FigFallThroughError", "[", 
+      RowBox[{"f", ",", "Expr"}], "]"}]}], ")"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.517769166515625*^9, 3.517769272984375*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Message suppression", "Subsection",
+ CellChangeTimes->{3.51525733175*^9}],
+
+Cell["\<\
+SuppressMessage is a scoping structure which temporarily suppresses a \
+specified message while evaluating an expression, without affecting the \
+global On/Off status of the message.\
+\>", "Text"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"SuppressMessage", ",", "HoldAll"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SuppressMessage", "[", 
+    RowBox[{"MessageID_", ",", "Body_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"WasOn", ",", "EvaluatedBody", ",", "Aborted"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+      "AbortProtect", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{"record", " ", "prior", " ", "message", " ", "status"}], " ", 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"WasOn", "=", 
+         RowBox[{"Switch", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Head", "[", "MessageID", "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"String", "|", "MessageName"}], ",", "True", ",", 
+           "\[IndentingNewLine]", "$Off", ",", "False"}], 
+          "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "evaluate", " ", "body", " ", "with", " ", "message", " ", 
+          "disabled"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Off", "[", "MessageID", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Aborted", "=", "False"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"CheckAbort", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"EvaluatedBody", "=", "Body"}], ",", "\[IndentingNewLine]", 
+          
+          RowBox[{"Aborted", "=", "True"}]}], "\[IndentingNewLine]", "]"}], 
+        ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"restore", " ", "message", " ", "status"}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{"WasOn", ",", 
+          RowBox[{"On", "[", "MessageID", "]"}]}], "]"}], ";"}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"return", " ", "value"}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{"passes", " ", "through", " ", "abort"}], ",", " ", 
+        RowBox[{
+        "and", " ", "also", " ", "explicitly", " ", "returns", " ", 
+         "$Aborted", " ", "in", " ", "case", " ", 
+         RowBox[{"Abort", "[", "]"}], " ", "is", " ", "suppressed"}]}], " ", 
+       "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{"Aborted", ",", 
+        RowBox[{
+         RowBox[{"Abort", "[", "]"}], ";", "$Aborted"}], ",", 
+        "EvaluatedBody"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5151759640625*^9, 3.5151759824375*^9}, {
+  3.51517602690625*^9, 3.5151760705*^9}, {3.515176117765625*^9, 
+  3.515176172484375*^9}, {3.515176375296875*^9, 3.51517637671875*^9}, {
+  3.515176527546875*^9, 3.515176528015625*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Option and parameter validation", "Section",
+ CellChangeTimes->{{3.5153548010625*^9, 3.515354808421875*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Option check against pattern", "Subsection",
+ CellChangeTimes->{{3.51525684190625*^9, 3.5152568455*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"General", "::", "figbadopt"}], "=", 
+   "\"\<Option `1` has invalid value `2`.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515257165*^9, 3.5152571686875*^9}, 
+   3.51533901859375*^9, {3.515442973000375*^9, 3.51544297323475*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckOption", "[", 
+    RowBox[{
+     RowBox[{"Caller", ":", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", "_Object", ")"}], "|", 
+        RowBox[{"(", "_Symbol", ")"}]}], ")"}]}], ",", "OptionName_Symbol", 
+     ",", "TestPattern_", ",", "OptionList_List"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"OptionName", "\[Equal]", "Width"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{"\"\<value \>\"", ",", 
+            RowBox[{"(", 
+             RowBox[{"OptionName", "/.", "OptionList"}], ")"}], ",", 
+            "\"\< pattern \>\"", ",", 
+            RowBox[{"FullForm", "[", "TestPattern", "]"}], ",", 
+            "\"\< match \>\"", ",", 
+            RowBox[{"MatchQ", "[", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"OptionName", "/.", "OptionList"}], ")"}], ",", 
+              "TestPattern"}], "]"}]}], "]"}], ";"}]}], "\[IndentingNewLine]",
+         "]"}], ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"If", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"!", 
+        RowBox[{"MatchQ", "[", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"OptionName", "/.", "OptionList"}], ")"}], ",", 
+          "TestPattern"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"FigError", "[", 
+        RowBox[{"Caller", ",", "\"\<figbadopt\>\"", ",", "OptionName", ",", 
+         RowBox[{"(", 
+          RowBox[{"OptionName", "/.", "OptionList"}], ")"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckOption", "[", 
+    RowBox[{
+     RowBox[{"SpecialMode", ":", "MakeAnchor"}], ",", 
+     RowBox[{"Caller", ":", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", "_Object", ")"}], "|", 
+        RowBox[{"(", "_Symbol", ")"}]}], ")"}]}], ",", "OptionName_Symbol", 
+     ",", "TestPattern_", ",", "OptionList_List"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"!", 
+        RowBox[{"MatchQ", "[", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"OptionName", "/.", "OptionList"}], ")"}], ",", 
+          "TestPattern"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"FigError", "[", 
+        RowBox[{
+        "SpecialMode", ",", "Caller", ",", "\"\<figbadopt\>\"", ",", 
+         "OptionName", ",", 
+         RowBox[{"(", 
+          RowBox[{"OptionName", "/.", "OptionList"}], ")"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51525685371875*^9, 3.515256972671875*^9}, {
+  3.515257103609375*^9, 3.5152571040625*^9}, {3.5154429792035*^9, 
+  3.51544297942225*^9}, {3.515444222812875*^9, 3.515444236375375*^9}, {
+  3.5154442774535*^9, 3.515444283844125*^9}, {3.515444922844125*^9, 
+  3.51544492473475*^9}, {3.5839458949397936`*^9, 3.583945913971827*^9}, {
+  3.769172169137621*^9, 3.769172187826454*^9}, {3.7691728263823757`*^9, 
+  3.7691728573484297`*^9}, {3.7691731020816603`*^9, 3.7691731092732725`*^9}, {
+  3.769173142392131*^9, 3.7691731439053335`*^9}, {3.7691732077406454`*^9, 
+  3.769173223886674*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Value check against pattern", "Subsection",
+ CellChangeTimes->{{3.51525684190625*^9, 3.5152568455*^9}, {
+  3.515354516734375*^9, 3.5153545213125*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"General", "::", "figbadvalue"}], "=", 
+   "\"\<The `1` has an invalid value `2`.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515257165*^9, 3.5152571686875*^9}, 
+   3.51533901859375*^9, {3.51535452565625*^9, 3.515354526609375*^9}, {
+   3.51535456340625*^9, 3.51535457053125*^9}, {3.518433273125*^9, 
+   3.518433273984375*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckValue", "[", 
+    RowBox[{
+     RowBox[{"Caller", ":", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", "_Object", ")"}], "|", 
+        RowBox[{"(", "_Symbol", ")"}]}], ")"}]}], ",", "Value_", ",", 
+     "TestPattern_", ",", "Description_String"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"!", 
+        RowBox[{"MatchQ", "[", 
+         RowBox[{"Value", ",", "TestPattern"}], "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"FigError", "[", 
+        RowBox[{
+        "Caller", ",", "\"\<figbadvalue\>\"", ",", "Description", ",", 
+         "Value"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51525685371875*^9, 3.515256972671875*^9}, {
+  3.515257103609375*^9, 3.5152571040625*^9}, {3.51535458246875*^9, 
+  3.51535465065625*^9}, {3.51545077798475*^9, 3.5154507942035*^9}, {
+  3.51843295159375*^9, 3.51843296240625*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"General", "::", "figbadvaluelist"}], "=", 
+   "\"\<One of the `1` has an invalid value `2`.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515257165*^9, 3.5152571686875*^9}, 
+   3.51533901859375*^9, {3.51535452565625*^9, 3.515354526609375*^9}, {
+   3.51535456340625*^9, 3.51535457053125*^9}, {3.518433002859375*^9, 
+   3.518433012234375*^9}, {3.518433276046875*^9, 3.518433276828125*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckValueList", "[", 
+    RowBox[{
+     RowBox[{"Caller", ":", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", "_Object", ")"}], "|", 
+        RowBox[{"(", "_Symbol", ")"}]}], ")"}]}], ",", "ValueList_List", ",", 
+     "TestPattern_", ",", "Description_String"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "Value", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Do", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"!", 
+          RowBox[{"MatchQ", "[", 
+           RowBox[{"Value", ",", "TestPattern"}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"FigError", "[", 
+          RowBox[{
+          "Caller", ",", "\"\<figbadvaluelist\>\"", ",", "Description", ",", 
+           "Value"}], "]"}]}], "\[IndentingNewLine]", "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"Value", ",", "ValueList"}], "}"}]}], "\[IndentingNewLine]", 
+      "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51525685371875*^9, 3.515256972671875*^9}, {
+  3.515257103609375*^9, 3.5152571040625*^9}, {3.51535458246875*^9, 
+  3.51535465065625*^9}, {3.51545077798475*^9, 3.5154507942035*^9}, {
+  3.51843295159375*^9, 3.51843296240625*^9}, {3.51843301859375*^9, 
+  3.518433050953125*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["End package", "Section",
+ CellChangeTimes->{{3.514823047703125*^9, 3.51482305353125*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Exit private context", "Subsection",
+ CellChangeTimes->{{3.514823086015625*^9, 3.5148231094375*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]], "Input",
+ InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Exit package context", "Subsection",
+ CellChangeTimes->{{3.514823092890625*^9, 3.51482312965625*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Protect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<*\>\""}], "]"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Unprotect", "[", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"$Context", "<>", "\"\<$*\>\""}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"EndPackage", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+WindowSize->{1672, 928},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowFrame->"Normal",
+ShowSelection->True,
+Magnification->1.2000000476837158`,
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (February 25, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 34, 0, 76, "Section"],
+Cell[616, 24, 2933, 69, 221, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3586, 98, 32, 0, 76, "Section"],
+Cell[CellGroupData[{
+Cell[3643, 102, 48, 0, 51, "Subsection"],
+Cell[3694, 104, 1472, 24, 36, "Input",
+ InitializationCell->True],
+Cell[5169, 130, 184, 5, 36, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5390, 140, 43, 0, 51, "Subsection"],
+Cell[5436, 142, 183, 4, 36, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5656, 151, 99, 1, 51, "Subsection"],
+Cell[5758, 154, 163, 3, 36, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5970, 163, 123, 2, 76, "Section"],
+Cell[CellGroupData[{
+Cell[6118, 169, 149, 2, 51, "Subsection"],
+Cell[6270, 173, 1071, 19, 194, "Text"],
+Cell[7344, 194, 808, 21, 60, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8189, 220, 111, 1, 51, "Subsection"],
+Cell[8303, 223, 295, 5, 35, "Text"],
+Cell[8601, 230, 1093, 22, 60, "Input",
+ InitializationCell->True],
+Cell[9697, 254, 337, 7, 81, "Text"],
+Cell[10037, 263, 1810, 36, 129, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11884, 304, 98, 1, 51, "Subsection"],
+Cell[11985, 307, 2958, 73, 543, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14980, 385, 109, 1, 51, "Subsection"],
+Cell[15092, 388, 1432, 23, 308, "Text"],
+Cell[16527, 413, 1667, 38, 290, "Input",
+ InitializationCell->True],
+Cell[18197, 453, 278, 8, 36, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18512, 466, 123, 1, 51, "Subsection"],
+Cell[18638, 469, 506, 12, 60, "Input",
+ InitializationCell->True],
+Cell[19147, 483, 743, 20, 60, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19927, 508, 186, 2, 51, "Subsection"],
+Cell[20116, 512, 454, 12, 60, "Input",
+ InitializationCell->True],
+Cell[20573, 526, 1189, 30, 221, "Input",
+ InitializationCell->True],
+Cell[21765, 558, 457, 12, 36, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22259, 575, 79, 1, 51, "Subsection"],
+Cell[22341, 578, 206, 4, 35, "Text"],
+Cell[22550, 584, 3101, 70, 658, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25700, 660, 114, 1, 76, "Section"],
+Cell[CellGroupData[{
+Cell[25839, 665, 110, 1, 51, "Subsection"],
+Cell[25952, 668, 305, 7, 36, "Input",
+ InitializationCell->True],
+Cell[26260, 677, 3667, 87, 474, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29964, 769, 156, 2, 51, "Subsection"],
+Cell[30123, 773, 402, 9, 36, "Input",
+ InitializationCell->True],
+Cell[30528, 784, 1166, 29, 175, "Input",
+ InitializationCell->True],
+Cell[31697, 815, 462, 9, 36, "Input",
+ InitializationCell->True],
+Cell[32162, 826, 1466, 35, 244, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33677, 867, 95, 1, 76, "Section"],
+Cell[CellGroupData[{
+Cell[33797, 872, 106, 1, 51, "Subsection"],
+Cell[33906, 875, 96, 3, 36, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34039, 883, 107, 1, 51, "Subsection"],
+Cell[34149, 886, 406, 12, 83, "Input",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

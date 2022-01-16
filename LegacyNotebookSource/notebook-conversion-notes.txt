@@ -1,0 +1,52 @@
+Conversion to .m:
+
+ - Take original notebook.
+
+ - Open subgroups (Ctrl-{).
+
+ - Delete (or comment out) any interactive test code in non-initialization
+   cells (e.g., in FigText.nb).
+
+ - Delete all output (Cell > Delete all output).
+
+ - Set all cells as initialization (Ctrl-8).
+
+ - Save as .m file (<package>-CONVERSION.m).
+
+Retained files (in LegacyNotebookSource):
+
+   <package>.nb -- Last notebook version, before above conversion steps.
+
+   <package>.m -- Corresponding autosaved .m file.
+
+   <package>-CONVERSION.m -- Result of "save as" in above procedure (before
+   autoindenting and any manual edits).
+
+Cleanup:
+
+ - Remove all cell marker comments:
+
+    + These are of the form:
+    
+      (* ::Subsection::Initialization:: *)
+      (* ::Text::Initialization:: *)
+      (* ::Input::Initialization:: *)
+
+    + Can accomplish with sed:
+
+      foreach f ( *.nb )
+        sed '/::Initialization::/d' ${f:r}-CONVERSION.m > ../${f:r}.m
+      end
+      
+ - Do autoindent in emacs.
+
+   + Setup in init.el:
+
+     (autoload 'wolfram-mode "wolfram-mode" nil t)
+     (setq wolfram-indent 2)
+     (add-to-list 'auto-mode-alist '("\\.m$" . wolfram-mode))
+
+   + For proper autoindent, a linebreak should be introduced between the ":="
+   and "Module" at the start of each module.
+
+ - Clean up vertical whitespace.

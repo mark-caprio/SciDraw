@@ -1,0 +1,3440 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    154102,       3432]
+NotebookOptionsPosition[    143133,       3234]
+NotebookOutlinePosition[    143606,       3253]
+CellTagsIndexPosition[    143563,       3250]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Header comments", "Section",ExpressionUUID->"279adb24-30dc-479f-98db-a40f257c0893"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Title", ":", " ", "Usage"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Context", ":", " ", "SciDraw`"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Summary", ":", " ", 
+     RowBox[{"Usage", " ", "messages"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", 
+     RowBox[{"Author", ":", " ", 
+      RowBox[{"Mark", " ", 
+       RowBox[{"A", ".", " ", "Caprio"}]}]}]}], ",", " ", 
+    RowBox[{"Department", " ", "of", " ", "Physics"}], ",", " ", 
+    RowBox[{"University", " ", "of", " ", "Notre", " ", "Dame"}]}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{":", 
+     RowBox[{"Copyright", ":", " ", 
+      RowBox[{"Copyright", " ", "FIGYEAR"}]}]}], ",", " ", 
+    RowBox[{"Mark", " ", 
+     RowBox[{"A", ".", " ", "Caprio"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Package", " ", 
+     RowBox[{"Version", ":", " ", "FIGVERSION"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Mathematica", " ", 
+     RowBox[{"Version", ":", " ", "MATHVERSION"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Discussion", ":", " ", "FIGDISCUSSION"}]}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"History", ":", " ", 
+     RowBox[{"See", " ", "main", " ", "package", " ", 
+      RowBox[{"file", "."}]}]}]}], " ", "*)"}]}]], "Input",
+ InitializationCell->True,
+ AutoIndent->False,
+ CellChangeTimes->{{3.395093723328125*^9, 3.39509375184375*^9}, {
+   3.398545735296875*^9, 3.39854574365625*^9}, 3.398799700609375*^9, {
+   3.43024739209375*^9, 3.43024739990625*^9}, 3.430247813015625*^9, {
+   3.436819738734375*^9, 3.436819746828125*^9}, 3.436820195484375*^9, {
+   3.4439959535*^9, 3.4439959773125*^9}, {3.471089562875*^9, 
+   3.471089568359375*^9}, {3.471089636203125*^9, 3.471089639046875*^9}, {
+   3.48681044459375*^9, 3.4868104458125*^9}, {3.489687811140625*^9, 
+   3.489687812484375*^9}, {3.497222348765625*^9, 3.497222354953125*^9}, 
+   3.497224390546875*^9, {3.497299514859375*^9, 3.497299515046875*^9}, {
+   3.49903536659375*^9, 3.49903536784375*^9}, {3.503265433671875*^9, 
+   3.5032654415*^9}, {3.50612390383225*^9, 3.5061239087385*^9}, 
+   3.507509920109375*^9, {3.51481857221875*^9, 3.514818754140625*^9}, 
+   3.514822657671875*^9, {3.514823216234375*^9, 3.51482323709375*^9}, {
+   3.51482326921875*^9, 3.514823311671875*^9}, {3.514823375546875*^9, 
+   3.514823396890625*^9}, {3.5150157685*^9, 3.51501576865625*^9}, 
+   3.515275347609375*^9, {3.515276318046875*^9, 3.515276324859375*^9}},
+ LanguageCategory->
+  "NaturalLanguage",ExpressionUUID->"bfce427a-c563-4f06-9d59-dfdaff3d35a2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Begin package", "Section",ExpressionUUID->"f5075b0b-4fbb-4bc6-af30-5e81943a3dee"],
+
+Cell[CellGroupData[{
+
+Cell["Package context definition", "Subsection",ExpressionUUID->"c7d582c5-3eb6-4765-a960-7c085dbff387"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeginPackage", "[", 
+   RowBox[{"\"\<SciDraw`\>\"", ",", "SciDraw`Private`$ExternalContexts"}], 
+   "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.395087747453125*^9, 3.39508775096875*^9}, {
+   3.39509064290625*^9, 3.395090643234375*^9}, 3.395090710546875*^9, {
+   3.395091175015625*^9, 3.395091179703125*^9}, {3.395093472375*^9, 
+   3.39509347784375*^9}, {3.395093608140625*^9, 3.3950936085*^9}, {
+   3.395519039875*^9, 3.395519061546875*^9}, {3.495041989453125*^9, 
+   3.495042010953125*^9}, {3.495042158078125*^9, 3.495042163671875*^9}, {
+   3.497222416421875*^9, 3.497222462578125*^9}, {3.497222963890625*^9, 
+   3.497222994640625*^9}, 3.497223030953125*^9, {3.514818766734375*^9, 
+   3.514818800625*^9}, {3.5148197104375*^9, 3.514819710671875*^9}, {
+   3.514819841546875*^9, 3.51481994284375*^9}, {3.514819979578125*^9, 
+   3.514820025046875*^9}, {3.5148201316875*^9, 3.514820154671875*^9}, {
+   3.51482025234375*^9, 3.514820275171875*^9}, {3.514820309703125*^9, 
+   3.514820406921875*^9}, {3.51482051775*^9, 3.514820571328125*^9}, {
+   3.514820843296875*^9, 3.51482087146875*^9}, 3.51482140903125*^9, {
+   3.514821446859375*^9, 3.514821449890625*^9}, 3.514821641390625*^9, {
+   3.514821674609375*^9, 3.514821798390625*^9}, {3.514823407859375*^9, 
+   3.514823433140625*^9}, 3.51501104184375*^9, 3.515275343*^9, {
+   3.515276331390625*^9, 3.51527633303125*^9}, {3.51542275479725*^9, 
+   3.515422755141*^9}},ExpressionUUID->"7b184bb1-68e8-4d2d-a40c-8c151526d85f"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Reserved symbols", "Section",
+ CellChangeTimes->{{3.51544498785975*^9, 
+  3.515444994875375*^9}},ExpressionUUID->"c1a1c86a-f308-4786-8fc0-\
+aa5853bd14d3"],
+
+Cell[CellGroupData[{
+
+Cell["Some common definitions", "Subsection",
+ CellChangeTimes->{{3.5178531016557827`*^9, 
+  3.517853107907423*^9}},ExpressionUUID->"b4cae0e2-d014-4e86-936a-\
+8f0a3c14328f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SciDraw", "::", "usage"}], "=", "\"\<SciDraw\>\""}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51544498310975*^9, 
+  3.515445038312875*^9}},ExpressionUUID->"12eb3b07-08ec-4103-a6ed-\
+e37199eea88e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Width", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.517853119301037*^9, 
+  3.517853141025486*^9}},ExpressionUUID->"c9f51458-680a-451d-8848-\
+9f05e26e6cd8"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Mathematica version compatibility", "Section",
+ CellChangeTimes->{{3.6709549378627815`*^9, 
+  3.670954942105989*^9}},ExpressionUUID->"69140244-e4ae-4bd9-9f0a-\
+b739aa0670e1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"note", ":", " ", 
+    RowBox[{
+    "this", " ", "definition", " ", "needs", " ", "to", " ", "be", " ", 
+     "moved", " ", "inside", " ", "the", " ", "\"\<unprotect\>\"", " ", 
+     "region", " ", "to", " ", "avoid", " ", 
+     "\"\<Tag \[NoBreak]ProvideSymbol\[NoBreak] in \
+\[NoBreak]ProvideSymbol[name_String,body_,else_:None]\[NoBreak] is \
+Protected\>\"", " ", "error"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"SetAttributes", "[", 
+     RowBox[{"ProvideSymbol", ",", "HoldRest"}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"ProvideSymbol", "[", 
+      RowBox[{"name_String", ",", "body_", ",", 
+       RowBox[{"else_", ":", "None"}]}], "]"}], ":=", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{
+       "Add", " ", "symbol", " ", "to", " ", "namespace", " ", "and", " ", 
+        "evaluate", " ", "body", " ", 
+        RowBox[{"(", 
+         RowBox[{
+         "which", " ", "would", " ", "typically", " ", "define", " ", 
+          "messages", " ", 
+          RowBox[{"and", "/", "or"}], " ", "definitions", " ", "for", " ", 
+          "this", " ", "symbol"}], ")"}]}], ",", " ", 
+       RowBox[{
+       "only", " ", "if", " ", "symbol", " ", "does", " ", "not", " ", 
+        "already", " ", "exist", " ", "as", " ", "a", " ", "*", "System", "*",
+         " ", 
+        RowBox[{
+        "symbol", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", "This"}],
+         " ", "is", " ", "designed", " ", "to", " ", "accommodate", " ", 
+        "System", " ", "name", " ", "clashes", " ", "introduced", " ", "with",
+         " ", "new", " ", "versions", " ", "of", " ", 
+        RowBox[{"Mathematica", ".", "  ", "An"}], " ", "else", " ", "clause", 
+        " ", "is", " ", 
+        RowBox[{"provided", ".", "  ", "Even"}], " ", "if", " ", "no", " ", 
+        "body", " ", "is", " ", "provided"}], ",", " ", 
+       RowBox[{
+       "the", " ", "symbol", " ", "will", " ", "be", " ", "created", " ", 
+        "as", " ", "a", " ", "symbol", " ", "in", " ", "the", " ", "present", 
+        " ", 
+        RowBox[{"context", ".", "\[IndentingNewLine]", "All"}], " ", 
+        "occurrences", " ", "of", " ", "the", " ", "symbol", " ", "in", " ", 
+        "the", " ", "provided", " ", "code", " ", "should", " ", "be", " ", 
+        "as", " ", 
+        RowBox[{"Symbol", "[", "name", "]"}], " ", "to", " ", "prevent", " ", 
+        "the", " ", "symbol", " ", "from", " ", "entering", " ", "the", " ", 
+        "namespace", " ", "*", "before", "*", " ", "the", " ", "test", " ", 
+        "for", " ", "definition", " ", "is", " ", "carried", " ", 
+        RowBox[{"out", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"Arguments", ":", "\[IndentingNewLine]", 
+          RowBox[{"name", " ", 
+           RowBox[{"(", "String", ")"}]}], ":", " ", 
+          RowBox[{"name", " ", "of", " ", "symbol", " ", 
+           RowBox[{"(", 
+            RowBox[{
+            "to", " ", "be", " ", "sought", " ", "in", " ", "System`", " ", 
+             "or", " ", "defined", " ", "in", " ", "$Context"}], ")"}], 
+           "\[IndentingNewLine]", "    ", 
+           RowBox[{"body", ":", " ", 
+            RowBox[{
+            "code", " ", "to", " ", "execute", " ", "for", " ", "definition", 
+             " ", "of", " ", "symbol", " ", 
+             RowBox[{"(", 
+              RowBox[{
+              "if", " ", "not", " ", "found", " ", "in", " ", "System"}], 
+              ")"}], "\[IndentingNewLine]", "else"}], ":", " ", 
+            RowBox[{
+            "code", " ", "to", " ", "execute", " ", "as", " ", "fallback", 
+             " ", "if", " ", "found", " ", "in", " ", "System"}]}]}]}]}]}]}], 
+      "\[IndentingNewLine]", "\t", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"Module", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", "defined", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"defined", "=", 
+         RowBox[{"NameQ", "[", 
+          RowBox[{"StringJoin", "[", 
+           RowBox[{"\"\<System`\>\"", ",", "name"}], "]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"!", "defined"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Symbol", "[", "name", "]"}], ";", "\[IndentingNewLine]", 
+           "body"}], ",", "\[IndentingNewLine]", "else"}], 
+         "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+    ";"}], " ", "\[IndentingNewLine]", "*)"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.6709538203070183`*^9, 3.670953857247884*^9}, {
+  3.6709541248039536`*^9, 3.670954464932351*^9}, {3.670954498956011*^9, 
+  3.670954591791774*^9}, {3.670954767338882*^9, 3.6709548047165475`*^9}, {
+  3.6709552478831263`*^9, 3.6709552507379313`*^9}, {3.670955355195715*^9, 
+  3.670955368954939*^9}, {3.70990056533981*^9, 
+  3.7099006293779225`*^9}},ExpressionUUID->"0f17af81-16da-48d6-90b2-\
+cd39bd66e22a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Core modules", "Section",
+ CellChangeTimes->{{3.5152763609375*^9, 3.515276366359375*^9}, {
+  3.515440082812875*^9, 
+  3.5154400860785*^9}},ExpressionUUID->"a8b7744c-7e2e-4740-b4ca-55bbdb326a65"],
+
+Cell[CellGroupData[{
+
+Cell["FigAnchor", "Subsection",
+ CellChangeTimes->{{3.51482384978125*^9, 3.5148238521875*^9}, 
+   3.5152767774375*^9},ExpressionUUID->"3a38661d-fef7-40dc-9b77-27164ffd9ca1"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigAnchor", "::", "usage"}], "=", 
+   "\"\<FigAnchor is an object type representing a point, default text \
+offset, and default tangent angle within a figure.  The anchor may be created \
+from several different sources of information: (1) From a coordinate point -- \
+FigAnchor[{x,y}] with optional arguments FigAnchor[{x,y},{xo,yo},theta] \
+returns an anchor with point {x,y}, text offset {xo,yo} (default {0,0}), and \
+tangent angle theta (default 0). (2) From a scaled coordinate point -- \
+FigAnchor[Scaled[{x,y}]] with optional arguments \
+FigAnchor[Scaled[{x,y}],{xo,yo},theta].  (3) From a canvas coordinate point \
+-- FigAnchor[Canvas[{x,y}]] with optional arguments \
+FigAnchor[Canvas[{x,y}],{xo,yo},theta]. (4) As a copy from another anchor, \
+optionally overriding the offset and angle values -- \
+FigAnchor[anchorobject|anchorname] with optional arguments \
+FigAnchor[anchorobject|anchorname,{xo,yo},theta] returns an anchor with \
+canvas point taken from given anchor, text offset {xo,yo} (default from given \
+anchor), and tangent angle theta (default from given anchor). (5) From figure \
+object MakeAnchor method -- FigAnchor[objectname,args]. (DEPRECATED: Direct \
+access to FigAnchor is deprecated in favor of the wrapper functions Anchor \
+and GetAnchor, in anticipation to revisions to the SciDraw internal \
+representation of anchors.)\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Canvas", "::", "usage"}], "=", 
+   "\"\<Canvas[{x,y}] represents a point in canvas coordinates (printer's \
+points from lower left corner of main canvas region) as an argument to \
+FigAnchor.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ShowAnchor", "::", "usage"}], "=", 
+   "\"\<ShowAnchor[p] displays the canvas coordinates of a point and the \
+associated text anchoring information (offset and tilt angle).\>\""}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51527644078125*^9, 3.515276454671875*^9}, {
+   3.515333456328125*^9, 3.5153335139375*^9}, {3.515537085015625*^9, 
+   3.51553709853125*^9}, {3.515598189828125*^9, 3.5155982445*^9}, {
+   3.51586078615625*^9, 3.51586083165625*^9}, {3.516039183692625*^9, 
+   3.516039218786375*^9}, 3.51603934333325*^9, {3.5181043674375*^9, 
+   3.518104495546875*^9}, {3.51810455584375*^9, 3.518104618234375*^9}, {
+   3.6251691882522774`*^9, 3.6251692561123967`*^9}, 
+   3.625169324768117*^9},ExpressionUUID->"a8106849-7b2e-41a8-9d5a-\
+30c8f0cd6545"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FigArgument", "Subsection",
+ CellChangeTimes->{{3.515276917296875*^9, 
+  3.51527691903125*^9}},ExpressionUUID->"2f924bf8-9763-4322-b857-\
+acf6e29fdc57"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ReplaceSequential", "::", "usage"}], "=", 
+   "\"\<ReplaceSequential[x,{rule1,rule2,...}] applies each rule once in \
+succession as a replacement rule for x.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ResolveOption", "::", "usage"}], "=", 
+   "\"\<ResolveOption[value,{rule1,rule2,...},options] returns value, subject \
+to replacement by each of rule1, rule2, ..., in succession.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NonNegativePattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching nonnegative numbers, i.e., in [0,Infinity).\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PositivePattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching positive numbers, i.e., in (0,Infinity).\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NonNegativeIntegerPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching nonnegative integers, i.e., in [0,Infinity).\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PositiveIntegerPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching positive integers, i.e., in [1,Infinity).\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UnitIntervalPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching numbers in the unit interval [0,1].\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LogicalPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching True or False.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NonListPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching any expression except a list.  Equivalent to \
+Except[_List].\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FlatListPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching any list of nonlists (of length 0 or more).\>\""}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515185844921875*^9, 3.515185981671875*^9}, {
+   3.515186619546875*^9, 3.51518670678125*^9}, {3.515186971515625*^9, 
+   3.515187094390625*^9}, {3.515187222875*^9, 3.51518724690625*^9}, {
+   3.5151872813125*^9, 3.515187294953125*^9}, {3.51525594021875*^9, 
+   3.5152560215625*^9}, {3.51525929571875*^9, 3.51525932990625*^9}, {
+   3.515259918125*^9, 3.51525996490625*^9}, {3.5152602333125*^9, 
+   3.515260271265625*^9}, {3.515263919203125*^9, 3.51526397484375*^9}, {
+   3.51533923865625*^9, 3.515339249796875*^9}, {3.51534210615625*^9, 
+   3.51534213434375*^9}, {3.515343300578125*^9, 3.5153434325625*^9}, {
+   3.515351994328125*^9, 3.5153520235625*^9}, {3.515352275125*^9, 
+   3.515352413484375*^9}, 3.515352449921875*^9, {3.5153525431875*^9, 
+   3.515352595203125*^9}, {3.51535358409375*^9, 3.51535363615625*^9}, {
+   3.51535373215625*^9, 3.51535374509375*^9}, {3.51535384096875*^9, 
+   3.51535385109375*^9}, {3.51535388365625*^9, 3.51535388459375*^9}, {
+   3.515355018671875*^9, 3.51535503*^9}, {3.515439535969125*^9, 
+   3.515439557750375*^9}, {3.515450716156625*^9, 3.5154507164535*^9}, {
+   3.51552770303125*^9, 3.51552773*^9}, {3.51553108475*^9, 
+   3.515531128828125*^9}, {3.515610512046875*^9, 3.515610527453125*^9}, {
+   3.51561193775*^9, 3.5156119391875*^9}, {3.515949600234375*^9, 
+   3.515949641015625*^9}, {3.51595001109375*^9, 3.515950095*^9}, 
+   3.515951341609375*^9, 3.51595189984375*^9, {3.665062777215788*^9, 
+   3.665062799024626*^9}},ExpressionUUID->"8accb17f-76de-49ee-b807-\
+283059c2e0de"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"SizePattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching size directives.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ColorDirectivePattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching GrayLevel, RGBColor, CMYKColor, or Hue directives.\>\
+\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigThicknessPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid thickness option for a figure object.\>\""}],
+   ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515185844921875*^9, 3.515185981671875*^9}, {
+   3.515186619546875*^9, 3.51518670678125*^9}, {3.515186971515625*^9, 
+   3.515187094390625*^9}, {3.515187222875*^9, 3.51518724690625*^9}, {
+   3.5151872813125*^9, 3.515187294953125*^9}, {3.51525594021875*^9, 
+   3.5152560215625*^9}, {3.51525929571875*^9, 3.51525932990625*^9}, {
+   3.515259918125*^9, 3.51525996490625*^9}, {3.5152602333125*^9, 
+   3.515260271265625*^9}, {3.515263919203125*^9, 3.51526397484375*^9}, {
+   3.51533923865625*^9, 3.515339249796875*^9}, {3.51534210615625*^9, 
+   3.51534213434375*^9}, {3.515343300578125*^9, 3.5153434325625*^9}, {
+   3.515351994328125*^9, 3.5153520235625*^9}, {3.515352275125*^9, 
+   3.515352413484375*^9}, 3.515352449921875*^9, {3.5153525431875*^9, 
+   3.515352595203125*^9}, {3.51535358409375*^9, 3.51535363615625*^9}, {
+   3.51535373215625*^9, 3.51535374509375*^9}, {3.51535384096875*^9, 
+   3.51535385109375*^9}, {3.51535388365625*^9, 3.51535388459375*^9}, {
+   3.515355018671875*^9, 3.51535503*^9}, {3.515439535969125*^9, 
+   3.515439557750375*^9}, {3.515450716156625*^9, 3.5154507164535*^9}, {
+   3.51552770303125*^9, 3.51552773*^9}, {3.51553108475*^9, 
+   3.515531128828125*^9}, {3.515610512046875*^9, 3.515610527453125*^9}, {
+   3.51561193775*^9, 
+   3.5156119391875*^9}},ExpressionUUID->"b5e97d40-8fb0-4fcd-80b9-\
+13f6a0e20abb"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveThickness", "::", "usage"}], "=", 
+   "\"\<FigResolveThickness[thickness] converts thickness to a standard \
+thickness directive, if it is not one already.  In addition to standard \
+thickness directives, thickness may be an acceptable argument to \
+AbsoluteThickness, in which case it is taken as specifying the absolute \
+thickness.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigDashingPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid dashing option for a figure object.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveDashing", "::", "usage"}], "=", 
+   "\"\<FigResolveDashing[dashing] converts dashing to a standard dashing \
+directive, if it is not one already.  In addition to standard dashing \
+directives, dashing may be None, or dashing may be an acceptable argument to \
+AbsoluteDashing, in which case it is taken as specifying the absolute \
+dashing.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigPointSizePattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid point size option for a figure \
+object.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolvePointSize", "::", "usage"}], "=", 
+   "\"\<FigResolvePointSize[size] converts size to a standard dashing \
+directive, if it is not one already.  In addition to standard point size \
+directives, size may be an acceptable argument to AbsolutePointSize, in which \
+case it is taken as specifying the absolute point sizeq.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FontFamilyPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching font family option values.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FontSizePattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching font size option values.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FontWeightPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching font weight option values.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FontSlantPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching font slant option values.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FontTrackingPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching font tracking option values.\>\""}], ";"}]}], "Input",\
+
+ InitializationCell->True,
+ CellChangeTimes->{{3.515185844921875*^9, 3.515185981671875*^9}, {
+   3.515186619546875*^9, 3.51518670678125*^9}, {3.515186971515625*^9, 
+   3.515187094390625*^9}, {3.515187222875*^9, 3.51518724690625*^9}, {
+   3.5151872813125*^9, 3.515187294953125*^9}, {3.51525594021875*^9, 
+   3.5152560215625*^9}, {3.51525929571875*^9, 3.51525932990625*^9}, {
+   3.515259918125*^9, 3.51525996490625*^9}, {3.5152602333125*^9, 
+   3.515260271265625*^9}, {3.515263919203125*^9, 3.51526397484375*^9}, {
+   3.51533923865625*^9, 3.515339249796875*^9}, {3.51534210615625*^9, 
+   3.51534213434375*^9}, {3.515343300578125*^9, 3.5153434325625*^9}, {
+   3.515351994328125*^9, 3.5153520235625*^9}, {3.515352275125*^9, 
+   3.515352413484375*^9}, 3.515352449921875*^9, {3.5153525431875*^9, 
+   3.515352595203125*^9}, 3.51535358409375*^9, {3.51543873529725*^9, 
+   3.5154387818285*^9}, 
+   3.515525200734375*^9},ExpressionUUID->"afcb12f9-9585-4593-838c-\
+4df1986293f1"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigTextOffsetPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid text offset specification for figure \
+objects.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigTextOrientationPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid text orientation specification for figure \
+objects.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515513460875*^9, 
+  3.515513491734375*^9}},ExpressionUUID->"f4fe5f88-19ee-49de-93e8-\
+b04aebec3438"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FigElement", "Subsection",
+ CellChangeTimes->{{3.51482384978125*^9, 3.5148238521875*^9}, {
+  3.515277615859375*^9, 
+  3.515277617953125*^9}},ExpressionUUID->"c83f2090-69a9-4758-9c29-\
+920b5db59969"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigElement", "::", "usage"}], "=", 
+   "\"\<FigElement is the parent class for all figure element classes.\>\""}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigLineElement", "::", "usage"}], "=", 
+   "\"\<FigLineElement is a figure element class, for Line graphics.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigPolygonElement", "::", "usage"}], "=", 
+   "\"\<FigFillElement is a figure element class, for polygons and other \
+filled graphics objects (that is, those to which EdgeForm and FaceForm apply, \
+such as Polygon, Rectangle, or Disk).\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigPointElement", "::", "usage"}], "=", 
+   "\"\<FigPointElement is a figure element class, for Point graphics.\>\""}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigVerbatimElement", "::", "usage"}], "=", 
+   "\"\<FigVerbatimElement is a figure element class, for graphics which \
+requires no styling primatives.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigStyledText", "::", "usage"}], "=", 
+   "\"\<FigStyledText[text,fullopts] returns text in DisplayForm with the \
+standard SciDraw text appearance options applied.  This styling does *not* \
+provide a frame or background.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigTextElement", "::", "usage"}], "=", 
+   "\"\<FigTextElement is a figure element class, for text.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigTextFrameElement", "::", "usage"}], "=", 
+   "\"\<FigFrameElement is a figure element class, for text frames.\>\""}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515180806328125*^9, 3.515180830734375*^9}, {
+  3.515180867078125*^9, 3.515180867578125*^9}, {3.5151809410625*^9, 
+  3.515181119265625*^9}, {3.515183241484375*^9, 3.51518327603125*^9}, {
+  3.515365468546875*^9, 3.51536549115625*^9}, {3.51542570610975*^9, 
+  3.515425749156625*^9}, {3.515526241328125*^9, 3.51552627859375*^9}, {
+  3.51792666921875*^9, 3.517926757453125*^9}, {3.5179378444375*^9, 
+  3.517937844828125*^9}, {3.520635370703125*^9, 
+  3.520635391609375*^9}},ExpressionUUID->"5c82f993-cac9-4836-bc08-\
+ae23fe817485"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"CollectGraphicalElements", "::", "usage"}], "=", 
+   "\"\<CollectGraphicalElements[body,canvaswindow,background] compiles a \
+list of graphical elements drawn using the coordinate system set by the given \
+window.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigAssemblePrimatives", "::", "usage"}], "=", 
+   "\"\<FigAssemblePrimatives[elements] sorts the graphical element objects \
+in elements according to layer and extracts to resulting primatives.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigWindowPrimatives", "::", "usage"}], "=", 
+   "\"\<FigWindowPrimatives[region,primatives] returns a list of primatives \
+{Transparent,Rectangle[...],Inset[Graphics[...]]} which effectively clips the \
+given primatives to the given canvas region.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigWindowPrimativesRaster", "::", "usage"}], "=", 
+   "\"\<FigWindowPrimatives[region,resolution,primatives] returns a list of \
+primatives {Transparent,Rectangle[...],Inset[Graphics[...]]} which \
+effectively clips the given primatives to the given canvas region then \
+rasterizes them at the given resolution in dpi.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCompositeElement", "::", "usage"}], "=", 
+   "\"\<FigCompositeElement is a figure element class, for assembling simpler \
+elements into a flattened, possibly clipped, possibly rasterized rectangular \
+window.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5178544230064645`*^9, 3.5178544581701393`*^9}, {
+  3.517855090000044*^9, 3.5178552095363216`*^9}, {3.517855241088648*^9, 
+  3.517855246183278*^9}, {3.517856515853039*^9, 3.51785655290513*^9}, {
+  3.51792540240625*^9, 3.517925425953125*^9}, {3.517928785625*^9, 
+  3.517928871984375*^9}, {3.520021912640625*^9, 3.520021942125*^9}, {
+  3.52002299828125*^9, 3.520022998828125*^9}, {3.52002459515625*^9, 
+  3.52002459646875*^9}, {3.520024658109375*^9, 
+  3.5200246658125*^9}},ExpressionUUID->"e14c2568-4858-471d-a592-41f5fb444945"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigureGroup", "::", "usage"}], "=", 
+   "\"\<FigureGroup[body] assembles figure objects into a flattened, possibly \
+clipped, possibly rasterized rectangular window.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.520024598984375*^9, 
+  3.520024677921875*^9}},ExpressionUUID->"8b2bfec1-9571-438f-9e2f-\
+8c55e9fd0118"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FigError", "Subsection",
+ CellChangeTimes->{{3.515610981046875*^9, 
+  3.515610982234375*^9}},ExpressionUUID->"5483e05a-b94d-49b4-875d-\
+6664e21d608e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FigMessage", "::", "usage"}], "=", 
+    "\"\<FigMessage[object,message,args] or FigMessage[symbol,message,args] \
+displays the given message (with given arguments).\>\""}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FigError", "::", "usage"}], "=", 
+    "\"\<FigError[object,message,args] or FigError[symbol,message,args]  \
+displays the given message (with given arguments) and throws an Abort signal.\
+\>\""}], ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigWarnObject", "::", "usage"}], "=", 
+   "\"\<FigWarnObject[object,action] displays a notification message \
+indicating which object is being constructed (or whatever action is named by \
+the string action).\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckInFigure", "::", "usage"}], "=", 
+   "\"\<FigCheckInFigure[object] generates an error if the check finds itself \
+outside of a Figure environment.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckObjectName", "::", "usage"}], "=", 
+   "\"\<FigCheckObjectName[object] emits a warning message if the object name \
+does not conform to the recommended conventions.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FigFallThroughError", "::", "usage"}], "=", 
+    "\"\<FigFallThroughError[function,expr] warns of invalid arguments and \
+throws an Abort signal.  The special case of Null arguments is \
+flagged.\>\""}], ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"DeclareFigFallThroughError", "::", "usage"}], "=", 
+    "\"\<DeclareFigFallThroughError[function] defines a syntax fall-through \
+case of function, which invokes FigFallThroughError, to warn of invalid \
+arguments and throws an Abort signal.  The special case of Null arguments is \
+flagged.\>\""}], ";"}], " "}], "\[IndentingNewLine]"}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.5156110081875*^9, {3.516285514796875*^9, 3.51628555634375*^9}, {
+   3.516474257984375*^9, 3.516474311984375*^9}, {3.517769291515625*^9, 
+   3.51776933528125*^9}, {3.51965014109375*^9, 3.519650200109375*^9}, {
+   3.519650253859375*^9, 
+   3.5196502563125*^9}},ExpressionUUID->"161e4b26-465f-4518-b231-\
+0d73ffc1c398"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckOption", "::", "usage"}], "=", 
+   "\"\<FigCheckOption[object|function,optionname,pattern,optionlist] \
+validates the given option optionname against pattern, after determining its \
+value from optionlist.  If the validation fails, messages are emitted \
+identifying the object|function and throwing an error.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckValue", "::", "usage"}], "=", 
+   "\"\<FigCheckValue[object|function,value,pattern,description] validates \
+the given value against pattern.  If the validation fails, messages are \
+emitted identifying the object|function and throwing an error.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckValueList", "::", "usage"}], "=", 
+   "\"\<FigCheckValueList[object|function,valuelist,pattern,description] \
+validates the given values against pattern.  If the validation fails, \
+messages are emitted identifying the object|function and throwing an error.\>\
+\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.515354771078125*^9, {3.516474254703125*^9, 3.51647425590625*^9}, {
+   3.518433077609375*^9, 
+   3.518433099*^9}},ExpressionUUID->"4f56686a-8a5d-4330-816b-6de668f57b24"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SuppressMessage", "::", "usage"}], "=", 
+   "\"\<SuppressMessage[message,body] evaluates body with message suppressed.\
+\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51502540575*^9, 3.515025470453125*^9}, {
+   3.515025809828125*^9, 3.515025871953125*^9}, 3.515087100515625*^9, {
+   3.515093919359375*^9, 3.515093956828125*^9}, {3.515166540203125*^9, 
+   3.515166611953125*^9}, {3.51516776875*^9, 3.51516808796875*^9}, {
+   3.51517197040625*^9, 3.515172007203125*^9}, {3.51517205228125*^9, 
+   3.515172124953125*^9}, {3.515174270890625*^9, 3.51517432621875*^9}, {
+   3.515174374296875*^9, 3.515174376859375*^9}, {3.515174414515625*^9, 
+   3.515174428203125*^9}, {3.515176391734375*^9, 3.51517642853125*^9}, {
+   3.515179611390625*^9, 3.515179611859375*^9}, {3.51525656371875*^9, 
+   3.515256588859375*^9}, {3.51525698334375*^9, 3.5152570743125*^9}, {
+   3.515258211734375*^9, 3.51525824684375*^9}, {3.5153546915*^9, 
+   3.515354756703125*^9}, 3.515362450765625*^9, {3.515362729671875*^9, 
+   3.515362748828125*^9}, {3.51543114023475*^9, 3.515431278469125*^9}, 
+   3.515431361406625*^9, {3.51544883929725*^9, 3.515448848687875*^9}, 
+   3.515450074750375*^9},ExpressionUUID->"3648db9b-3bb4-4d48-9c56-\
+7cdc9f5ea69a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FigFigure", "Subsection",
+ CellChangeTimes->{{3.51482384978125*^9, 3.5148238521875*^9}, {
+  3.51527774584375*^9, 
+  3.51527774815625*^9}},ExpressionUUID->"11abcb67-4bef-4bcd-9ff4-\
+4a586559cdea"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Figure", "::", "usage"}], "=", 
+   "\"\<Figure[body] returns a drawing constructed from the objects created \
+in the code given in body.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CanvasSize", "::", "usage"}], "=", 
+   "\"\<Option name for use with Figure.  CanvasSize->{xsize,ysize} sets the \
+canvas size (before padding) to {xsize,ysize}, in units determined by the \
+CanvasUnits option.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CanvasMargin", "::", "usage"}], "=", 
+   "\"\<Option name for use with Figure.  The most complete specification is \
+of the form CanvasMargin->{{xL,xR},{yL,yR}}.  The values *must* be given in \
+the same units as the CanvasSize.  (For instance, in contrast to the \
+Mathematica PlotRangePadding option, Scaled values cannot be used.)\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CanvasUnits", "::", "usage"}], "=", 
+   "\"\<Option name for use with Figure.  CanvasUnits->unit indicates the \
+unit in terms of which CanvasSize and CanvasMargin are to be interpreted.  \
+Must be a valid length unit (default Inches) from the Mathematica Units \
+package.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CanvasFrame", "::", "usage"}], "=", 
+   "\"\<Option name for use with Figure.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ExportDirectory", "::", "usage"}], "=", 
+   "\"\<Option name for use with Figure.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ExportFileName", "::", "usage"}], "=", 
+   "\"\<Option name for use with Figure.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ExportFormat", "::", "usage"}], "=", 
+   "\"\<Option name for use with Figure.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ExportOptions", "::", "usage"}], "=", 
+   "\"\<Option name for use with Figure.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ExportStamp", "::", "usage"}], "=", 
+   "\"\<Option name for use with Figure.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.514824284765625*^9, 3.51482433828125*^9}, {
+  3.515017013890625*^9, 3.51501702453125*^9}, {3.515017055125*^9, 
+  3.51501707184375*^9}, {3.515017189328125*^9, 3.515017189953125*^9}, {
+  3.515333811609375*^9, 3.51533383321875*^9}, {3.51533475915625*^9, 
+  3.5153348366875*^9}, {3.5153348889375*^9, 3.5153351755625*^9}, {
+  3.5153560321875*^9, 3.51535604271875*^9}, {3.51577991571875*^9, 
+  3.51577996665625*^9}, {3.516455942234375*^9, 3.516455942359375*^9}, {
+  3.51853113059375*^9, 3.518531146265625*^9}, {3.5796242916080866`*^9, 
+  3.5796243217731285`*^9}, {3.579624657594857*^9, 3.579624674009683*^9}, {
+  3.5828172297612*^9, 3.5828172340356073`*^9}, {3.582817767547022*^9, 
+  3.5828178030220714`*^9}, {3.5828181110820723`*^9, 
+  3.5828181129070745`*^9}},ExpressionUUID->"469114bd-3e87-4a8d-b536-\
+ddfcc28f28fe"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"CurrentWindow", "::", "usage"}], "=", 
+   "\"\<CurrentWindow[] returns the current window object.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CurrentBackground", "::", "usage"}], "=", 
+   "\"\<CurrentBackground[] returns the current window object.\>\""}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.520023999171875*^9, 
+  3.52002400678125*^9}},ExpressionUUID->"550fa768-6f15-4748-9e05-\
+3126ac7c6651"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FigGeometry", "Subsection",
+ CellChangeTimes->{{3.51482384978125*^9, 3.5148238521875*^9}, {
+  3.515278605484375*^9, 3.515278606828125*^9}, {3.5156109901875*^9, 
+  3.51561099221875*^9}},ExpressionUUID->"20fbaf39-a63e-4b9e-9cb4-\
+326e2a71363e"],
+
+Cell["Scalar/pair/range arithmetic", "Text",
+ CellChangeTimes->{{3.51568136428125*^9, 3.515681367515625*^9}, {
+  3.516037464317625*^9, 
+  3.516037473802*^9}},ExpressionUUID->"30397f64-7b05-4f25-ab2d-0203d40d7c39"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ScalarParameterPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching expression for scalar parameter.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NonNegativeScalarParameterPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching expression for scalar parameter, with nonnegative \
+value.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515611917828125*^9, 3.515611974171875*^9}, {
+   3.515681751375*^9, 3.515681784109375*^9}, 3.515792024859375*^9, {
+   3.515792076265625*^9, 3.51579210153125*^9}, {3.5160374329895*^9, 
+   3.516037437442625*^9}},ExpressionUUID->"272475be-2a22-4da9-9ab8-\
+826d72c6cd23"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpgradeScalar", "::", "usage"}], "=", 
+   "\"\<Upgrade[x] yields x.  The argument None yields 0.  The data must be \
+numerical.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515185844921875*^9, 3.515185981671875*^9}, {
+   3.515186619546875*^9, 3.51518670678125*^9}, {3.515186971515625*^9, 
+   3.515187094390625*^9}, {3.515187222875*^9, 3.51518724690625*^9}, {
+   3.5151872813125*^9, 3.515187294953125*^9}, {3.51525594021875*^9, 
+   3.5152560215625*^9}, {3.51525929571875*^9, 3.51525932990625*^9}, {
+   3.515259918125*^9, 3.51525996490625*^9}, {3.5152602333125*^9, 
+   3.515260271265625*^9}, {3.515263919203125*^9, 3.51526397484375*^9}, {
+   3.51533923865625*^9, 3.515339249796875*^9}, {3.51534210615625*^9, 
+   3.51534213434375*^9}, {3.515343300578125*^9, 3.5153434325625*^9}, {
+   3.515351994328125*^9, 3.5153520235625*^9}, {3.515352275125*^9, 
+   3.515352413484375*^9}, 3.515352449921875*^9, {3.5153525431875*^9, 
+   3.515352595203125*^9}, 3.51535358409375*^9, {3.51543873529725*^9, 
+   3.5154387818285*^9}, {3.515525200734375*^9, 3.51552526146875*^9}, {
+   3.51552682996875*^9, 3.515526857578125*^9}, {3.5156108601875*^9, 
+   3.51561088084375*^9}, 3.516037376130125*^9, {3.549723520359375*^9, 
+   3.549723520625*^9}},ExpressionUUID->"376ffd83-bce5-4ef9-abe3-5d199956f51d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"RescaleInterval", "::", "usage"}], "=", 
+   "\"\<RescaleInterval[{u1,u2},{v1,v2}] defines the linear transformation \
+which maps the interval [u1,u2] to [v1,v2].  RescaleInterval[{u1,u2}] maps \
+[u1,u2] onto the unit interval [0,1].  The functionality is similar to \
+RescalingTransform, restricted to one dimension, but does not require the \
+extra wrapping to turn the coordinates into one-dimensional vectors.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"InRange", "::", "usage"}], "=", 
+   "\"\<For a single interval, InRange[{x1,x2},x] tests whether or not x is \
+in the closed interval {x1,x2}.  For a two-dimensional region, \
+InRange[{{x1,x2},{y1,y2}},{x,y}] tests whether or not {x,y} is in the closed \
+region {{x1,x2},{y1,y2}}.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ExtendInterval", "::", "usage"}], "=", 
+   "\"\<ExtendInterval[{x1,x2},{fx1,fx2},mode] extends an interval by the \
+specified amounts in each direction.  If mode is Absolute, these are additive \
+amounts, or, if mode is Scaled, these are fractional amounts.  (WARNING: \
+\\\"Absolute\\\" is a SciDraw Private symbol.  \\\"Abs\\\" is accepted as \
+alternative.)\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ExtendRegion", "::", "usage"}], "=", 
+    "\"\<ExtendRegion[{{x1,x2},{y1,y2}},{{fx1,fx2},{fy1,fy2}},mode] extends a \
+rectangular region by the specified amounts in each direction.  If mode is \
+Absolute, these are additive amounts, or, if mode is Scaled, these are \
+fractional amounts.  (WARNING: \\\"Absolute\\\" is a SciDraw Private symbol. \
+\\\"Abs\\\" is accepted as alternative.)\>\""}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"VectorLength", "::", "usage"}], "=", 
+   "\"\<VectorLength[{x,y}] returns the length of {x,y}, i.e., Sqrt[x^2+y^2]. \
+ It is therefore equivalent to Norm[{x,y}] but provides stronger argument \
+type checking.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"VectorArcTan", "::", "usage"}], "=", 
+   "\"\<VectorArcTan[{x,y}] returns the polar angle of the vector {x,y}, \
+i.e., ArcTan[x,y], or, arbitrarily, the horizontal angle 0. if {x,y} is the \
+null vector.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SegmentLength", "::", "usage"}], "=", 
+   "\"\<SegmentLength[{p1,p2}] returns the length of the segment {p1,p2}, \
+i.e., of the displacement vector p2-p1.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SegmentTangent", "::", "usage"}], "=", 
+   "\"\<SegmentTangent[{p1,p2}] returns the unit vector along the segment \
+{p1,p2}.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SegmentArcTan", "::", "usage"}], "=", 
+   "\"\<SegmentArcTan[{p1,p2}] returns the polar angle of the segment \
+{p1,p2}, i.e., of the displacement vector p2-p1, or, arbitrarily, the \
+horizontal angle 0. if {p1,p2} is a null segment.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FromPolar", "::", "usage"}], "=", 
+   "\"\<FromPolar[{r,phi}] returns the Cartesian form of these polar \
+coordinates.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"InterpolateSegment", "::", "usage"}], "=", 
+   "\"\<InterpolateSegment[{p1,p2},reference,mode,x] maps the parameter x \
+onto the line defined by the points p1 and p2,starting from the given \
+reference point (Tail,Center,or Head) either as an absolute length \
+displacement (Absolute) or scaled to the length of the segment (Scaled) as \
+specified by mode.The mappings for the scaled case are: Tail \
+[0,1]\[Rule][p1,p2],Center [-1,+1]\[Rule][p1,p2], Head \
+[-1,0]\[Rule][p1,p2].\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51502540575*^9, 3.515025470453125*^9}, {
+   3.515025809828125*^9, 3.515025871953125*^9}, 3.515087100515625*^9, {
+   3.515093919359375*^9, 3.515093956828125*^9}, {3.515166540203125*^9, 
+   3.515166611953125*^9}, {3.51516776875*^9, 3.51516808796875*^9}, {
+   3.51517197040625*^9, 3.515172007203125*^9}, {3.51517205228125*^9, 
+   3.515172124953125*^9}, {3.515174270890625*^9, 3.51517432621875*^9}, {
+   3.515174374296875*^9, 3.515174376859375*^9}, {3.515174414515625*^9, 
+   3.515174428203125*^9}, {3.515176391734375*^9, 3.51517642853125*^9}, {
+   3.515179611390625*^9, 3.515179611859375*^9}, {3.51525656371875*^9, 
+   3.515256588859375*^9}, {3.51525698334375*^9, 3.5152570743125*^9}, {
+   3.515258211734375*^9, 3.51525824684375*^9}, {3.5153546915*^9, 
+   3.515354756703125*^9}, 3.515362450765625*^9, {3.515362729671875*^9, 
+   3.515362748828125*^9}, {3.51543114023475*^9, 3.515431278469125*^9}, {
+   3.515431361406625*^9, 3.51543150860975*^9}, {3.515432731312875*^9, 
+   3.515432926687875*^9}, {3.51543762104725*^9, 3.5154376819535*^9}, {
+   3.515438066266*^9, 3.51543809960975*^9}, {3.5154440169535*^9, 
+   3.515444072219125*^9}, {3.51545002323475*^9, 3.515450024156625*^9}, {
+   3.515450057719125*^9, 3.515450058266*^9}, 3.51545009429725*^9, {
+   3.5155270970625*^9, 3.51552722378125*^9}, {3.5155383961875*^9, 
+   3.51553845065625*^9}, 3.515609831015625*^9, 3.5156109883125*^9, 
+   3.515611273734375*^9, {3.515615750359375*^9, 3.515615751640625*^9}, {
+   3.515680160140625*^9, 3.515680230578125*^9}, {3.515680370671875*^9, 
+   3.515680478828125*^9}, 3.515681349375*^9, {3.515790635875*^9, 
+   3.515790680609375*^9}, {3.5158552261875*^9, 3.515855252890625*^9}, 
+   3.516288916296875*^9, {3.516456204140625*^9, 3.51645625071875*^9}, {
+   3.51645632690625*^9, 3.51645632903125*^9}, {3.516554541703125*^9, 
+   3.51655454378125*^9}, {3.519724253296875*^9, 3.51972427965625*^9}, {
+   3.51976606709375*^9, 3.519766088828125*^9}, {3.5830782369005327`*^9, 
+   3.583078308065632*^9}, {3.824310867820735*^9, 3.824310897293879*^9}, 
+   3.8243111808036118`*^9, {3.824311432049397*^9, 3.824311471525097*^9}, {
+   3.824311526924532*^9, 
+   3.824311576767251*^9}},ExpressionUUID->"89e56570-97ea-46a7-95b2-\
+6f9c6a4fd492"],
+
+Cell["Single-coordinate geometry", "Text",
+ CellChangeTimes->{{3.51604762427075*^9, 
+  3.516047628380125*^9}},ExpressionUUID->"f92204d6-fdac-4767-b1b7-\
+216677a88e14"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"AntiCoordinateIndex", "::", "usage"}], "=", 
+   "\"\<AntiCoordinateIndex[index] returns the index for the \\\"other\\\" \
+coordinate, i.e., it maps 1->2 and 2->1.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCoordinatePattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching expression for a single-coordinate specifier.  This \
+may be of the form x, Scaled[x], Canvas[x], or a general figure point \
+specification.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveCoordinate", "::", "usage"}], "=", 
+   "\"\<FigResolveCoordinate[x,direction] resolves a coordinate specification \
+x to canvas coordinates.  The direction may be Horizontal or Vertical.\>\""}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveCoordinateDisplacement", "::", "usage"}], "=", 
+   "\"\<FigResolveCoordinateDisplacement[x,direction] resolves a coordinate \
+displacement specification x to canvas coordinates.  The direction may be \
+Horizontal or Vertical.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.516047631661375*^9, 3.51604777395825*^9}, {
+   3.51846251275*^9, 3.51846255059375*^9}, 3.51949263384375*^9, {
+   3.5775521678810787`*^9, 
+   3.5775521878511066`*^9}},ExpressionUUID->"c4d16a20-9d09-409c-81d8-\
+02067c56e0af"],
+
+Cell["XY pair parameters", "Text",
+ CellChangeTimes->{{3.516037378723875*^9, 
+  3.516037384567625*^9}},ExpressionUUID->"436f3e8d-9d8c-4082-9a45-\
+7e9d7fef6dc6"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"NumericalPairPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching pattern for an explicit numerical pair.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"IntervalParametersPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching expression for interval parameters.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NonNegativeIntervalParametersPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching expression for interval parameters, with all \
+nonnegative values..\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515611917828125*^9, 3.515611974171875*^9}, {
+   3.515681751375*^9, 3.515681784109375*^9}, 3.515792024859375*^9, {
+   3.515792076265625*^9, 3.51579210153125*^9}, {3.5160374329895*^9, 
+   3.516037437442625*^9}},ExpressionUUID->"7842049f-f4a2-4720-aeaf-\
+dd2504831da1"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpgradePair", "::", "usage"}], "=", 
+   "\"\<UpgradePair[x] or UpgradePair[{x,y}] yields a pair of the form {x,y}. \
+ The data must be nonlist.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpgradePairEqual", "::", "usage"}], "=", 
+   "\"\<UpgradePairEqual[x] or UpgradePairEqual[{x,y}] yields a pair of the \
+form {x,y}, with default {x,x}.  The argument None yields {0,0}.  The data \
+must be numerical.\>\""}], ";", 
+  RowBox[{
+   RowBox[{"UpgradePairHorizontal", "::", "usage"}], "=", 
+   "\"\<UpgradePair[x] or UpgradePair[{x,y}] yields a pair of the form {x,y}, \
+with default {x,0}.  The argument None yields {0,0}.  The data must be \
+numerical.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpgradePairVertical", "::", "usage"}], "=", 
+   "\"\<UpgradePair[x] or UpgradePair[{x,y}] yields a pair of the form {x,y}, \
+with default {0,y}.  The argument None yields {0,0}.  The data must be \
+numerical.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515185844921875*^9, 3.515185981671875*^9}, {
+   3.515186619546875*^9, 3.51518670678125*^9}, {3.515186971515625*^9, 
+   3.515187094390625*^9}, {3.515187222875*^9, 3.51518724690625*^9}, {
+   3.5151872813125*^9, 3.515187294953125*^9}, {3.51525594021875*^9, 
+   3.5152560215625*^9}, {3.51525929571875*^9, 3.51525932990625*^9}, {
+   3.515259918125*^9, 3.51525996490625*^9}, {3.5152602333125*^9, 
+   3.515260271265625*^9}, {3.515263919203125*^9, 3.51526397484375*^9}, {
+   3.51533923865625*^9, 3.515339249796875*^9}, {3.51534210615625*^9, 
+   3.51534213434375*^9}, {3.515343300578125*^9, 3.5153434325625*^9}, {
+   3.515351994328125*^9, 3.5153520235625*^9}, {3.515352275125*^9, 
+   3.515352413484375*^9}, 3.515352449921875*^9, {3.5153525431875*^9, 
+   3.515352595203125*^9}, 3.51535358409375*^9, {3.51543873529725*^9, 
+   3.5154387818285*^9}, {3.515525200734375*^9, 3.51552526146875*^9}, {
+   3.51552682996875*^9, 3.515526857578125*^9}, {3.5156108601875*^9, 
+   3.51561088084375*^9}, {3.516037376130125*^9, 
+   3.516037387661375*^9}},ExpressionUUID->"ea1888f0-c180-426c-b87b-\
+7c89d6715127"],
+
+Cell["Regions", "Text",
+ CellChangeTimes->{{3.51578485421875*^9, 3.5157848565*^9}, {
+  3.51603739695825*^9, 
+  3.51603739795825*^9}},ExpressionUUID->"63e54ce1-1a32-418b-be78-\
+e0828d57a42e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"RangeParametersPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching expression for range parameters.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NonNegativeRangeParametersPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching expression for range parameters, with all \
+nonnegative values.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NumericalRegionPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching expression for a numerical region {{x1,x2},{y1,y2}}.\
+\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515611917828125*^9, 3.515611974171875*^9}, {
+   3.515681751375*^9, 3.515681784109375*^9}, 3.515792024859375*^9, {
+   3.515792076265625*^9, 3.51579210153125*^9}, {3.5160374329895*^9, 
+   3.51603744683325*^9}, {3.516038027317625*^9, 
+   3.51603806377075*^9}},ExpressionUUID->"a8de5173-0060-4f48-99a4-\
+0022a9c0856d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigRegionPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid region specification for figure \
+objects.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveRegion", "::", "usage"}], "=", 
+   "\"\<FigResolveRegion[region] converts a general figure region \
+specification to a canvas region {{x1,x2},{y1,y2}}.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigDeltaRegionPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid region *extension* specification for figure \
+objects.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveRegionExtension", "::", "usage"}], "=", 
+   "\"\<FigResolveRegionExtension[{{x1,x2},{y1,y2}},delta] takes a canvas \
+region and a general figure region *extension* specification, and resolves \
+this to arguments {{{x1,x2},{y1,y2}},{dx1,dx2},{dy1,dy2},Absolute|Scaled} for \
+use with ExtendRegion.  Scaled[] in the extension refers to a fraction of the \
+given region not the current window region.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AdjustRegion", "::", "usage"}], "=", 
+   "\"\<AdjustRegion[region,RegionExtension->delta] takes a general figure \
+region specification, expands it by a general figure region *extension* \
+specification, and returns an appropriate figure region specification.  A \
+Scaled[] value for delta refers to a fraction of the given region not the \
+current window region.  AdjustRegion[region,RegionDisplacment->delta] takes a \
+general figure region specification, translates it by a general figure \
+displacement, and returns an appropriate figure region specification.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RegionExtension", "::", "usage"}], "=", 
+   "\"\<Option name for use with AdjustRegion.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RegionDisplacement", "::", "usage"}], "=", 
+   "\"\<Option name for use with AdjustRegion.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"BoundingBox", "::", "usage"}], "=", 
+    "\"\<BoundingBox[{p1,p2,...,obj1,obj2,...}] returns a region \
+specification Canvas[{{xmin,xmax},{ymin,ymax}}] for the bounding box \
+surrounding the given objects or points/anchors.\>\""}], ";"}], 
+  "  "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RegionPoint", "::", "usage"}], "=", 
+   "\"\<RegionPoint[region,{xo,yo}] returns a point specification \
+Canvas[{x,y}] determined by its \\\"offset\\\" coordinates with respect to \
+the region, e.g., {-1,-1} for the lower left corner.\>\""}], ";"}]}], "Input",\
+
+ InitializationCell->True,
+ CellChangeTimes->{{3.5157849144375*^9, 3.51578496559375*^9}, {
+   3.516287005203125*^9, 3.516287216921875*^9}, 3.51827753921875*^9, {
+   3.52052895303125*^9, 3.520529026359375*^9}, {3.566662052149256*^9, 
+   3.566662053709258*^9}, {3.566662896380439*^9, 3.566662897820441*^9}, 
+   3.5666634701712418`*^9, {3.566943280087365*^9, 3.5669432811773663`*^9}, {
+   3.583079698694384*^9, 3.583079716389396*^9}, {3.5830797519734316`*^9, 
+   3.5830798730123544`*^9}, {3.58308273600961*^9, 3.583082736569619*^9}, {
+   3.583697291614894*^9, 3.5836974062450542`*^9}, {3.622839955636818*^9, 
+   3.622840027974145*^9}, {3.6228415035339365`*^9, 3.622841514563156*^9}, {
+   3.6244076836995487`*^9, 3.624407687942756*^9}, {3.7098176416295333`*^9, 
+   3.7098176500223475`*^9}},ExpressionUUID->"819d3a0f-4f2b-4bb0-96e9-\
+dc5754ba72f2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpgradeRangeParameters", "::", "usage"}], "=", 
+   "\"\<UpgradeRangeParameters[x], UpgradeRangeParameters[{x,y}], or \
+UpgradeRangeParameters[{{x1,x2},{y1,y2}}] yields a range specification of the \
+form {{x1,x2},{y1,y2}}.  The data must be numeric.  The argument None yields \
+{{0,0},{0,0}}.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515185844921875*^9, 3.515185981671875*^9}, {
+   3.515186619546875*^9, 3.51518670678125*^9}, {3.515186971515625*^9, 
+   3.515187094390625*^9}, {3.515187222875*^9, 3.51518724690625*^9}, {
+   3.5151872813125*^9, 3.515187294953125*^9}, {3.51525594021875*^9, 
+   3.5152560215625*^9}, {3.51525929571875*^9, 3.51525932990625*^9}, {
+   3.515259918125*^9, 3.51525996490625*^9}, {3.5152602333125*^9, 
+   3.515260271265625*^9}, {3.515263919203125*^9, 3.51526397484375*^9}, {
+   3.51533923865625*^9, 3.515339249796875*^9}, {3.51534210615625*^9, 
+   3.51534213434375*^9}, {3.515343300578125*^9, 3.5153434325625*^9}, {
+   3.515351994328125*^9, 3.5153520235625*^9}, {3.515352275125*^9, 
+   3.515352413484375*^9}, 3.515352449921875*^9, {3.5153525431875*^9, 
+   3.515352595203125*^9}, 3.51535358409375*^9, {3.51543873529725*^9, 
+   3.5154387818285*^9}, {3.515525200734375*^9, 3.51552526146875*^9}, {
+   3.51552682996875*^9, 3.515526857578125*^9}, {3.5156108601875*^9, 
+   3.51561088084375*^9}, {3.516037376130125*^9, 3.51603740864575*^9}, {
+   3.516391344765625*^9, 
+   3.516391355390625*^9}},ExpressionUUID->"68bd6beb-1ca3-4d81-9fe3-\
+af8ba9e71c13"],
+
+Cell["Edge parameters", "Text",
+ CellChangeTimes->{{3.516037400567625*^9, 3.516037402598875*^9}, {
+  3.5164590695625*^9, 3.516459071*^9}, {3.517776207953125*^9, 
+  3.517776209328125*^9}},ExpressionUUID->"4cba6e4a-3e46-4afe-a2cd-\
+c8cbd33cbb40"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"EdgeXYSameParametersPattern", "::", "usage"}], "=", 
+   "\"\<EdgeXYStyleParametersPattern[patt] is a pattern matching expression \
+for edge parameters for which a single value can be specified for both the X \
+and Y values.\>\""}], ";", 
+  RowBox[{
+   RowBox[{"EdgeXYUniqueParametersPattern", "::", "usage"}], "=", 
+   "\"\<EdgeXYUniqueParametersPattern[patt] is a pattern matching expression \
+for edge parameters for which the X and Y values would always be defined \
+separately (uniquely) except the value None.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515611917828125*^9, 3.515611974171875*^9}, {
+   3.515681751375*^9, 3.515681784109375*^9}, 3.515792024859375*^9, {
+   3.515792076265625*^9, 3.51579210153125*^9}, {3.5160374329895*^9, 
+   3.51603744683325*^9}, {3.516390009296875*^9, 
+   3.516390119421875*^9}},ExpressionUUID->"ee1b4bd0-51a2-4e3e-83a6-\
+978fe4240ef9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpgradeEdgeNonList", "::", "usage"}], "=", 
+   "\"\<UpgradeEdgeNonList[b,filler,mirror],  \
+UpgradeEdgeNonList[{b,l},filler,mirror], or \
+UpgradeEdgeNonList[{{l,r},{b,t}},filler,mirror] yields an axis parameter \
+specification of the form {{l,r},{b,t}}, with unspecified entries given by \
+filler.  UpgradeEdgeNonList[None,filler,mirror] yields all filler.  The \
+legacy argument ordering {b,l,t,r} is also supported.  When the boolean \
+argument mirror is true, if the r and t values are unspecified, they are set \
+to the l and b values, respectively.  When the boolean argument mirror is \
+false, if the r and t values are unspecified, they are set to filler.  The \
+parameters must be nonlist expressions.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpgradeEdgeFlatList", "::", "usage"}], "=", 
+   "\"\<Same as UpgradeEdgeNonList, but for parameters which are instead flat \
+lists.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MaskEdgeOption", "::", "usage"}], "=", 
+   "\"\<MaskEdgeOption[{{L,R},{B,T}},mask:{{mL,mR},{mB,mT}},exterioredgemask:{\
+{extL,extR},{extB,extT}},X] replaces the entries in {{L,R},{B,T}} with filler \
+X if the entry is masked off.  An entry is \\\"on\\\" if masked as True or is \
+masked as Exterior on an exterior edge.  An entry is \\\"off\\\" is masked as \
+False entry or is masked as Exterior on a non-exterior edge.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ResolveAutomaticEdgeOption", "::", "usage"}], "=", 
+   "\"\<ResolveAutomaticEdgeOption[{{L,R},{B,T}},defaults:{{dL,dR},{dB,dT}}] \
+replaces the entries in {{L,R},{B,T}} with the default value from the \
+corresponding entry of {{dL,dR},{dB,dT}} if the entry value is \
+Automatic.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Exterior", "::", "usage"}], "=", 
+   "\"\<Option value which evaluates to True for exterior edges of a figure \
+panel in a multipanel array.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515185844921875*^9, 3.515185981671875*^9}, {
+   3.515186619546875*^9, 3.51518670678125*^9}, {3.515186971515625*^9, 
+   3.515187094390625*^9}, {3.515187222875*^9, 3.51518724690625*^9}, {
+   3.5151872813125*^9, 3.515187294953125*^9}, {3.51525594021875*^9, 
+   3.5152560215625*^9}, {3.51525929571875*^9, 3.51525932990625*^9}, {
+   3.515259918125*^9, 3.51525996490625*^9}, {3.5152602333125*^9, 
+   3.515260271265625*^9}, {3.515263919203125*^9, 3.51526397484375*^9}, {
+   3.51533923865625*^9, 3.515339249796875*^9}, {3.51534210615625*^9, 
+   3.51534213434375*^9}, {3.515343300578125*^9, 3.5153434325625*^9}, {
+   3.515351994328125*^9, 3.5153520235625*^9}, {3.515352275125*^9, 
+   3.515352413484375*^9}, 3.515352449921875*^9, {3.5153525431875*^9, 
+   3.515352595203125*^9}, 3.51535358409375*^9, {3.51543873529725*^9, 
+   3.5154387818285*^9}, {3.515525200734375*^9, 3.51552526146875*^9}, {
+   3.51552682996875*^9, 3.515526857578125*^9}, {3.5156108601875*^9, 
+   3.51561088084375*^9}, {3.516037376130125*^9, 3.51603740864575*^9}, {
+   3.5163913589375*^9, 3.516391523046875*^9}, {3.51639566046875*^9, 
+   3.516395683375*^9}, {3.5163959403125*^9, 3.516395942296875*^9}, {
+   3.516400764125*^9, 3.51640089078125*^9}, {3.516401110515625*^9, 
+   3.51640119175*^9}, {3.51646070078125*^9, 3.51646080678125*^9}, {
+   3.5164640730625*^9, 3.5164641408125*^9}, {3.517776334921875*^9, 
+   3.51777634796875*^9}, {3.51777670296875*^9, 3.51777670459375*^9}, 
+   3.520446070328125*^9, {3.579102983755752*^9, 
+   3.579103053533461*^9}},ExpressionUUID->"b9586ef1-7303-4d9c-86f5-\
+93169020418f"],
+
+Cell["Point/anchor", "Text",
+ CellChangeTimes->{{3.51568129596875*^9, 
+  3.51568130521875*^9}},ExpressionUUID->"2ed10271-d385-41e7-af8d-\
+be084dd34a68"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCoordinatePointPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid point specification for figure objects, \
+restricted to numerical coordinates rather than anchors.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigPointPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid point specification for figure \
+objects.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigDisplacementPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid point specification for figure \
+objects.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigDisplacementSequencePattern", "::", "usage"}], "=", 
+   "\"\<FigDisplacementSequencePattern[n] yields a pattern matching a valid \
+*sequence* of displacement specifications for figure objects, consisting of a \
+list of n or more displacements.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigDisplacementSetPattern", "::", "usage"}], "=", 
+   "\"\<FigDisplacementSetPattern[n] yields a pattern matching a valid set of \
+displacement specifications for figure objects, consisting of a list of n or \
+more displacements.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51545072504725*^9, 3.515450732750375*^9}, {
+   3.515608533734375*^9, 3.515608590109375*^9}, {3.515608766796875*^9, 
+   3.515608778234375*^9}, {3.515611446640625*^9, 3.51561146553125*^9}, {
+   3.51561576096875*^9, 3.515615777*^9}, 3.515681379328125*^9, {
+   3.515784879953125*^9, 3.515784896234375*^9}, {3.51628441775*^9, 
+   3.51628446584375*^9}, {3.536532019921875*^9, 
+   3.5365320408125*^9}},ExpressionUUID->"64461e93-c9e1-44c0-8f2b-\
+7dcdb36fa236"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolvePoint", "::", "usage"}], "=", 
+   "\"\<FigResolvePoint[point] converts a general figure point/anchor \
+specification to a canvas point.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveAnchor", "::", "usage"}], "=", 
+   "\"\<FigResolveAnchor[point] converts a general figure point/anchor \
+specification to an anchor object reference.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigPointAnchor", "::", "usage"}], "=", 
+   "\"\<FigPointAnchor[{{x1,y1},{x2,y2},...},arguments] returns an anchor  \
+various possible anchors apropriate to point data.\>\""}], ";", 
+  RowBox[{
+   RowBox[{"FigPointBoundingBox", "::", "usage"}], "=", 
+   "\"\<FigPointBoundingBox[{x,y}] returns {{x,x},{y,y}}.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigPointSetBoundingBox", "::", "usage"}], "=", 
+   "\"\<FigPointSetBoundingBox[{{x1,y1},{x2,y2},...}] returns the bounding \
+region {{xmin,xmax},{ymin,ymax}}.  (Note: This function is meant primarily \
+for internal calculations in canvas coordinates.  ObjectBox should be used \
+instead for user-level calculations in a figure.)\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveDisplacement", "::", "usage"}], "=", 
+   "\"\<FigResolveDisplacment[displacement] converts a general figure \
+displacement specification to a canvas displacement.\>\""}], ";"}]}], "Input",\
+
+ InitializationCell->True,
+ CellChangeTimes->{{3.51502540575*^9, 3.515025470453125*^9}, {
+   3.515025809828125*^9, 3.515025871953125*^9}, 3.515087100515625*^9, {
+   3.515093919359375*^9, 3.515093956828125*^9}, {3.515166540203125*^9, 
+   3.515166611953125*^9}, {3.51516776875*^9, 3.51516808796875*^9}, {
+   3.51517197040625*^9, 3.515172007203125*^9}, {3.51517205228125*^9, 
+   3.515172124953125*^9}, {3.515174270890625*^9, 3.51517432621875*^9}, {
+   3.515174374296875*^9, 3.515174376859375*^9}, {3.515174414515625*^9, 
+   3.515174428203125*^9}, {3.515176391734375*^9, 3.51517642853125*^9}, {
+   3.515179611390625*^9, 3.515179611859375*^9}, {3.51525656371875*^9, 
+   3.515256588859375*^9}, {3.51525698334375*^9, 3.5152570743125*^9}, {
+   3.515258211734375*^9, 3.51525824684375*^9}, {3.5153546915*^9, 
+   3.515354756703125*^9}, 3.515362450765625*^9, {3.515362729671875*^9, 
+   3.515362748828125*^9}, {3.51543114023475*^9, 3.515431278469125*^9}, 
+   3.515431361406625*^9, {3.51544883929725*^9, 3.515448848687875*^9}, {
+   3.515450074750375*^9, 3.515450112719125*^9}, {3.515531625875*^9, 
+   3.515531626578125*^9}, {3.51553169240625*^9, 3.515531799140625*^9}, {
+   3.515531989515625*^9, 3.51553199340625*^9}, {3.5156051585*^9, 
+   3.51560521415625*^9}, {3.515614261796875*^9, 3.51561439478125*^9}, {
+   3.5156144301875*^9, 3.51561450953125*^9}, {3.5156157845625*^9, 
+   3.5156158263125*^9}, {3.515616484390625*^9, 3.5156164939375*^9}, {
+   3.515616525328125*^9, 3.515616555734375*^9}, {3.515618205140625*^9, 
+   3.515618205625*^9}, {3.515686047015625*^9, 3.515686105421875*^9}, {
+   3.515859334921875*^9, 3.51585938159375*^9}, 3.515859572328125*^9, {
+   3.515956716265625*^9, 3.51595682325*^9}, {3.516035351302*^9, 
+   3.5160353537395*^9}, {3.516035726473875*^9, 3.51603580058325*^9}, {
+   3.51603969983325*^9, 
+   3.516039701786375*^9}},ExpressionUUID->"483c5058-bf53-4c26-a393-\
+5173de65e5de"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplacePoint", "::", "usage"}], "=", 
+   "\"\<DisplacePoint[p,d1,d2,...] returns a point (actually, anchor) \
+obtained by starting from the point (or anchor) p and displacing it by the \
+displacements d1, d2, ...  If p is an anchor, the offset and orientation \
+information is retained.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjectPoint", "::", "usage"}], "=", 
+   "\"\<ProjectPoint[p,Horizontal,x]  or ProjectPoint[p,Vertical,y] returns a \
+point (actually, anchor) obtained by starting from the point (or anchor) p \
+and displacing it in the Horizontal or Vertical direction (as given by \
+direction) to coordinate value x.\>\""}], ";", 
+  RowBox[{
+   RowBox[{"DisplaceAlongAnchor", "::", "usage"}], "=", 
+   "\"\<DisplaceAlongAnchor[anchor,dist] returns an anchor obtained by \
+moving, from the anchor, a distance dist in printer's points along the \
+anchor's orientation.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Anchor", "::", "usage"}], "=", 
+   "\"\<Anchor returns an anchor, that is, representing a point, default text \
+offset, and default tangent angle within a figure.  The anchor may be created \
+from several different sources of information: (1) From a coordinate point -- \
+FigAnchor[{x,y}] with optional arguments FigAnchor[{x,y},{xo,yo},theta] \
+returns an anchor with point {x,y}, text offset {xo,yo} (default {0,0}), and \
+tangent angle theta (default 0). (2) From a scaled coordinate point -- \
+FigAnchor[Scaled[{x,y}]] with optional arguments \
+FigAnchor[Scaled[{x,y}],{xo,yo},theta].  (3) From a canvas coordinate point \
+-- FigAnchor[Canvas[{x,y}]] with optional arguments \
+FigAnchor[Canvas[{x,y}],{xo,yo},theta]. (4) As a copy from another anchor, \
+optionally overriding the offset and angle values: \
+FigAnchor[anchorobject|anchorname] with optional arguments \
+FigAnchor[anchorobject|anchorname,{xo,yo},theta] returns an anchor with \
+canvas point taken from given anchor, text offset {xo,yo} (default from given \
+anchor), and tangent angle theta (default from given anchor).\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"GetAnchor", "::", "usage"}], "=", 
+   "\"\<GetAnchor[objectname,args] generates an anchor from an existing \
+object.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RotateAnchor", "::", "usage"}], "=", 
+   "\"\<RotateAnchor[p,angle] returns an anchor obtained by starting from the \
+point specification p, resolving it to an anchor, and rotating the anchor \
+orientation by angle.  The angle may be a number or None.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AnchorAngle", "::", "usage"}], "=", 
+   "\"\<AnchorAngle[p] returns the orientation angle of anchor p.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AnchorCoordinates", "::", "usage"}], "=", 
+   "\"\<AnchorCoordinates[p] returns the coordinates of anchor p, as current \
+user coordinates.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AnchorOffset", "::", "usage"}], "=", 
+   "\"\<AnchorOffset[p] returns the offset part of anchor p.  Also, option \
+name for use with figure objects.  Specifies the anchor point for positioning \
+the object in fractional coordinates relative to the center of the \
+object.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CanvasRayAngle", "::", "usage"}], "=", 
+   "\"\<CanvasRayAngle[{p1,p2}] returns an angle for the ray from anchor p1 \
+to anchor p2, as measured on the canvas.  The cut used is (-Pi,Pi], as for \
+ArcTan[x,y].\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51502540575*^9, 3.515025470453125*^9}, {
+   3.515025809828125*^9, 3.515025871953125*^9}, 3.515087100515625*^9, {
+   3.515093919359375*^9, 3.515093956828125*^9}, {3.515166540203125*^9, 
+   3.515166611953125*^9}, {3.51516776875*^9, 3.51516808796875*^9}, {
+   3.51517197040625*^9, 3.515172007203125*^9}, {3.51517205228125*^9, 
+   3.515172124953125*^9}, {3.515174270890625*^9, 3.51517432621875*^9}, {
+   3.515174374296875*^9, 3.515174376859375*^9}, {3.515174414515625*^9, 
+   3.515174428203125*^9}, {3.515176391734375*^9, 3.51517642853125*^9}, {
+   3.515179611390625*^9, 3.515179611859375*^9}, {3.51525656371875*^9, 
+   3.515256588859375*^9}, {3.51525698334375*^9, 3.5152570743125*^9}, {
+   3.515258211734375*^9, 3.51525824684375*^9}, {3.5153546915*^9, 
+   3.515354756703125*^9}, 3.515362450765625*^9, {3.515362729671875*^9, 
+   3.515362748828125*^9}, {3.51543114023475*^9, 3.515431278469125*^9}, 
+   3.515431361406625*^9, {3.51544883929725*^9, 3.515448848687875*^9}, {
+   3.515450074750375*^9, 3.515450112719125*^9}, {3.515531625875*^9, 
+   3.515531626578125*^9}, {3.51553169240625*^9, 3.515531799140625*^9}, {
+   3.515531989515625*^9, 3.51553199340625*^9}, {3.5156051585*^9, 
+   3.51560521415625*^9}, {3.515614261796875*^9, 3.51561439478125*^9}, {
+   3.5156144301875*^9, 3.51561450953125*^9}, {3.5156157845625*^9, 
+   3.5156158263125*^9}, {3.515616484390625*^9, 3.5156164939375*^9}, {
+   3.515616525328125*^9, 3.515616555734375*^9}, {3.515618205140625*^9, 
+   3.515618205625*^9}, {3.515686047015625*^9, 3.515686105421875*^9}, {
+   3.515859334921875*^9, 3.51585938159375*^9}, 3.515859572328125*^9, {
+   3.515956716265625*^9, 3.51595682325*^9}, {3.516035351302*^9, 
+   3.516035419255125*^9}, {3.51603935477075*^9, 3.516039356286375*^9}, {
+   3.516283469109375*^9, 3.516283484609375*^9}, {3.51628799496875*^9, 
+   3.516287996109375*^9}, 3.518105040078125*^9, {3.5182007435*^9, 
+   3.51820078434375*^9}, {3.5666102319985275`*^9, 3.566610267238989*^9}, {
+   3.5666646899521847`*^9, 3.566664708287466*^9}, {3.5666654493359838`*^9, 
+   3.5666654705021944`*^9}, {3.566665545062459*^9, 3.5666655832896457`*^9}, {
+   3.566665614042404*^9, 3.566665618410654*^9}, {3.5666656609870896`*^9, 
+   3.5666656651293263`*^9}, {3.566665868328949*^9, 3.5666658715121307`*^9}, {
+   3.579631355241871*^9, 3.579631391561922*^9}, {3.5840148728286357`*^9, 
+   3.584014876853443*^9}, {3.6251643001658916`*^9, 3.6251643605223975`*^9}, {
+   3.625166626257777*^9, 3.625166631717787*^9}, {3.62516678152485*^9, 
+   3.6251668764354167`*^9}, {3.6251688787165337`*^9, 
+   3.6251689177166023`*^9}, {3.62516899016313*^9, 3.6251690669308643`*^9}, {
+   3.625169130485376*^9, 3.6251691774258585`*^9}, 
+   3.625342048435423*^9},ExpressionUUID->"228f0ae7-7b2a-420d-912e-\
+c596e7961c50"],
+
+Cell["Offset", "Text",
+ CellChangeTimes->{{3.519495284984375*^9, 
+  3.519495285703125*^9}},ExpressionUUID->"a66c9a19-aa0e-4e31-9b7f-\
+08cb018feddc"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigOffsetPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching an offset given as {xo,yo} or a point name (Center, \
+Left, Right, Bottom, Top, TopLeft, TopRight, BottomLeft, BottomRight).\>\""}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveOffset", "::", "usage"}], "=", 
+   "\"\<FigResolveOffset[offset] converts a general figure offset \
+specification to a numerical offset.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.519492566515625*^9, 3.519492620796875*^9}, {
+  3.519492652984375*^9, 
+  3.51949269346875*^9}},ExpressionUUID->"0e829463-0d4a-4048-92d1-\
+ac4959df6ee0"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"NamedPointPattern", "::", "usage"}], "=", 
+   "\"\<NamedPointPattern matches Center, Left, Right, Bottom, Top, TopLeft, \
+TopRight, BottomLeft, and BottomRight.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TopLeft", "::", "usage"}], "=", "\"\<Corner name.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TopRight", "::", "usage"}], "=", "\"\<Corner name.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"BottomLeft", "::", "usage"}], "=", "\"\<Corner name.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"BottomRight", "::", "usage"}], "=", "\"\<Corner name.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NamedPointOffset", "::", "usage"}], "=", 
+   "\"\<NamedPointOffset[side] provides a shorthand for the offset \
+coordinates to the given point -- Left/Right/Bottom/Top/Center.\>\""}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51847367484375*^9, 3.51847370996875*^9}, {
+  3.518473787515625*^9, 3.518473822734375*^9}, {3.519495217421875*^9, 
+  3.519495242640625*^9}},ExpressionUUID->"ada85a0c-f29d-4c2c-976a-\
+43d4ef3fc766"],
+
+Cell["Point sets", "Text",
+ CellChangeTimes->{{3.516035358098875*^9, 
+  3.51603535970825*^9}},ExpressionUUID->"76acfc98-a620-4fb9-a14c-\
+042958da059e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"CentroidPoint", "::", "usage"}], "=", 
+   "\"\<CentroidPoint[{p1,p2,...}] returns a point obtained as the centroid \
+of the given points p1, p2, ...\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51502540575*^9, 3.515025470453125*^9}, {
+   3.515025809828125*^9, 3.515025871953125*^9}, 3.515087100515625*^9, {
+   3.515093919359375*^9, 3.515093956828125*^9}, {3.515166540203125*^9, 
+   3.515166611953125*^9}, {3.51516776875*^9, 3.51516808796875*^9}, {
+   3.51517197040625*^9, 3.515172007203125*^9}, {3.51517205228125*^9, 
+   3.515172124953125*^9}, {3.515174270890625*^9, 3.51517432621875*^9}, {
+   3.515174374296875*^9, 3.515174376859375*^9}, {3.515174414515625*^9, 
+   3.515174428203125*^9}, {3.515176391734375*^9, 3.51517642853125*^9}, {
+   3.515179611390625*^9, 3.515179611859375*^9}, {3.51525656371875*^9, 
+   3.515256588859375*^9}, {3.51525698334375*^9, 3.5152570743125*^9}, {
+   3.515258211734375*^9, 3.51525824684375*^9}, {3.5153546915*^9, 
+   3.515354756703125*^9}, 3.515362450765625*^9, {3.515362729671875*^9, 
+   3.515362748828125*^9}, {3.51543114023475*^9, 3.515431278469125*^9}, 
+   3.515431361406625*^9, {3.51544883929725*^9, 3.515448848687875*^9}, {
+   3.515450074750375*^9, 3.515450112719125*^9}, {3.515531625875*^9, 
+   3.515531626578125*^9}, {3.51553169240625*^9, 3.515531799140625*^9}, {
+   3.515531989515625*^9, 3.51553199340625*^9}, {3.5156051585*^9, 
+   3.51560521415625*^9}, {3.515614261796875*^9, 3.51561439478125*^9}, {
+   3.5156144301875*^9, 3.51561450953125*^9}, {3.5156157845625*^9, 
+   3.5156158263125*^9}, {3.515616484390625*^9, 3.5156164939375*^9}, {
+   3.515616525328125*^9, 3.515616555734375*^9}, {3.515618205140625*^9, 
+   3.515618205625*^9}, {3.515686047015625*^9, 3.515686105421875*^9}, {
+   3.515859334921875*^9, 3.51585938159375*^9}, 3.515859572328125*^9, {
+   3.515956716265625*^9, 3.51595682325*^9}, {3.516035351302*^9, 
+   3.5160353537395*^9}, {3.516035444786375*^9, 3.516035696911375*^9}, {
+   3.518277451859375*^9, 
+   3.5182775325*^9}},ExpressionUUID->"e7a6dc17-c6be-4c68-adae-d765d3da7481"],
+
+Cell["Circle/rectangle", "Text",
+ CellChangeTimes->{{3.515681307984375*^9, 3.5156813095625*^9}, {
+  3.515856917*^9, 
+  3.51585691834375*^9}},ExpressionUUID->"fa39bff6-c65f-4b13-9c64-\
+074c0aa95e80"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"PivotOffset", "::", "uage"}], "=", 
+   "\"\<Option name for use with figure objects.  Specifies the pivot point \
+for object rotations in fractional coordinates relative to the center of the \
+object.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Radius", "::", "uage"}], "=", 
+   "\"\<Option name for use with figure objects.  Specifies radius or minor \
+and major radii.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigRectangleOptions", "::", "usage"}], "=", 
+   "\"\<FigRectangleOptions gives the standard set of additional options for \
+figure objects accepting parameters like those of a circle.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckRectangleOptions", "::", "usage"}], "=", 
+   "\"\<FigCheckRectangleOptions[obj] validates the corresponding set of \
+options.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigRadiusPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid radius specification for figure \
+objects.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveRadius", "::", "usage"}], "=", 
+   "\"\<FigResolveRadius[r] converts a general figure radius specification to \
+a canvas radius {rx,ry}.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MakeRectangleGeometry", "::", "usage"}], "=", 
+   "\"\<MakeRectangleGeometry[p,optionlist] returns the resolved values of \
+{CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle} as a list given the \
+anchor and options for a rectangle-like object.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RectangleRegion", "::", "usage"}], "=", 
+   "\"\<RectangleRegion[center] or RectangleRegion[corner1,corner2] or \
+RectangleRegion[region] generates a region specification from the arguments \
+which would normally be used to generate a FigRectangle.\>\""}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51561131703125*^9, 3.51561132190625*^9}, {
+   3.515611361515625*^9, 3.5156113755*^9}, {3.51568105059375*^9, 
+   3.515681116515625*^9}, 3.515681316953125*^9, 3.515681390453125*^9, {
+   3.519493159265625*^9, 3.519493194125*^9}, {3.5194939006875*^9, 
+   3.51949390475*^9}, {3.51949438121875*^9, 3.519494458671875*^9}, {
+   3.51949449709375*^9, 3.51949453459375*^9}, {3.5666634790212545`*^9, 
+   3.566663535651334*^9}, {3.579631379831906*^9, 
+   3.579631381491908*^9}},ExpressionUUID->"e9c254b0-a445-4878-b651-\
+1704a23aae01"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCircleAnchor", "::", "usage"}], "=", 
+   "\"\<FigCircleAnchor[p,{rx,ry},{theta1,theta2},phi,arguments] returns \
+various possible anchors apropriate to a circle (rotated ellipse).\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCircleBoundingBox", "::", "usage"}], "=", 
+   "\"\<FigCircleBoundingBox[p,{rx,ry},{theta1,theta2},phi] returns the \
+bounding box {{xmin,xmax},{ymin,ymax}} -- presently defined as the bounding \
+box of the principal axis end points (after rotation), which is not the true \
+bounding box for a tilted ellipse nor for a subarc.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51502540575*^9, 3.515025470453125*^9}, {
+   3.515025809828125*^9, 3.515025871953125*^9}, 3.515087100515625*^9, {
+   3.515093919359375*^9, 3.515093956828125*^9}, {3.515166540203125*^9, 
+   3.515166611953125*^9}, {3.51516776875*^9, 3.51516808796875*^9}, {
+   3.51517197040625*^9, 3.515172007203125*^9}, {3.51517205228125*^9, 
+   3.515172124953125*^9}, {3.515174270890625*^9, 3.51517432621875*^9}, {
+   3.515174374296875*^9, 3.515174376859375*^9}, {3.515174414515625*^9, 
+   3.515174428203125*^9}, {3.515176391734375*^9, 3.51517642853125*^9}, {
+   3.515179611390625*^9, 3.515179611859375*^9}, {3.51525656371875*^9, 
+   3.515256588859375*^9}, {3.51525698334375*^9, 3.5152570743125*^9}, {
+   3.515258211734375*^9, 3.51525824684375*^9}, {3.5153546915*^9, 
+   3.515354756703125*^9}, 3.515362450765625*^9, {3.515362729671875*^9, 
+   3.515362748828125*^9}, {3.51543114023475*^9, 3.515431278469125*^9}, 
+   3.515431361406625*^9, {3.51544883929725*^9, 3.515448848687875*^9}, {
+   3.515450074750375*^9, 3.515450096094125*^9}, {3.51553164115625*^9, 
+   3.51553167721875*^9}, 3.5156177784375*^9, {3.51562292153125*^9, 
+   3.51562299184375*^9}, {3.51585953621875*^9, 3.515859560015625*^9}, {
+   3.5158596475*^9, 3.515859678453125*^9}, {3.515859710453125*^9, 
+   3.5158597868125*^9}, {3.515860212453125*^9, 3.51586024209375*^9}, {
+   3.5163014231875*^9, 3.516301469546875*^9}, 
+   3.51949521496875*^9},ExpressionUUID->"961cdb1f-0bc4-4b07-9fb7-\
+d0de9d8f6489"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"HeadRadius", "::", "usage"}], "=", 
+   "\"\<Symbol representing the second bounding radius of a sector.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TailRadius", "::", "usage"}], "=", 
+   "\"\<Symbol representing the first bounding radius of a sector.\>\""}], 
+  ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"1d29211a-7bfa-41a1-9040-2ef9367048f4"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigRectangleAnchor", "::", "usage"}], "=", 
+   "\"\<FigRectangleAnchor[p,{rx,ry},phi,arguments] returns various possible \
+anchors apropriate to a rectangle (or rotated rectangle).\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigRectangleBoundingBox", "::", "usage"}], "=", 
+   "\"\<FigRectangleBoundingBox[p,{rx,ry},phi] returns the bounding box \
+{{xmin,xmax},{ymin,ymax}} of a rectangle (or rotated rectangle).\>\""}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51502540575*^9, 3.515025470453125*^9}, {
+   3.515025809828125*^9, 3.515025871953125*^9}, 3.515087100515625*^9, {
+   3.515093919359375*^9, 3.515093956828125*^9}, {3.515166540203125*^9, 
+   3.515166611953125*^9}, {3.51516776875*^9, 3.51516808796875*^9}, {
+   3.51517197040625*^9, 3.515172007203125*^9}, {3.51517205228125*^9, 
+   3.515172124953125*^9}, {3.515174270890625*^9, 3.51517432621875*^9}, {
+   3.515174374296875*^9, 3.515174376859375*^9}, {3.515174414515625*^9, 
+   3.515174428203125*^9}, {3.515176391734375*^9, 3.51517642853125*^9}, {
+   3.515179611390625*^9, 3.515179611859375*^9}, {3.51525656371875*^9, 
+   3.515256588859375*^9}, {3.51525698334375*^9, 3.5152570743125*^9}, {
+   3.515258211734375*^9, 3.51525824684375*^9}, {3.5153546915*^9, 
+   3.515354756703125*^9}, 3.515362450765625*^9, {3.515362729671875*^9, 
+   3.515362748828125*^9}, {3.51543114023475*^9, 3.515431278469125*^9}, 
+   3.515431361406625*^9, {3.51544883929725*^9, 3.515448848687875*^9}, {
+   3.515450074750375*^9, 3.515450096094125*^9}, {3.51553164115625*^9, 
+   3.51553167721875*^9}, 3.5156177784375*^9, {3.51562292153125*^9, 
+   3.51562299184375*^9}, {3.51585953621875*^9, 3.515859560015625*^9}, {
+   3.5158596475*^9, 3.515859678453125*^9}, {3.515859710453125*^9, 
+   3.5158597868125*^9}, {3.515859827359375*^9, 
+   3.515859881234375*^9}},ExpressionUUID->"093d190c-6e78-4374-8136-\
+035efff5a887"],
+
+Cell["Curve/arrowhead", "Text",
+ CellChangeTimes->{{3.515681325234375*^9, 
+  3.51568132734375*^9}},ExpressionUUID->"478e65d9-8988-4562-9416-\
+8b542a1f1a52"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Tail", "::", "usage"}], "=", 
+   "\"\<Tail is a symbol which represents the tail of a figure object, for \
+purposes of positioning.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Tangent", "::", "usage"}], "=", 
+   "\"\<Tangent is a symbol which represents a tangent anchor point on a \
+figure object, for purposes of positioning.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TailLength", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.  Gives arrow tail length in \
+printer's points.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TailLip", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.  Gives arrow tail lip in \
+printer's points.  Separate lengths for the left and right sides may be given \
+as {lipl,lipr}.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ShowTail", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.  Specifies whether or not \
+arrow tail should be shown.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"HeadLength", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.  Gives arrow head length in \
+printer's points.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"HeadLip", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.  Gives arrow head lip in \
+printer's points.  Separate lengths for the left and right sides may be given \
+as {lipl,lipr}.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ShowHead", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.  Specifies whether or not \
+arrow head should be shown.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"EndLength", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.  Gives head and tail length \
+in printer's points, but in outward sense (i.e., negated relative to usual \
+arrow head direction).\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"EndLip", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.  Gives head and tail lip in \
+printer's points.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ShowEnd", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.  Specifies whether or not \
+arrow head and tail should be shown.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TailRecess", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.  Specifies the distance a \
+figure object curve's tail should be recessed from the given endpoint.\>\""}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"HeadRecess", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.  Specifies the distance a \
+figure object curve's head should be recessed from the given endpoint.\>\""}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplaceTail", "::", "usage"}], "=", 
+   "\"\<DisplaceTail[d1,d2,...] is a symbol which represents a point on a \
+curve, to be obtained as a displacement from the tail point of the figure \
+object.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplaceHead", "::", "usage"}], "=", 
+   "\"\<DisplaceHead[d1,d2,...] is a symbol which represents a point on a \
+curve, to be obtained as a displacement from the head point of the figure \
+object.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjectTail", "::", "usage"}], "=", 
+   "\"\<ProjectTail[direction,x] is a symbol which represents a point on a \
+curve, to be obtained as a projection of the tail point of the figure object.\
+\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjectHead", "::", "usage"}], "=", 
+   "\"\<ProjectHead[direction,x] is a symbol which represents a point on a \
+curve, to be obtained as a projection of the head point of the figure object.\
+\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplaceAlongTail", "::", "usage"}], "=", 
+   "\"\<DisplaceAlongTail[dist] is a symbol which represents a point on a \
+curve, to be obtained as a displacement from the tail point of the figure \
+object.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplaceAlongHead", "::", "usage"}], "=", 
+   "\"\<DisplaceAlongHead[dist] is a symbol which represents a point on a \
+curve, to be obtained as a displacement afrom the head point of the figure \
+object.\>\""}], ";"}], "\[IndentingNewLine]"}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51568313465625*^9, 3.515683187234375*^9}, {
+   3.5156837406875*^9, 3.51568376184375*^9}, {3.51577751140625*^9, 
+   3.5157777009375*^9}, 3.515859810734375*^9, {3.516283342046875*^9, 
+   3.516283361703125*^9}, {3.51629491425*^9, 3.516294978875*^9}, {
+   3.5670378617079663`*^9, 3.567037907182046*^9}, {3.5670944325447373`*^9, 
+   3.567094513212479*^9}, {3.6253416022122393`*^9, 3.6253416507595243`*^9}, {
+   3.625452386927748*^9, 3.625452432277028*^9}, {3.6254524680010905`*^9, 
+   3.625452494349537*^9}, {3.625452956905949*^9, 3.6254529899780073`*^9}, {
+   3.625454494765428*^9, 
+   3.62545449986972*^9}},ExpressionUUID->"009f8336-045d-4c7d-8e6b-\
+088eeb0ae5de"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"LinearInterpolationFunctionsRxRy", "::", "usage"}], "=", 
+   "\"\<LinearInterpolationFunctionsRxRy[pts] returns the linear \
+interpolation functions {fRx,fRy} for the given points, which map u->Rx or \
+u->Ry, respectively, with curve parameter u in [0,1].\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LinearInterpolationFunctionPair", "::", "usage"}], "=", 
+   "\"\<LinearInterpolationFunctionPair[pts] returns the linear interpolation \
+and tangent functions for the given points, which map u->{x,y} with curve \
+parameter u in [0,1].  (DEPRECATED)\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LinearTangentFunction", "::", "usage"}], "=", 
+   "\"\<LinearTangentFunction[pts] returns the derivative of the linear \
+spline function for the given points, which maps u->{x',y'} with curve \
+parameter u in [0,1].\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCurveAnchor", "::", "usage"}], "=", 
+   "\"\<FigCurveAnchor[pts,interpolationfcn,tangentfcn,arguments] returns \
+various possible anchors apropriate to curve data.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CurveSegment", "::", "usage"}], "=", 
+   "\"\<CurveSegment[pts,k] returns the endpoints of the kth segment of the \
+curve given by pts.  For a list of n points, k may be 1, 2, ..., n-1 counting \
+from the beginning or -1, -2, ..., -(n-1) counting back from the end.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CurvePoint", "::", "usage"}], "=", 
+   "\"\<CurvePoint[pts,k] returns the kth point of the curve given by pts.  \
+For a list of n points, k may be 1, 2, ..., n counting from the beginning or \
+-1, -2, ..., -n counting back from the end.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCurveAnchorFromPoints", "::", "usage"}], "=", 
+   "\"\<FigCurveAnchor[pts,arguments] returns various possible anchors \
+apropriate to curve data, simply using linear interpolation of the \
+points.\>\""}], ";", 
+  RowBox[{
+   RowBox[{"FigCurveBoundingBox", "::", "usage"}], "=", 
+   "\"\<FigCurveBoundingBox[{{x1,y1},{x2,y2},...}] returns the bounding box \
+{{xmin,xmax},{ymin,ymax}}.  For a null list of points, CurveBoundingBox \
+returns None.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51502540575*^9, 3.515025470453125*^9}, {
+   3.515025809828125*^9, 3.515025871953125*^9}, 3.515087100515625*^9, {
+   3.515093919359375*^9, 3.515093956828125*^9}, {3.515166540203125*^9, 
+   3.515166611953125*^9}, {3.51516776875*^9, 3.51516808796875*^9}, {
+   3.51517197040625*^9, 3.515172007203125*^9}, {3.51517205228125*^9, 
+   3.515172124953125*^9}, {3.515174270890625*^9, 3.51517432621875*^9}, {
+   3.515174374296875*^9, 3.515174376859375*^9}, {3.515174414515625*^9, 
+   3.515174428203125*^9}, {3.515176391734375*^9, 3.51517642853125*^9}, {
+   3.515179611390625*^9, 3.515179611859375*^9}, {3.51525656371875*^9, 
+   3.515256588859375*^9}, {3.51525698334375*^9, 3.5152570743125*^9}, {
+   3.515258211734375*^9, 3.51525824684375*^9}, {3.5153546915*^9, 
+   3.515354756703125*^9}, 3.515362450765625*^9, {3.515362729671875*^9, 
+   3.515362748828125*^9}, {3.51543114023475*^9, 3.515431278469125*^9}, 
+   3.515431361406625*^9, {3.51544883929725*^9, 3.515448848687875*^9}, {
+   3.515450074750375*^9, 3.515450096094125*^9}, {3.51553164115625*^9, 
+   3.51553167721875*^9}, 3.5156177784375*^9, {3.51562292153125*^9, 
+   3.51562299184375*^9}, {3.51585953621875*^9, 3.515859560015625*^9}, {
+   3.5158596475*^9, 3.515859665515625*^9}, {3.516288940390625*^9, 
+   3.516288981234375*^9}, {3.516290873484375*^9, 3.516290993421875*^9}, {
+   3.516291423671875*^9, 3.516291452125*^9}, {3.51949644628125*^9, 
+   3.5194965524375*^9}, {3.5195156128125*^9, 3.5195156496875*^9}, {
+   3.520542272984375*^9, 3.52054229121875*^9}, {3.5205427686875*^9, 
+   3.520542769359375*^9}, {3.583353379932416*^9, 
+   3.583353460617529*^9}},ExpressionUUID->"996ede17-2f2a-48e6-a60d-\
+90c46f5fcddf"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigPointSetPattern", "::", "usage"}], "=", 
+   "\"\<FigPointSetPattern[n] yields a pattern matching a valid point set \
+specification for figure objects, consisting of a list of n or more points.\>\
+\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCurvePointPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid curve point specification for figure \
+objects, consisting of an ordinary point specification or a FromTail/FromHead \
+specification.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCurvePointSetPattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid curve specification for figure objects, \
+consisting of a list of two or more points, but not matching \
+Graphics/ContourGraphics.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCurvePattern", "::", "usage"}], "=", 
+   "\"\<Pattern matching a valid curve specification for figure objects, \
+consisting of a list of two or more points or \
+Graphics/ContourGraphics.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveCurve", "::", "usage"}], "=", 
+   "\"\<FigResolveCurve[self,{p1,p2,...},options] converts a general figure \
+curve specification to a canvas point list.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51545072504725*^9, 3.515450732750375*^9}, {
+   3.515608533734375*^9, 3.515608590109375*^9}, {3.515608766796875*^9, 
+   3.515608778234375*^9}, {3.515611446640625*^9, 3.51561146553125*^9}, {
+   3.51561576096875*^9, 3.515615777*^9}, 3.515681379328125*^9, {
+   3.515784879953125*^9, 3.5157848839375*^9}, {3.5158838143125*^9, 
+   3.515883842203125*^9}, {3.516039719427*^9, 3.516039720067625*^9}, {
+   3.5197785684375*^9, 3.519778598953125*^9}, {3.51977863109375*^9, 
+   3.519778656328125*^9}},ExpressionUUID->"82299368-2e48-46cc-b77e-\
+030dbd56beb0"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigArrowheadOptions", "::", "usage"}], "=", 
+   "\"\<FigArrowheadOptions[showtail,showhead] gives the standard set of \
+arrowhead options for use in defining figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckArrowheadOptions", "::", "usage"}], "=", 
+   "\"\<FigCheckArrowheadOptions[obj] validates the corresponding set of \
+options.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCurveOptions", "::", "usage"}], "=", 
+   "\"\<FigCurveOptions gives the standard set of additional options for \
+figure objects accepting curve arguments.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckCurveOptions", "::", "usage"}], "=", 
+   "\"\<FigCheckCurveOptions[obj] validates the corresponding set of options.\
+\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCurveArrowheadPoints", "::", "usage"}], "=", 
+   "\"\<FigCurveArrowheadPoints[tailanchor,headanchor,options] generates the \
+arrowheads to go on the curve specified by canvaspoints, the arrowheads \
+themselves then returned as lists of canvas points \
+{taillist,headlist}.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.515609837609375*^9, {3.5156101121875*^9, 3.515610226734375*^9}, 
+   3.515681314*^9, {3.515682822125*^9, 3.515682845109375*^9}, {
+   3.519771533734375*^9, 
+   3.519771534609375*^9}},ExpressionUUID->"562848e6-9752-48bc-9ccf-\
+3fab89b24839"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"GrabPoints", "::", "usage"}], "=", 
+   "\"\<GrabPoints[graphics] returns a curve (point list) extracted from the \
+Line objects in a Graphics, ContourGraphics, or Graphics3D object.  With \
+option Line->n, the points from the nth curve found in graphics are returned \
+(by default, Line->1).  With Line->Join, all curves are joined end to end.  \
+With Line->All, a list of all curves is returned.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.516039823036375*^9, 3.516039916177*^9}, {
+  3.51604018695825*^9, 
+  3.516040281942625*^9}},ExpressionUUID->"7d179876-7c52-4ece-b301-\
+cfd6898c2566"],
+
+Cell["List manipulation for curves", "Text",
+ CellChangeTimes->{{3.566508698884493*^9, 
+  3.5665087030653005`*^9}},ExpressionUUID->"319960b9-a856-4c58-ac1b-\
+eba4f0e8da17"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"SplitByDelimiter", "::", "usage"}], "=", 
+   "\"\<SplitBySplit[list,delimiter] splits list into sublists, delimited by \
+delimiter.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PurgeOfDelimiter", "::", "usage"}], "=", 
+   "\"\<PurgeOfDelimiter[list,delimiter] purges list of delimiter.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"AppendFirst", "::", "usage"}], "=", 
+    "\"\<AppendFirst[list] appends the first element of list at the end, \
+e.g., to close an open curve.\>\""}], ";"}], " "}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5665087064817066`*^9, 3.566508778007832*^9}, {
+  3.5665098910853868`*^9, 
+  3.566509959288707*^9}},ExpressionUUID->"a873e7e0-97ef-4a64-a375-\
+887a8bd75e7a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FigObject", "Subsection",
+ CellChangeTimes->{{3.5152781874375*^9, 
+  3.515278189078125*^9}},ExpressionUUID->"a70ee435-6afd-4e7f-bd26-\
+812baac82e2c"],
+
+Cell["FigObject machinery", "Text",
+ CellChangeTimes->{{3.51561129803125*^9, 
+  3.515611300484375*^9}},ExpressionUUID->"16e36143-7121-4663-a3d1-\
+8c6c011f2027"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"$FigClassRegistry", "::", "usage"}], "=", 
+   "\"\<$FigClassRegistry is a list of all registered figure object \
+classes.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"$FigClassAttachedLabels", "::", "usage"}], "=", 
+   "\"\<$FigClassAttachedLabels[class] contains a list of all registered \
+predefined labels for class.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RegisterFigOptions", "::", "usage"}], "=", 
+   "\"\<RegisterFigOptions[symbol] registers the options for symbol to be \
+scoped along with those of figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DeclareFigClass", "::", "usage"}], "=", 
+   "\"\<DeclareFigClass[class,[parent],{data1,data2,...},{method1,method2,...}\
+,{label1,label2,...}] declares a figure object class, inheriting from \
+FigObject (or an intermediate parent class parent descended from FigObject), \
+and with given data members.  This function also carries out other necessary \
+registration and setup tasks for a figure object.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DefineFigClassOptions", "::", "usage"}], "=", 
+   "\"\<DefineFigClassOptions[class,[parent],{option1->rule1,...}] defines \
+the options and option inheritance rules for a figure object class.  The \
+FigObject options are automatically inherited (or those of an intermediate \
+parent class parent descended from FigObject), and options are defined for \
+each of the convenience labels declared for this class in DeclareFigClass.  \
+Defaults for inherited options may be overridden from Inherited by \
+DefineFigClassOptions[class,{parentoption1->newdefault1,...},{option1->rule1,.\
+..}].\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckBaseOptions", "::", "usage"}], "=", 
+   "\"\<FigCheckBaseOptions[self,optionlist] carries out option validation on \
+the base FigObject options.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigRealizeOptions", "::", "usage"}], "=", 
+   "\"\<FigRealizeOptions[self,class,optionlist] carries out option \
+inheritance and realization for figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigObject", "::", "usage"}], "=", 
+   "\"\<FigObject is the parent class for all figure object classes.\>\""}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigObjectWrapper", "::", "usage"}], "=", 
+   "\"\<FigObjectWrapper[class,self,optionlist,body] provides the \
+standardized right hand side for a function defining a figure object.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigMakeAnchorWrapper", "::", "usage"}], "=", 
+   "\"\<FigMakeAnchorWrapper[class,self,name,arg,expr] provides a \
+standardized right hand side with error trapping for a function defining a \
+figure object MakeAnchor method.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigObjectAnchorWrapper", "::", "usage"}], "=", 
+   "\"\<FigObjectAnchorWrapper[class,self,name,optionlist,body] provides the \
+standardized right hand side for a function defining a figure object anchor \
+method. (UNDER DEVELOPMENT -- stagnated)\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigMakeBoundingBoxWrapper", "::", "usage"}], "=", 
+   "\"\<FigMakeBoundingBoxWrapper[class,self,expr] provides a standardized \
+right hand side with error trapping for a function defining a figure object \
+MakeBoundingBox method.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigOptions", "::", "usage"}], "=", 
+   "\"\<FigOptions evaluates to the list of option rules resolved by \
+FigObjectWrapper.  FigOptions is only for use inside FigObjectWrapper.\>\""}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigAnchorOptions", "::", "usage"}], "=", 
+   "\"\<FigAnchorOptions evaluates to the list of option rules resolved by \
+FigObjectAnchorWrapper.  FigAnchorOptions is only for use inside \
+FigObjectWrapper.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ScopeOptions", "::", "usage"}], "=", 
+   "\"\<ScopeOptions[body] evaluates body, localizing all changes to the \
+default options for figure objects.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SetOptionOverrides", "::", "usage"}], "=", 
+   "\"\<SetOptionOverrides[namepatt->options] or \
+SetOptionOverrides[{namepatt1->options1,...}] adds the rule that options \
+should be applied to all figure objects with names matching namepatt, within \
+the current option override scope.  Rules are appended, i.e., at lower \
+precedence, to prior rules.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ScopeOptionOverrides", "::", "usage"}], "=", 
+   "\"\<ScopeOptionOverrides[body] evaluates body, localizing all changes to \
+the option override rules for figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ResolveOptionOverrides", "::", "usage"}], "=", 
+   "\"\<ResolveOptionOverrides[name] resolves all option overrides presently \
+defined for a figure object with the given name.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515087113171875*^9, 3.515087139203125*^9}, {
+   3.515094101671875*^9, 3.515094213140625*^9}, {3.515094287390625*^9, 
+   3.5150942951875*^9}, {3.5151012799375*^9, 3.515101288890625*^9}, {
+   3.515101348671875*^9, 3.51510146721875*^9}, {3.51510159309375*^9, 
+   3.515101593875*^9}, {3.515101681890625*^9, 3.5151018205625*^9}, 
+   3.515103435*^9, {3.51510356121875*^9, 3.51510361253125*^9}, {
+   3.515104531890625*^9, 3.515104608*^9}, 3.515333798203125*^9, {
+   3.515441805250375*^9, 3.515441874391*^9}, 3.51577565315625*^9, {
+   3.515781888515625*^9, 3.51578188896875*^9}, {3.51595955853125*^9, 
+   3.515959659328125*^9}, {3.515962257859375*^9, 3.5159623285625*^9}, 
+   3.516042459411375*^9, {3.516564819765625*^9, 3.516564853375*^9}, 
+   3.51656545434375*^9, {3.518279650953125*^9, 3.518279652171875*^9}, {
+   3.519646578625*^9, 3.51964662053125*^9}, {3.5197710541875*^9, 
+   3.51977110890625*^9}, {3.519772586625*^9, 3.5197726233125*^9}, {
+   3.520634468921875*^9, 3.52063451465625*^9}, {3.52067831975*^9, 
+   3.52067834028125*^9}, {3.5663345152683725`*^9, 3.5663346019265246`*^9}, {
+   3.566334960349554*^9, 3.5663350682861443`*^9}, {3.5663364784934244`*^9, 
+   3.5663365175402355`*^9}, {3.583939463298097*^9, 3.5839394640156984`*^9}, {
+   3.5839443705831165`*^9, 3.583944420518804*^9}, {3.583948369313555*^9, 
+   3.5839483914528213`*^9}, {3.583954723505849*^9, 3.583954735166028*^9}, {
+   3.7691667618873243`*^9, 
+   3.769166766629732*^9}},ExpressionUUID->"0369f7eb-1c52-4336-ae4f-\
+d45d757203e9"],
+
+Cell["FigObject standard options", "Text",
+ CellChangeTimes->{{3.5156113030625*^9, 
+  3.515611308859375*^9}},ExpressionUUID->"8fbc3093-8d05-4422-b487-\
+ec6ded288c2b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Color", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Directives", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ShowLine", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LineColor", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LineOpacity", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LineThickness", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LineDashing", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LineCapForm", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LineJoinForm", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LineDirectives", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ShowFill", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FillColor", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FillOpacity", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FillDirectives", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ShowPoint", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PointColor", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PointOpacity", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PointDirectives", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ShowText", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextColor", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextOpacity", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextBackground", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextStyleOptions", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextFrame", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextFrameOpacity", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextFrameColor", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextFrameThickness", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextFrameDashing", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextFrameDirectives", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextRoundingRadius", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextMargin", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextPadding", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextOffset", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextOrientation", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextRectify", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextBaseBuffer", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextBuffer", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextNudge", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextCallout", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextCalloutColor", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextCalloutOpacity", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextCalloutThickness", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextCalloutDashing", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextCalloutCapForm", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextCalloutJoinForm", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextCalloutDirectives", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Layer", "::", "usage"}], "=", 
+   "\"\<Option name for use with figure objects.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.51518806253125*^9, 3.5151881434375*^9}, {
+   3.515254538578125*^9, 3.515254572640625*^9}, {3.515510853875*^9, 
+   3.515510858265625*^9}, {3.515513068390625*^9, 3.51551308996875*^9}, {
+   3.515513200875*^9, 3.515513221640625*^9}, {3.51552070721875*^9, 
+   3.515520708078125*^9}, {3.515521007359375*^9, 3.515521008109375*^9}, {
+   3.515526926625*^9, 3.5155269729375*^9}, {3.515528224234375*^9, 
+   3.515528227328125*^9}, 3.515536055859375*^9, 3.515536227109375*^9, {
+   3.59628603132061*^9, 3.5962860335670147`*^9}, {3.6174602701598115`*^9, 
+   3.6174603097098665`*^9}, {3.6840205737625504`*^9, 3.684020593512185*^9}, {
+   3.710444525153969*^9, 
+   3.7104445438428016`*^9}},ExpressionUUID->"65b06f6d-4dab-480c-9122-\
+08ae72575263"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"TextFrameThickness", "::", "shdw"}], "MessageName"], ":", 
+  " ", "\<\"Symbol \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"\\\\\\\"TextFrameThickness\\\\\\\"\\\"}]\\)\
+\[NoBreak] appears in multiple contexts \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"SciDraw`\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"Global`\\\\\\\"\\\"}], \\\"}\\\"}]\\)\[NoBreak]; definitions in \
+context \[NoBreak]\\!\\(\\*RowBox[{\\\"\\\\\\\"SciDraw`\\\\\\\"\\\"}]\\)\
+\[NoBreak] may shadow or be shadowed by other definitions. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/shdw\\\", \
+ButtonNote -> \\\"SciDraw`TextFrameThickness::shdw\\\"]\\)\"\>"}]], "Message",\
+ "MSG",
+ CellChangeTimes->{
+  3.684021255530548*^9},ExpressionUUID->"ed39ccdc-0e6e-4274-9e3e-\
+4cb8a53070a1"]
+}, Open  ]],
+
+Cell["Attached labels", "Text",
+ CellChangeTimes->{{3.5159413730625*^9, 3.51594137578125*^9}, 
+   3.51964633065625*^9, 
+   3.5839394646552997`*^9},ExpressionUUID->"fefa2acd-800d-428f-bb21-\
+844b12a541f8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"BaseOutlineOptionList", "::", "usage"}], "=", 
+   "\"\<List of {option,pattern} pairs for the base FigObject outline \
+options.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"BaseFillOptionList", "::", "usage"}], "=", 
+   "\"\<List of {option,pattern} pairs for the base FigObject fill options.\>\
+\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"BasePointOptionList", "::", "usage"}], "=", 
+   "\"\<List of {option,pattern} pairs for the base FigObject point \
+options.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"BaseTextOptionList", "::", "usage"}], "=", 
+   "\"\<List of {option,pattern} pairs for the base FigObject text options.\>\
+\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"BaseAnchorOptionList", "::", "usage"}], "=", 
+   "\"\<List of {option,pattern} pairs for the base FigObject anchor options.\
+\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigDerivedLabelOptions", "::", "usage"}], "=", 
+   "\"\<FigDerivedLabelOptions[{side1,side2,...},extras,fontsize] gives the \
+standard set of additional options for a figure object convenience label at \
+the given side or location, with the given default for FontSize (usually \
+Default, sometimes Automatic, e.g., for tick labels).  These are sideLabel, \
+sidePosition, plus the various text appearance and positioning options of the \
+form sideTextXXXX and sideFontXXXX.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigCheckDerivedLabelOptions", "::", "usage"}], "=", 
+   "\"\<FigCheckDerivedLabelOptions[self,side,extras] validates the \
+corresponding set of options.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigResolveDerivedLabelOptions", "::", "usage"}], "=", 
+   "\"\<FigResolveAttachedLabelOptions[side] resolves the options determining \
+the content, anchor, and style/positioning options for a convenience label, \
+as a list {label,anchorargs,{textoption1->value1,...}}.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SidifyOptionName", "::", "usage"}], "=", 
+   "\"\<SidifyOptionName[Side][Option] returns the symbol SciDraw`SideOption.\
+\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigSpawnAttachedLabel", "::", "usage"}], "=", 
+   "\"\<FigSpawnAttachedLabel[self,side,{content,positionargs,newoptions},\
+fulloptions] spawns a given convenience label.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"LabelPosition", "::", "usage"}], "=", 
+    "\"\<SciDraw reserved symbol.\>\""}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Orientation", "::", "usage"}], "=", 
+     "\"\<SciDraw reserved symbol (base for anchor option names).\>\""}], 
+    ";"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Buffer", "::", "usage"}], "=", 
+     "\"\<SciDraw reserved symbol (base for anchor option names).\>\""}], 
+    ";"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Nudge", "::", "usage"}], "=", 
+     "\"\<SciDraw reserved symbol (base for anchor option names).\>\""}], 
+    ";"}], "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515941687328125*^9, 3.51594169140625*^9}, {
+  3.5159417905625*^9, 3.515942088921875*^9}, {3.51595621396875*^9, 
+  3.515956303953125*^9}, {3.515958037359375*^9, 3.515958080296875*^9}, {
+  3.5159590204375*^9, 3.515959028015625*^9}, {3.51612735315625*^9, 
+  3.5161273600625*^9}, {3.5161273965*^9, 3.51612741246875*^9}, {
+  3.51612774946875*^9, 3.516127826875*^9}, {3.516397075640625*^9, 
+  3.5163970933125*^9}, {3.516462288796875*^9, 3.516462362453125*^9}, {
+  3.51646786378125*^9, 3.516467887578125*^9}, {3.516468752296875*^9, 
+  3.516468770859375*^9}, {3.51655725684375*^9, 3.516557275984375*^9}, {
+  3.51964633225*^9, 3.5196463345625*^9}, {3.5839394652637005`*^9, 
+  3.5839394664337025`*^9}, {3.5839433224172754`*^9, 3.583943402991417*^9}, {
+  3.583943460181117*^9, 3.5839434773723474`*^9}, {3.58395475746387*^9, 
+  3.5839547658965*^9}},ExpressionUUID->"5f2f5ae7-9879-42da-a603-277c3bffe25c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FigStyle", "Subsection",
+ CellChangeTimes->{{3.515596792*^9, 
+  3.515596793671875*^9}},ExpressionUUID->"12cb7736-51c3-4c1b-949b-\
+6fe719a9232d"],
+
+Cell[BoxData[
+ RowBox[{"(*", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"FigStyle", "::", "usage"}], "=", 
+    "\"\<FigStyle is the figure object style class.  \
+FigStyle[[name]][{symbol1,options1},{symbol2,options2},...,commonopts] \
+defines options for the given symbols (e.g., figure object classes or Figure \
+itself).  First the default options are temporarily set to the values given \
+-- by evaluating SetOptions[symbol,options] (evaluation runs from left to \
+right in the argument list).  Any options given as commonopts are also used, \
+if they are defined for the given symbol.  Then, for each of these symbols, \
+all options which now still have the value Inherited are given their explicit \
+inherited values.  The resulting full set of option values (excluding Style \
+and Debug) is saved for each of the symbols.\>\""}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ShowFigStyle", "::", "usage"}], "=", 
+    "\"\<ShowFigStyle[style] displays the full set of options for each figure \
+object class as specified in the given style.\>\""}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"WithStyle", "::", "usage"}], "=", 
+    "\"\<WithStyle[style,body] evaluates body with the default options set \
+according to style.\>\""}], ";"}], "\[IndentingNewLine]", "*)"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515596811046875*^9, 3.515596967125*^9}, {
+  3.51559700528125*^9, 3.515597237515625*^9}, {3.51570514315625*^9, 
+  3.515705190140625*^9}, {3.515776469796875*^9, 3.515776475765625*^9}, {
+  3.51577653140625*^9, 3.51577686525*^9}, {3.515777297234375*^9, 
+  3.51577739953125*^9}, {3.5157774595*^9, 3.51577747203125*^9}, {
+  3.51776298471875*^9, 3.51776320590625*^9}, {3.517767663921875*^9, 
+  3.517767691984375*^9}, {3.5177703965625*^9, 3.517770415984375*^9}, {
+  3.51810147353125*^9, 3.51810147584375*^9}, {3.5182801900625*^9, 
+  3.51828019134375*^9}, {3.51828456159375*^9, 3.51828456884375*^9}, {
+  3.52098855259375*^9, 3.520988553515625*^9}, {3.5662566296673136`*^9, 
+  3.566256635626524*^9}},ExpressionUUID->"75cb72a8-0f80-457f-acb1-\
+321b8cd4ab82"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FigText", "Subsection",
+ CellChangeTimes->{{3.5152783775*^9, 
+  3.5152783786875*^9}},ExpressionUUID->"2a585c0a-d5fd-49c4-b17e-c3d748a56a3e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"textup", "::", "usage"}], "=", 
+   "\"\<textup[text] gives non-italic text.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"textsl", "::", "usage"}], "=", 
+   "\"\<textsl[text] gives slanted text.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"textit", "::", "usage"}], "=", 
+   "\"\<textit[text] gives italic text.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"textmd", "::", "usage"}], "=", 
+   "\"\<textmd[text] gives non-bold text.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"textbf", "::", "usage"}], "=", 
+   "\"\<textbf[text] gives bold text.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"textrm", "::", "usage"}], "=", 
+   "\"\<textrm[text] gives text in the Times font.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"texttt", "::", "usage"}], "=", 
+   "\"\<texttt[text] gives text in the Courier font.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"textsf", "::", "usage"}], "=", 
+    "\"\<textsf[text] gives text in the Helvetica font.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"textsize", "::", "usage"}], "=", 
+   "\"\<textsize[size,text] gives text with the specified point size.\>\""}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"textcolor", "::", "usage"}], "=", 
+   "\"\<textcolor[color,text] gives text with the specified color.\>\""}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"texttracking", "::", "usage"}], "=", 
+   "\"\<texttracking[tracking,text] gives text with the specified tracking.\>\
+\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"textfamily", "::", "usage"}], "=", 
+   "\"\<textfamily[family,text] gives text with the specified family.\>\""}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"texthidden", "::", "usage"}], "=", 
+    "\"\<texthidden[text] gives invisible text.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"textsubscript", "::", "usage"}], "=", "\"\<UNDOCUMENTED\>\""}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"textsuperscript", "::", "usage"}], "=", "\"\<UNDOCUMENTED\>\""}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"textsubsuperscript", "::", "usage"}], "=", 
+    "\"\<UNDOCUMENTED\>\""}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"hspace", "::", "usage"}], "=", 
+    "\"\<hspace[width] produces box of given width in ems, which may be \
+negative.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"StackText", "::", "usage"}], "=", 
+    "\"\<StackText[alignment,linegap,{line1,...}] produces a multiline label.\
+\>\""}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SuperPrimeBox", "::", "usage"}], "=", 
+   "\"\<SuperPrimeBox[x] places x in a SuperscriptBox with superscript prime. \
+SuperPrimeBox[x,n] produces n primes. (UNDOCUMENTED)\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SuperPrime", "::", "usage"}], "=", 
+   "\"\<SuperPrime[x] superscripts x with a prime, in analogy to SuperPlus, \
+SuperMinus, etc. -- since uses Superscript, behaves like mathematical \
+expression, including automatic parenthesization.   SuperPrime[x,n] produces \
+n primes.  (DEPRECATED)\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UnitsLabel", "::", "usage"}], "=", "\"\<UNDOCUMENTED\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MultipletLabel", "::", "usage"}], "=", 
+   "\"\<MultipletLabel[{n1,n2,...}] displays as \\\"(n1,n2,...)\\\".  The \
+option EntrySeparator specifies a separator to be used instead of commas, or \
+None.  The option Delimiter->{left,right} specifies a delimiter to be used \
+instead of left and right parentheses.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"EntrySeparator", "::", "usage"}], "=", 
+    "\"\<Option for MultipletLabel.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NucleusBox", "::", "usage"}], "=", 
+   "\"\<UNDOCUMENTED (Limitation: Left subscript and superscript are left \
+aligned.)\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NuclearA", "::", "usage"}], "=", "\"\<UNDOCUMENTED\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NuclearN", "::", "usage"}], "=", "\"\<UNDOCUMENTED\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NuclearZ", "::", "usage"}], "=", "\"\<UNDOCUMENTED\>\""}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SpectroscopicLetter", "::", "usage"}], "=", 
+   "\"\<SpectroscopicLetter[l] returns the letter s, p, d, ... representing \
+angular momentum l, for 0\[LessEqual]l\[LessEqual]8.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ShellLabel", "::", "usage"}], "=", 
+   "\"\<ShellLabel[{n,l,j}] or ShellLabel[{l,j}] returns the nlj shell label \
+in spectroscopic notation.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ElementAbbreviation", "::", "usage"}], "=", 
+   "\"\<ElementAbbreviation[Z] returns the abbreviation for atomic number Z.  \
+The function provides an offline alternative to the data provided by \
+Mathematica's ElementData[Z,\\\"Abbreviation\\\"] and is therefore not \
+dependent upon internet access.  Data is from the legacy ChemicalElements \
+package (version 1.4).\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ElementName", "::", "usage"}], "=", 
+   "\"\<ElementName[Z] returns the element name for atomic number Z.  The \
+function provides an offline alternative to the data provided by \
+Mathematica's ElementData[Z,\\\"Abbreviation\\\"] and is therefore not \
+dependent upon internet access.  Data is from the legacy ChemicalElements \
+package (version 1.4).\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"StableIsotopes", "::", "usage"}], "=", 
+   "\"\<StableIsotopes[Z] returns a list of stable isotopes of element Z.  \
+The function provides an offline alternative to the data provided by \
+Mathematica's IsotopeData[{Z,A},\\\"Stable\\\"] and is therefore not \
+dependent upon internet access.  Data is from the legacy ChemicalElements \
+package (version 1.4).\>\""}], ";", 
+  RowBox[{
+   RowBox[{"IsotopeIsStable", "::", "usage"}], "=", 
+   "\"\<IsotopeIsStable[{Z,A}] returns true if mass A is a stable isotope of \
+element Z.  The function provides an offline alternative to the data provided \
+by Mathematica's IsotopeData[{Z,A},\\\"Stable\\\"] and is therefore not \
+dependent upon internet access.  Data is from the legacy ChemicalElements \
+package (version 1.4).\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Isotope", "::", "usage"}], "=", 
+   "\"\<UNDOCUMENTED -- inspired by usage of LaTeX isotope package\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LabelJP", "::", "usage"}], "=", 
+   "\"\<LabelJP[J,P], or Label[J] for P=+1, produces a level spin label, with \
+rational number fractions converted to typeset fractions.  DEPRECATED in \
+favor of LevelLabel.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LabelJiP", "::", "usage"}], "=", 
+   "\"\<LabelJiP[J,i,P], or LabelJiP[J,i] for P=+1, produces a level spin \
+label, with rational number fractions converted to typeset fractions, with \
+subscript i.  DEPRECATED in favor of LevelLabel.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LevelLabel", "::", "usage"}], "=", "\"\<UNDOCUMENTED\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Parity", "::", "usage"}], "=", "\"\<Option for LevelLabel\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MultipolaritySymbols", "::", "usage"}], "=", 
+   "\"\<Option for RTPLabel\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MultipolarityStyle", "::", "usage"}], "=", 
+   "\"\<Option for RTPLabel\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"EnergyLabel", "::", "usage"}], "=", 
+   "\"\<E(level) UNDOCUMENTED\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RTPLabel", "::", "usage"}], "=", "\"\<UNDOCUMENTED\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RMELabel", "::", "usage"}], "=", "\"\<UNDOCUMENTED\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"MomentLabel", "::", "usage"}], "=", "\"\<UNDOCUMENTED\>\""}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextFractionBox", "::", "usage"}], "=", 
+   "\"\<TextFractionBox[x,y] typesets x/y as a vertical fraction, but with \
+smaller size and tighter spacing than provided by Mathematica (as in a LaTeX \
+\\\\tfrac).\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SolidusFractionBox", "::", "usage"}], "=", 
+   "\"\<SolidusFractionBox[x,y] typesets x/y as a solidus fraction.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DiagonalFractionBox", "::", "usage"}], "=", 
+   "\"\<DiagonalFractionBox[x,y] typesets x/y as a diagonal fraction.  The \
+option Spacings->(spacing) controls the horizontal separation between the \
+elements of the fraction.  The option \
+Baseline->{numeratorheight,slashheight,denominatorheight} controls the \
+vertical positioning of the different elements of the fraction.  \
+KernForSuperscript->(adjustment) introduces a horizontal adjustment to the \
+position of any superscript attached to the fraction.  The default option \
+values produce visually reasonable results for the Times New Roman \
+font.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"KernForSuperscript", "::", "usage"}], "=", 
+    "\"\<KernForSuperscript is an option for DiagonalFractionBox.\>\""}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Fractionize", "::", "usage"}], "=", 
+   "\"\<Fractionize[expr] converts any expression with nonzero denominator \
+into a FractionBox.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextFractionize", "::", "usage"}], "=", 
+   "\"\<TextFractionize[expr] converts any expression with nonzero \
+denominator into a TextFractionBox.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SolidusFractionize", "::", "usage"}], "=", 
+   "\"\<SolidusFractionize[expr] converts any expression with nonzero \
+denominator into a SolidusFractionBox.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"DiagonalFractionize", "::", "usage"}], "=", 
+    "\"\<DiagonalFractionize[expr] converts any expression with nonzero \
+denominator into a DiagonalFractionBox.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FractionString", "::", "usage"}], "=", 
+   "\"\<Provides a compact solidus-delimited fraction representation of a \
+rational number, in string form. (UNDOCUMENTED)\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"PiFractionString", "::", "usage"}], "=", 
+    "\"\<Provides a compact solidus-delimited fraction representation of a \
+rational multiple of Pi, in string form. (UNDOCUMENTED)\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SignString", "::", "usage"}], "=", 
+   "\"\<SignString[x] returns \\\"+\\\", \\\"\\\", or \\\"-\\\", depending \
+upon the value of Sign[x].\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"GradeSignString", "::", "usage"}], "=", 
+    "\"\<SignString[g] returns \\\"+\\\" or \\\"-\\\", depending upon the \
+value of (-)^g.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Sqrtize", "::", "usage"}], "=", 
+   "\"\<Sqrtize[x] formats a fraction which is the square root of a rational \
+number entirely under the radical (e.g., the usual format for Clebsch-Gordan \
+coefficients).\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Radicalize", "::", "usage"}], "=", 
+    "\"\<Radicalize[x,n] formats a fraction involving nth roots entirely \
+under the radical.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SubarrayEllipsis", "::", "usage"}], "=", 
+    "\"\<SubarrayEllipsis[m,{rows,cols}] prints a Subarray of m with ellipses \
+appended.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AlignmentBox", "::", "usage"}], "=", " ", 
+   "\"\<UNDOCUMENTED  (AlignmentBox options: Any option for GridBox may be \
+used. ColumnWidths is crucial option for alignment across labels. \
+Options[AlignmentBox] overrides GridBox defaults of ColumnAlignments and \
+ColumnSpacings. Any option for StyleBox may be used. Background is the most \
+likely to be needed.)\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Align", "::", "usage"}], "=", 
+   "\"\<Align is an option for AlignmentBox. (UNDOCUMENTED)\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"LaTeXTableEntryValue", "::", "usage"}], "=", 
+    "\"\<LaTeXTableEntryValue[Str] takes a typical LaTeX table entry and \
+converts it to a number, by stripping it of any leading nonnumeric \
+characters, any \\\"&\\\", and any trailing error estimate following \
+\\\"(\\\" or \\\"\[PlusMinus]\\\".   (UNDOCUMENTED)\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PageBreak", "::", "usage"}], "=", 
+   "\"\<PageBreak[] prints a cell with attribute PageBreakBelow set to \
+True.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.45375386809375*^9, 3.453753870109375*^9}, {
+   3.46109201778125*^9, 3.461092029296875*^9}, {3.46109326621875*^9, 
+   3.46109332790625*^9}, {3.46109340240625*^9, 3.461093414578125*^9}, {
+   3.461093694828125*^9, 3.46109378234375*^9}, {3.46109390425*^9, 
+   3.461093906953125*^9}, 3.467215730703125*^9, {3.481816211375*^9, 
+   3.481816212640625*^9}, {3.4818162670625*^9, 3.48181630678125*^9}, {
+   3.4927253715*^9, 3.49272539484375*^9}, 3.5154381268285*^9, 
+   3.515438299812875*^9, {3.53374547546875*^9, 3.53374551509375*^9}, {
+   3.5337459246875*^9, 3.533745949890625*^9}, {3.533747510921875*^9, 
+   3.533747520265625*^9}, {3.53374979690625*^9, 3.5337498115625*^9}, 
+   3.5341856544375*^9, {3.534185808234375*^9, 3.534185809109375*^9}, {
+   3.543350794296875*^9, 3.5433507949375*^9}, {3.543350878796875*^9, 
+   3.54335089834375*^9}, {3.5452444145*^9, 3.545244559015625*^9}, {
+   3.54585945115625*^9, 3.545859488390625*^9}, {3.545859584765625*^9, 
+   3.545859598125*^9}, {3.545859699046875*^9, 3.545859729875*^9}, {
+   3.545859760328125*^9, 3.545859796796875*^9}, {3.54713887778125*^9, 
+   3.5471388879375*^9}, {3.5662619269083796`*^9, 3.5662619903618546`*^9}, {
+   3.5663394888321395`*^9, 3.5663395266221924`*^9}, {3.5807521634980865`*^9, 
+   3.5807522470582037`*^9}, {3.5828225972542305`*^9, 
+   3.5828226065674467`*^9}, {3.6001822444876347`*^9, 
+   3.6001822466576376`*^9}, {3.6174573015053*^9, 3.617457308213312*^9}, {
+   3.6251887576924505`*^9, 3.6251887577080507`*^9}, {3.6251891603145576`*^9, 
+   3.625189189829809*^9}, {3.7696919663445654`*^9, 3.7696919672181673`*^9}, {
+   3.7717761477420826`*^9, 
+   3.771776170159322*^9}},ExpressionUUID->"e50d7222-484b-4fdc-a3a6-\
+8fa4f62ddb5f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FigWindow", "Subsection",
+ CellChangeTimes->{{3.51482384978125*^9, 3.5148238521875*^9}, {
+  3.515278672671875*^9, 
+  3.51527867578125*^9}},ExpressionUUID->"f0e1c81e-6c83-4758-bacc-\
+1596bdc037ec"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"TransformRegion", "::", "usage"}], "=", 
+   "\"\<TransformRegion[tfcn,{{x1,x2},{y1,y2}}] applies tranformation \
+function tfcn to the given Cartesian rectangular region.\>\""}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.515426704844125*^9, 
+  3.51542675623475*^9}},ExpressionUUID->"b84b2353-b183-4bd7-9a9c-\
+1b2e68c8ec68"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FigWindow", "::", "usage"}], "=", 
+   "\"\<Class representing window coordinate system within a figure.\>\""}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.514913972296875*^9, 3.514914001578125*^9}, {
+  3.515011658125*^9, 3.515011839546875*^9}, {3.515012360671875*^9, 
+  3.515012409703125*^9}, {3.5153564269375*^9, 3.515356454890625*^9}, {
+  3.5154266990785*^9, 3.5154267022035*^9}, {3.5157840736875*^9, 
+  3.515784074109375*^9}, {3.515798140125*^9, 3.51579814046875*^9}, {
+  3.520023987890625*^9, 
+  3.520023988296875*^9}},ExpressionUUID->"1fd58938-c9bf-40c8-800d-\
+d2cd18c58ff3"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"WithOrigin", "::", "usage"}], "=", 
+   "\"\<WithOrigin[p,body] shifts the origin of coordinates to point p while \
+evaluating body.  WithOrigin[x,body] produces a horizontal shift of x, \
+equivalent to WithOrigin[{x,0},body].\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"WithClipping", "::", "usage"}], "=", 
+   "\"\<WithClipping[r,body] sets the region to r while evaluating body.  \
+(UNDER DEVELOPMENT)\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.52002663671875*^9, 3.520026643109375*^9}, {
+  3.5200272168125*^9, 3.520027261296875*^9}, {3.5666820941563034`*^9, 
+  3.5666821484379005`*^9}, {3.576767658349099*^9, 3.576767702840378*^9}, {
+  3.6219662479242277`*^9, 
+  3.62196624910983*^9}},ExpressionUUID->"59376d45-26d7-4ea1-86fe-\
+0a703fc0515d"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["End package", "Section",
+ CellChangeTimes->{{3.514823047703125*^9, 
+  3.51482305353125*^9}},ExpressionUUID->"6b5fd091-33d1-40ec-9bc4-\
+47c88d4299f5"],
+
+Cell[CellGroupData[{
+
+Cell["Exit package context", "Subsection",
+ CellChangeTimes->{{3.514823092890625*^9, 
+  3.51482312965625*^9}},ExpressionUUID->"5eadbf43-5b34-4cb0-8795-\
+ca5f3f095fba"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EndPackage", "[", "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.515276395921875*^9},ExpressionUUID->"be20d52e-6969-4dc0-9e42-\
+0bc2a74e6c26"]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+WindowSize->{1440., 774.75},
+WindowMargins->{{0, Automatic}, {Automatic, 13.5}},
+WindowFrame->"Normal",
+ShowSelection->True,
+FrontEndVersion->"12.1 for Linux x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"65e2b051-b62a-4271-9c79-e4d7e27e1df4"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 89, 0, 73, "Section",ExpressionUUID->"279adb24-30dc-479f-98db-a40f257c0893"],
+Cell[671, 24, 2933, 69, 205, "Input",ExpressionUUID->"bfce427a-c563-4f06-9d59-dfdaff3d35a2",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3641, 98, 87, 0, 73, "Section",ExpressionUUID->"f5075b0b-4fbb-4bc6-af30-5e81943a3dee"],
+Cell[CellGroupData[{
+Cell[3753, 102, 103, 0, 39, "Subsection",ExpressionUUID->"c7d582c5-3eb6-4765-a960-7c085dbff387"],
+Cell[3859, 104, 1527, 24, 46, "Input",ExpressionUUID->"7b184bb1-68e8-4d2d-a40c-8c151526d85f",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5435, 134, 160, 3, 73, "Section",ExpressionUUID->"c1a1c86a-f308-4786-8fc0-aa5853bd14d3"],
+Cell[CellGroupData[{
+Cell[5620, 141, 173, 3, 39, "Subsection",ExpressionUUID->"b4cae0e2-d014-4e86-936a-8f0a3c14328f"],
+Cell[5796, 146, 271, 8, 46, "Input",ExpressionUUID->"12eb3b07-08ec-4103-a6ed-e37199eea88e",
+ InitializationCell->True],
+Cell[6070, 156, 304, 8, 46, "Input",ExpressionUUID->"c9f51458-680a-451d-8848-9f05e26e6cd8",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6423, 170, 180, 3, 73, "Section",ExpressionUUID->"69140244-e4ae-4bd9-9f0a-b739aa0670e1"],
+Cell[6606, 175, 5069, 102, 520, "Input",ExpressionUUID->"0f17af81-16da-48d6-90b2-cd39bd66e22a",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11712, 282, 200, 3, 63, "Section",ExpressionUUID->"a8b7744c-7e2e-4740-b4ca-55bbdb326a65"],
+Cell[CellGroupData[{
+Cell[11937, 289, 173, 2, 43, "Subsection",ExpressionUUID->"3a38661d-fef7-40dc-9b77-27164ffd9ca1"],
+Cell[12113, 293, 2522, 44, 212, "Input",ExpressionUUID->"a8106849-7b2e-41a8-9d5a-30c8f0cd6545",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14672, 342, 158, 3, 43, "Subsection",ExpressionUUID->"2f924bf8-9763-4322-b857-acf6e29fdc57"],
+Cell[14833, 347, 3524, 76, 212, "Input",ExpressionUUID->"8accb17f-76de-49ee-b807-283059c2e0de",
+ InitializationCell->True],
+Cell[18360, 425, 1921, 37, 72, "Input",ExpressionUUID->"b5e97d40-8fb0-4fcd-80b9-13f6a0e20abb",
+ InitializationCell->True],
+Cell[20284, 464, 3439, 75, 332, "Input",ExpressionUUID->"afcb12f9-9585-4593-838c-4df1986293f1",
+ InitializationCell->True],
+Cell[23726, 541, 559, 14, 52, "Input",ExpressionUUID->"f4fe5f88-19ee-49de-93e8-b04aebec3438",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24322, 560, 204, 4, 43, "Subsection",ExpressionUUID->"c83f2090-69a9-4758-9c29-920b5db59969"],
+Cell[24529, 566, 2319, 52, 172, "Input",ExpressionUUID->"5c82f993-cac9-4836-bc08-ae23fe817485",
+ InitializationCell->True],
+Cell[26851, 620, 2133, 42, 172, "Input",ExpressionUUID->"e14c2568-4858-471d-a592-41f5fb444945",
+ InitializationCell->True],
+Cell[28987, 664, 390, 9, 31, "Input",ExpressionUUID->"8b2bfec1-9571-438f-9e2f-8c55e9fd0118",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29414, 678, 156, 3, 43, "Subsection",ExpressionUUID->"5483e05a-b94d-49b4-875d-6664e21d608e"],
+Cell[29573, 683, 2361, 54, 212, "Input",ExpressionUUID->"161e4b26-465f-4518-b231-0d73ffc1c398",
+ InitializationCell->True],
+Cell[31937, 739, 1282, 27, 205, "Input",ExpressionUUID->"4f56686a-8a5d-4330-816b-6de668f57b24",
+ InitializationCell->True],
+Cell[33222, 768, 1289, 22, 46, "Input",ExpressionUUID->"3648db9b-3bb4-4d48-9c56-7cdc9f5ea69a",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34548, 795, 201, 4, 39, "Subsection",ExpressionUUID->"11abcb67-4bef-4bcd-9ff4-4a586559cdea"],
+Cell[34752, 801, 3020, 64, 323, "Input",ExpressionUUID->"469114bd-3e87-4a8d-b536-ddfcc28f28fe",
+ InitializationCell->True],
+Cell[37775, 867, 507, 14, 67, "Input",ExpressionUUID->"550fa768-6f15-4748-9e05-3126ac7c6651",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38319, 886, 248, 4, 39, "Subsection",ExpressionUUID->"20fbaf39-a63e-4b9e-9cb4-326e2a71363e"],
+Cell[38570, 892, 213, 3, 29, "Text",ExpressionUUID->"30397f64-7b05-4f25-ab2d-0203d40d7c39"],
+Cell[38786, 897, 713, 16, 67, "Input",ExpressionUUID->"272475be-2a22-4da9-9ab8-826d72c6cd23",
+ InitializationCell->True],
+Cell[39502, 915, 1350, 22, 46, "Input",ExpressionUUID->"376ffd83-bce5-4ef9-abe3-5d199956f51d",
+ InitializationCell->True],
+Cell[40855, 939, 6031, 113, 539, "Input",ExpressionUUID->"89e56570-97ea-46a7-95b2-6f9c6a4fd492",
+ InitializationCell->True],
+Cell[46889, 1054, 167, 3, 29, "Text",ExpressionUUID->"f92204d6-fdac-4767-b1b7-216677a88e14"],
+Cell[47059, 1059, 1373, 29, 146, "Input",ExpressionUUID->"c4d16a20-9d09-409c-81d8-02067c56e0af",
+ InitializationCell->True],
+Cell[48435, 1090, 160, 3, 29, "Text",ExpressionUUID->"436f3e8d-9d8c-4082-9a45-7e9d7fef6dc6"],
+Cell[48598, 1095, 917, 21, 87, "Input",ExpressionUUID->"7842049f-f4a2-4720-aeaf-dd2504831da1",
+ InitializationCell->True],
+Cell[49518, 1118, 2168, 40, 165, "Input",ExpressionUUID->"ea1888f0-c180-426c-b87b-7c89d6715127",
+ InitializationCell->True],
+Cell[51689, 1160, 190, 4, 29, "Text",ExpressionUUID->"63e54ce1-1a32-418b-be78-e0828d57a42e"],
+Cell[51882, 1166, 966, 22, 87, "Input",ExpressionUUID->"a8de5173-0060-4f48-99a4-0022a9c0856d",
+ InitializationCell->True],
+Cell[52851, 1190, 3542, 74, 402, "Input",ExpressionUUID->"819d3a0f-4f2b-4bb0-96e9-dc5754ba72f2",
+ InitializationCell->True],
+Cell[56396, 1266, 1547, 26, 72, "Input",ExpressionUUID->"68bd6beb-1ca3-4d81-9fe3-af8ba9e71c13",
+ InitializationCell->True],
+Cell[57946, 1294, 244, 4, 30, "Text",ExpressionUUID->"4cba6e4a-3e46-4afe-a2cd-c8cbd33cbb40"],
+Cell[58193, 1300, 951, 18, 72, "Input",ExpressionUUID->"ee1b4bd0-51a2-4e3e-83a6-978fe4240ef9",
+ InitializationCell->True],
+Cell[59147, 1320, 3668, 65, 252, "Input",ExpressionUUID->"b9586ef1-7303-4d9c-86f5-93169020418f",
+ InitializationCell->True],
+Cell[62818, 1387, 152, 3, 30, "Text",ExpressionUUID->"2ed10271-d385-41e7-af8d-be084dd34a68"],
+Cell[62973, 1392, 1748, 37, 112, "Input",ExpressionUUID->"64461e93-c9e1-44c0-8f2b-7dcdb36fa236",
+ InitializationCell->True],
+Cell[64724, 1431, 3379, 63, 172, "Input",ExpressionUUID->"483c5058-bf53-4c26-a393-5173de65e5de",
+ InitializationCell->True],
+Cell[68106, 1496, 6469, 114, 472, "Input",ExpressionUUID->"228f0ae7-7b2a-420d-912e-c596e7961c50",
+ InitializationCell->True],
+Cell[74578, 1612, 148, 3, 30, "Text",ExpressionUUID->"a66c9a19-aa0e-4e31-9b7f-08cb018feddc"],
+Cell[74729, 1617, 688, 16, 52, "Input",ExpressionUUID->"0e829463-0d4a-4048-92d1-ac4959df6ee0",
+ InitializationCell->True],
+Cell[75420, 1635, 1238, 32, 132, "Input",ExpressionUUID->"ada85a0c-f29d-4c2c-976a-43d4ef3fc766",
+ InitializationCell->True],
+Cell[76661, 1669, 151, 3, 30, "Text",ExpressionUUID->"76acfc98-a620-4fb9-a14c-042958da059e"],
+Cell[76815, 1674, 2106, 33, 31, "Input",ExpressionUUID->"e7a6dc17-c6be-4c68-adae-d765d3da7481",
+ InitializationCell->True],
+Cell[78924, 1709, 198, 4, 30, "Text",ExpressionUUID->"fa39bff6-c65f-4b13-9c64-074c0aa95e80"],
+Cell[79125, 1715, 2514, 56, 192, "Input",ExpressionUUID->"e9c254b0-a445-4878-b651-1704a23aae01",
+ InitializationCell->True],
+Cell[81642, 1773, 2153, 36, 92, "Input",ExpressionUUID->"961cdb1f-0bc4-4b07-9fb7-d0de9d8f6489",
+ InitializationCell->True],
+Cell[83798, 1811, 443, 12, 52, "Input",ExpressionUUID->"1d29211a-7bfa-41a1-9040-2ef9367048f4",
+ InitializationCell->True],
+Cell[84244, 1825, 1945, 34, 52, "Input",ExpressionUUID->"093d190c-6e78-4374-8136-035efff5a887",
+ InitializationCell->True],
+Cell[86192, 1861, 156, 3, 30, "Text",ExpressionUUID->"478e65d9-8988-4562-9416-8b542a1f1a52"],
+Cell[86351, 1866, 5382, 119, 412, "Input",ExpressionUUID->"009f8336-045d-4c7d-8e6b-088eeb0ae5de",
+ InitializationCell->True],
+Cell[91736, 1987, 4062, 76, 292, "Input",ExpressionUUID->"996ede17-2f2a-48e6-a60d-90c46f5fcddf",
+ InitializationCell->True],
+Cell[95801, 2065, 1899, 39, 112, "Input",ExpressionUUID->"82299368-2e48-46cc-b77e-030dbd56beb0",
+ InitializationCell->True],
+Cell[97703, 2106, 1525, 36, 152, "Input",ExpressionUUID->"562848e6-9752-48bc-9ccf-3fab89b24839",
+ InitializationCell->True],
+Cell[99231, 2144, 666, 13, 72, "Input",ExpressionUUID->"7d179876-7c52-4ece-b301-cfd6898c2566",
+ InitializationCell->True],
+Cell[99900, 2159, 172, 3, 30, "Text",ExpressionUUID->"319960b9-a856-4c58-ac1b-eba4f0e8da17"],
+Cell[100075, 2164, 829, 21, 72, "Input",ExpressionUUID->"a873e7e0-97ef-4a64-a375-887a8bd75e7a",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[100941, 2190, 155, 3, 43, "Subsection",ExpressionUUID->"a70ee435-6afd-4e7f-bd26-812baac82e2c"],
+Cell[101099, 2195, 160, 3, 30, "Text",ExpressionUUID->"16e36143-7121-4663-a3d1-8c6c011f2027"],
+Cell[101262, 2200, 6801, 136, 612, "Input",ExpressionUUID->"0369f7eb-1c52-4336-ae4f-d45d757203e9",
+ InitializationCell->True],
+Cell[108066, 2338, 166, 3, 30, "Text",ExpressionUUID->"8fbc3093-8d05-4422-b487-ec6ded288c2b"],
+Cell[CellGroupData[{
+Cell[108257, 2345, 8423, 247, 952, "Input",ExpressionUUID->"65b06f6d-4dab-480c-9122-08ae72575263",
+ InitializationCell->True],
+Cell[116683, 2594, 889, 17, 21, "Message",ExpressionUUID->"ed39ccdc-0e6e-4274-9e3e-4cb8a53070a1"]
+}, Open  ]],
+Cell[117587, 2614, 204, 4, 30, "Text",ExpressionUUID->"fefa2acd-800d-428f-bb21-844b12a541f8"],
+Cell[117794, 2620, 4272, 95, 372, "Input",ExpressionUUID->"5f2f5ae7-9879-42da-a603-277c3bffe25c",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[122103, 2720, 150, 3, 43, "Subsection",ExpressionUUID->"12cb7736-51c3-4c1b-949b-6fe719a9232d"],
+Cell[122256, 2725, 2124, 37, 192, "Input",ExpressionUUID->"75cb72a8-0f80-457f-acb1-321b8cd4ab82",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[124417, 2767, 146, 2, 43, "Subsection",ExpressionUUID->"2a585c0a-d5fd-49c4-b17e-c3d748a56a3e"],
+Cell[124566, 2771, 15785, 378, 1952, "Input",ExpressionUUID->"e50d7222-484b-4fdc-a3a6-8fa4f62ddb5f",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[140388, 3154, 202, 4, 43, "Subsection",ExpressionUUID->"f0e1c81e-6c83-4758-bacc-1596bdc037ec"],
+Cell[140593, 3160, 396, 10, 31, "Input",ExpressionUUID->"b84b2353-b183-4bd7-9a9c-1b2e68c8ec68",
+ InitializationCell->True],
+Cell[140992, 3172, 653, 14, 31, "Input",ExpressionUUID->"1fd58938-c9bf-40c8-800d-d2cd18c58ff3",
+ InitializationCell->True],
+Cell[141648, 3188, 853, 18, 52, "Input",ExpressionUUID->"59376d45-26d7-4ea1-86fe-0a703fc0515d",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[142550, 3212, 155, 3, 63, "Section",ExpressionUUID->"6b5fd091-33d1-40ec-9bc4-47c88d4299f5"],
+Cell[CellGroupData[{
+Cell[142730, 3219, 167, 3, 43, "Subsection",ExpressionUUID->"5eadbf43-5b34-4cb0-8795-ca5f3f095fba"],
+Cell[142900, 3224, 205, 6, 31, "Input",ExpressionUUID->"be20d52e-6969-4dc0-9e42-0bc2a74e6c26",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
