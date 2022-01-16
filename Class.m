@@ -1,6 +1,5 @@
 (* ::Package:: *)
 
-(* ::Section:: *)
 (*Header comments*)
 
 
@@ -15,11 +14,9 @@
 (* :History: See main package file. *)
 
 
-(* ::Section:: *)
 (*Begin package*)
 
 
-(* ::Subsection:: *)
 (*Package context definition*)
 
 
@@ -29,53 +26,44 @@ BeginPackage["SciDraw`",SciDraw`Private`$ExternalContexts];
 Unprotect[Evaluate[$Context<>"*"]];
 
 
-(* ::Subsection:: *)
 (*Begin private context*)
 
 
 Begin["`Private`"];
 
 
-(* ::Subsection:: *)
 (*Dependencies*)
 
 
 
 
 
-(* ::Section:: *)
 (*Class declarations*)
 
 
-(* ::Subsection:: *)
 (*Code structuring convention*)
 
 
-(* ::Text:: *)
 (*This file contains "up front" class definitions for classes which will be used across files within the SciDraw package. This ensures that the symbols for the methods are established in the correct namespace before their first use.  It also ensures that the option inheritance is defined before the DefineOptions call for any subsequent daughter class definition refers to the options.*)
 (**)
 (*Convention: Figure object classes which are *not* to be referenced across files within SciDraw can safely be defined within their own module file.  Therefore they *should* be defined in their own module file, not here!*)
 
 
-(* ::Subsection:: *)
 (*Set defaults for option resolution*)
 
 
-(* ::Text:: *)
 (*Option resolution is a major performance factor*)
 
 
 (*SetOptions[DefineOptions,{TrapUninheritableOptions\[Rule]True,TrapUnknownOptions\[Rule]True}];*)
 
 
-(* ::Subsection:: *)
 (*FigAnchor*)
 
 
 DeclareClass[FigAnchor,{"Point","Angle","Offset"},{},Replace->True];
 
 
-(* ::Subsection:: *)
 (*FigElement*)
 
 
@@ -92,7 +80,6 @@ Options[FigCompositeElement]={Show->True,Clip->False,Rasterize->False,ImageResol
 DeclareClass[FigCompositeElement,FigElement,{},{}];
 
 
-(* ::Subsection:: *)
 (*FigObject*)
 
 
@@ -101,68 +88,66 @@ DeclareClass[FigObject,{},{"MakeAnchor","MakeBoundingBox"}];
 
 
 DefineOptions[FigObject,
-{
-(* overall appearance *)
-Show->True,Color->Black,Opacity->None,
-Directives->{},
-Layer->Automatic,
+              {
+                (* overall appearance *)
+                Show->True,Color->Black,Opacity->None,
+                Directives->{},
+                Layer->Automatic,
 
-(* outline *)
-ShowLine->Default, 
-LineColor->Default,LineOpacity->Default,
-LineThickness->1,LineDashing->None,LineCapForm->None,LineJoinForm->{"Miter",3.25},
-LineDirectives->{},
+                (* outline *)
+                ShowLine->Default, 
+                LineColor->Default,LineOpacity->Default,
+                LineThickness->1,LineDashing->None,LineCapForm->None,LineJoinForm->{"Miter",3.25},
+                LineDirectives->{},
 
-(* fill *)
-ShowFill->Default, FillColor->Default,FillOpacity->Default,
-FillDirectives->{},
+                (* fill *)
+                ShowFill->Default, FillColor->Default,FillOpacity->Default,
+                FillDirectives->{},
 
-(* point *)
-ShowPoint->Default, PointColor->Default,PointOpacity->Default,
-PointSize->3,
-PointDirectives->{},
+                (* point *)
+                ShowPoint->Default, PointColor->Default,PointOpacity->Default,
+                PointSize->3,
+                PointDirectives->{},
 
-(* text appearance *)
-ShowText->Default,TextColor->Default,TextOpacity->Default,
-FontFamily->"Times",FontSize->16,FontWeight->Plain,FontSlant->Plain,FontTracking ->Plain,FontVariations->{},
-TextStyleOptions->{},  (* possibly including directives, though interaction with options unpredictable *)
+                (* text appearance *)
+                ShowText->Default,TextColor->Default,TextOpacity->Default,
+                FontFamily->"Times",FontSize->16,FontWeight->Plain,FontSlant->Plain,FontTracking ->Plain,FontVariations->{},
+                TextStyleOptions->{},  (* possibly including directives, though interaction with options unpredictable *)
 
-(* text background and frame *)
-TextBackground->None,
-TextFrame->False,TextFrameColor->Default,TextFrameOpacity->Default,
-TextFrameThickness->1,TextFrameDashing->None,
-TextRoundingRadius->None,
-TextMargin->None,TextPadding->False,
-TextFrameDirectives->{},
+                (* text background and frame *)
+                TextBackground->None,
+                TextFrame->False,TextFrameColor->Default,TextFrameOpacity->Default,
+                TextFrameThickness->1,TextFrameDashing->None,
+                TextRoundingRadius->None,
+                TextMargin->None,TextPadding->False,
+                TextFrameDirectives->{},
 
-(* text callout *)
-TextCallout->False, 
-TextCalloutColor->Default,TextCalloutOpacity->Default,
-TextCalloutThickness->1,TextCalloutDashing->None,TextCalloutCapForm->None,TextCalloutJoinForm->{"Miter",3.25},
-TextCalloutDirectives->{},
+                (* text callout *)
+                TextCallout->False, 
+                TextCalloutColor->Default,TextCalloutOpacity->Default,
+                TextCalloutThickness->1,TextCalloutDashing->None,TextCalloutCapForm->None,TextCalloutJoinForm->{"Miter",3.25},
+                TextCalloutDirectives->{},
 
-(* text positioning *)
-TextOffset->Automatic,TextOrientation->Automatic,TextRectify->True,TextBaseBuffer->Automatic,TextBuffer->None,TextNudge->None,
+                (* text positioning *)
+                TextOffset->Automatic,TextOrientation->Automatic,TextRectify->True,TextBaseBuffer->Automatic,TextBuffer->None,TextNudge->None,
 
-(* style *)
-Style->None,
+                (* style *)
+                Style->None,
 
-(* accessories *)
-Prolog:>None,Epilog:>None,
+                (* accessories *)
+                Prolog:>None,Epilog:>None,
 
-(* diagnostic *)
-Debug->False
-(*PrintTiming\[Rule]False*)
+                (* diagnostic *)
+                Debug->False
+                      (*PrintTiming\[Rule]False*)
 
-}
+              }
 ];
 
 
-(* ::Subsection:: *)
 (*FigStyle*)
 
 
-(* ::Text:: *)
 (*Figure styles will often be defined at global level (outside figures), and users will typically want to fiddle with settings, so clobbering of instances should be allowed (Replace->True).*)
 
 
@@ -174,18 +159,15 @@ BaseStyle\[Rule]None,
 Debug\[Rule]False
 }
 ];
-*)
+ *)
 
 
-(* ::Subsection:: *)
 (*FigWindow*)
 
 
-(* ::Text:: *)
 (*Object declarations are out outermost scope to ensure mutators/accessors are in this scope*)
 
 
-(* ::Text:: *)
 (*Data:*)
 (*	TFunction -- transformation function from user coordinates to canvas coordinates*)
 (*	PreTFunction -- pretransformation function to be applied in transformation returned by TFunction[]*)
@@ -202,35 +184,32 @@ Debug\[Rule]False
 
 
 DeclareClass[
-FigWindow,
-{
-"TFunction",
-"Region"
-},
-{
-"UserRegion",
-"CanvasRegion",
-"TFunction",
-"InverseTFunction",
-"DeltaTFunction",
-"ScaledTFunction",
-"ScaledDeltaTFunction"
-}
+  FigWindow,
+  {
+    "TFunction",
+    "Region"
+  },
+  {
+    "UserRegion",
+    "CanvasRegion",
+    "TFunction",
+    "InverseTFunction",
+    "DeltaTFunction",
+    "ScaledTFunction",
+    "ScaledDeltaTFunction"
+  }
 ];
 
 
-(* ::Section:: *)
 (*End package*)
 
 
-(* ::Subsection:: *)
 (*Exit private context*)
 
 
 End[];
 
 
-(* ::Subsection:: *)
 (*Exit package context*)
 
 
