@@ -525,7 +525,7 @@ SuperRegion[] returns a (user coordinate) region which safely circumscribes the 
 
 QuasiInfinity=10000;
 
-SuperRegion[]:=ExtendRegion[CurrentWindow[]@UserRegion[],QuasiInfinity*{{1,1},{1,1}},Scaled];
+SuperRegion[]:=ExtendRegion[CurrentWindow[]@UserRegion[],QuasiInfinity*{{1,1},{1,1}},ScaledCoordinates];
 
 (* Clipping of point to quasi-infinite region *)
 
@@ -564,7 +564,7 @@ DefineAxisScale[None,Identity];
 DefineAxisScale["Linear",Identity];
 
 (* Scaled linear axis ("in units of") *)
-DefineAxisScale[{Scaled,ScaleUnits_?NumericQ},Function[x,x/ScaleUnits]];  (* DEPRECATED in favor of string identifier *)
+DefineAxisScale[{ScaledCoordinates,ScaleUnits_?NumericQ},Function[x,x/ScaleUnits]];  (* DEPRECATED in favor of string identifier *)
 DefineAxisScale[{"Scaled",ScaleUnits_?NumericQ},Function[x,x/ScaleUnits]];
 
 (* Linear transformation including offset *)

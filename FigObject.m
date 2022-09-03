@@ -551,7 +551,7 @@ as idiosyncratic and incompatible with panel edge upgrade *)
     UsedPoint=GeneratedPoint+UpgradeScalar[(Buffer/.FigAnchorOptions)]*BufferDirection+UpgradePairVertical[(Nudge/.FigAnchorOptions)];
 
     (* return anchor *)
-    FigAnchor[Canvas[UsedPoint],GeneratedOffset,GeneratedAngle]
+    FigAnchor[CanvasCoordinates[UsedPoint],GeneratedOffset,GeneratedAngle]
           ];
 
 

@@ -211,12 +211,12 @@ BasicArrow[Self_Object][Curve:FigCurvePattern]:=Module[
   a1=If[
     MatchQ[Curve,FigCurvePointSetPattern]&&MatchQ[First[Curve],FigPointPattern],
     FigAnchor[First[Curve]],
-    FigAnchor[Canvas[First[CanvasPoints]]]
+    FigAnchor[CanvasCoordinates[First[CanvasPoints]]]
      ];
   a2=If[
     MatchQ[Curve,FigCurvePointSetPattern]&&MatchQ[Last[Curve],FigPointPattern],
     FigAnchor[Last[Curve]],
-    FigAnchor[Canvas[Last[CanvasPoints]]]
+    FigAnchor[CanvasCoordinates[Last[CanvasPoints]]]
      ];
 
   (* save data needed for anchor generation *)
