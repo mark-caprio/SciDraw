@@ -97,6 +97,13 @@ textit[x_,Opts___]:=Module[
 
 StackText[Alignment_,Spacing_,Lines_List,Opts___?OptionQ]:=GridBox[{#}&/@Lines,ColumnAlignments->Alignment,RowSpacings->Spacing,Opts];
 
+(* alternate reimplementation in terms of Grid: *)
+
+(*StackText[AlignmentArg_,Spacing_,Lines_List,Opts___?OptionQ]:=Grid[{#}&/@Lines,Alignment->AlignmentArg,Spacings->{Automatic,Spacing},Opts]; *)
+
+(* test code: MyStackText[Left,0,{"Aaa","Bbbbbb"}] *)
+
+
 
 SuperPrimeBox[x_,n:(_Integer?NonNegative):1]:=SuperscriptBox[x,StringJoin[Table["\[Prime]",{n}]]];
 (*SuperPrime[x_]:=Superscript[x,"\[Prime]"];*)
