@@ -45,7 +45,7 @@ Begin["`Private`"];
 (*External configuration flag*)
 
 
-If[!ValueQ[SciDraw`Config`Splash],SciDraw`Config`Splash=True];
+If[!ValueQ[SciDraw`Config`Splash],SciDraw`Config`Splash=False];
 
 
 (*Hyperlink box construction*)
