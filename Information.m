@@ -65,7 +65,7 @@ $ExternalContexts={"Units`","MathObject`","MathObject`Methods`","MathObject`Inst
 $FigVersionNumber=0.0;
 $FigReleaseNumber=6;
 $FigVersionString="0.0.7 (March 28, 2015)";
-$FigVersionURL="http://scidraw.nd.edu/landing/scidraw-0.0.7.html";
+$FigHomePageURL="http://scidraw.nd.edu";
 
 
 (*For generic splash for use in preparing documentation...*)

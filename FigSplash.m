@@ -88,7 +88,7 @@ SplashContents=Row[
               StyleBox["View color palette",FontFamily->"Times"],
               ButtonNote->"Named color palette",ButtonFunction->(NamedColorPalette[]&),Active->True,ButtonFrame->"DialogBox",ButtonExpandable->False,Evaluator->Automatic
             ],
-            MakeButtonForURL[StyleBox["Visit home page",FontFamily->"Times"],$FigVersionURL,ButtonFrame->"DialogBox",ButtonExpandable->False]
+            MakeButtonForURL[StyleBox["Visit home page",FontFamily->"Times"],$FigHomePageURL,ButtonFrame->"DialogBox",ButtonExpandable->False]
             }]
         }
       },
@@ -100,11 +100,17 @@ SplashContents=Row[
                ];
 
 
+PrintSciDrawSplash[]:=
+  Module[
+    {},
+    Print[
+      Framed[SplashContents,Background->LightGray,FrameMargins->10,FrameStyle->None]
+    ]
+  ];
+
 If[
   SciDraw`Config`Splash,
-  Print[
-    Framed[SplashContents,Background->LightGray,FrameMargins->10,FrameStyle->None]
-  ]
+  PrintSciDrawSplash[]
 ]
 
 

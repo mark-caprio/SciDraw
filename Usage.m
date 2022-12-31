@@ -487,6 +487,10 @@ LabelPosition::usage="SciDraw reserved symbol.";
 (*Nudge::usage="SciDraw reserved symbol (base for anchor option names).";*)
 
 
+(*FigSplash*)
+
+PrintSciDrawSplash::usage="PrintSciDrawSplash[] prints the SciDraw splash cell.";
+
 (*FigStyle*)
 
 
