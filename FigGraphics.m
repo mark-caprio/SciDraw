@@ -185,7 +185,7 @@ BasicInset[Self_Object][g_,r_]:=Module[
 (*so allow all objects to be passed through, but with special case trap for {_Graphics}.  Ugly since is special case trap and relaxes argument type checking.*)
 
 
-Constructor[Class:FigInset,Self_Object][(g:(_Graphics|_ContourGraphics|_DensityGraphics|_Image|_Graphics3D))|{g_Graphics},r:FigRegionPattern:All,Opts___?OptionQ]:=FigObjectWrapper[Class,Self,{Opts},
+Constructor[Class:FigInset,Self_Object][(g:(_Graphics|_ContourGraphics|_DensityGraphics|_Image|_Graphics3D))|{g:(_Graphics|_Image)},r:FigRegionPattern:All,Opts___?OptionQ]:=FigObjectWrapper[Class,Self,{Opts},
                                                                                                                                                                                     Module[
                                                                                                                                                                                       {UsedCanvasRegion},
 
