@@ -63,8 +63,8 @@ $ExternalContexts={"Units`","MathObject`","MathObject`Methods`","MathObject`Inst
 
 
 $FigVersionNumber=0.0;
-$FigReleaseNumber=6;
-$FigVersionString="0.0.7 (March 28, 2015)";
+$FigReleaseNumber=8;
+$FigVersionString="0.0.8 (December 31, 2022)";
 $FigHomePageURL="http://scidraw.nd.edu";
 
 
