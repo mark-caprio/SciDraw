@@ -577,17 +577,34 @@ FigMakeBoundingBoxWrapper[Class_Symbol,Self_Object,Expr_]:=If[
 (*Generate option name*)
 
 
-SidifyOptionName[Side:(_Symbol)|(_String)][Option_Symbol]:=Module[
-  {SideName},
+SidifyOptionName[Side:(_Symbol)|(_String)][Option_Symbol]:=
+  Module[
+    {SideName,BaseName,QualifiedName},
 
-  SideName=Switch[
-    Side,
-    _Symbol,ToString[Side],
-    _String,Side
-           ];
+    SideName=Switch[
+      Side,
+      _Symbol,ToString[Side],
+      _String,Side
+             ];
 
-  ToExpression["SciDraw`"<>SideName<>ToString[Option]]
-                                                           ];
+    (* check for System` name to avoid shadowing, e.g., Mathematica 12.3 overloads AxisLabel, so we want
+
+          SidifyOptionName["Axis"][Label]->System`AxisLabel (* right: reuses existing symbol *)
+
+       not
+ 
+          SidifyOptionName["Axis"][Label]->SciDraw`AxisLabel (* wrong: causes shadowing *)
+     *)
+    
+    SystemName="System`"<>SideName<>ToString[Option];
+    SciDrawName="SciDraw`"<>SideName<>ToString[Option];
+
+    If[
+      NameQ[SystemName],
+      ToExpression[SystemName],
+      ToExpression[SciDrawName]
+    ]
+  ];
 
 
 (*Construct option list for object's option declaration*)
