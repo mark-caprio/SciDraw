@@ -194,9 +194,9 @@ UpgradePairVertical[{x_?NumericQ,y_?NumericQ}]:={x,y};
 
 
 FigCoordinatePointPattern={
-  ((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)]),
-  ((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)])
-}|(Scaled|Canvas)[{_?NumericQ,_?NumericQ}];
+  ((_?NumericQ)|(Scaled|Absolute)[(_?NumericQ)]),
+  ((_?NumericQ)|(Scaled|Absolute)[(_?NumericQ)])
+}|(Scaled|Absolute)[{_?NumericQ,_?NumericQ}];
 
 
 FigPointPattern=(FigCoordinatePointPattern|ObjectPattern[FigAnchor]|ObjectNamePattern[FigAnchor]);
@@ -211,7 +211,7 @@ FigPointPattern=(FigCoordinatePointPattern|ObjectPattern[FigAnchor]|ObjectNamePa
 
 
 FigResolvePoint[p:{_?NumericQ,_?NumericQ}]:=(CurrentWindow[]@TFunction[])@p;
-FigResolvePoint[Canvas[p:{_?NumericQ,_?NumericQ}]]:=p;
+FigResolvePoint[Absolute[p:{_?NumericQ,_?NumericQ}]]:=p;
 FigResolvePoint[Scaled[p:{_?NumericQ,_?NumericQ}]]:=(CurrentWindow[]@ScaledTFunction[])@p;
 FigResolvePoint[a:ObjectPattern[FigAnchor]]:=a@GetPoint[];
 FigResolvePoint[n:ObjectNamePattern[FigAnchor]]:=Object[n]@GetPoint[];
@@ -224,8 +224,8 @@ FigResolvePoint[
   p:Except[
     {_?NumericQ,_?NumericQ},
     {
-      x:((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)]),
-      y:((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)])
+      x:((_?NumericQ)|(Scaled|Absolute)[(_?NumericQ)]),
+      y:((_?NumericQ)|(Scaled|Absolute)[(_?NumericQ)])
     }
     ]
 ]:={FigResolveCoordinate[x,1],FigResolveCoordinate[y,2]};
@@ -246,9 +246,9 @@ FigPointBoundingBox[p:{x_?NumericQ,y_?NumericQ}]:={{x,x},{y,y}};
 (*Displacement patterns*)
 
 
-FigDisplacementPattern=None|({_?NumericQ,_?NumericQ}|Scaled[{_?NumericQ,_?NumericQ}]|Canvas[{_?NumericQ,_?NumericQ}])|{
-  ((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)]),
-  ((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)])
+FigDisplacementPattern=None|({_?NumericQ,_?NumericQ}|Scaled[{_?NumericQ,_?NumericQ}]|Absolute[{_?NumericQ,_?NumericQ}])|{
+  ((_?NumericQ)|(Scaled|Absolute)[(_?NumericQ)]),
+  ((_?NumericQ)|(Scaled|Absolute)[(_?NumericQ)])
                            };
 FigDisplacementSequencePattern[n_Integer]:=Repeated[_?(MatchQ[#,FigDisplacementPattern]&),{n,Infinity}];
 FigDisplacementSetPattern[n_Integer]:={Repeated[_?(MatchQ[#,FigDisplacementPattern]&),{n,Infinity}]};
@@ -259,7 +259,7 @@ FigDisplacementSetPattern[n_Integer]:={Repeated[_?(MatchQ[#,FigDisplacementPatte
 
 FigResolveDisplacement[None]:={0,0};
 FigResolveDisplacement[d:{_?NumericQ,_?NumericQ}]:=(CurrentWindow[]@DeltaTFunction[])@d;
-FigResolveDisplacement[Canvas[d:{_?NumericQ,_?NumericQ}]]:=d;
+FigResolveDisplacement[Absolute[d:{_?NumericQ,_?NumericQ}]]:=d;
 FigResolveDisplacement[Scaled[d:{_?NumericQ,_?NumericQ}]]:=(CurrentWindow[]@ScaledDeltaTFunction[])@d;
 
 
@@ -270,8 +270,8 @@ FigResolveDisplacement[
   p:Except[
     {_?NumericQ,_?NumericQ},
     {
-      x:((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)]),
-      y:((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)])
+      x:((_?NumericQ)|(Scaled|Absolute)[(_?NumericQ)]),
+      y:((_?NumericQ)|(Scaled|Absolute)[(_?NumericQ)])
     }
     ]
 ]:={FigResolveCoordinateDisplacement[x,1],FigResolveCoordinateDisplacement[y,2]};
@@ -363,7 +363,7 @@ ExtendRegion[PRange:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},PFrac:{{_?
 (*Note: Pattern excludes case {_Integer,_Integer}, for panel in multipanel array, since this case requires special treatment.*)
 
 
-FigRegionPattern=(All|{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}|(Scaled|Canvas)[{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}]);
+FigRegionPattern=(All|{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}|(Scaled|Absolute)[{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}]);
 
 
 (*Region resolution*)
@@ -371,7 +371,7 @@ FigRegionPattern=(All|{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}|(Scaled|
 
 FigResolveRegion[r:All]:=(CurrentWindow[]@CanvasRegion[]);
 FigResolveRegion[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}]:=TransformRegion[CurrentWindow[]@TFunction[],r];
-FigResolveRegion[Canvas[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}]]:=r;
+FigResolveRegion[Absolute[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}]]:=r;
 FigResolveRegion[Scaled[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}]]:=TransformRegion[CurrentWindow[]@ScaledTFunction[],r];
 
 
@@ -389,7 +389,7 @@ FigResolveRegion[Scaled[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}}]]:=T
 FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},d:None]:={r,UpgradeRangeParameters[0],Absolute};
 FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},d:Automatic]:={r,UpgradeRangeParameters[0.02],Scaled};
 FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},d:RangeParametersPattern]:={r,TransformRegion[CurrentWindow[]@DeltaTFunction[],UpgradeRangeParameters[d]],Absolute};
-FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},Canvas[d:RangeParametersPattern]]:={r,UpgradeRangeParameters[d],Absolute};
+FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},Absolute[d:RangeParametersPattern]]:={r,UpgradeRangeParameters[d],Absolute};
 FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},Scaled[d:RangeParametersPattern]]:={r,UpgradeRangeParameters[d],Scaled};
 
 
@@ -400,7 +400,7 @@ FigResolveRegionExtension[r:{{_?NumericQ,_?NumericQ},{_?NumericQ,_?NumericQ}},Sc
 (*	Returns result as valid region specification, wrapped in Canvas[]*)
 
 
-FigDeltaRegionPattern=Automatic|None|RangeParametersPattern|(Scaled|Canvas)[RangeParametersPattern];
+FigDeltaRegionPattern=Automatic|None|RangeParametersPattern|(Scaled|Absolute)[RangeParametersPattern];
 
 
 Options[AdjustRegion]={RegionExtension->None,RegionDisplacement->None};
@@ -423,7 +423,7 @@ AdjustRegion[r:FigRegionPattern,Opts___?OptionQ]:=Module[
   CanvasRegion=ExtendRegion@@FigResolveRegionExtension[CanvasRegion,(RegionExtension/.FullOptions)];
 
   (* return *)
-  Canvas[CanvasRegion]
+  Absolute[CanvasRegion]
 
                                                   ];
 DeclareFigFallThroughError[AdjustRegion];
@@ -445,7 +445,7 @@ RegionPoint[r:FigRegionPattern,Offset:FigOffsetPattern]:=Module[
   CanvasRadius=-(Subtract@@@CanvasRegion)/2;
 
   (* return offset point *)
-  Canvas[CanvasCenter+UsedOffset*CanvasRadius]
+  Absolute[CanvasCenter+UsedOffset*CanvasRadius]
                                                          ];
 
 
@@ -472,7 +472,7 @@ BoundingBox[
 ]:=Module[
   {},
   FigCheckInFigure[BoundingBox];
-  Canvas[ObjectCanvasBox[ObjectList]]
+  Absolute[ObjectCanvasBox[ObjectList]]
    ];
 BoundingBox[
   obj:((ObjectPattern[FigAnchor]|ObjectNamePattern[FigAnchor]|ObjectPattern[FigObject]|ObjectNamePattern[FigObject]))
@@ -555,7 +555,7 @@ ResolveAutomaticEdgeOption[{{1,2},{3,Automatic}},{{5,6},{7,8}}]
 (*Single-coordinate pattern*)
 
 
-FigCoordinatePattern=((_?NumericQ)|(Scaled|Canvas)[(_?NumericQ)]|FigPointPattern);
+FigCoordinatePattern=((_?NumericQ)|(Scaled|Absolute)[(_?NumericQ)]|FigPointPattern);
 
 
 (*Complementary coordinate index*)
@@ -584,7 +584,7 @@ FigResolveCoordinateIndex[Vertical]=2;
 
 FigResolveCoordinate[x_?NumericQ,CoordinateIndex:(1|2)]:=FigResolvePoint[x*UnitVector[CoordinateIndex]][[CoordinateIndex]];
 FigResolveCoordinate[Scaled[x_?NumericQ],CoordinateIndex:(1|2)]:=FigResolvePoint[Scaled[x*UnitVector[CoordinateIndex]]][[CoordinateIndex]];
-FigResolveCoordinate[Canvas[x_?NumericQ],CoordinateIndex:(1|2)]:=x;
+FigResolveCoordinate[Absolute[x_?NumericQ],CoordinateIndex:(1|2)]:=x;
 FigResolveCoordinate[p:FigPointPattern,CoordinateIndex:(1|2)]:=FigResolvePoint[p][[CoordinateIndex]];
 
 
@@ -603,7 +603,7 @@ FigResolveCoordinate[x_,Vertical]:=FigResolveCoordinate[x,2];
 
 FigResolveCoordinateDisplacement[x_?NumericQ,CoordinateIndex:(1|2)]:=FigResolveDisplacement[x*UnitVector[CoordinateIndex]][[CoordinateIndex]];
 FigResolveCoordinateDisplacement[Scaled[x_?NumericQ],CoordinateIndex:(1|2)]:=FigResolveDisplacement[Scaled[x*UnitVector[CoordinateIndex]]][[CoordinateIndex]];
-FigResolveCoordinateDisplacement[Canvas[x_?NumericQ],CoordinateIndex:(1|2)]:=x;
+FigResolveCoordinateDisplacement[Absolute[x_?NumericQ],CoordinateIndex:(1|2)]:=x;
 FigResolveCoordinateDisplacement[p:FigPointPattern,CoordinateIndex:(1|2)]:=FigResolveDisplacement[p][[CoordinateIndex]];
 
 
@@ -629,7 +629,7 @@ FigPointSetPattern[n_Integer]:={Repeated[FigPointPattern,{n,Infinity}]};
 (*Note: Returns a Canvas point specification, rather than just a canvas coordinate pair.  This is so the user can use PointCentroid[] as a point specification.*)
 
 
-CentroidPoint[PointSet:FigPointSetPattern[1]]:=Canvas[Mean[FigResolvePoint/@PointSet]];
+CentroidPoint[PointSet:FigPointSetPattern[1]]:=Absolute[Mean[FigResolvePoint/@PointSet]];
 
 
 (*Bounding box of point set*)
@@ -644,9 +644,9 @@ FigPointSetBoundingBox[PointSet:FigPointSetPattern[1]]:={{Min[First/@PointSet],M
 (*Radius pattern*)
 
 
-FigRadiusPattern=NonNegativeIntervalParametersPattern|((Horizontal|Vertical|Canvas|Scaled)[NonNegativeIntervalParametersPattern])|{
-  ((_?NonNegative)|(Scaled|Canvas)[(_?NonNegative)]),
-  ((_?NonNegative)|(Scaled|Canvas)[(_?NonNegative)])
+FigRadiusPattern=NonNegativeIntervalParametersPattern|((Horizontal|Vertical|Absolute|Scaled)[NonNegativeIntervalParametersPattern])|{
+  ((_?NonNegative)|(Scaled|Absolute)[(_?NonNegative)]),
+  ((_?NonNegative)|(Scaled|Absolute)[(_?NonNegative)])
                                                      };
 
 
@@ -694,8 +694,8 @@ MakeRectangleGeometry[p1:FigPointPattern,p2:FigPointPattern,FullOptions_List]:=M
 
   (* invoke base form *)
   MakeRectangleGeometry [
-    Canvas[CanvasCenter],
-    Join[{AnchorOffset->Center,Radius->Canvas[CanvasRadius]},FullOptions]
+    Absolute[CanvasCenter],
+    Join[{AnchorOffset->Center,Radius->Absolute[CanvasRadius]},FullOptions]
   ]
 
                                                                                ];
@@ -715,8 +715,8 @@ MakeRectangleGeometry[r:FigRegionPattern,FullOptions_List]:=Module[
 
   (* invoke base form *)
   MakeRectangleGeometry [
-    Canvas[CanvasCenter],
-    Join[{AnchorOffset->Center,Radius->Canvas[CanvasRadius]},FullOptions]
+    Absolute[CanvasCenter],
+    Join[{AnchorOffset->Center,Radius->Absolute[CanvasRadius]},FullOptions]
   ]
                                                             ];
 
@@ -789,7 +789,7 @@ FigResolveRadius[Vertical[r:NonNegativeIntervalParametersPattern]]:=Module[
 (*Canvas coordinates: Canvas[None] or Canvas[r] or Canvas[{rx,ry}]*)
 
 
-FigResolveRadius[Canvas[r:NonNegativeIntervalParametersPattern]]:=UpgradePairEqual[r];
+FigResolveRadius[Absolute[r:NonNegativeIntervalParametersPattern]]:=UpgradePairEqual[r];
 
 
 (*Scaled coordinates: Scaled[None] or Scaled[r] or Scaled[{rx,ry}]*)
@@ -805,8 +805,8 @@ FigResolveRadius[
   p:Except[
     {_?NumericQ,_?NumericQ},
     {
-      x:((_?NonNegative)|(Scaled|Canvas)[(_?NonNegative)]),
-      y:((_?NonNegative)|(Scaled|Canvas)[(_?NonNegative)])
+      x:((_?NonNegative)|(Scaled|Absolute)[(_?NonNegative)]),
+      y:((_?NonNegative)|(Scaled|Absolute)[(_?NonNegative)])
     }
     ]
 ]:=FigResolveDisplacement[p];
@@ -856,14 +856,14 @@ FigRectangleAnchor[
   CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
   Name:NamedPointPattern,
   Arg:None
-]:=FigAnchor[Canvas[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,NamedPointOffset[Name]]],-NamedPointOffset[Name],RotationAngle];
+]:=FigAnchor[Absolute[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,NamedPointOffset[Name]]],-NamedPointOffset[Name],RotationAngle];
 
 
 FigRectangleAnchor[
   CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
   Name:Offset,
   OffsetValue:FigOffsetPattern
-]:=FigAnchor[Canvas[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,FigResolveOffset[OffsetValue]]],{0,0},RotationAngle];
+]:=FigAnchor[Absolute[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,FigResolveOffset[OffsetValue]]],{0,0},RotationAngle];
 
 
 (*Side interpolations: {Left|Right|Bottom|Top,x}*)
@@ -876,7 +876,7 @@ FigRectangleAnchor[
   Name:(Left|Right|Bottom|Top),
   x_?NumericQ
 ]:=FigAnchor[
-  Canvas[
+  Absolute[
     InterpolateSegment[
       RectangleSideSegment[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,Name],
       Center,Scaled,x
@@ -912,14 +912,14 @@ FigCircleAnchor[
   CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},AngleRange:{theta1_?NumericQ,theta2_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
   Name:(Center|Left|Right|Bottom|Top),
   Arg:None
-]:=FigAnchor[Canvas[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,NamedPointOffset[Name]]],-NamedPointOffset[Name],RotationAngle];
+]:=FigAnchor[Absolute[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,NamedPointOffset[Name]]],-NamedPointOffset[Name],RotationAngle];
 
 
 FigCircleAnchor[
   CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},AngleRange:{theta1_?NumericQ,theta2_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
   Name:Offset,
   OffsetValue:FigOffsetPattern
-]:=FigAnchor[Canvas[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,FigResolveOffset[OffsetValue]]],{0,0},RotationAngle];
+]:=FigAnchor[Absolute[RectangleOffsetPoint[CanvasCenter,CanvasRadius,CanvasPivot,RotationAngle,FigResolveOffset[OffsetValue]]],{0,0},RotationAngle];
 
 
 (*For a circle, the conventional direction is the "positive theta" direction from polar coordinates, i.e., CCW.  For instance, this is the convention followed by the ordering of the arc angle arguments {theta1,theta2} in the Mathematica Circle and Disk primatives.  However, it is more natural for the text baseline to follow the "negative theta" tangent, so that the text "sits on" the outside of the circle.  This is the convention adopted with the anchors for Point, for instance.  For the most part, TextRectify renders this problem irrelevant.  However, the orientation of the tangent also affect arrowheads.  *)
@@ -977,7 +977,7 @@ FigCircleAnchor[
   (* trig gives tangent vector in negative theta sense, which y  *)
   AnchorAngle=TangentAngle+Switch[OrthoMode,Normal,+Pi/2,Tangent,Switch[ArcSense,+1,Pi,-1|0,0]];
 
-  FigAnchor[Canvas[AnchorPoint],AnchorOffset,AnchorAngle]
+  FigAnchor[Absolute[AnchorPoint],AnchorOffset,AnchorAngle]
    ];
 FigCircleAnchor[
   CanvasCenter:{_?NumericQ,_?NumericQ},CanvasRadius:{_?NumericQ,_?NumericQ},AngleRange:{theta1_?NumericQ,theta2_?NumericQ},CanvasPivot:{_?NumericQ,_?NumericQ},RotationAngle_?NumericQ,
@@ -1057,7 +1057,7 @@ DisplacePoint[p:FigPointPattern,Args:FigDisplacementSequencePattern[0]]:=Module[
   FigCheckInFigure[DisplacePoint];
   a=FigAnchor[p];
   CanvasPoint=a@GetPoint[]+Plus@@(FigResolveDisplacement/@{Args});
-  FigAnchor[Canvas[CanvasPoint],a@GetOffset[],a@GetAngle[]]
+  FigAnchor[Absolute[CanvasPoint],a@GetOffset[],a@GetAngle[]]
                                                                          ];
 DeclareFigFallThroughError[DisplacePoint];
 
@@ -1074,7 +1074,7 @@ ProjectPoint[p:FigPointPattern,CoordinateIndexName:(Horizontal|Vertical),x:FigCo
   (* substitute coordinate *)
   a=FigAnchor[p];
   CanvasPoint=ReplacePart[(a@GetPoint[]),CoordinateIndex->xc];
-  FigAnchor[Canvas[CanvasPoint],a@GetOffset[],a@GetAngle[]]
+  FigAnchor[Absolute[CanvasPoint],a@GetOffset[],a@GetAngle[]]
                                                                                                   ];
 DeclareFigFallThroughError[ProjectPoint];
 
@@ -1085,7 +1085,7 @@ DisplaceAlongAnchor[p:FigPointPattern,d_?NumericQ]/;(SciDraw`Private`$InFigure):
   a=FigAnchor[p];
   theta=a@GetAngle[];
   CanvasPoint=a@GetPoint[]+d*{Cos[theta],Sin[theta]};
-  FigAnchor[Canvas[CanvasPoint],a@GetOffset[],a@GetAngle[]]
+  FigAnchor[Absolute[CanvasPoint],a@GetOffset[],a@GetAngle[]]
                                                                                  ];
 DeclareFigFallThroughError[DisplaceAlongAnchor];
 
@@ -1097,7 +1097,7 @@ RotateAnchor[p:FigPointPattern,theta:ScalarParameterPattern]/;(SciDraw`Private`$
   {Anchor,CanvasPoint},
   FigCheckInFigure[RotateAnchor];
   Anchor=FigAnchor[p];
-  FigAnchor[Canvas[Anchor@GetPoint[]],Anchor@GetOffset[],Anchor@GetAngle[]+UpgradeScalar[theta]]
+  FigAnchor[Absolute[Anchor@GetPoint[]],Anchor@GetOffset[],Anchor@GetAngle[]+UpgradeScalar[theta]]
                                                                                            ];
 
 
@@ -1400,7 +1400,7 @@ FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,Tan
 
 FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Name:(Left|Center|Right),u:(_?NumericQ)]:=Quiet[
   FigAnchor[
-    Canvas[InterpolationFunction[u]],
+    Absolute[InterpolationFunction[u]],
     Switch[Name,Right,{0,+1},Center,{0,0},Left,{0,-1}],
     VectorArcTan[TangentFunction[u]] 
   ],
@@ -1473,7 +1473,7 @@ FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,Tan
 
     CanvasPoint=InterpolationFunction[u];
     FigAnchor[
-      Canvas[CanvasPoint],
+      Absolute[CanvasPoint],
       Switch[Name,Right,{0,+1},Center,{0,0},Left,{0,-1}],
       VectorArcTan[TangentFunction[u]] 
     ],
@@ -1498,7 +1498,7 @@ FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,Tan
  (*Argument: None*)
 
 
- FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Point,k_Integer]:=FigAnchor[Canvas[CurvePoint[Points,k]]];
+ FigCurveAnchor[Points_List,InterpolationFunctionPair:{InterpolationFunction_,TangentFunction_},Point,k_Integer]:=FigAnchor[Absolute[CurvePoint[Points,k]]];
 
 
  (*Bounding box (extremal values)*)

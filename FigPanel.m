@@ -837,7 +837,7 @@ TickFontSize\[Rule]value -- set FontSize to TickFontSize
 
                                                                   (* emit text *)
                                                                   TickOffset=-NamedPointOffset[Side];
-                                                                  TickLabelAnchor=FigAnchor[Canvas[TickPoint],TickOffset,0];
+                                                                  TickLabelAnchor=FigAnchor[Absolute[TickPoint],TickOffset,0];
                                                                   TextElement=FigTextElement[TickLabelAnchor,TickText,TickOptions];
 
                                                                   (* retain dimension information *)
@@ -874,7 +874,7 @@ TickFontSize\[Rule]value -- set FontSize to TickFontSize
                                                                                                                                             Switch[Self@GetSide[],Left|Top,Left,Bottom|Right,Right],
                                                                                                                                             Arg
                                                                                                                                           ],
-                                                                                                                                          Canvas[NamedPointOffset[Self@GetSide[]]*(Self@GetTickLabelAllowance[])]
+                                                                                                                                          Absolute[NamedPointOffset[Self@GetSide[]]*(Self@GetTickLabelAllowance[])]
                                                                                                                                         ]
                                                                                                                    ]; 
 
@@ -1435,7 +1435,7 @@ PanelGapsExteriorArray=(CurrentMultipanel[]@GetPanelGapsExteriorArray[]);
                                                                                                                                                                                                                                                                                                                                                                                                  CanvasCorner=((Self@GetWindow[])@ScaledTFunction[])@(RescalingTransform[{{-1,+1},{-1,+1}},{{0,+1},{0,+1}}]@UsedOffset);
                                                                                                                                                                                                                                                                                                                                                                                                  CanvasInset=-UsedOffset*UpgradePairEqual[Indent];
                                                                                                                                                                                                                                                                                                                                                                                                  CanvasPoint=CanvasCorner+CanvasInset;
-                                                                                                                                                                                                                                                                                                                                                                                                 FigAnchor[Canvas[CanvasPoint]]
+                                                                                                                                                                                                                                                                                                                                                                                                 FigAnchor[Absolute[CanvasPoint]]
                                                                                                                                                                                                                                                                                                                                                                                                ]
                                                                                                                                                                                                                                                                                                                                                                           ];
 

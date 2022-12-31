@@ -241,19 +241,19 @@ Constructor[Class:Lev,Self_Object][EnergyStr:(_?NumericQ|_String),{x1_?NumericQ,
 
 
 MakeAnchor[Class:Lev,Self_Object][Name:Left,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
-                                                                            FigAnchor[Canvas[First[Self@GetPoints[]]],Right]
+                                                                            FigAnchor[Absolute[First[Self@GetPoints[]]],Right]
                                                        ];
 MakeAnchor[Class:Lev,Self_Object][Name:Right,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
-                                                                             FigAnchor[Canvas[Last[Self@GetPoints[]]],Left]
+                                                                             FigAnchor[Absolute[Last[Self@GetPoints[]]],Left]
                                                         ];
 MakeAnchor[Class:Lev,Self_Object][Name:Bottom,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
-                                                                              FigAnchor[CentroidPoint[Canvas/@(Self@GetBasePoints[])],Top]
+                                                                              FigAnchor[CentroidPoint[Absolute/@(Self@GetBasePoints[])],Top]
                                                          ];
 MakeAnchor[Class:Lev,Self_Object][Name:Top,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
-                                                                           FigAnchor[CentroidPoint[Canvas/@(Self@GetBasePoints[])],Bottom]
+                                                                           FigAnchor[CentroidPoint[Absolute/@(Self@GetBasePoints[])],Bottom]
                                                       ];
 MakeAnchor[Class:Lev,Self_Object][Name:Center,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
-                                                                              FigAnchor[CentroidPoint[Canvas/@(Self@GetBasePoints[])]]
+                                                                              FigAnchor[CentroidPoint[Absolute/@(Self@GetBasePoints[])]]
                                                          ];
 
 
@@ -267,13 +267,13 @@ MakeAnchor[Class:Lev,Self_Object][Name:Center,Arg:None]:=FigMakeAnchorWrapper[Cl
 MakeAnchor[Class:Lev,Self_Object][Name:Level,Arg:(x_?NumericQ)]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
                                                                                       Module[
                                                                                         {u=x/(Self@GetUserXWidth[])},
-                                                                                        FigAnchor[Canvas[InterpolateSegment[Self@GetNominalPoints[],Tail,u]]]
+                                                                                        FigAnchor[Absolute[InterpolateSegment[Self@GetNominalPoints[],Tail,u]]]
                                                                                       ]
                                                                  ];
 MakeAnchor[Class:Lev,Self_Object][Name:Level,Arg:{Side:(Left|Right),(x_?NumericQ)}]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
                                                                                                           Module[
                                                                                                             {u=x/(Self@GetUserXWidth[])},
-                                                                                                            FigAnchor[Canvas[{
+                                                                                                            FigAnchor[Absolute[{
                                                                                                               First[InterpolateSegment[Self@GetNominalPoints[],Tail,u]],
                                                                                                               Last[(Self@GetPoints[])[[Switch[Side,Left,1,Right,-1]]]]
                                                                                                               }]]
@@ -456,19 +456,19 @@ UsedMakeWing=UpgradePair[(MakeWing/.FigOptions)];  (* not numeric, so use Upgrad
 
 
 MakeAnchor[Class:Resonance,Self_Object][Name:Left,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
-                                                                                  FigAnchor[Canvas[First[Self@GetPoints[]]],Right]
+                                                                                  FigAnchor[Absolute[First[Self@GetPoints[]]],Right]
                                                              ];
 MakeAnchor[Class:Resonance,Self_Object][Name:Right,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
-                                                                                   FigAnchor[Canvas[Last[Self@GetPoints[]]],Left]
+                                                                                   FigAnchor[Absolute[Last[Self@GetPoints[]]],Left]
                                                               ];
 MakeAnchor[Class:Resonance,Self_Object][Name:Bottom,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
-                                                                                    FigAnchor[CentroidPoint[Canvas/@(Self@GetBasePoints[])],Top]
+                                                                                    FigAnchor[CentroidPoint[Absolute/@(Self@GetBasePoints[])],Top]
                                                                ];
 MakeAnchor[Class:Resonance,Self_Object][Name:Top,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
-                                                                                 FigAnchor[CentroidPoint[Canvas/@(Self@GetBasePoints[])],Bottom]
+                                                                                 FigAnchor[CentroidPoint[Absolute/@(Self@GetBasePoints[])],Bottom]
                                                             ];
 MakeAnchor[Class:Resonance,Self_Object][Name:Center,Arg:None]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
-                                                                                    FigAnchor[CentroidPoint[Canvas/@(Self@GetBasePoints[])]]
+                                                                                    FigAnchor[CentroidPoint[Absolute/@(Self@GetBasePoints[])]]
                                                                ];
 
 
@@ -482,13 +482,13 @@ MakeAnchor[Class:Resonance,Self_Object][Name:Center,Arg:None]:=FigMakeAnchorWrap
 MakeAnchor[Class:Resonance,Self_Object][Name:Level,Arg:(x_?NumericQ)]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
                                                                                             Module[
                                                                                               {u=x/(Self@GetUserXWidth[])},
-                                                                                              FigAnchor[Canvas[InterpolateSegment[Self@GetNominalPoints[],Tail,u]]]
+                                                                                              FigAnchor[Absolute[InterpolateSegment[Self@GetNominalPoints[],Tail,u]]]
                                                                                             ]
                                                                        ];
 MakeAnchor[Class:Resonance,Self_Object][Name:Level,Arg:{Side:(Left|Right),(x_?NumericQ)}]:=FigMakeAnchorWrapper[Class,Self,Name,Arg,
                                                                                                                 Module[
                                                                                                                   {u=x/(Self@GetUserXWidth[])},
-                                                                                                                  FigAnchor[Canvas[{
+                                                                                                                  FigAnchor[Absolute[{
                                                                                                                     First[InterpolateSegment[Self@GetNominalPoints[],Tail,u]],
                                                                                                                     Last[(Self@GetPoints[])[[Switch[Side,Left,1,Right,-1]]]]
                                                                                                                     }]]
@@ -691,7 +691,7 @@ Constructor[Class:BandLabel,Self_Object][
                                                               UsedVerticalShift=UpgradeScalar[(VerticalShift/.FigOptions)];
                                                               Anchor=DisplacePoint[
                                                                 FigAnchor[LevelName,Bottom],
-                                                                Canvas[{0,UsedVerticalShift}]
+                                                                Absolute[{0,UsedVerticalShift}]
                                                                      ];
 
                                                               (* make text *)
@@ -777,11 +777,11 @@ RealizeTransEndpoints[Self_Object,LevelName1_,LevelName2_,EndPositions:{x1_,x2_}
   (* use "x" from other endpoint, and "y" from Center anchor of present endpoint's level *)
   If[
     (x1===Automatic),
-    p1=Canvas[{First[FigResolvePoint[p2]],Last[FigResolvePoint[FigAnchor[LevelName1,Center]]]}]
+    p1=Absolute[{First[FigResolvePoint[p2]],Last[FigResolvePoint[FigAnchor[LevelName1,Center]]]}]
   ];
   If[
     (x2===Automatic),
-    p2=Canvas[{First[FigResolvePoint[p1]],Last[FigResolvePoint[FigAnchor[LevelName2,Center]]]}];
+    p2=Absolute[{First[FigResolvePoint[p1]],Last[FigResolvePoint[FigAnchor[LevelName2,Center]]]}];
   ];
 
   (* return result *)
@@ -969,7 +969,7 @@ df=(N-N')/(N-1)*(1-(m1+m2)/w0)
 
   (* generate point list *)
   CanvasXList=Rescale[Range[Points],{1,Points},CanvasInterval];
-  Canvas[{#,CanvasY}]&/@CanvasXList
+  Absolute[{#,CanvasY}]&/@CanvasXList
 
     ];
 DeclareFigFallThroughError[LevelShellPoints];
